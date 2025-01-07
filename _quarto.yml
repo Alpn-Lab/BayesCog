@@ -1,0 +1,141 @@
+project: 
+  type: website
+  output-dir: _site
+  
+website: 
+  page-navigation: true
+  title: "BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science" 
+  site-url: https://sohaamir.github.io/BayesCog/
+  repo-url: https://github.com/sohaamir/BayesCog
+  repo-actions: [edit, issue]
+  
+  page-footer:
+    right: "This page is built with 🧠, ☕ and [Quarto](https://quarto.org/)."
+    left: "&copy; Zhang & Sohail, 2025"
+    
+  sidebar:
+    logo: "images/alpn_logo_with_text.png"
+    pinned: true
+    align: center
+    tools: 
+      - icon: globe
+        href: https://alpnlab.github.io
+        text: "Openscapes.org"
+      - icon: github
+        href: https://github.com/alpnlab
+        text: "Quarto website tutorial"
+      - icon: twitter
+        href: https://twitter.com/openscapes
+        text: "Openscapes Twitter"         
+
+    style: "docked"
+    search: true
+    collapse-level: 1
+    contents:
+      - href: index.qmd
+        text: Welcome to BayesCog!
+      - text: Course overview
+        href: course_overview.qmd
+      - section: "Workshop 1: R Basics"
+        contents: 
+          - text: "Workshop 1: Overview"
+            href: workshops/01.R_basics/qmd/intro.qmd
+          - text: "Introduction to R/RStudio"
+            href: workshops/01.R_basics/qmd/introduction_to_r.qmd
+          - text: "Working with data in R"
+            href: workshops/01.R_basics/qmd/working_with_data.qmd
+      - section: "Workshop 2: Probability and an introduction to Bayes' theorem"
+        contents:
+          - text: "Workshop 2: Overview"
+            href: workshops/01.R_basics/qmd/intro_probability.qmd
+          - text: "Probability and Bayes' theorem"
+            href: workshops/01.R_basics/qmd/probability.qmd
+      - section: "Workshop 3: Building simple models conceptually"
+        contents:
+          - text: "Workshop 3: Overview"
+            href: workshops/02.binomial_globe/qmd/intro.qmd
+          - text: "Linking data to parameters"
+            href: workshops/02.binomial_globe/qmd/data_and_parameters.qmd
+          - text: "The globe-tossing experiment"
+            href: workshops/02.binomial_globe/qmd/binomial_model.qmd
+          - text: "Markov chain Monte Carlo"
+            href: workshops/02.binomial_globe/qmd/mcmc.qmd
+      - section: "Workshop 4: Introduction to building models in Stan"
+        contents:
+          - text: "Workshop 4: Overview"
+            href: workshops/02.binomial_globe/qmd/stan_intro.qmd
+          - text: "Building models in Stan"
+            href: workshops/02.binomial_globe/qmd/stan_binomial.qmd
+      - section: "Workshop 5: Bernoulli and linear regression models"
+        contents:
+          - text: "Workshop 5: Overview"
+            href: workshops/03.bernoulli_coin/qmd/intro.qmd
+          - text: "Technical notes on Stan"
+            href: workshops/03.bernoulli_coin/qmd/stan_notes.qmd
+          - text: "Bernoulli and linear regression models"
+            href: workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.qmd
+      - section: "Workshop 6: Reinforcement learning models"
+        contents:
+          - text: "Workshop 6: Overview"
+            href: workshops/06.reinforcement_learning/qmd/intro.qmd
+          - text: "Fundamentals of cognitive modeling and reinforcement learning"
+            href: workshops/06.reinforcement_learning/qmd/rl_concepts.qmd
+          - text: "Implementing the Rescorla-Wagner model in Stan"
+            href: workshops/06.reinforcement_learning/qmd/rl_stan.qmd
+      - section: "Workshop 7: Hierachical Bayesian modeling"
+        contents:
+          - text: "Workshop 7: Overview"
+            href: workshops/06.reinforcement_learning/qmd/hrch_rl_intro.qmd
+          - text: "Hierarchical Bayesian models"
+            href: workshops/06.reinforcement_learning/qmd/hierarchical_modeling.qmd
+          - text: "Reparameterization and optimizing Stan code"
+            href: workshops/07.optm_rl/qmd/optim.qmd
+      - section: "Workshop 8: Model comparison"
+        contents:
+          - text: "Workshop 8: Overview"
+            href: workshops/08.compare_models/qmd/intro.qmd
+          - text: "Model comparison"
+            href: workshops/08.compare_models/qmd/model_comparison.qmd
+      - section: "Workshop 9: Debugging in Stan"
+        contents:
+          - text: "Workshop 9: Overview"
+            href: workshops/09.debugging/qmd/intro.qmd
+          - text: "Debugging in Stan"
+            href: workshops/09.debugging/qmd/debugging.qmd
+          - text: "A principled modeling workflow"
+            href: workshops/09.debugging/qmd/workflow.qmd
+      - section: "Bonus workshop: Introduction to model-based fMRI"
+        contents:
+          - text: "Introduction to model-based fMRI"
+            href: workshops/10.model_based/qmd/model_fmri.qmd
+      - text: Acknowledgements
+        href: conclusion.qmd
+      - text: Resources
+        href: resources.qmd
+
+
+format:
+  html:
+    theme: cosmo
+    code-copy: true
+    code-overflow: wrap
+    toc: true
+    grid:
+      sidebar-width: 300px
+      body-width: 1300px
+      margin-width: 300px
+      gutter-width: 1.5rem
+    css: styles.css
+    include-in-header:
+      text: |
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  pdf: 
+    documentclass: article
+
+jupyter: .venv
+
+filters:
+  - include-files.lua
+  - quarto
+
+  

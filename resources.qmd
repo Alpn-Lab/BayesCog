@@ -1,0 +1,74 @@
+---
+title: Resources
+---
+
+Here are a selection of resources available to help with this course as well as more generally.
+
+## Textbooks
+
+<div style="font-size: 22px;"><strong>R Programming</strong></div>
+<div style="height: 16px;"></div>
+
+- Kabacoff, R. (2015). R in Action, 2nd Ed. Manning Publications.
+- Wickham, H., & Grolemund, G. (2017). R for Data Science. O'Reilly Media.
+
+<div style="font-size: 22px;"><strong>General statistics</strong></div>
+<div style="height: 16px;"></div>
+
+- Poldrack, R. A. (2019). Statistical Thinking for the 21st Century. [http://statsthinking21.org/](http://statsthinking21.org/)
+
+<div style="font-size: 22px;"><strong>Bayesian statistics and modeling in Stan</strong></div>
+<div style="height: 16px;"></div>
+
+- Lambert, B. (2018). A Student's Guide to Bayesian Statistics. Sage.
+- McElreath, R. (2020). Statistical Rethinking: A Bayesian Course with Examples in R and Stan, 2nd Ed. CRC Press.
+- Kruschke, J. K. (2015). Doing Bayesian Data Analysis: A Tutorial with R, JAGS, and Stan, 2nd Ed. Academic Press.
+- Pruim, R. (2019). (Re)Doing Bayesian data analysis. [https://rpruim.github.io/Kruschke-Notes/](https://rpruim.github.io/Kruschke-Notes/)
+- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2013). Bayesian Data Analysis, 3rd Ed. Chapman and Hall/CRC.
+
+:::{.callout-tip title="Which textbook should I start with?"}
+It is recommended that beginners to Bayesian statistics should work their way down from this list starting with *A Student's Guide to Bayesian Statistics*, whilst those with some experience should start with *Statistical Rethinking: A Bayesian Course with Examples in R and Stan*.
+:::
+
+<div style="font-size: 22px;"><strong>Cognitive modeling</strong></div>
+<div style="height: 16px;"></div>
+
+- Farrell, S., & Lewandowsky, S. (2018). Computational Modeling of Cognition and Behavior. Cambridge University Press.
+- Lee, M. D., & Wagenmakers, E. J. (2014). Bayesian Cognitive Modeling: A Practical Course. Cambridge University Press.
+
+## Journal articles
+
+Ahn, W. Y., Haines, N., & Zhang, L. (2017). Revealing neurocomputational mechanisms of reinforcement learning and decision-making with the hBayesDM package. Computational Psychiatry, 1, 24-57. [https://doi.org/10.1162/CPSY_a_00002](https://doi.org/10.1162/CPSY_a_00002)
+
+Daw, N. D. (2011). Trial-by-trial data analysis using computational models. Decision Making, Affect, and Learning: Attention and Performance XXIII, 23, 3-38. [https://doi.org/10.1093/acprof:oso/9780199600434.003.0001](https://doi.org/10.1093/acprof:oso/9780199600434.003.0001)
+
+Etz, A., Gronau, Q. F., Dablander, F., Edelsbrunner, P. A., & Baribault, B. (2018). How to become a Bayesian in eight easy steps: An annotated reading list. Psychonomic Bulletin & Review, 25(1), 219-234. [https://doi.org/10.3758/s13423-017-1317-5](https://doi.org/10.3758/s13423-017-1317-5)
+
+Kruschke, J. K., & Liddell, T. M. (2018). Bayesian data analysis for newcomers. Psychonomic Bulletin & Review, 25(1), 155-177. [https://doi.org/10.3758/s13423-017-1272-1](https://doi.org/10.3758/s13423-017-1272-1)
+
+Lockwood, P. L., & Klein-Flügge, M. C. (2021). Computational modelling of social cognition and behaviour—a reinforcement learning primer. Social Cognitive and Affective Neuroscience, 16(1-2), 1-11. [https://doi.org/10.1093/scan/nsaa040](https://doi.org/10.1093/scan/nsaa040)
+
+Wagenmakers, E. J., Marsman, M., Jamil, T., Ly, A., Verhagen, J., Love, J., Selker, R., Gronau, Q. F., Šmíra, M., Epskamp, S., Matzke, D., Rouder, J. N., & Morey, R. D. (2018). Bayesian inference for psychology. Part I: Theoretical advantages and practical ramifications. Psychonomic Bulletin & Review, 25(1), 35-57. [https://doi.org/10.3758/s13423-017-1343-3](https://doi.org/10.3758/s13423-017-1343-3)
+
+Wilson, R. C., & Collins, A. G. E. (2019). Ten simple rules for the computational modeling of behavioral data. eLife, 8, Article e49547. [https://doi.org/10.7554/eLife.49547](https://doi.org/10.7554/eLife.49547)
+
+Zhang, L., Lengersdorff, L., Mikus, N., Gläscher, J., & Lamm, C. (2020). Using reinforcement learning models in social neuroscience: Frameworks, pitfalls and suggestions of best practices. Social Cognitive and Affective Neuroscience, 15(6), 695-707. [https://doi.org/10.1093/scan/nsaa089](https://doi.org/10.1093/scan/nsaa089)
+
+## Online cognitive modeling tutorials 
+
+- [Neuromatch Academy Computational Neuroscience Course](https://compneuro.neuromatch.io/tutorials/intro.html) A wide-spanning curriculum that covers most areas of computational neuroscience (Python based).
+- [Behavioural Modeling](https://hannekedenouden.ruhosting.nl/RLtutorial/Instructions.html) A two-part course covering how to model cognitive behaviour using MATLAB. By Hanneke den Ouden (Donders Institute, Nijmegen) and Jill O'Reilly (Oxford University).
+- [Computational Models of Human Social Behavior and Neuroscience](https://shawnrhoads.github.io/gu-psyc-347/index.html) An introductory course to the computational modeling of social behaviour for those with no prior programming experience needed (Python based). By Shawn Rhoads (Icahn School of Medicine).
+- [NivStan](https://nivlab.github.io/nivstan/) A guide to getting started in Stan with tutorials written by the Niv Lab at Princeton (uses PyStan, the Python interface to Stan).
+
+## Websites
+
+- [The Stan Forums](https://discourse.mc-stan.org): the community hub where users can ask questions, share code, and discuss implementation details of Stan models
+- [DataCamp](https://www.datacamp.com/): a resource for interactive online courses that cover Bayesian statistics and Stan programming
+- [The distribution zoo](https://ben18785.shinyapps.io/distribution-zoo/): an interactive tool to build intuitions about common probability distributions.
+- [Probability distribution explorer](https://distribution-explorer.github.io/): another interactive tool on probability distributions, with code in Python and Stan.
+- [Michael Betancourt's blog post](https://betanalpha.github.io/writing/): comprehensive case studies using Stan.
+
+
+
+

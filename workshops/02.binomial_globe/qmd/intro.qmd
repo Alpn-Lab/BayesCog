@@ -1,0 +1,22 @@
+---
+title: "Linking data to parameters"
+subtitle: "Applying Bayesian statistics to real-world problems"
+---
+
+**Welcome to the third workshop of the BayesCog course!**
+
+In this workshop, we'll build on our understanding of probability and Bayes' theorem to explore how we can **construct and implement Bayesian models**. We'll start with a simple but powerful example - **the binomial model** - and use it to demonstrate key concepts in Bayesian modeling. We will explore the computational burden of Bayesian statistics - calculating posterior distributions - first through grid approximation, before exploring **Markov chain Monte Carlo (MCMC)** methods - powerful computational techniques which allow us to sample from complex posterior distributions that would be impossible to compute directly.
+
+Topics for this workshop include:
+
+- Understanding how data and parameters are linked in Bayesian inference
+- Learning about likelihood functions and how to choose them
+- Exploring the binomial model through a practical example
+- Using grid approximation to estimate posterior distributions
+- An introduction to Markov chain Monte Carlo
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/02.binomial_globe`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

@@ -1,0 +1,23 @@
+---
+title: "Debugging in Stan"
+subtitle: "And building a comprehensive picture of the Stan modeling workflow"
+---
+
+**Welcome to the ninth and final workshop of the BayesCog course!**
+
+Collectively, over this course we have built up our knowledge and ability to formalise and write cognitive models in Stan. We have done so using multiple examples, from basic probability models like the binomial and Bernoulli, to linear regression, and then explored various reinforcement learning models - from simple Rescorla-Wagner models to more complex hierarchical models.
+
+All the while, things have gone relatively smoothly; we have not encountered major problems when writing or running our Stan models. However, it is worth to bear in mind that the materials (including the Stan models) for this course were carefully constructed and checked to work correctly without issue. In this final workshop, we'll focus on debugging and fixing common errors in Stan code, and discuss best coding practices.
+
+The goals of this workshop are to:
+
+- Understand common errors and warnings in Stan and how to resolve them
+- Learn best practices for writing and debugging Stan code
+- Gain practical experience debugging a memory retention model
+- Understand the cognitive modeling framework through an example study
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/09.debugging`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

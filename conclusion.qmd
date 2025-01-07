@@ -1,0 +1,27 @@
+---
+title: "Acknowledgements"
+format: html
+---
+
+::: {.quote-large style="font-size: 1.3em"}
+> “If I have seen further, it is by standing on the shoulders of giants.” - Isaac Newton (1675)
+:::
+
+## Acknowledgments
+
+The course material would not be possible without the prior work of many others. In particular we would like to acknowledge:
+
+- Simon Farrell (University of Western Australia), John Kruschke (Indiana University), Ben Lambert (University of Oxford), Stephan Lewandowsky (University of Bristol), Michael Lee (University of California, Irvine), Richard McElreath (Max Planck Institute for Evolutionary Anthropology), and Eric-Jan Wagenmakers (University of Amsterdam) for their excellent textbooks which have heavily shaped the course content and structure
+- Woo-Young Ahn (Seoul National University), Nate Haines (Ohio State University), Jan Gläscher (UKE Hamburg) and Antonius Wiehler (ICM, Paris) for their ...
+
+## Future content
+
+We are hoping to further expand the content covered in this course. Examples for additional workshops include: 
+
+- Applying more computational models (delay discounting, intertemporal choice)
+- Computational modeling of decision-making tasks using the [`hBayesDM`](https://ccs-lab.github.io/hBayesDM/index.html) package[^2] in `R` 
+- Practical examples of implementing model-based fMRI
+
+[^2]: Ahn, W. Y., Haines, N., & Zhang, L. (2017). Revealing neurocomputational mechanisms of reinforcement learning and decision-making with the hBayesDM package. Computational Psychiatry (Cambridge, Mass.), 1, 24.
+
+So make sure to stay up-to-date with the website by starring ⭐ the GitHub repository!

@@ -1,0 +1,25 @@
+---
+title: "Hierarchial Bayesian models"
+subtitle: "Achieving more accurate parameter estimation for groups"
+---
+
+**Welcome to the seventh workshop of the BayesCog course!**
+
+In our last workshop, we explored how to implement the Rescorla-Wagner model in Stan; estimating learning rates and inverse temperatures for both individual subjects and groups. 
+When modeling a population of participants, our ultimate goal is to accurately estimate each individual's true learning parameters while accounting for uncertainty and noise in our measurements. Currently, we either pool all participants together (assuming everyone is identical) or fit each person independently (ignoring information from the group that could help constrain our estimates). **Hierarchical Bayesian modeling provides a solution by using group-level information to improve individual parameter estimates,** particularly when data is limited or noisy for some participants. 
+
+In this workshop, we'll firstly explore how hierarchical models work and implement them in our reinforcement learning model. We will then learn how to optimize Stan code through reparameterization and by changing Stan's sampling parameters.
+
+The goals of this workshop are to:
+
+- Understand the limitations of both fixed effects and independent parameter estimation approaches
+- Learn how hierarchical Bayesian modeling provides a principled approach for analyzing group-level data
+- Implement a hierarchical version of the Rescorla-Wagner model in Stan
+- Understand and implement reparameterization to optimize Stan code
+- Know how and when to change Stan's sampling parameters where necessary
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/06.reinforcement_learning`) and (`/workshops/07.optm_rl`) directories. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

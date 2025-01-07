@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science - Hierarchical Bayesian modeling in Stan</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../workshops/07.optm_rl/qmd/optim.html" rel="next">
+<link href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html">Workshop 7: Hierachical Bayesian modeling</a></li><li class="breadcrumb-item"><a href="../../../workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html">Hierarchical Bayesian models</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../images/openscapes_hex.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://openscapes.org" rel="" title="Openscapes.org" class="quarto-navigation-tool px-1" aria-label="Openscapes.org"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/openscapes/quarto-website-tutorial" rel="" title="Quarto website tutorial" class="quarto-navigation-tool px-1" aria-label="Quarto website tutorial"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/openscapes" rel="" title="Openscapes Twitter" class="quarto-navigation-tool px-1" aria-label="Openscapes Twitter"><i class="bi bi-twitter"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to BayesCog!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../course_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Workshop 1: R Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 1: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R/RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Workshop 2: Probability and an introduction to Bayes’ theorem</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 2: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability and Bayes’ theorem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Workshop 3: Building simple models conceptually</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 3: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linking data to parameters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The globe-tossing experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markov chain Monte Carlo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Workshop 4: Introduction to building models in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 4: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Building models in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Workshop 5: Bernoulli and linear regression models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 5: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical notes on Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli and linear regression models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Workshop 6: Reinforcement learning models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 6: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of cognitive modeling and reinforcement learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing the Rescorla-Wagner model in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">Workshop 7: Hierachical Bayesian modeling</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 7: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Hierarchical Bayesian models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reparameterization and optimizing Stan code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Workshop 8: Model comparison</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 8: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Workshop 9: Debugging in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 9: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging in Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A principled modeling workflow</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">Bonus workshop: Introduction to model-based fMRI</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to model-based fMRI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#hierarchical-models-an-ideal-middle-ground" id="toc-hierarchical-models-an-ideal-middle-ground" class="nav-link active" data-scroll-target="#hierarchical-models-an-ideal-middle-ground">Hierarchical models: an ideal middle ground</a></li>
+  <li><a href="#building-a-hierarchical-rescorla-wagner-model" id="toc-building-a-hierarchical-rescorla-wagner-model" class="nav-link" data-scroll-target="#building-a-hierarchical-rescorla-wagner-model">Building a hierarchical Rescorla-Wagner model</a>
+  <ul class="collapse">
+  <li><a href="#group-level-parameters" id="toc-group-level-parameters" class="nav-link" data-scroll-target="#group-level-parameters">Group-level parameters</a></li>
+  <li><a href="#individual-level-parameters" id="toc-individual-level-parameters" class="nav-link" data-scroll-target="#individual-level-parameters">Individual-level parameters</a></li>
+  </ul></li>
+  <li><a href="#creating-the-hierarchical-rescorla-wagner-model-in-stan" id="toc-creating-the-hierarchical-rescorla-wagner-model-in-stan" class="nav-link" data-scroll-target="#creating-the-hierarchical-rescorla-wagner-model-in-stan">Creating the hierarchical Rescorla-Wagner model in Stan</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/openscapes/quarto-website-tutorial/edit/main/workshops/06.reinforcement_learning/qmd/hierarchical_modeling.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/openscapes/quarto-website-tutorial/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Hierarchical Bayesian modeling in Stan</h1>
+<p class="subtitle lead">Implementing a hierarchical version of the Rescorla-Wagner model</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="callout callout-style-default callout-note callout-titled" title="Working directory for this workshop">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Working directory for this workshop
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Model code and <code>R</code> scripts for this workshop are located in the (<code>/workshops/06.reinforcement_learning</code>) directory.</p>
+</div>
+</div>
+<p>At the end of the last workshop, we explored two approaches to modeling multiple subjects in reinforcement learning: using a subject-loop with fixed parameters across all subjects, and fitting each subject independently. While both approaches have their merits, they also have limitations when accurately modeling subjects.</p>
+<p>Let’s examine why we need a more sophisticated approach by looking at some simulation results<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/06.reinforcement_learning/hrch/hrch_simulation.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.3em;">
+<p>Hierarchical Bayesian analysis shows much less discrepancy with actual values compared to maximum likelihood estimates</p>
+</div>
+<p>The diagram shows results from a simulation analysis ultimately demonstrating that when estimated with hierarchical Bayesian analysis, parameter estimates (for a loss aversion parameter <span class="math inline">\(\lambda\)</span>) show much less discrepancy with actual values compared to those estimated with maximum likelihood estimation (MLE). Compared to MLE, hierarchical Bayesian analysis can also be sensitive to individual differences when there is enough information.</p>
+<p>As we can see from these results, treating all subjects as identical (fixed effects) or completely independent (random effects) represents two extremes of a spectrum (depicted below):</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/06.reinforcement_learning/hrch/group_fitting.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.5em;">
+<p>Fixed effects (top) and random effects (bottom) approaches to group-level modeling</p>
+</div>
+<p>When we use a subject-loop with fixed parameters (as we did in our previous workshop), we’re essentially saying that everyone learns and makes decisions in exactly the same way. This approach forces us to find “average” parameters that might not actually represent any real person’s behaviour well.</p>
+<p>On the other hand, when we fit each subject independently (random effects), we ignore an important fact: while people are different, they’re not completely different. As a consequence, we can end up with very noisy parameter estimates, especially if we have limited data per person.</p>
+<section id="hierarchical-models-an-ideal-middle-ground" class="level2">
+<h2 class="anchored" data-anchor-id="hierarchical-models-an-ideal-middle-ground">Hierarchical models: an ideal middle ground</h2>
+<p><strong>Hierarchical (Bayesian) modeling offers a solution by finding a middle ground between these two extremes, by taking into account that whilst people are different, their parameters are likely to come from some common distribution.</strong></p>
+<p>Hierarchical models:</p>
+<ol type="1">
+<li><p>Acknowledge individual differences by giving each person their own parameters</p></li>
+<li><p>Recognize similarities between people by assuming these parameters come from a shared group-level distribution</p></li>
+<li><p>Use group-level information to improve individual estimates, especially when data is limited</p></li>
+</ol>
+<p>We can demonstrate the structure of this hierarchical approach in the diagram below:</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/06.reinforcement_learning/hrch/hrch_structure.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.5em;">
+<p>Parameters and observed data in the hierarchical structure</p>
+</div>
+<p>The hierarchical structure consists of three main levels:</p>
+<ol type="1">
+<li><p>At the bottom level, we have <span class="math inline">\(y_1\)</span> through <span class="math inline">\(y_N\)</span>, representing the observed data from each individual subject.</p></li>
+<li><p>In the middle level, we have <span class="math inline">\(\theta_1\)</span> through <span class="math inline">\(\theta_N\)</span>, representing the subject-level parameters (like learning rates or inverse temperatures for each person).</p></li>
+<li><p>At the top level, we have <span class="math inline">\(\phi\)</span>, representing the population-level parameters that describe how individual parameters are distributed across the group.</p></li>
+</ol>
+<p>What makes this approach powerful is how these levels interact during parameter estimation, <strong>with the estimation of individual-level parameters <span class="math inline">\((\theta)\)</span> informed by two sources simultaneously: the subject’s own data <span class="math inline">\((y)\)</span> and the group-level distribution <span class="math inline">\((\phi)\)</span>.</strong> Similarly, the group-level parameter (<span class="math inline">\(\phi\)</span>) are estimated based on the patterns observed across all individual parameter estimates. This creates a dynamic interaction where each level simultaneously informs the others during the estimation process.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Group level parameters in a reinforcement learning model">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Group level parameters in a reinforcement learning model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In our reinforcement learning context, we might assume that learning rates across the population follow a normal distribution. In this case, we can replace <span class="math inline">\(\phi\)</span> with two parameters:</p>
+<ol type="1">
+<li><span class="math inline">\(\mu_\theta\)</span> would represent the average learning rate in the population,</li>
+<li>while <span class="math inline">\(\sigma_\theta\)</span> would represent how much variation exists between individuals.</li>
+</ol>
+<p>However, we could choose different distributions if we had reason to believe the parameters follow a different pattern at the group level.</p>
+</div>
+</div>
+<p>This simultaneous estimation at all levels allows the model to find the right balance between individual differences and group-level patterns, leading to more robust parameter estimates than we could achieve by analyzing each subject in isolation or treating all subjects as identical.</p>
+<p>We can also describe the hierarchical approach in terms of Bayes’ theorem. <strong>Recall that in Bayesian analysis, we aim to update our prior beliefs about parameters using observed data to arrive at posterior estimates.</strong> With hierarchical modeling, we’re simply extending this approach to handle multiple levels of parameters - both individual and group-level - simultaneously.</p>
+<p>This multilevel structure described through Bayes’ theorem is:</p>
+<p><span class="math display">\[P(\Theta, \Phi | D) = \frac{P(D|\Theta, \Phi)P(\Theta, \Phi)}{P(D)} \propto P(D|\Theta)P(\Theta|\Phi)P(\Phi)\]</span></p>
+<p>This equation captures the three levels of our hierarchical structure:</p>
+<p><span class="math inline">\(P(D|\Theta)\)</span> the data level: the likelihood of observing our choice data given each subject’s parameters</p>
+<p><span class="math inline">\(P(\Theta|\Phi)\)</span> the individual parameter level: how individual parameters <span class="math inline">\((\Theta, \Phi)\)</span> vary around the population parameters</p>
+<p><span class="math inline">\(P(\Phi)\)</span> the population level: our prior beliefs about the population-level parameters (e.g., group mean and variance)</p>
+<p>The multiplication of these components during estimation reflects how information flows between levels in our hierarchical structure, with each level informing the others simultaneously.</p>
+<p>Another (more intuitive) way to understand the hierarchical appraoch is to understand the relationship between the distributions of both individual and group-level parameters:</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/06.reinforcement_learning/hrch/hrch_diagrams.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.3em;">
+<p>The relationship between individual and group-level parameters in hierarchical models</p>
+</div>
+<p><strong>A) This plot shows that each individual’s parameter estimate isn’t just a single point - it’s a full distribution, as we use a Bayesian approach.</strong> This captures our uncertainty about each person’s true parameter value. The overlapping distributions at the bottom represent different individuals’ parameter estimates, while the upper curve represents the group-level distribution from which these individual parameters are drawn.</p>
+<p><strong>B) This plot shows how individual estimates are nested within the group-level distribution.</strong> The <span class="math inline">\(\mu\)</span> represents the group mean, and <span class="math inline">\(\sigma\)</span> represents the group-level variance. Each individual’s distribution is centered at a different point, but all are constrained by the overarching group-level distribution shape.</p>
+<p><strong>C) This diagram shows how information flows through the hierarchy.</strong> At the top, we set hyperpriors (priors for group-level distributions) for <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> which shape the group-level distribution in the middle, which then influence individual parameter distributions <span class="math inline">\((R_1, R_2, R_3)\)</span> at the bottom.</p>
+</section>
+<section id="building-a-hierarchical-rescorla-wagner-model" class="level2">
+<h2 class="anchored" data-anchor-id="building-a-hierarchical-rescorla-wagner-model">Building a hierarchical Rescorla-Wagner model</h2>
+<p>Given our current progress with applying RL models in Stan, making the model hierarchical isn’t too difficult (conceptually at least!)</p>
+<p>The hierarchical model - and how it builds upon our previous model which fits multiple individuals independently - is depicted graphically below:</p>
+<div style="height: 5px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/06.reinforcement_learning/hrch/hrch_model_diagram.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.3em;">
+<p>The hierarchical Rescorla-Wagner model with hyperparameters highlighted in red</p>
+</div>
+<p>We now simply state that the two parameters of interest, the learning rate <span class="math inline">\(\alpha\)</span>, and inverse temperature <span class="math inline">\(τ\)</span>, come from a group level distribution. We will assume in this case that this is normally-distributed at the population level, and so define four hyperparameters:</p>
+<ul>
+<li><p><strong>Learning rate:</strong> with group-level mean <span class="math inline">\((\mu_\alpha)\)</span> and group-level standard deviation <span class="math inline">\((\sigma_\alpha)\)</span></p></li>
+<li><p><strong>Inverse temperature:</strong> with group-level mean <span class="math inline">\((\mu_\tau)\)</span> and group-level standard deviation <span class="math inline">\((\sigma_\tau)\)</span></p></li>
+</ul>
+<p>Model building both conceptually and in Stan is best acheived iteratively. We start with simple models and layer complexity. You can see that in the diagram below:</p>
+<div style="height: 5px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/06.reinforcement_learning/hrch/model_evolution_diagram.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.5em;">
+<p>The evolution of our RL models from single subject to hierarchical multi-subject</p>
+</div>
+<p>We started with the basic Rescorla-Wagner model in a single subject (far left) then adapted the model to run across subjects in a fixed effects way (second from left) and then by fitting them all independently (third from left). We now look to implement a hierarchical structure (far right). <strong>Remember that in all cases, the underlying cognitive model is the same! We are simply changing how the parameters are estimated.</strong></p>
+<p>Looking at the hierarchical model, we can see that this model now consists of six priors, the value update and softmax choice rule:</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/06.reinforcement_learning/hrch/hrch_diagram_with_parameters.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.5em;">
+<p>The structure, parameters and priors of the hierarchical model</p>
+</div>
+<p>Remember that the core computational mechanisms of our reinforcement learning model - the value update equation (Rescorla-Wagner learning) and the softmax choice rule - remain unchanged in the hierarchical version:</p>
+<p>Value update:</p>
+<p><span class="math display">\[V_{i,t+1}^c = V_{i,t}^c + \alpha_i(R_{i,t} - V_{i,t}^c)\]</span> Choice probability:</p>
+<p><span class="math display">\[p_{i,t}(C=A) = \frac{1}{1 + e^{\tau_i(V_{i,t}(B)-V_{i,t}(A))}}\]</span></p>
+<p><strong>What changes is how we structure the parameters <span class="math inline">\(\alpha\)</span> (learning rate) and <span class="math inline">\(\tau\)</span> (inverse temperature) across subjects.</strong> Instead of estimating these parameters independently for each subject, we create a hierarchical structure with multiple levels.</p>
+<section id="group-level-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="group-level-parameters">Group-level parameters</h3>
+<p>At the highest level, we have our group-level parameters:</p>
+<p>For the group means <span class="math inline">\((\mu_\alpha\)</span> and <span class="math inline">\(\mu_\tau)\)</span> we use uniform distributions because we want to remain uncertain about where the average learning rate and inverse temperature might lie within their possible ranges. This is known as a ‘non-informative’ or ‘flat’ prior, as we’re saying all values within the defined ranges are equally likely.</p>
+<p><span class="math display">\[\mu_\alpha \sim \text{Uniform}(0,1)\]</span> <span class="math display">\[\mu_\tau \sim \text{Uniform}(0,3)\]</span></p>
+<p>For the group standard deviations <span class="math inline">\((\sigma_\alpha)\)</span> and <span class="math inline">\((\sigma_\tau)\)</span> we use the half-Cauchy distribution because it’s particularly well-suited for standard deviation parameters. Remember that while similar to the normal distribution, the half-Cauchy has heavier tails.</p>
+<p><span class="math display">\[\sigma_\alpha \sim \text{halfCauchy}(0,1)\]</span> <span class="math display">\[\sigma_\tau \sim \text{halfCauchy}(0,3)\]</span></p>
+</section>
+<section id="individual-level-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="individual-level-parameters">Individual-level parameters</h3>
+<p>Each subject’s individual parameters are drawn from a normal distribution centered on the group mean <span class="math inline">\((\mu)\)</span> with spread determined by the group standard deviation <span class="math inline">\((\sigma)\)</span>.</p>
+<p><span class="math display">\[\alpha_i \sim \text{Normal}(\mu_\alpha, \sigma_\alpha)_{\mathcal{T}(0,1)}\]</span> <span class="math display">\[\tau_i \sim \text{Normal}(\mu_\tau, \sigma_\tau)_{\mathcal{T}(0,3)}\]</span></p>
+<p>However, notice the subscript <span class="math inline">\(\mathcal{T}\)</span> with these distributions - this indicates these are truncated normal distributions. We need this truncation because <strong>the normal distribution extends infinitely in both directions, so truncating them ensures our parameters stay bounded.</strong></p>
+<div class="callout callout-style-default callout-note callout-titled" title="Bounding parameters and MCMC sampling">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bounding parameters and MCMC sampling
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Bounding parameters - whilst often theoretically necessary (like keeping learning rates between 0 and 1) - can sometimes create challenges for MCMC sampling. When a parameter gets close to its boundary, many of the MCMC’s proposed steps will be rejected because they would land outside the valid range. This is like trying to take random walks near a wall - many of the steps would simply hit the wall. Monitoring your chain mixing, convergence diagnostics and parameter estimates can help to determine whether this is the case.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Setting priors">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Setting priors
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The priors used in this tutorial are chosen for pedagogical reasons and may not be appropriate for your particular research question. You should set your priors according to several factors including your specific research context, theoretical understanding, and existing literature in your field.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="creating-the-hierarchical-rescorla-wagner-model-in-stan" class="level2">
+<h2 class="anchored" data-anchor-id="creating-the-hierarchical-rescorla-wagner-model-in-stan">Creating the hierarchical Rescorla-Wagner model in Stan</h2>
+<p>The conceptual basis for the hierarchical model outlined above has been translated into the appropriate Stan model <code>_scripts/reinforcement_learning_mp_hrch_model.stan</code>.</p>
+<p>Within this model, the <code>data</code> and <code>transformed data</code> blocks remain unchanged, but we now introduce group-level parameters in the <code>parameters</code> block:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; lr_mu;</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">3</span>&gt; tau_mu;</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; lr_sd;</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; tau_sd;</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; lr[nSubjects];</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">3</span>&gt; tau[nSubjects];  </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Where we declare our parameters:</p>
+<ul>
+<li><p><code>lr_mu</code> and <code>tau_mu</code> are our group-level means (<span class="math inline">\(\mu_\alpha\)</span> and <span class="math inline">\(\mu_\tau\)</span>)</p></li>
+<li><p><code>lr_sd and tau_sd</code> are our group-level standard deviations (<span class="math inline">\(\sigma_\alpha\)</span> and <span class="math inline">\(\sigma_\tau\)</span>)</p></li>
+<li><p>The arrays <code>lr[nSubjects]</code> and <code>tau[nSubjects]</code> hold individual-level parameters for each subject.</p></li>
+</ul>
+<p>Remember that the <code>parameters</code> block declares variables and their bounds, but not their probability distributions. Therefore we define the probability distributions (priors) in the <code>model</code> block:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  lr_sd  ~ cauchy(<span class="dv">0</span>,<span class="dv">1</span>);</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  tau_sd ~ cauchy(<span class="dv">0</span>,<span class="dv">3</span>);</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="co">// give the prior here: how individual-level parameters are connected to the group-level parameters</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  lr ~ normal(lr_mu, lr_sd);</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  tau ~ normal(tau_mu, tau_sd);</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  ...</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li><p>The lines <code>lr_sd ~ cauchy(0,1)</code> and <code>tau_sd ~ cauchy(0,3)</code> specify our Cauchy priors for the group-level standard deviations. The zero-bounded constraint in the parameters block automatically makes this a half-Cauchy (only positive values).</p></li>
+<li><p><code>lr ~ normal(lr_mu, lr_sd)</code> and <code>tau ~ normal(tau_mu, tau_sd)</code> implement the individual-level prior parameter distributions. The bounds specified in the <code>parameters</code> block automatically make these truncated normal distributions.</p></li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled" title="Setting the uniform distribution">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Setting the uniform distribution
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Recall that Stan implicitly sets a uniform prior if a distribution if not explicitly stated (i.e., for <code>lr_mu</code> and <code>tau_mu</code> in this model).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="Exercise 10">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Exercise 10
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>1. Run the hierarchical model <code>reinforcement_learning_mp_hrch_model.stan</code> using the script <code>reinforcement_learning_multi_parm_main.R</code>. Examine the posterior density distribution and violin plots generated.</strong></p>
+<p>Remember to only highlight and run the appropriate sections of the script!</p>
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Ahn, W. Y., Krawitz, A., Kim, W., Busemeyer, J. R., &amp; Brown, J. W. (2013). A model-based fMRI analysis with hierarchical Bayesian parameter estimation.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workshop 7: Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../workshops/07.optm_rl/qmd/optim.html" class="pagination-link">
+        <span class="nav-page-text">Reparameterization and optimizing Stan code</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Zhang &amp; Sohail, 2025</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

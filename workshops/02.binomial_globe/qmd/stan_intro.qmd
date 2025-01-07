@@ -1,0 +1,24 @@
+---
+title: "An introduction to modeling in Stan"
+subtitle: "Building a binomial model"
+---
+
+**Welcome to the fourth workshop of the BayesCog course!**
+
+## Purpose of this workshop
+
+In this tutorial, we'll take the next step in our Bayesian journey by implementing our globe-tossing model using [Stan](https://mc-stan.org/users/interfaces/rstan), a powerful probabilistic programming language. We'll revisit the same binomial problem, but instead of using grid approximation, we'll program our model in Stan to sample from the posterior more efficiently.
+
+The goals of this workshop are to:
+- Understand how to translate our mathematical model into Stan code
+- Learn the basic syntax and structure of Stan programs
+- Compare the efficiency of Stan's HMC implementation with our previous approaches
+- Gain practical experience in fitting and diagnosing Bayesian models using modern computational tools
+
+By the end of this tutorial, you'll have the foundational skills needed to implement more complex Bayesian models using Stan's probabilistic programming framework in future workshops.
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are **once again** located in the (`/workshops/02.binomial_globe`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

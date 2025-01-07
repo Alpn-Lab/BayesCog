@@ -1,0 +1,115 @@
+---
+title: "BayesCog"
+subtitle: "Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science"
+---
+
+![](images/introduction/bayes_banner.png){width="100%"}
+
+## Welcome {#welcome}
+
+::: {.content-visible when-format="html"}
+[![GitHub repo size](https://img.shields.io/github/repo-size/lei-zhang/BayesCog_Wien?color=brightgreen&logo=github)](https://github.com/lei-zhang/BayesCog_Wien)
+[![GitHub language count](https://img.shields.io/github/languages/count/lei-zhang/BayesCog_Wien?color=brightgreen&logo=github)](https://github.com/lei-zhang/BayesCog_Wien)
+[![GitHub last commit](https://img.shields.io/github/last-commit/lei-zhang/BayesCog_Wien?color=orange&logo=github)](https://github.com/lei-zhang/BayesCog_Wien) 
+<br/>
+[![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Flei_zhang_lz&label=lei_zhang_lz)](https://twitter.com/lei_zhang_lz)
+[![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2FAamirNSohail&label=AamirNSohail)](https://twitter.com/AamirNSohail)
+:::
+
+This website[^1][^2] is an adapted version of teaching materials originally made for the <ins>award winning</ins>\* **BayesCog** seminar at the [Faculty of Psychology](https://psychologie.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/en/), as part of the Advanced Seminar for master's students (Mind and Brain track; recorded during Summer Term 2020/2021).
+Further content from the [BayesCog workshop at UKE Hamburg](https://github.com/lei-zhang/BayesCog_Part1) (2023) have also been added. 
+
+**Recording**: Recordings from the original version of the course are available on [YouTube](https://www.youtube.com/watch?v=8RpLF7ufZs4&list=PLfRTb2z8k2x9gNBypgMIj3oNLF8lqM44-) (also see below).
+The most recent recording from the 2021 summer semester is also available on [YouTube](https://youtube.com/playlist?list=PLfRTb2z8k2x8ZCqDJ0WEFNs2ymXQCliLa).
+
+**Outreach**: [**Twitter thread**](https://twitter.com/lei_zhang_lz/status/1276506555660275714?s=20) (being **liked 700+ times** on Twitter) summarizing the contents of the course. 
+
+**Award/Recognition**: The original course received a commendation award from the [Society for the Improvement of Psychological Science (SIPS)](https://improvingpsych.org/mission/awards/) (also see a [tweet](https://twitter.com/improvingpsych/status/1323269273033281538?s=20)), as well as an ECR Teaching Award from the [Faculty of Psychology, University of Vienna](https://ecr-psychology.univie.ac.at/news/).
+
+## Course summary
+Computational modeling and mathematical modeling provide an insightful quantitative framework that allows researchers to inspect latent processes and to understand hidden mechanisms. Hence, computational modeling has gained increasing attention in many areas of cognitive science through **cognitive modeling**. One illustration of this trend is the growing popularity of Bayesian approaches to cognitive modeling. To this end, this course teaches the theoretical and practical knowledge necessary to perform, evaluate and interpret Bayesian modeling analyses, with a specific emphasis towards modeling latent cognitive processes. 
+
+In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics, statistical distibrutions and reinforcement learning. 
+We will use [R/RStudio](https://posit.co/download/rstudio-desktop/) and a newly developed statistical computing language - [Stan](mc-stan.org) - to perform Bayesian analyses, ranging from simple binomial models and linear regression models to more complex hierarchical reinforcement learning (RL) models.
+
+## Contributors
+
+![](images/introduction/lei.png){width="20%"}
+<br>
+<br>
+<span style="font-size: 1.2em;">**Lei Zhang**</span>
+
+<div class="social-links">
+<div class="social-item"><a href="mailto:lei.zhang.13@bham.ac.uk"><i class="fa-solid fa-envelope fa-xl"></i></a></div>
+<div class="social-item"><a href="https://github.com/lei-zhang" target="_blank"><i class="fa-brands fa-github fa-xl"></i></a></div>
+<div class="social-item"><a href="https://twitter.com/lei_zhang_lz" target="_blank"><i class="fa-brands fa-x-twitter fa-xl"></i></a></div>
+<div class="social-item"><a href="https://orcid.org/0000-0002-9586-595X" target="_blank"><i class="fa-brands fa-orcid fa-xl"></i></a></div>
+<div class="social-item"><a href="https://lei-zhang.net/" target="_blank"><i class="fa-solid fa-globe fa-xl"></i></a></div>
+<div class="social-item"><a href="https://bsky.app/profile/lei-zhang.bsky.social" target="_blank">{{< iconify fa6-brands:bluesky size=1.5em title='Bluesky'>}}</a></div>
+</div>
+
+<div style="height: 20px;"></div>
+
+[Dr. Lei Zhang](https://lei-zhang.net/) is Principal Investigator of the [Adaptive Learning Psychology and Neuroscience Lab, ALP(e)N Lab](http://alpnlab.org/), and Associate Professor at the School of Psychology, University of Birmingham. Lei obtained his BSc in Psychology from Beijing Normal University, China, his MSc in Cognitive Neuroscience at the Basque Center on Cognition, Brain and Language, Spain and his PhD (summa cum laude), along with a one-year transition postdoc, with [Jan Gläscher](http://glascherlab.org/) at the Institute of Systems Neuroscience, University Medical Center Hamburg-Eppendorf, Germany. He was then a Roche intern for Scientific Exchange (RiSE) at F. Hoffmann-La Roche AG, and worked as a postdoctoral fellow with [Claus Lamm](https://scan-psy.univie.ac.at/about-us/claus-lamm/) at the Social Cognitive and Affective Neuroscience Unit (SCAN-Unit), University of Vienna, Austria. Lei joined the Centre for Human Brain Health, Institute of Mental Health, and School of Psychology at the University of Birmingham as an Associate Professor in 2022. His research applies knowledge from cognitive neuroscience, psychology, and computational modeling to gain a comprehensive understanding of how the brain computes values and social information when making decisions, and how they are affected in mental health disorders. He is also motivated towards fostering open and collaborative science, being a founding member of the grassroots [China Open Science Network (COSN)](https://open-sci.cn/) and is the recipient of multiple awards including the [BNA Individual Researcher Credibility Prize](https://www.bna.org.uk/mediacentre/news/credibility-prize-2024/) in 2024.
+
+<br>
+
+![](images/introduction/aamir.png){width="20%"}
+
+<span style="font-size: 1.2em;">**Aamir Sohail**</span>
+
+<div class="social-links">
+<div class="social-item"><a href="mailto:axs2210@bham.ac.uk"><i class="fa-solid fa-envelope fa-xl"></i></a></div>
+<div class="social-item"><a href="https://github.com/sohaamir" target="_blank"><i class="fa-brands fa-github fa-xl"></i></a></div>
+<div class="social-item"><a href="https://twitter.com/AamirNSohail" target="_blank"><i class="fa-brands fa-x-twitter fa-xl"></i></a></div>
+<div class="social-item"><a href="https://orcid.org/0009-0000-6584-4579" target="_blank"><i class="fa-brands fa-orcid fa-xl"></i></a></div>
+<div class="social-item"><a href="https://sohaamir.github.io/" target="_blank"><i class="fa-solid fa-globe fa-xl"></i></a></div>
+<div class="social-item"><a href="https://bsky.app/profile/aamirsohail.bsky.social" target="_blank">{{< iconify fa6-brands:bluesky size=1.5em title='Bluesky'>}}</a></div>
+</div>
+
+<div style="height: 20px;"></div>
+
+[Aamir Sohail](https://sohaamir.github.io/) is an MRC Advanced Interdisciplinary Methods (AIM) DTP PhD student based at the Centre for Human Brain Health (CHBH), University of Birmingham, where he is supervised by [Lei Zhang](https://www.birmingham.ac.uk/staff/profiles/psychology/zhang-lei) and [Patricia Lockwood](https://www.birmingham.ac.uk/staff/profiles/psychology/lockwood-patricia). He completed a BSc in Biomedical Science at Imperial College London, followed by an MSc in Brain Imaging at the University of Nottingham. He then worked as a Junior Research Fellow at the Centre for Integrative Neuroscience and Neurodynamics (CINN), University of Reading with [Anastasia Christakou](https://anastasia.christakou.org/). His research interests involve using a combination of behavioural tasks, computational modeling and neuroimaging to understand social decision-making, and using this knowledge to inform the precision-based treatment of mental health disorders. Outside of research, he is also passionate about facilitating inclusivity and diversity in academia, as well as promoting open and reproducible science.
+
+[^1]: L.Z. created the original resources, including scripts, data, slides, recordings and GitHub repositories. 
+A.S. created the website, and added the content by converting, editing and expanding the source material.
+Both L.Z. and A.S. further revised and edited the website.
+
+## License
+
+This course is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+
+You are free to share, copy, and redistribute the material in any medium or format. Additionally, you can adapt, remix, transform, and build upon the material for any purpose, including commercial use.
+However, you must provide appropriate attribution, including credit to the original source, a link to the license, and an indication if changes were made. Furthermore, if you remix, transform, or build upon the material, you are required to distribute your contributions under the same license as the original.
+
+![](images/introduction/cc_by_sa.png){width="10%"}
+
+
+## Citing
+
+If you use materials from this course in your work or research, please cite it as:
+
+Zhang, L., & Sohail, A. (2025). BayesCog: Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science [Online course]. Zenodo. https://doi.org/[DOI_HERE]
+
+For BibTeX users:
+
+```tex
+@online{zhang_sohail_2025,
+    title = {BayesCog: Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science},
+    author = {Zhang, Lei and Sohail, Aamir},
+    year = {2025},
+    publisher = {Zenodo},
+    doi = {DOI_HERE},
+    url = {ZENODO_URL},
+    note = {Online course},
+    repository = {https://github.com/REPOSITORY_URL}
+}
+```
+
+Note: Once this course is published on Zenodo, this citation information will be updated with the corresponding DOI and URL.
+
+## Contact
+
+For bug reports, issues or comments, please contact [Lei Zhang](mailto:lei.zhang.13@bham.ac.uk), or [Aamir Sohail](mailto:axs2210@bham.ac.uk), or open a thread on the GitHub repository.
+
+[^2]: Bayes' photo credit: Burrsettles (2016). The three faces of Bayes. Slackprop. https://slackprop.wordpress.com/2016/08/28/the-three-faces-of-bayes

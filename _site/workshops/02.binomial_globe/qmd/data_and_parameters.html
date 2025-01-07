@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science - Linking data to parameters</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../workshops/02.binomial_globe/qmd/binomial_model.html" rel="next">
+<link href="../../../workshops/02.binomial_globe/qmd/intro.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/02.binomial_globe/qmd/intro.html">Workshop 3: Building simple models conceptually</a></li><li class="breadcrumb-item"><a href="../../../workshops/02.binomial_globe/qmd/data_and_parameters.html">Linking data to parameters</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../images/openscapes_hex.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://openscapes.org" rel="" title="Openscapes.org" class="quarto-navigation-tool px-1" aria-label="Openscapes.org"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/openscapes/quarto-website-tutorial" rel="" title="Quarto website tutorial" class="quarto-navigation-tool px-1" aria-label="Quarto website tutorial"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/openscapes" rel="" title="Openscapes Twitter" class="quarto-navigation-tool px-1" aria-label="Openscapes Twitter"><i class="bi bi-twitter"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to BayesCog!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../course_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Workshop 1: R Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 1: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R/RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Workshop 2: Probability and an introduction to Bayes’ theorem</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 2: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability and Bayes’ theorem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+ <span class="menu-text">Workshop 3: Building simple models conceptually</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 3: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Linking data to parameters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The globe-tossing experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markov chain Monte Carlo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Workshop 4: Introduction to building models in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 4: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Building models in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Workshop 5: Bernoulli and linear regression models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 5: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical notes on Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli and linear regression models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Workshop 6: Reinforcement learning models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 6: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of cognitive modeling and reinforcement learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing the Rescorla-Wagner model in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Workshop 7: Hierachical Bayesian modeling</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 7: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hierarchical Bayesian models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reparameterization and optimizing Stan code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Workshop 8: Model comparison</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 8: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Workshop 9: Debugging in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 9: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging in Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A principled modeling workflow</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">Bonus workshop: Introduction to model-based fMRI</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to model-based fMRI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reformulating-bayes-theorem" id="toc-reformulating-bayes-theorem" class="nav-link active" data-scroll-target="#reformulating-bayes-theorem">Reformulating Bayes’ theorem</a></li>
+  <li><a href="#likelihood" id="toc-likelihood" class="nav-link" data-scroll-target="#likelihood">Likelihood</a></li>
+  <li><a href="#priors" id="toc-priors" class="nav-link" data-scroll-target="#priors">Priors</a></li>
+  <li><a href="#the-evidence" id="toc-the-evidence" class="nav-link" data-scroll-target="#the-evidence">The evidence</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/openscapes/quarto-website-tutorial/edit/main/workshops/02.binomial_globe/qmd/data_and_parameters.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/openscapes/quarto-website-tutorial/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="data_and_parameters.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Linking data to parameters</h1>
+<p class="subtitle lead">Understanding how Bayesian inference allows us to update our beliefs with data</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<div class="quote-large" style="font-size: 1.3em">
+<blockquote class="blockquote">
+<p>“Probability is orderly opinion and inference from data is nothing other than the revision of such opinion in the light of relevant new information.” - Popular Bayesian maxim</p>
+</blockquote>
+</div>
+<p>In our last lecture, we covered fundamental concepts in probability theory.</p>
+<p>We firstly learned that probability measures how likely events are to occur, with some basic properties, namely that:</p>
+<ul>
+<li>Probabilities must be between 0 and 1</li>
+<li>The sum of all probabilities for an event must equal 1</li>
+</ul>
+<p>We also learned about the different types of probability events, discrete and continuous:</p>
+<ul>
+<li><strong>Discrete events use probability mass functions (PMF)</strong> for countable outcomes</li>
+<li><strong>Continuous events use probability density functions (PDF)</strong> and cumulative distribution functions (CDF) for infinite possible outcomes</li>
+</ul>
+<p>As well as three important probability concepts:</p>
+<ul>
+<li><strong>Joint probability:</strong> likelihood of two events occurring together - <span class="math inline">\(P(A,B)\)</span></li>
+<li><strong>Marginal probability:</strong> likelihood of one event regardless of others - <span class="math inline">\(P(A)\)</span></li>
+<li><strong>Conditional probability:</strong> likelihood of one event given another has occurred - <span class="math inline">\(P(A|B)\)</span></li>
+</ul>
+<p>And finally, we learned about Bayes’ theorem, a formula which allows us to update our beliefs based on new evidence in a probabilistic manner:</p>
+<p><span class="math display">\[p(A|B) = \frac{p(B|A)p(A)}{p(B)}\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(p(A|B)\)</span> is the <strong>posterior probability</strong> - our updated belief about <span class="math inline">\(A\)</span> after observing evidence <span class="math inline">\(B\)</span></li>
+<li><span class="math inline">\(p(B|A)\)</span> is the <strong>likelihood</strong> - probability of observing evidence <span class="math inline">\(B\)</span> if hypothesis <span class="math inline">\(A\)</span> is true</li>
+<li><span class="math inline">\(p(A)\)</span> is the <strong>prior probability</strong> - our initial belief about <span class="math inline">\(A\)</span> before seeing any evidence</li>
+<li><span class="math inline">\(p(B)\)</span> is the <strong>marginal likelihood</strong> - total probability of observing evidence <span class="math inline">\(B\)</span></li>
+</ul>
+<p>Or, more intuitively:</p>
+<p><span class="math display">\[\text{Posterior} = \frac{\text{Likelihood} \times \text{Prior}}{\text{Marginal Likelihood}}\]</span></p>
+<section id="reformulating-bayes-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="reformulating-bayes-theorem">Reformulating Bayes’ theorem</h2>
+<p>Looking at the conventional Bayes’ theorem formula, we can re-write this to more accurately suit our goal of applying Bayesian inference to our statistical analyses.</p>
+<p>Firstly, there is no particular reason or meaning behind the use of <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>. It can be anything we like.</p>
+<p>Secondly, when using Bayes’ theorem practically, we’re typically trying to solve a specific kind of problem: we have some data from an experiment or observation, and we want to learn something about the underlying process that generated that data. <strong>This typically involves estimating parameters from data.</strong></p>
+<ul>
+<li>Parameters (<span class="math inline">\(\theta\)</span>) represent the unknown quantities we want to learn about (like population means, effects of treatments, or probabilities of events)</li>
+<li>Data (<span class="math inline">\(D\)</span>) represents our actual observations or measurements from our experiment</li>
+</ul>
+<p>So, let’s simply recast the theorem in terms of parameters (<span class="math inline">\(\theta\)</span>) and data (<span class="math inline">\(D\)</span>):</p>
+<p><span class="math display">\[p(\theta|D) = \frac{p(D|\theta)p(\theta)}{p(D)}\]</span></p>
+<p>You can see how this reformulation directly maps to real research questions in the image below:</p>
+<div style="height: 10px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/data_bayes.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<p>Let’s go through each component of this reformulation, starting with the likelihood.</p>
+</section>
+<section id="likelihood" class="level2">
+<h2 class="anchored" data-anchor-id="likelihood">Likelihood</h2>
+<p>Let’s use a simple example to understand the likelihood: flipping a coin. Let’s firstly assume that we know that the coin is unbiased, and so the probability of the coin landing heads up is given by <span class="math inline">\(\theta = 1/2\)</span></p>
+<p>We then flip the coin twice. <strong>What are the different outcomes and their probabilities?</strong></p>
+<p>In this case, there are three outcomes, each with a specific probability:</p>
+<ol type="1">
+<li>TT (0 heads) = 1/4</li>
+<li>HT or TH (1 head) = 1/2</li>
+<li>HH (2 heads) = 1/4</li>
+</ol>
+<p>When we assume a particular value of <span class="math inline">\(θ\)</span> and vary the data (in this case the number of heads obtained), the collection of resultant probabilities forms a probability distribution. So why do we call <span class="math inline">\(p(data|\theta)\)</span> a likelihood, not a probability?</p>
+<p><strong>The reason why is that in Bayesian inference we do not keep the parameters of our model fixed; the data are fixed and the parameters vary.</strong></p>
+<p>Imagine now that we have a coin with an unknown bias <span class="math inline">\((\theta)\)</span>, representing the probability of getting heads. If we flip the coin twice and get one heads and one tails, we can calculate the likelihood of this data for any possible value of <span class="math inline">\(\theta\)</span>:</p>
+<p><span class="math display">\[Pr(H,T|\theta) + Pr(T,H|\theta) = \theta(1-\theta) + \theta(1-\theta) = 2\theta(1-\theta)\]</span></p>
+<p><strong>In other words, we can calculate the probability of throwing a head for a fixed data sample (one head and one tail) as a function of <span class="math inline">\(\theta\)</span>.</strong> We can then plot the likelihood function of <span class="math inline">\(\theta\)</span> which is equivalent to the probability of that data sample (one head and one tail) given values of <span class="math inline">\(\theta\)</span><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div style="height: 10px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/coin_flip_distribution.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Summing likelihoods and probabilities">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Summing likelihoods and probabilities
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember: When we fix parameters and vary data outcomes, we get probabilities (summing to 1). When we fix data and vary parameters, we get likelihoods (which don’t necessarily sum to 1). The likelihood is not a probability distribution!</p>
+</div>
+</div>
+<p>Let’s further examine the distinction between likelihoods and probabilities using another coin flipping example.</p>
+<p>We decide to flip the coin twice. We can then calculate the probability of getting different numbers of heads (<span class="math inline">\(X\)</span>):</p>
+<p><span class="math inline">\(Pr(X = 0|\theta) = Pr(T,T|\theta) = Pr(T|\theta) \times Pr(T|\theta) = (1-\theta)^2\)</span></p>
+<p><span class="math inline">\(Pr(X = 1|\theta) = Pr(H,T|\theta) + Pr(T,H|\theta) = 2 \times Pr(T|\theta) \times Pr(H|\theta) = 2\theta(1-\theta)\)</span></p>
+<p><span class="math inline">\(Pr(X = 2|\theta) = Pr(H,H|\theta) = Pr(H|\theta) \times Pr(H|\theta) = \theta^2\)</span></p>
+<p>Now, let’s consider that probability of heads (<span class="math inline">\(\theta\)</span>) can only be one of six values: <span class="math inline">\({0.0, 0.2, 0.4, 0.6, 0.8, 1.0}\)</span>.</p>
+<p>The table below demonstrates how the values of <span class="math inline">\(X\)</span> and <span class="math inline">\(\theta\)</span> vary as a function of the other:</p>
+<div style="height: 10px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/coin_flip_table.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>This allows us to see the relationship between the data and parameters:</p>
+<ol type="1">
+<li><p><strong>Fixed Parameter (Probability)</strong>: If we fix <span class="math inline">\(\theta\)</span> and look at the different possible outcomes (0, 1, or 2 heads), the probabilities sum to 1 - a valid probability distribution.</p></li>
+<li><p><strong>Fixed Data (Likelihood)</strong>: If we fix the number of heads we observed and look at different possible values of <span class="math inline">\(\theta\)</span>, the values do not sum to 1 - this is why we call it a likelihood.</p></li>
+</ol>
+<div class="callout callout-style-default callout-note callout-titled" title="Why work with likelihoods?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why work with likelihoods?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In Bayesian inference, we work with likelihoods because we:</p>
+<ul>
+<li>Have fixed data (our actual observations)</li>
+<li>Vary the parameter (<span class="math inline">\(\theta\)</span>)</li>
+<li>Ultimately want to find which parameter values best explain our data</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Still confused?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Still confused?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Understanding the difference between the likelihood and probability can be difficult. <a href="https://youtu.be/pYxNSUDSFH4">This video</a> by the YouTube channel ‘StatQuest with Josh Starmer’ nicely explains this difference!</p>
+</div>
+</div>
+</section>
+<section id="priors" class="level2">
+<h2 class="anchored" data-anchor-id="priors">Priors</h2>
+<p>Remember the purpose of Bayesian analysis concerns updating our initial beliefs in light of data.</p>
+<center>
+<span class="math inline">\(\Large\text{initial belief}\)</span> <span class="math inline">\(\Large\xrightarrow{\text{Bayes' rule + data}}\)</span> <span class="math inline">\(\Large\text{new beliefs}\)</span>
+</center>
+<div style="height: 20px;">
+
+</div>
+<p>Therefore, we need an initial belief to begin with!</p>
+<p>A ‘prior’ - <span class="math inline">\(p(\theta)\)</span> - represents our beliefs about parameters before seeing any data. <strong>These beliefs can come from previous research, expert knowledge, or logical constraints about what values are possible.</strong></p>
+<p>There are two different interpretations of parameter probability distributions when considering a prior<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
+<ol type="1">
+<li>The subjective <strong>state of knowledge interpretation,</strong> where we use a probability distribution to represent our uncertainty over a parameter’s true value.</li>
+<li>The more objective <strong>population interpretation,</strong> where the parameter’s value varies between different samples we take from a population distribution.</li>
+</ol>
+<p>In the state of knowledge viewpoint, the prior probability distribution represents our pre-data uncertainty for a parameter’s true value. For example, imagine that a doctor gives their probability that an individual has a particular disease before the results of a blood test become available. Using their knowledge of the patient’s history, and their expertise on the particular condition, they could assign a prior disease probability of 75%.</p>
+<p>Alternatively, we could use the proportion of the UK population that has this disease as a prior. In this case, the prior is continuous and represents our beliefs for the prevalence.</p>
+<p>The choice of prior should be ultimately guided by several factors including:</p>
+<ul>
+<li>Available previous knowledge (e.g., from previous studies)</li>
+<li>The desire to be conservative</li>
+<li>Logical constraints of the parameter (e.g., <span class="math inline">\(p\)</span> when flipping a coin must be constrained between 0 and 1)</li>
+</ul>
+<p>There are three main types of priors:</p>
+<p><strong>1. Informative Priors</strong> - Based on existing evidence or expert knowledge</p>
+<ul>
+<li><p>Used when we have reliable previous information</p></li>
+<li><p>Example: Using established medical research about cancer development rates</p></li>
+</ul>
+<p><strong>2. Weakly Informative Priors</strong> - Provide some constraints but remain relatively open to data</p>
+<ul>
+<li><p>Used when we have general knowledge but want to be conservative</p></li>
+<li><p>Example: Only specifying that cancer development time must be positive and within human lifespan</p></li>
+</ul>
+<p><strong>3. Non-informative/Flat Priors</strong> - Make minimal assumptions about parameters</p>
+<ul>
+<li><p>Used when we want data to dominate our conclusions</p></li>
+<li><p>Example: Assigning equal probability to all possible development times (though this would be inappropriate here)</p></li>
+</ul>
+<p>Let’s examine this using a real example about determining priors for the mean time (<span class="math inline">\(\mu\)</span>) for smokers to develop lung cancer after they start smoking[^1^]:</p>
+<div style="height: 10px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/priors.png" class="img-fluid figure-img" style="width:65.0%"></p>
+</figure>
+</div>
+<p>The graph depicts two priors:</p>
+<ul>
+<li>A <strong>‘uniform prior’</strong> assuming a constant probability density for most values, but which becomes zero for values greater than 100. This is to avoid infinite total probability.</li>
+<li>A <strong>‘weakly informative prior’</strong> assuming a higher probability density earlier in time, and decaying after a peak value of 20 years.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled" title="Constructing the weakly informative prior">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Constructing the weakly informative prior
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The weakly informative prior in this circumstance may be constructed based on a combination of medical knowledge, existing data and logical constraints.</p>
+</div>
+</div>
+</section>
+<section id="the-evidence" class="level2">
+<h2 class="anchored" data-anchor-id="the-evidence">The evidence</h2>
+<p>The denominator of Bayes’ theorem, <span class="math inline">\(p(D)\)</span>, is often called the “evidence” or “marginal likelihood.” <strong>The evidence ensures that our posterior probabilities are valid probability distributions that sum/integrate to 1.</strong> Without this normalization, we would only have un-normalized posterior probabilities.</p>
+<p>For discrete parameters, this means:</p>
+<p><span class="math display">\[\sum_{\theta} p(\theta|D) = 1\]</span> and for continuous parameters:</p>
+<p><span class="math display">\[\int p(\theta|D)d\theta = 1\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(θ\)</span> represents the parameter(s) we’re trying to estimate</li>
+<li><span class="math inline">\(D\)</span> represents the observed data</li>
+<li><span class="math inline">\(p(\theta|D)\)</span> represents the posterior probability mass/density function of <span class="math inline">\(θ\)</span> given <span class="math inline">\(D\)</span></li>
+</ul>
+<p><strong>The evidence <span class="math inline">\(p(D)\)</span> represents the total probability of observing our data under all possible parameter values.</strong> It can be interpreted as a weighted average of the likelihood over all parameter values, where the weights are given by the prior probabilities.</p>
+<p>For discrete parameters, we calculate this as:</p>
+<p><span class="math display">\[p(D) = \sum_{\theta} p(D|\theta)p(\theta)\]</span> and for continuous parameters:</p>
+<p><span class="math display">\[p(D) = \int p(D|\theta)p(\theta)d\theta\]</span> However, when we have multiple parameters (as is often the case), calculating the evidence becomes more complex. For two discrete parameters <span class="math inline">\(\theta_1\)</span> and <span class="math inline">\(\theta_2\)</span>, we must sum over all possible combinations:</p>
+<p><span class="math display">\[p(D) = \sum_{\theta_1}\sum_{\theta_2} p(D|\theta_1,\theta_2)p(\theta_1,\theta_2)\]</span> And for two continuous parameters, we need multiple integrals:</p>
+<p><span class="math display">\[p(D) = \int\int p(D|\theta_1,\theta_2)p(\theta_1,\theta_2)d\theta_1d\theta_2\]</span> <strong>As the number of parameters increases, calculating the evidence becomes increasingly difficult.</strong> This is particularly so for continuous parameters, of which the computational complexity grows exponentially with the number of parameters.</p>
+<p>For three parameters: <span class="math display">\[p(D) = \int \int \int p(D|\theta_1,\theta_2,\theta_3)p(\theta_1,\theta_2,\theta_3)d\theta_1d\theta_2d\theta_3\]</span> For ten parameters: <span class="math display">\[p(D) = \int \int ... \int \int p(D|\theta_1,\theta_2, ...\theta_9,\theta_{10})p(\theta_1,\theta_2, ...\theta_9,\theta_{10})d\theta_1d\theta_2...\theta_9d\theta_{10}\]</span> With the general case for <span class="math inline">\(n\)</span> parameters being:</p>
+<p><span class="math display">\[p(D) = \underbrace{\int \int ... \int}_\text{n times} p(D|\theta_1,...,\theta_n)p(\theta_1,...,\theta_n)d\theta_1...d\theta_n\]</span> <strong>This challenge is known as the “curse of dimensionality” in Bayesian statistics.</strong></p>
+<p>However, to overcome these computational challenges, modern Bayesian analysis uses sampling methods instead of directly calculating the evidence. Instead of computing <span class="math inline">\(p(D)\)</span> directly, we can work with:</p>
+<p><span class="math display">\[p(\theta|D) \propto p(D|\theta)p(\theta)\]</span></p>
+<div style="height: 10px;">
+
+</div>
+<p><strong>The idea behind sampling is to approximate the continuous posterior distribution by generating a large number of discrete samples that represent it.</strong> These samples form a histogram that approaches the shape of the true posterior distribution as the number of samples increases. Once we have these samples, we can use them to calculate any summary statistics about the posterior distribution, like means, variances, or credible intervals, without ever needing to compute the normalizing constant <span class="math inline">\(p(D)\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Sampling and proportionality">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Sampling and proportionality
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This proportionality relationship contains all the information needed about the shape of the posterior distribution to generate samples from it. The denominator merely tells us about its height.</p>
+</div>
+</div>
+<p>We will learn more about sampling methods in future workshops.</p>
+<p>Ultimately, Bayesian statistics provides a powerful framework for analyzing experimental data, particularly when we want to update our understanding of underlying processes as we collect new evidence. This approach is especially valuable in scientific experiments where we want to learn about unobservable parameters from observable data.</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/bayes_workflow.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.3em;">
+<p>Bayesian statistics as a means of statistical inference in experiments</p>
+</div>
+<p>The relationship between parameters (<span class="math inline">\(\theta\)</span>) and data (<span class="math inline">\(D\)</span>) in statistical inference can be viewed as a two-way process:</p>
+<ul>
+<li><strong>Forward direction (Experiment):</strong> Parameters generate observable data through an experimental process. We can think of this as moving from cause (<span class="math inline">\(\theta\)</span>) to effect (Data).</li>
+<li><strong>Reverse direction (Statistical Inference):</strong> We use Bayes’ theorem to reason backwards from observed data to learn about the underlying parameters that generated them.</li>
+</ul>
+<p>Bayes’ theorem provides the mathematical framework for this inference.</p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Lambert, B. (2018). A student’s guide to Bayesian statistics.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Gelman, A., &amp; Shalizi, C. R. (2013). Philosophy and the practice of Bayesian statistics. British Journal of Mathematical and Statistical Psychology, 66(1), 8-38.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../workshops/02.binomial_globe/qmd/intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workshop 3: Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../workshops/02.binomial_globe/qmd/binomial_model.html" class="pagination-link">
+        <span class="nav-page-text">The globe-tossing experiment</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Zhang &amp; Sohail, 2025</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

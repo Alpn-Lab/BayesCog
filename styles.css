@@ -1,0 +1,85 @@
+.content {
+    max-width: 2000px;  # Or your preferred width
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.page-columns {
+    display: grid;
+    gap: 0;  # Reduces spacing between columns
+}
+
+/* Social icons */
+.social-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.social-item a {
+    text-decoration: none;
+}
+
+/* Brand colors for icons */
+.fa-github {
+    color: #333;  /* GitHub's black */
+}
+
+.fa-x-twitter {
+    color: #000000;  /* X/Twitter's black */
+}
+
+.fa-orcid {
+    color: #A6CE39;  /* ORCID's green */
+}
+
+.fa-envelope {
+    color: #cf810b;  /* Email brown */
+}
+
+.fa-globe {
+    color: #87CEEB;  /* Light blue for website */
+}
+
+/* Image caption settings */
+.image-caption {
+    text-align: center;
+    font-size: 1.4em; /* Adjust size as needed */
+    color: #8d949c; /* Light grey */
+    margin-top: 10px; /* Add space between the image and the caption */
+}
+
+/* Size of admonition text */
+.callout .callout-body {
+    font-size: 17px !important;
+}
+
+/* Size of admonition title text */
+.callout-header .callout-title-container {
+    font-size: 17px;
+}
+
+/* Size of LaTeX math */
+.math.inline,
+.callout .math.inline {
+    font-size: 100%;  /* Adjust percentage for inline math */
+}
+.math.display,
+.callout .math.display {
+    font-size: 130%;  /* Adjust percentage for display math */
+}
+
+/* Size of sidebar logo and icons */
+
+/* For the logo */
+img.sidebar-logo {
+  max-width: 225px !important;
+  margin-bottom: 1rem !important; /* Increases space below logo */
+}
+
+/* For the icons */
+.sidebar-tools-main .bi {
+  font-size: 1.5em !important;
+}
+
+

@@ -1,0 +1,25 @@
+---
+title: "Model comparison"
+subtitle: "Objectively assessing and comparing cognitive models"
+---
+
+**Welcome to the eighth workshop of the BayesCog course!**
+
+In our previous workshop, we explored how to optimize Stan models through reparameterization and by changing the values of Stan's sampling parameters. We learned that while all models are approximations, we can make them more efficient and reliable through proper optimization techniques. We then ran different variants of the hierarchical RL model, and could observe that - in terms of sampling - the optimized version performed better than the un-optimized version. 
+
+Indeed, when developing cognitive models more generally, we will need to objectively compare them to see which is a more suitable candidate. **But how do we choose between different candidate models?**
+
+In this workshop, we'll explore various approaches to model comparison, with a particular focus on the Widely Applicable Information Criterion (WAIC). We will also examine our models by performing posterior predictive checks, an important tool for model validation. We'll see how these tools can help us make more informed decisions about selecting which models best describe the latent cognitive processes we are ultimately interested in.
+
+The goals of this workshop are to:
+
+- Understand the fundamental trade-off between model complexity and goodness of fit
+- Learn about different information criteria and their theoretical foundations
+- Implement model comparison techniques through WAIC using the `loo` package
+- Use posterior predictive checks to validate model performance visually
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/08.compare_models`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

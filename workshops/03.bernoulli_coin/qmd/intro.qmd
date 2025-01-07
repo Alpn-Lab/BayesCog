@@ -1,0 +1,24 @@
+---
+title: "Bernoulli and linear regression models"
+subtitle: "With more notes on building Stan models"
+---
+
+**Welcome to the fifth workshop of the BayesCog course!**
+
+Having introduced basics of Stan with our binomial model in the previous workshop, we will now implement two new types of models: **the Bernoulli model and linear regression.**
+We will understand how the Bernoulli is linked to the binomial model, describing the same underlying process (binary outcomes) but at an individual trial level.
+Meanwhile, linear regression will introduce us to models with multiple parameters and continuous outcomes. 
+In doing so, we will also **build our knowledge of the Stan language further,** including variable declaration, control flow and variable scope.
+
+The goals of this workshop are to:
+
+- Learn how to implement a Bernoulli model in Stan for modeling binary outcome data
+- Re-think linear regression as a Bayesian model, implementing it in Stan
+- Gain a deeper understanding of Stan's programming features, including vectorization and efficient coding practices
+- Run model validation using posterior predictive checks and diagnostic tools
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/03.bernoulli_coin`) and (`/workshops/04.regression_height`) directories. Set your working directory to (`/workshops/03.bernoulli_coin`) to begin with. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

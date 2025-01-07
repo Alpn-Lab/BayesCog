@@ -1,0 +1,24 @@
+---
+title: "Reinforcement learning models"
+subtitle: "Using cognitive modeling as an approach to understand human behaviour"
+---
+
+**Welcome to the sixth workshop of the BayesCog course!**
+
+Up to this point in the course, we have covered a lot of ground, including the basics of probability, Bayesian statistics (and why it *may* be preferable to frequentist methods), a basic overview of the Stan programming language, and how it can be applied to model data. We have practically done so using multiple statistical models, including the binomial and Bernoulli choice models as well as linear regression. However, as a student of this course, you are most likely not interested in modeling coin flips, but rather would like to determine the latent processes underlying human behaviour in cognitive tasks!
+
+The course is not inherently divided into two sections, but it it were, what we have done up until now would consist the first. **In the remainder of the workshops, we will mainly apply our knowledge regarding Bayesian statistics and the Stan programming langauge to specifically model cognitive processes.**
+
+This workshop will firstly provide a conceptual overview of cognitive modeling and reinforcement learning (RL) as mathematical frameworks for understanding human behaviour. We'll then implement this practically by programming a simple RL model: the Rescorla-Wagner model and apply it to behavioural choice data.
+
+The goals of this workshop are to:
+
+- Understand the fundamental principles of cognitive modeling and its applications
+- Learn the basics of reinforcement learning theory and the Rescorla-Wagner model
+- Implement a basic Rescorla-Wagner model in Stan for analyzing choice behaviour
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/06.reinforcement_learning`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

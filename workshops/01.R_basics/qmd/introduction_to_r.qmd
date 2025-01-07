@@ -1,0 +1,618 @@
+---
+title: "An introduction to R/RStudio"
+subtitle: "An overview of data structures, functions, packages and data visualization"
+execute:
+  echo: true
+  warning: false
+  message: false
+  eval: true
+---
+
+`R` is a powerful open-source programming language and software environment primarily designed for statistical computing, data analysis, and graphical visualization.
+`R` has its own interface; when you install `R` onto your own computer(Windows/Mac) you can open `R` on it's own. However, working in this way with `R` ('base `R`') isn't very user friendly!
+
+Instead, we use an IDE (Integrated Development Environment) to work with the `R` programming language. A popular example - and the one that we will be using - is [RStudio](https://posit.co/download/rstudio-desktop/).
+
+<div style="height: 20px;"></div>
+
+![](/images/01.R_basics/rstudio_environment.png){fig-align="center" width="100%"}
+
+The RStudio interface consists of 4 windows:
+
+**1. Script editor:** Where you write and edit your `R` code
+**2. Console:** Where you run `R` commands and see their output
+**3. Environment/History:** Shows your workspace variables and command history
+**4. Files/Plots/Packages/Help:** A multi-purpose pane for viewing files, plots, managing packages, and accessing help documentation
+
+You can check your versions of both `R` and RStudio using the following commands:
+
+```{r}
+R.version
+```
+
+```{r, eval=FALSE}
+RStudio.version()
+```
+
+```
+$version
+[1] ‘2024.12.0.467’
+
+$long_version
+[1] "2024.12.0+467"
+
+$release_name
+[1] "Kousa Dogwood"
+```
+
+:::{.callout-important title="Asking for help"}
+Some problems in `R` may be specific to the version, so make sure to include the version that you are using if asking for help online!
+:::
+
+## Basic R operations
+
+We will now cover some basic operations and values within `R`.
+
+<div style="font-size: 22px;"><strong>Calculator Functions</strong></div>
+<div style="height: 16px;"></div>
+
+We can perform basic mathematical operations:
+
+```{r}
+# Addition and Subtraction
+3 + 2
+3 - 2
+
+# Multiplication and Division
+3 * 2
+3 / 2
+
+# Exponents
+3^2
+2^3
+
+# Constants
+pi
+exp(1)  # base of natural logarithm
+```
+
+<div style="font-size: 22px;"><strong>Special values</strong></div>
+<div style="height: 16px;"></div>
+
+In addition to numbers, variables can also take on other values:
+
+```{r, eval=FALSE}
+# Infinite Values
+Inf
+1 + Inf
+
+# Missing Values
+NA
+1 + NA
+
+# NULL Values
+NULL
+1 + NULL
+```
+
+:::{.callout-note title="Missing values in behavioural experiments"}
+An example where you might get a missing value would be in a behavioral experiment providing a fixed window for the participant to respond (e.g., 3 seconds). If they don't respond in time, you can code their response as a missing value (NA), instead of leaving it blank. This is useful for any subsequent analyses where you might want to exclude or perform an operation on the missing values.
+:::
+
+## Data types, classes and variables
+
+There are many types of data in `R`, here are some commonly used:
+
+**Numeric** - Decimal numbers (the most common numeric type)
+```{r, eval=FALSE}
+1.1
+2.0
+5.7892
+```
+
+**Integer** - Whole numbers only
+```{r, eval=FALSE}
+1L  # Note: L suffix denotes integer
+2L
+3L
+```
+
+**Character/String** - Text data in quotes
+```{r, eval=FALSE}
+"hello world!"
+'R programming'
+"42"  # Numbers in quotes are strings
+```
+
+**Logical** - Boolean values for conditional logic
+```{r, eval=FALSE}
+TRUE
+FALSE
+T     # Shorthand for TRUE
+F     # Shorthand for FALSE
+```
+
+**Factor** - a data type for categorical variables with fixed levels (categories).
+
+In the example below, we create a vector of letters, some of which are repeated. However, the levels within are limited to each individual letter.
+```{r}
+# Define a factor using letters
+f <- factor(letters[c(1, 1, 2, 2, 3:10)])  # Create factor from letters with some repetition
+f
+
+class(f)  # Check class
+```
+
+::: {.callout-tip title="Checking your data type"}
+You can check data types using the following commands: `class`, `typeof` and `str`
+```{r}
+class(1.1)      # Shows type
+typeof("text")   # Shows underlying type
+str(data)       # Shows structure
+```
+:::
+
+**Storing and manipulating variables**
+
+We commonly assign numbers and data to variables, which we can then compute directly:
+```{r}
+# Define objects x and y with values of 3 and 2 respectively:
+x <- 3
+y <- 2
+
+# Some calculations with the defined objects x and y:
+x + y
+x * y
+```
+
+:::{.callout-warning title="Case sensitivity"}
+R is case sensitive, so `X` and `x` are not the same object!
+:::
+
+### Basic `R` functions
+
+We can perform basic statistics and operations on variables, such as getting the variance, standard deviation and summary statistics:
+```{r}
+# Combine variables together to form a vector (a sequence of elements of the same type)
+c(1, 3, -2)                         # Creates numeric vector
+c("a", "a", "b", "b", "a")          # Creates character vector
+
+# Create a vector to work with
+x <- c(1, 3, -2)
+
+# Variance and Standard Deviation
+var(x)   # Calculates variance
+sd(x)    # Calculates standard deviation
+
+# Basic Statistics
+sum(x)   # Sums all elements
+mean(x)  # Calculates mean
+
+# Range Functions
+min(x)   # Finds minimum
+max(x)   # Finds maximum
+```
+
+We can also manipulate and combine vectors together - either as columns or rows - and perform statistics on the combined output:
+```{r}
+# Define two vectors
+x <- c(1, 3, 4, 6, 8)    # First vector
+y <- c(2, 3, 5, 7, 9)    # Second vector
+
+# Combine vectors as columns
+cbind(x, y)              # Creates a matrix with columns x and y
+
+# Combine vectors as rows
+rbind(x, y)              # Creates a matrix with rows x and y
+
+# Calculate correlation between x and y
+cor(x, y)                # Pearson correlation coefficient
+
+# Calculate covariance between x and y
+cov(x, y)                # Covariance
+```
+
+::: {.callout-tip title="Using `cbind`"}
+`cbind` can be used to combine data across different files. For example, we can use `cbind` to combine data for a single participant that was recorded across multiple platforms or studies.
+:::
+
+## Miscellaneous commands
+
+Here are some other commands that will be useful when working with `R` more generally:
+
+<div style="font-size: 22px;"><strong>Directory and Workspace Management</strong></div>
+```{r, eval=FALSE}
+# Get current working directory
+getwd()
+
+# Set working directory (example with different OS paths)
+setwd("C:/Users/Documents/R")           # Windows style
+setwd("/home/user/Documents/R")         # Unix/Mac style
+setwd("~/Documents/R")                  # Universal home directory
+
+# List files in current directory
+dir()                                   # Same as list.files()
+```
+
+<div style="font-size: 22px;"><strong>Environment Management</strong></div>
+```{r, eval=FALSE}
+# List objects in workspace
+ls()
+
+# Remove all objects from workspace
+rm(list = ls())
+```
+
+<div style="font-size: 22px;"><strong>Basic Output Functions</strong></div>
+```{r}
+# Simple print statement
+print("Hello World")                    # Basic output
+#> [1] "Hello World"
+
+# Concatenate with spaces
+cat("Hello", "World")                   # Prints: Hello World
+cat("Hello", "World", sep = "_")        # Prints: Hello_World
+
+# Join strings
+paste0("C:/", "Group1")                 # Prints: C:/Group1
+paste("C:/", "Group1", sep = "")        # Same result
+```
+
+<div style="font-size: 22px;"><strong>Getting Help</strong></div>
+```{r, eval=FALSE}
+# Get help on functions
+?mean                                   # Help for mean function
+help("mean")                            # Same as above
+
+# Find functions containing keyword
+help.search("correlation")              # Search help for "correlation"
+??correlation                           # Same as above
+```
+
+::: {.callout-tip title="Essential RStudio Shortcuts"}
+Here are some shortcuts that you can use in RStudio:
+
+<div style="text-align: center; width: 50%; margin: 0 auto;">
+
+| Shortcut | Action |
+|----------|---------|
+| `Ctrl + L` | Clean console |
+| `Ctrl + Shift + N` | Create a new script |
+| `↑` | Access command history |
+| `Ctrl(hold) + ↑` | Search command history with current input |
+| `Ctrl + Enter` | Execute selected code in script |
+
+</div>
+<div style="height: 20px;"></div>
+
+These shortcuts work on Windows/Linux. For Mac, replace Ctrl with Cmd (⌘).
+:::
+
+## Data structures
+
+`R` offers several data structures that serve different purposes. Each structure is designed to handle specific types of data organization, from simple one-dimensional vectors to complex nested lists[^1].
+
+[^1]: Kabacoff, R. I. (2022). R in action: data analysis and graphics with R and Tidyverse. Simon and Schuster. 
+
+![](/images/01.R_basics/data_types.png){fig-align="center" width="60%"}
+
+**Vector (1-dimensional)**
+
+- One-dimensional sequence of elements
+- All elements must be of the same type (numeric, character, etc.)
+- Example: `c(1, 2, 3) or c("a", "b", "c")`
+
+**Matrix (2-dimensional)**
+
+- Two-dimensional arrangement of elements
+- All elements must be of the same type
+- Organized in rows and columns
+- Example: `matrix(1:9, nrow = 3, ncol = 3)`
+
+**Array (n-dimensional)**
+
+- Extension of matrices to multiple dimensions
+- All elements must be of the same type
+- Can have 3 or more dimensions
+- Example: `array(1:27, dim = c(3, 3, 3))`
+
+**Data Frame**
+
+- Two-dimensional structure similar to a spreadsheet
+- Different columns can contain different types of data
+- Most common structure for statistical analysis
+
+Here are some examples of each datatype:
+
+<div style="font-size: 22px;"><strong>Vector</strong></div>
+```{r}
+v1 <- 1:12  # Create numeric vector using sequence
+v2 <- c(2,4,1,5,1,6, 13:18)  # Create numeric vector by combining values and sequence
+v3 <- c(rep('aa',4), rep('bb',4), rep('cc',4))  # Create character vector with repeated values
+class(v1)  # Check class of v1
+class(v2)  # Check class of v2
+class(v3)  # Check class of v3
+```
+
+<div style="font-size: 22px;"><strong>Matrix and array</strong></div>
+```{r}
+m1 <- matrix(v1, nrow=3, ncol=4)  # Create matrix filled by column
+m2 <- matrix(v1, nrow=3, ncol=4, byrow = T)  # Create matrix filled by row
+arr <- array(v1, dim=c(2,2,3))  # Create 3D array
+```
+
+```{r}
+class(m1)  # Check class of matrix
+class(arr)  # Check class of array
+```
+
+<div style="font-size: 22px;"><strong>Data frame</strong></div>
+```{r}
+df <- data.frame(v1=v1, v2=v2, v3=v3, f=f)  # Create dataframe from vectors
+class(df)  # Check class of dataframe
+str(df)    # Display structure of dataframe
+class(df$v1)  # Check class of first column
+class(df$v2)  # Check class of second column
+class(df$v3)  # Check class of third column
+class(df$f)   # Check class of fourth column (factor)
+```
+
+::: {.callout-tip title="Using the `$` Operator in `R`"}
+The `$` operator is used to access specific columns or elements within a list or data frame by name.
+
+Suppose we have a data frame of students' grades and want to access the 'Math' column:
+```{r}
+# Create a data frame
+students <- data.frame(
+  Name = c("Alice", "Bob", "Charlie"),
+  Math = c(95, 88, 92),
+  Science = c(89, 94, 90)
+)
+
+# Access the Math column
+math_scores <- students$Math
+print(math_scores)
+```
+
+Or if we wanted to get the `class` type for a column:
+```{r}
+# Get the class of the "Math" column
+math_class <- class(students$Math)
+print(math_class)
+
+# Get the class of the "Name" column
+name_class <- class(students$Name)
+print(name_class)
+```
+:::
+
+::: {.callout-note title="Exercise 1: Basic `R` commands"}
+**1. Open the `R_basics.R` script (within `_scripts`) and practice basic `R` commands and data types.**
+
+Only work up until the “Control Flow” section of code.
+
+TIP: use the `class()` and `str` commands.
+:::
+
+## Logical operators, control flow and functions
+
+We commonly use logical operators in `R` to help make decisions in code and are essential in tasks like subsetting data, controlling loops, writing conditional statements, and filtering data.
+
+<div style="text-align: center; width: 50%; margin: 0 auto;">
+
+| **Operator** | **Summary**                |
+|--------------|----------------------------|
+| `<`          | Less than                 |
+| `>`          | Greater than              |
+| `<=`         | Less than or equal to     |
+| `>=`         | Greater than or equal to  |
+| `==`         | Equal to                  |
+| `!=`         | Not equal to              |
+| `!x`         | NOT x                     |
+| `x | y`      | x OR y                    |
+| `x & y`      | x AND y                   |
+
+</div>
+
+### Control flow
+
+Control flow structures are fundamental building blocks in programming that determine how code executes. Two essential control flow mechanisms are **if-else statements and for-loops:**
+
+- **If-else statements** allow programs to make decisions based on conditions, enabling different code execution paths depending on whether conditions are true or false. 
+- **For-loops** provide a way to automate repetitive tasks by executing code multiple times over a sequence of elements.
+
+Here's a simple example involving reaction time (RT) data, which we often want to clean by removing outliers and incorrect responses. 
+We typically exclude RTs that are too fast (suggesting anticipatory responses) or too slow (suggesting inattention), as well as trials where participants made errors.
+
+Here's how we can do that using an if-else statement and a for-loop:
+```{r}
+# Sample reaction time data (in milliseconds) with accuracy (1 = correct, 0 = error)
+rt_data <- c(245, 892, 123, 456, 2891, 567, 432, 345, 178, 654)
+accuracy <- c(1, 1, 0, 1, 1, 1, 0, 1, 1, 1)
+
+# Initialize vector for cleaned data
+clean_rt <- numeric(length(rt_data))
+
+# Process each trial
+for (i in 1:length(rt_data)) {
+    if (accuracy[i] == 1 && rt_data[i] > 200 && rt_data[i] < 2000) {
+        # Include trial if:
+        # - Response was correct (accuracy = 1)
+        # - RT is above 200ms (not anticipatory)
+        # - RT is below 2000ms (not too slow)
+        clean_rt[i] <- rt_data[i]
+    } else {
+        clean_rt[i] <- NA  # Mark excluded trials as NA
+    }
+}
+
+# Calculate mean RT for clean trials only
+mean_rt <- mean(clean_rt, na.rm = TRUE)
+mean_rt
+```
+
+In this example, the for-loop processes each trial, while the if-else statement excludes responses that are too fast (<200ms), too slow (>2000ms), or incorrect.
+
+### Functions
+
+Functions are operation(s) that are performed to obtain some quantity based on another quantity. They are often analagous to a 'black box' which processes some input $x$, to generate an output $f(x)$.
+
+<div style="height: 13px;"></div>
+
+![](/images/01.R_basics/function.png){fig-align="center" width="30%"}
+
+There are three broad sources of functions within `R`:
+
+- **Built-in functions:** functions available automatically within `R` (e.g., `mean`, `sum`)
+- **External functions:** functions written by others (e.g., as part of a package)
+- **User-defined functions:** functions written by the user
+
+A practical example of a user-defined functions is calculating the Standard Error of the Mean (SEM). The SEM measures the precision of a sample mean and is calculated as the standard deviation divided by the square root of the sample size minus one:
+
+$$
+SEM = \sqrt{\frac{s^2}{n-1}}
+$$
+
+Here's how to implement this as a function in `R`:
+
+```{r}
+# function to calculate Standard Error of Mean (SEM)
+sem <- function(x) {
+    # Calculate: sqrt(variance / (n-1))
+    # na.rm=TRUE removes NA values
+    # na.omit(x) gives us the actual sample size excluding NAs
+    sqrt(var(x, na.rm=TRUE) / (length(na.omit(x))-1))
+}
+
+# Example usage:
+data <- c(23, 45, 12, 67, 34, 89, 21)
+sem(data)
+```
+
+::: {.callout-note title="Exercise 2: Control flow and user-defined functions"}
+**1. Write an if-else statement to do the following:**
+
+- Generate a random number between 0 and 1.
+- Compare it against 1/3 and 2/3
+- Print the random number and its position relative to 1/3 and 2/3
+
+<details>
+<summary>Click to see the solution</summary>
+
+```{r}
+t <- runif(1) # random number between 0 and 1
+if (t <= 1/3) {
+    cat("t =", t, ", t <= 1/3. \n")
+} else if (t > 2/3) {
+    cat("t =", t, ", t > 2/3. \n")
+} else {
+    cat("t =", t, ", 1/3 < t <= 2/3. \n")
+}
+```
+
+</details>
+**2. Write a for-loop to do the following:**
+
+- Get the name of each month of this calendar year
+- Print it one by one
+
+<details>
+<summary>Click to see the solution</summary>
+
+```{r}
+month_name <- format(ISOdate(2025,1:12,1),"%B")
+for (j in 1:length(month_name) ) {
+    cat()
+}
+
+print(month_name)
+```
+
+</details>
+:::
+
+
+## Packages
+
+**Packages are collections of functions, data sets, and documentation bundled together to extend the functionality of `R`.**
+They are not part of the base `R` installation but can be easily added and used in your environment.
+
+`R` packages can:
+
+- **Add functions:** They contain pre-written functions that simplify common tasks or complex analyses. For example, packages like `ggplot2` and `dplyr` offer powerful tools for data visualization and manipulation.
+
+- **Provide data:** Some packages include data sets that can be used for testing or teaching purposes. For example, the `datasets` package provides a collection of sample data sets.
+
+- **Enable special features:** Packages can implement specialized features like statistical models, machine learning algorithms, or tools for web scraping, reporting, and more.
+
+### How to use packages in R
+
+Installing: You can install a package from CRAN (the Comprehensive R Archive Network) using the `install.packages()` function.
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+```
+
+Loading: Once installed, you can load the package into your R session with the `library()` function.
+
+```{r}
+library('ggplot2')
+```
+
+Usage: After loading the package, you can use its functions. For example, with `ggplot2`, you can create a plot like this:
+
+```{r}
+ggplot(data = mtcars, aes(x = mpg, y = hp)) + 
+  geom_point()
+```
+
+Popular R packages include:
+
+- `ggplot2`: A powerful package for data visualization based on the grammar of graphics.
+- `dplyr`: A package for data manipulation (filtering, selecting, grouping, etc.).
+- `tidyr`: Used for tidying data, such as reshaping and pivoting.
+- `shiny`: For building interactive web applications in `R`.
+
+You can find and install R packages from a number of sources:
+
+- [CRAN](https://cran.r-project.org/): The main repository for `R` packages.
+- [Bioconductor](https://www.bioconductor.org/): A repository specializing in bioinformatics packages.
+- [GitHub](https://github.com/): Many `R` developers host their packages on GitHub, which you can install using `devtools` or `remotes` packages.
+
+
+## Data visualization using `ggplot2()`
+
+One of the main benefits of `R` is to create publication quality figures and graphs. There are a number of different functions within `R` that we can use:
+
+- built-in plotting functions e.g., `plot()`
+- `lattice` - similar to built-in plotting functions
+- `ggplot2()` - making nicer plots using a layering approach
+
+We will now briefly cover `ggplot2()` as it is the most versatile and used approach to create complex figures.
+
+**`ggplot2` is a powerful `R` package for creating complex and customizable data visualizations.**
+It provides a systematic approach to building plots by combining two main components: geometries (`geom`) and aesthetics (`aes`).
+
+`plot = geometric (points, lines, bars) + aesthetic (color, shape, size)`
+
+Geometries (`geom`): These define the type of plot or visual elements you want to display. Common `geoms` include:
+
+- `geom_point()`: Displays data points (scatter plot).
+- `geom_line()`: Plots lines connecting data points.
+- `geom_bar()`: Creates bar charts.
+
+Aesthetics (`aes`): These define how data is mapped to visual properties. The aesthetics determine the appearance of the plot, such as:
+
+- `color`: Specifies the color of the points, lines, or bars.
+- `shape`: Defines the shape of data points (e.g., circles, squares).
+- `size`: Controls the size of the points or lines.
+
+Importantly, `ggplot2()` is built upon the layering of different components. For example, you can simply add more `aes` components to add a line of best fit, and standard error:
+
+![](/images/01.R_basics/ggplot_layering.png){fig-align="center" width="100%"}
+
+::: {.callout-tip title="The R Graph Gallery"}
+You can create many, many, many different types of graphs and plots using `ggplot2()`. You can check out it's versatility by seeing examples at the [R Graph Gallery](https://r-graph-gallery.com/).
+:::
+
+

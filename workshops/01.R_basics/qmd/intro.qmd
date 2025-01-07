@@ -1,0 +1,29 @@
+---
+title: "Introduction to R/Rstudio"
+subtitle: "With general tips and tricks for working with R and RStudio"
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+**Welcome to the first workshop of the BayesCog course!**
+
+The first workshop is designed to primarily introduce those without any previous experience to `R` and RStudio so that everyone is on the same page for the subsequent workshops.
+We will also cover tips and tricks with working in `R`, so it may also be useful for those already familiar!
+
+Topics for this workshop include:
+
+- Understanding `R` and RStudio's interface and functionality
+- Basic R operations and data types
+- Working with variables and functions
+- Data structures and manipulation
+- Control flow and logical operators
+- Using `R` packages
+- Data visualization with `ggplot2`
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/01.R_basics`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**

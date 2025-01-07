@@ -1,0 +1,21 @@
+---
+title: "Probability and an introduction to Bayes' theorem"
+subtitle: "Understanding the basics of probability and applying Bayesian inference to data"
+---
+
+**Welcome to the second workshop of the BayesCog course!**
+
+In this workshop, we'll explore the fundamental concepts of probability and introduce Bayes' theorem, which forms the foundation of Bayesian statistics. We'll start with basic probability concepts and gradually build up to understanding how a Bayesian approach to probability involves updating our beliefs based on evidence.
+
+Topics for this workshop include:
+
+- Understanding discrete and continuous probability
+- Working with probability distributions in `R`
+- Understanding the concepts of joint, marginal, and conditional probability
+- An introduction to Bayes' theorem and its applications
+
+:::{.callout-note title="Working directory for this workshop"}
+Model code and `R` scripts for this workshop are located in the (`/workshops/01.R_basics`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
+:::
+
+**The copy of this workshop notes can be found on the [course GitHub page]().**
