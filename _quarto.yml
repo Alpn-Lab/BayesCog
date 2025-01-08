@@ -20,13 +20,13 @@ website:
     tools: 
       - icon: globe
         href: https://alpnlab.github.io
-        text: "Openscapes.org"
+        text: "ALPN Lab Website"
       - icon: github
         href: https://github.com/alpnlab
-        text: "Quarto website tutorial"
+        text: "ALPN Lab GitHub"
       - icon: twitter
-        href: https://twitter.com/openscapes
-        text: "Openscapes Twitter"         
+        href: https://twitter.com/ALPN_Lab
+        text: "ALPN Lab Twitter"         
 
     style: "docked"
     search: true
@@ -113,7 +113,6 @@ website:
       - text: Resources
         href: resources.qmd
 
-
 format:
   html:
     theme: cosmo
@@ -129,13 +128,9 @@ format:
     include-in-header:
       text: |
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  pdf: 
-    documentclass: article
 
 jupyter: .venv
 
 filters:
   - include-files.lua
   - quarto
-
-  

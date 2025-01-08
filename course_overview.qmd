@@ -124,6 +124,13 @@ You do not have to work through the exercises to benefit from and complete this 
 
 There is no additional set-up needed if you aim to work solely from the website. However, to run the analyses on your computer, several software and packages must be installed.
 
+Firstly, clone and change to the project directory:
+
+```bash
+git clone https://github.com/sohaamir/BayesCog.git
+cd BayesCog
+```
+
 ### Software
 
 1. Install the latest version of `R` [here](https://cloud.r-project.org/bin/macosx/) and RStudio [here](https://posit.co/download/rstudio-desktop/)
@@ -135,11 +142,13 @@ In addition to software, various analyses across the workshops require specific 
 
 This project uses `renv` to manage package dependencies. To set up the environment:
 
-1. Install `renv`: `install.packages("renv")`
-2. Open the project in `RStudio`
-3. Run `renv::restore()` to install all required packages
+1. Open `R` in the project directory (`BayesCog.Rproj`) and run:
 
-After this initial setup, the project environment will load automatically whenever you open the project.
+```r
+source("setup.R")
+```
+
+After running this command once, the project environment will load automatically whenever you open the project.
 
 :::{.callout-tip title="Querying packages"}
 You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to Files/Plots tab) or by running `library()`.
