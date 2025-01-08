@@ -442,11 +442,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#aims-and-philosophy" id="toc-aims-and-philosophy" class="nav-link active" data-scroll-target="#aims-and-philosophy">Aims and philosophy</a></li>
   <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link" data-scroll-target="#pre-requisites">Pre-requisites</a></li>
   <li><a href="#list-of-folders-and-contents" id="toc-list-of-folders-and-contents" class="nav-link" data-scroll-target="#list-of-folders-and-contents">List of folders and contents</a></li>
-  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set-up</a>
-  <ul class="collapse">
-  <li><a href="#software" id="toc-software" class="nav-link" data-scroll-target="#software">Software</a></li>
-  <li><a href="#r-packages" id="toc-r-packages" class="nav-link" data-scroll-target="#r-packages">R packages</a></li>
-  </ul></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set-up</a></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sohaamir/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -619,15 +615,14 @@ Pre-requisites
 </tr>
 </tbody>
 </table>
-<p>In addition to following along with the taught material, <strong>there are a number of exercises that you can work through.</strong> The code and solutions to the exercises in some cases will be worked through, but will not in others. In all cases however, the materials to work through the exercises are provided.</p>
-<p>Specifically, each folder above will typically have the two sub-folders: <code>_data</code> and <code>_scripts</code>. Each <code>_scripts</code> folder will also contain separate files with and without the <code>master</code> suffix.</p>
+<p>In addition to following along with the taught material, <strong>there are a number of exercises that you can work through.</strong> The code and solutions to the exercises will be worked through on the website in some cases, but not in others. In all cases however, the materials to work through the exercises yourself are provided.</p>
+<p>Specifically, each workshop folder above will typically have two sub-folders: <code>_data</code> and <code>_scripts</code>. Each <code>_scripts</code> folder will also contain separate files with and without the <code>master</code> suffix.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> R_basics.Rproj</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _data</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _scripts</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> ├── R_basics.R</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> └── R_basics_master.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>The base script will contain the necessary code without the solutions, whilst the <code>master</code> script also contains the solutions.</strong></p>
-<p>Whilst the structure of the workshops on this website does not exactly match those in the folder, details on which scripts and data to use is always given.</p>
+<p><strong>The base scripts will often contain the necessary code; details on which scripts and data to use is always given.</strong></p>
 <div class="callout callout-style-default callout-note callout-titled" title="Exercise is optional">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -645,25 +640,20 @@ Exercise is optional
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>There is no additional set-up needed if you aim to work solely from the website. However, to run the analyses on your computer, several software and packages must be installed.</p>
-<p>Firstly, clone and change to the project directory:</p>
+<ul>
+<li><p>Install the latest version of <code>R</code> <a href="https://cloud.r-project.org/bin/macosx/">here</a> and RStudio <a href="https://posit.co/download/rstudio-desktop/">here</a></p></li>
+<li><p>Install and set-up the latest version of RStan <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">here</a></p></li>
+</ul>
+<p>To create the environment, first clone the repository and change to the project directory:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sohaamir/BayesCog.git</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> BayesCog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<section id="software" class="level3">
-<h3 class="anchored" data-anchor-id="software">Software</h3>
+<p>Various analyses across the workshops require specific packages to be installed. This project uses <code>renv</code> to manage package dependencies.</p>
+<p>To set up the environment:</p>
 <ol type="1">
-<li>Install the latest version of <code>R</code> <a href="https://cloud.r-project.org/bin/macosx/">here</a> and RStudio <a href="https://posit.co/download/rstudio-desktop/">here</a></li>
-<li>Install and set-up the latest version of RStan <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">here</a></li>
-</ol>
-</section>
-<section id="r-packages" class="level3">
-<h3 class="anchored" data-anchor-id="r-packages">R packages</h3>
-<p>In addition to software, various analyses across the workshops require specific packages to be installed.</p>
-<p>This project uses <code>renv</code> to manage package dependencies. To set up the environment:</p>
-<ol type="1">
-<li>Open <code>R</code> in the project directory (<code>BayesCog.Rproj</code>) and run:</li>
+<li>Open <code>R</code> in the project directory (<code>BayesCog.Rproj</code>) and run in the <code>R</code> console:</li>
 </ol>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"setup.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After running this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. All you will need to do is to load the packages required for the relevant scripts e.g., <code>library(rstan)</code>.</p>
+<p>After running this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. All you need to do is to load the packages required for the relevant scripts when necessary e.g., <code>library(rstan)</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Querying packages">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -674,12 +664,11 @@ Querying packages
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>You can always check if you are missing a certain package by clicking on the ‘Packages’ tab (next to Files/Plots tab) or by running <code>library()</code>.</p>
+<p>You can always check if you are missing a certain package by clicking on the ‘Packages’ tab (next to ‘Files/Plots’ tab) or by running <code>library()</code>.</p>
 </div>
 </div>
 
 
-</section>
 </section>
 
 
