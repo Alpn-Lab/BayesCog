@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-01-01">
+
+<title>BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science - BayesCog: A freely available course in Bayesian statistics and Hierarchical Bayesian Modeling for Psychological Science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">BayesCog: A freely available course in Bayesian statistics and Hierarchical Bayesian Modeling for Psychological Science</li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://alpnlab.github.io" rel="" title="Openscapes.org" class="quarto-navigation-tool px-1" aria-label="Openscapes.org"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/alpnlab" rel="" title="Quarto website tutorial" class="quarto-navigation-tool px-1" aria-label="Quarto website tutorial"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/openscapes" rel="" title="Openscapes Twitter" class="quarto-navigation-tool px-1" aria-label="Openscapes Twitter"><i class="bi bi-twitter"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to BayesCog!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./course_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Workshop 1: R Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 1: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R/RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Workshop 2: Probability and an introduction to Bayes’ theorem</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 2: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability and Bayes’ theorem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Workshop 3: Building simple models conceptually</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 3: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linking data to parameters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The globe-tossing experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markov chain Monte Carlo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Workshop 4: Introduction to building models in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 4: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Building models in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Workshop 5: Bernoulli and linear regression models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 5: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical notes on Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli and linear regression models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Workshop 6: Reinforcement learning models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 6: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of cognitive modeling and reinforcement learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing the Rescorla-Wagner model in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Workshop 7: Hierachical Bayesian modeling</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 7: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hierarchical Bayesian models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reparameterization and optimizing Stan code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Workshop 8: Model comparison</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 8: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Workshop 9: Debugging in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 9: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging in Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A principled modeling workflow</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">Bonus workshop: Introduction to model-based fMRI</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to model-based fMRI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#statement-of-need" id="toc-statement-of-need" class="nav-link" data-scroll-target="#statement-of-need">Statement of Need</a></li>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
+  <li><a href="#tutorials-exercises" id="toc-tutorials-exercises" class="nav-link" data-scroll-target="#tutorials-exercises">Tutorials &amp; Exercises</a>
+  <ul class="collapse">
+  <li><a href="#module-01---scientific-python" id="toc-module-01---scientific-python" class="nav-link" data-scroll-target="#module-01---scientific-python">Module 01 - Scientific Python</a></li>
+  <li><a href="#module-02---introduction-to-modeling" id="toc-module-02---introduction-to-modeling" class="nav-link" data-scroll-target="#module-02---introduction-to-modeling">Module 02 - Introduction to Modeling</a></li>
+  <li><a href="#module-03---reinforcement-learning" id="toc-module-03---reinforcement-learning" class="nav-link" data-scroll-target="#module-03---reinforcement-learning">Module 03 - Reinforcement Learning</a></li>
+  <li><a href="#module-04---social-learning" id="toc-module-04---social-learning" class="nav-link" data-scroll-target="#module-04---social-learning">Module 04 - Social Learning</a></li>
+  </ul></li>
+  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions">Future Directions</a></li>
+  <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
+  <li><a href="#author-contributions" id="toc-author-contributions" class="nav-link" data-scroll-target="#author-contributions">Author Contributions</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sohaamir/BayesCog/edit/main/paper.md" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sohaamir/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="paper.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">BayesCog: A freely available course in Bayesian statistics and Hierarchical Bayesian Modeling for Psychological Science</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Authors</div>
+  <div class="quarto-title-meta-heading">Affiliations</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Lei Zhang <a href="https://orcid.org/0000-0002-9586-595X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            1, 2, 3
+          </p>
+      </div>
+      <div class="quarto-title-meta-contents">
+    <p class="author">Aamir Sohail <a href="https://orcid.org/0009-0000-6584-4579" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+  </div>
+    <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            1, 2
+          </p>
+      </div>
+    </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 1, 2025</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>We present a semester-long educational course (see 14-week <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-01_Course-Schedule.html">schedule</a>) and <a href="https://shawnrhoads.github.io/gu-psyc-347">Jupyter Book</a> that provides introductory training in specifying, implementing, and interpreting computational models that characterize human social behavior and neuroscience. Through readings, discussions, and labs (e.g., Jupyter Notebook tutorials using Python), students will receive hands-on training in using mathematical models to test specific theories and hypotheses and explain unobservable aspects of complex social cognitive processes and behaviors. These aspects broadly include learning from and for others, learning about others, and social influences on decision-making and mental states.</p>
+<p>Background in introductory psychological science and basic research methods/statistics is highly recommended prior to participating in this course. Programming experience is helpful, but not required or expected. Although the course content is tailored for undergraduate students, it was developed to be easily adapted for trainees at higher career stages.</p>
+</section>
+<section id="statement-of-need" class="level1">
+<h1>Statement of Need</h1>
+<p>Developing formalized computational models is among the most promising approaches for advancing theories in psychological science and neuroscience <span class="citation" data-cites="Guest2021">(<a href="#ref-Guest2021" role="doc-biblioref"><strong>Guest2021?</strong></a>)</span>, including characterizing theories regarding the neural basis of social behavior <span class="citation" data-cites="Stanley2013 Cheong2017 Jolly2017">(<a href="#ref-Stanley2013" role="doc-biblioref"><strong>Stanley2013?</strong></a>; <a href="#ref-Cheong2017" role="doc-biblioref"><strong>Cheong2017?</strong></a>; <a href="#ref-Jolly2017" role="doc-biblioref"><strong>Jolly2017?</strong></a>)</span>. This practice requires researchers to explicitly formalize scientific theories as quantifiable predictions that can be tested and falsified with empirical data. Computational models in research offer several advantages: they remove any ambiguity of verbal descriptions of theories, constrain the dimensionality of theories, shift focus away from null hypothesis significance testing in low-dimensional experimental designs (e.g., 2 x 2 factorial designs), and provide an open and reproducible approach (via programming code) for testing formal models of a theory <span class="citation" data-cites="Jolly2017 Guest2021">(<a href="#ref-Jolly2017" role="doc-biblioref"><strong>Jolly2017?</strong></a>; <a href="#ref-Guest2021" role="doc-biblioref"><strong>Guest2021?</strong></a>)</span>.</p>
+<p>Despite the promise and increased use of computational models to characterize human social behavior and neuroscience <span class="citation" data-cites="Zhang2019">(<a href="#ref-Zhang2019" role="doc-biblioref"><strong>Zhang2019?</strong></a>)</span>, few psychology programs actually offer quantitative training required for introductory level computational modeling and literacy <span class="citation" data-cites="Guest2021 Jolly2017">(<a href="#ref-Guest2021" role="doc-biblioref"><strong>Guest2021?</strong></a>; <a href="#ref-Jolly2017" role="doc-biblioref"><strong>Jolly2017?</strong></a>)</span>. Although summer schools (e.g., <a href="https://academy.neuromatch.io/">Neuromatch Academy</a> <span class="citation" data-cites="VanViegen2021">(<a href="#ref-VanViegen2021" role="doc-biblioref"><strong>VanViegen2021?</strong></a>)</span>, <a href="http://mindsummerschool.org/">Methods in Neuroscience at Dartmouth</a> (MIND), <a href="https://neurohackademy.org/">Neurohackademy</a>, <a href="https://cmah.eu/">Cognitive Modeling Academy</a>), self-guided online tutorials and papers <span class="citation" data-cites="Wilson2019 Zhang2019 Lockwood2020">(<a href="#ref-Wilson2019" role="doc-biblioref"><strong>Wilson2019?</strong></a>; <a href="#ref-Zhang2019" role="doc-biblioref"><strong>Zhang2019?</strong></a>; <a href="#ref-Lockwood2020" role="doc-biblioref"><strong>Lockwood2020?</strong></a>)</span>, and community-oriented workshops (e.g., Brainhack Global <span class="citation" data-cites="Craddock2016 Gau2021">(<a href="#ref-Craddock2016" role="doc-biblioref"><strong>Craddock2016?</strong></a>; <a href="#ref-Gau2021" role="doc-biblioref"><strong>Gau2021?</strong></a>)</span>) have filled this pedagogical gap in recent years, these programs may not reach audiences who are not familiar with computational modeling in research (e.g., undergraduates).</p>
+<p>Therefore, we present course materials and accompanying Jupyter Book <span class="citation" data-cites="ExecutableBooksCommunity2020">(<a href="#ref-ExecutableBooksCommunity2020" role="doc-biblioref"><strong>ExecutableBooksCommunity2020?</strong></a>)</span> to make training in computational modeling more accessible to both teachers and students in university settings and online.</p>
+</section>
+<section id="learning-objectives" class="level1">
+<h1>Learning Objectives</h1>
+<p>Throughout this course, students are expected to meet the following goals:</p>
+<ul>
+<li>Understand the following: what are computational models, why use computational models, when to use computational models, and how models are fit to data</li>
+<li>Survey selected topics on social behavior through readings, discussions, and labs (e.g., Jupyter Notebook tutorials using Python)</li>
+<li>Learn how to write code for data science using the Python programming language and Jupyter Notebooks</li>
+<li>Fit mathematical models to data and evaluate their performance</li>
+<li>Interpret the results of social behavioral experiments</li>
+<li>Gain a richer understanding of how computational modeling advances psychological science and neuroscience</li>
+</ul>
+<p>The course begins with readings and discussions on the utility of computational modeling in psychological science and neuroscience (see <a href="#Statement-of-Need">Statement of Need</a>) and training in scientific Python (<strong>Module 01</strong>). Students will learn how to set up an <a href="https://anaconda.org/">Anaconda</a> Environment and work in <a href="https://colab.research.google.com">Google Colaboratory</a> to run Python code in Executable Notebooks. They will then learn the basics of the Python programming language, including using <code>numpy</code> for scientific computing <span class="citation" data-cites="Numpy">(<a href="#ref-Numpy" role="doc-biblioref"><strong>Numpy?</strong></a>)</span>, <code>pandas</code> for data management <span class="citation" data-cites="Pandas">(<a href="#ref-Pandas" role="doc-biblioref"><strong>Pandas?</strong></a>)</span>, and <code>matplotlib</code> for data visualization <span class="citation" data-cites="Matplotlib">(<a href="#ref-Matplotlib" role="doc-biblioref"><strong>Matplotlib?</strong></a>)</span>.</p>
+<p>Then, students will learn the basics of modeling (<strong>Module 02</strong>). Using simulated data, they will learn how to fit linear and nonlinear models using least-squares minimization with a grid search, the <code>scipy.optimize.minimize</code> module <span class="citation" data-cites="Scipy">(<a href="#ref-Scipy" role="doc-biblioref"><strong>Scipy?</strong></a>)</span>, and the analytic solution for least-squares optimization. Using real data <span class="citation" data-cites="OConnell2021">(<a href="#ref-OConnell2021" role="doc-biblioref"><strong>OConnell2021?</strong></a>)</span>, they will learn how to estimate parameters (e.g., intercepts, slopes) from a linear model using both Ordinary Least Squares (OLS) and Maximum Likelihood Estimation (MLE). They will also learn how to assess model performance using <span class="math inline">\(R^2\)</span> and the Bayesian Information Criterion. They will compare their produced results to the actual results from the paper.</p>
+<p>Next, students will learn the basics of reinforcement learning in non-social contexts (<strong>Module 03</strong>). They will learn how to run a “Two-Armed Bandit” experiment using PsychoPy <span class="citation" data-cites="Peirce2019">(<a href="#ref-Peirce2019" role="doc-biblioref"><strong>Peirce2019?</strong></a>)</span> and explore behavioral data from the task. Following exercises adapted from <span class="citation" data-cites="Wilson2019">(<a href="#ref-Wilson2019" role="doc-biblioref"><strong>Wilson2019?</strong></a>)</span> and implemented in Python, students will simulate learning using three models: (1) random responding, (2) noisy win-stay-lose-shift, and (3) Rescorla-Wagner reinforcement learning. They will use MLE to fit reinforcement learning models to simulated data and recover model parameters (e.g., learning rate, temperature) <span class="citation" data-cites="Palminteri2017">(<a href="#ref-Palminteri2017" role="doc-biblioref"><strong>Palminteri2017?</strong></a>)</span>.</p>
+<p>During the second half of the course, students will apply what they have learned in the context of social experiences and interactions <span class="citation" data-cites="Lockwood2020 Zhang2019">(<a href="#ref-Lockwood2020" role="doc-biblioref"><strong>Lockwood2020?</strong></a>; <a href="#ref-Zhang2019" role="doc-biblioref"><strong>Zhang2019?</strong></a>)</span> with an increased focus on reading empirical research papers with computational models, presenting findings and interpreting results in journal club settings, and discussing with other students. Topics include learning about threats from others, learning how actions affect the outcomes of others, theory of mind, updating beliefs about others’ states and traits, and social influences on decision-making. They will complete an adapted version of a social reinforcement learning task <span class="citation" data-cites="Lockwood2016">(<a href="#ref-Lockwood2016" role="doc-biblioref"><strong>Lockwood2016?</strong></a>)</span> in PsychoPy <span class="citation" data-cites="Peirce2019">(<a href="#ref-Peirce2019" role="doc-biblioref"><strong>Peirce2019?</strong></a>)</span> and develop models in Python to evaluate and compare the likelihood of each model given real data (<strong>Module 04</strong>). Finally, they will develop their own project and write a research proposal (formatted using guidelines for the National Science Foundation <a href="https://nsfgrfp.org/">Graduate Research Fellowship Program Award</a> application).</p>
+<p>All course materials were designed to be modular. For example, if students are knowledgeable in Python basics and Jupyter Notebook (<strong>Module 01</strong>), then teachers could begin with model fitting (<strong>Module 02</strong>). If students are knowledgeable in model fitting with maximum likelihood estimation (<strong>Module 02</strong>), teachers could start with reinforcement learning (<strong>Module 03</strong>). Any tutorial can be adopted, transformed, or built upon for other educational purposes (e.g., courses, single class sessions, workshops) under a <a href="https://github.com/shawnrhoads/gu-psyc-347/blob/master/LICENSE">Creative Commons Attribution-ShareAlike 4.0 International License</a>. Information on how teachers can use these materials can be found in the <a href="https://github.com/shawnrhoads/gu-psyc-347/blob/master/README.md">README documentation</a>.</p>
+<p>During the first iteration of the course in the spring 2021, students were 54.5% seniors (4th year), 36.4% juniors (3rd year), and 9.1% sophomores (2nd year). Broadly, students reported that they enrolled in the course to learn how to use Python and computational modeling to accelerate psychological research, to learn how to work with data and research methodology beyond a traditional research methods &amp; statistics course, to learn skills relevant to a career in data science, and to gain a different perspective on topics from other classes. Most students reported spending 3-5 hours per week on readings and assignments (one student reported spending up to 10 hours and one student reported spending less than three hours). On a scale from 1 (strongly disagree) to 5 (strongly agree), students reported that the course was academically challenging and rigorous (<em>M</em>=4.75, <em>SD</em>=0.43) and that the course materials (<em>M</em>=4.00, <em>SD</em>=1.22), course-specific technologies (<em>M</em>=4.00, <em>SD</em>=1.22), and assignments (<em>M</em>=4.25, <em>SD</em>=0.83) helped them meet the stated learning objectives of the course.</p>
+</section>
+<section id="tutorials-exercises" class="level1">
+<h1>Tutorials &amp; Exercises</h1>
+<section id="module-01---scientific-python" class="level2">
+<h2 class="anchored" data-anchor-id="module-01---scientific-python">Module 01 - Scientific Python</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Run</th>
+<th style="text-align: center;">View</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tutorial: Jupyter Notebooks</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-00_Jupyter-Notebooks-Colab.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-00_Jupyter-Notebooks.html">Open in Book</a></td>
+</tr>
+<tr class="even">
+<td>Tutorial: Python Basics</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-01_Intro-to-Python.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-01_Intro-to-Python.html">Open in Book</a></td>
+</tr>
+<tr class="odd">
+<td>Tutorial: Working with Data</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-02_Working-with-Data.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-02_Working-with-Data.html">Open in Book</a></td>
+</tr>
+<tr class="even">
+<td>Exercise</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-03_Python-Exercises.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-03_Python-Exercises.html">Open in Book</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-02---introduction-to-modeling" class="level2">
+<h2 class="anchored" data-anchor-id="module-02---introduction-to-modeling">Module 02 - Introduction to Modeling</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Run</th>
+<th style="text-align: center;">View</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tutorial: Linear Modeling</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-02-00_Linear-Modeling.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-02-00_Linear-Modeling.html">Open in Book</a></td>
+</tr>
+<tr class="even">
+<td>Tutorial: Nonlinear Modeling</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-02-01_Nonlinear-Modeling.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-02-01_Nonlinear-Modeling.html">Open in Book</a></td>
+</tr>
+<tr class="odd">
+<td>Exercise</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-02-02_Modeling-Exercises.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-02-02_Modeling-Exercises.html">Open in Book</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-03---reinforcement-learning" class="level2">
+<h2 class="anchored" data-anchor-id="module-03---reinforcement-learning">Module 03 - Reinforcement Learning</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Run</th>
+<th style="text-align: center;">View</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tutorial: Two-Armed Bandit</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-03-00_Two-Armed-Bandit.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-03-00_Two-Armed-Bandit.html">Open in Book</a></td>
+</tr>
+<tr class="even">
+<td>Tutorial: Models of Learning</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-03-01_Models-of-Learning.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-03-01_Models-of-Learning.html">Open in Book</a></td>
+</tr>
+<tr class="odd">
+<td>Exercise</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-03-02_RL-Exercises.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-03-02_RL-Exercises.html">Open in Book</a></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="module-04---social-learning" class="level2">
+<h2 class="anchored" data-anchor-id="module-04---social-learning">Module 04 - Social Learning</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;">Run</th>
+<th style="text-align: center;">View</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tutorial: Prosocial Learning</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-04-00_Social-Learning.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-04-00_Social-Learning.html">Open in Book</a></td>
+</tr>
+<tr class="even">
+<td>Exercise</td>
+<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-04-01_Prosocial-RL-Exercises.ipynb">Open in Colab</a></td>
+<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-04-01_Prosocial-RL-Exercises.html">Open in Book</a></td>
+</tr>
+</tbody>
+</table>
+<p>Students have the option to interact with each tutorial notebook using one of two ways. The first option entails <a href="https://docs.anaconda.com/anaconda/install/">installing Anaconda 3</a> on their local computers with a <a href="https://raw.githubusercontent.com/shawnrhoads/gu-psyc-347/master/course-env.yml">custom environment</a> made for this course and then opening each notebook using Jupyter Notebook. Teachers can walk students through the installation steps using the instructions provided on the <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-04_Getting-Started.html">Getting Started</a> page. However, this can be rather difficult to implement with students’ different machines, operating systems, background, etc. As a fail-safe, students also have the option to use <a href="https://colab.research.google.com/">Google Colaboratory</a>, which runs the code on Google’s cloud servers for <strong>free</strong>. There is a button at the top of each tutorial page that opens each Jupyter Book page in Google Colaboratory.</p>
+<p>Once students are able to run notebooks (locally or on the cloud), they can interact with all of the code in the tutorials. Teachers should guide students through all of the “tutorials”, which, for example, will allow them to demonstrate to students how tweaking certain variables in real-time would change the outputs. The “exercises” at the end of each module were created for the students to apply what they have learned. They can work on these by themselves or in groups. Links to example solutions for all exercises are provided on each page. In addition, teachers should familiarize themselves with the <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-03_Reading-List.html">recommended readings</a> associated with each module and use them to introduce students to each topic, generate discussions and ideas among students, and provide relevant background for each tutorial. For example, the Wilson &amp; Collins (2019) paper can be assigned for reading and discussion prior to beginning any notebook tutorials for <strong>Module 03</strong>.</p>
+<p>For additional background on the content covered in each tutorial (technical or theoretical), teachers and students are encouraged to review the references and/or resources listed at the beginning of each tutorial or the non-exhaustive list of resources on the <a href="https://github.com/shawnrhoads/gu-psyc-347/blob/master/RESOURCES.md">Resources page</a>. Content-related questions from students, teachers, and contributors related to the course can also be submitted directly on the GitHub repository. However, we request that individuals make a good faith effort searching for their answer in the relevant readings or resources listed at the beginning of each tutorial before submitting questions.</p>
+</section>
+</section>
+<section id="future-directions" class="level1">
+<h1>Future Directions</h1>
+<p>This course will introduce trainees to using computational models for characterizing human social behavior and neuroscience. However, the covered topics are not exhaustive or comprehensive. We provide a <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-03_Reading-List.html">growing list of literature</a> that extends beyond the purview of the course. Furthermore, available tutorials only cover a selected range of topics. We welcome contributions from the community to extend the breadth and depth of tutorials. These extensions may include improving or expanding existing content (e.g., stylistic improvements, alternative optimization algorithms), adding new tutorials on topics covered throughout the course, or adding new tutorials on related topics not covered throughout the course.</p>
+<p>We appreciate any feedback on errors, omitted credit, or new ideas for this evolving project. These can be communicated on GitHub by either <a href="https://github.com/shawnrhoads/gu-psyc-347/issues/new?labels=bug&amp;template=issue-template.yml">reporting an issue</a> or <a href="https://github.com/shawnrhoads/gu-psyc-347/issues/new?labels=enhancement&amp;template=enhancement-template.yml">requesting an enhancement</a>. All contributions will be credited and should follow the community guidelines outlined on the <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-06_Contributing.html">Contribution page</a>.</p>
+</section>
+<section id="acknowledgments" class="level1">
+<h1>Acknowledgments</h1>
+<p><a href="https://github.com/shawnrhoads">S. A. R.</a> is grateful to <a href="https://deborahstearns.blogspot.com/">Dr.&nbsp;Deborah Sterns</a>, <a href="https://www.joscelinrocha.com/">Joscelin Rocha-Hidalgo</a>, and the <a href="https://cndls.georgetown.edu/">Georgetown Center for New Designs in Learning &amp; Scholarship</a> (CNDLS) for allowing him to use their teaching resources throughout the development of this syllabus. He is also grateful to <a href="https://github.com/kellycm">Kelly C. Martin</a> and <a href="https://github.com/PaigeAmormino">Paige Amormino</a> for reviewing initial drafts of this manuscript, <a href="https://jupyter.org/">Project Jupyter</a> for making it possible to create and share these materials in a Jupyter Book <span class="citation" data-cites="ExecutableBooksCommunity2020">(<a href="#ref-ExecutableBooksCommunity2020" role="doc-biblioref"><strong>ExecutableBooksCommunity2020?</strong></a>)</span>, and all the students who participated during the first semester of this course (Spring 2021) for their insightful class contributions and feedback. The format of this course was largely inspired by the <a href="https://mindsummerschool.org/">MIND Computational Summer School</a>, <a href="https://academy.neuromatch.io/">Neuromatch Academy</a> <span class="citation" data-cites="VanViegen2021">(<a href="#ref-VanViegen2021" role="doc-biblioref"><strong>VanViegen2021?</strong></a>)</span>, Dr.&nbsp;Maximilian Risenhuber’s Computational Neuroscience course, Dr.&nbsp;Robert C. Wilson’s <a href="http://u.arizona.edu/~bob/web_NSCS344/">Modeling the Mind course</a>, Dr.&nbsp;Luke J. Chang’s <a href="https://dartbrains.org/content/intro.html">DartBrains Jupyter Book</a> <span class="citation" data-cites="Chang2020">(<a href="#ref-Chang2020" role="doc-biblioref"><strong>Chang2020?</strong></a>)</span>, the research conducted in Dr.&nbsp;Abigail A. Marsh’s <a href="https://aamarsh.wordpress.com/lab/">Laboratory on Social and Affective Neuroscience</a>, and the countless conversations with colleagues about the selected topics.</p>
+</section>
+<section id="author-contributions" class="level1">
+<h1>Author Contributions</h1>
+<p><a href="https://github.com/shawnrhoads">S. A. R.</a> designed and taught the course, generated the tutorials, assembled the Jupyter Book, reviewed the tutorials and contents of the Jupyter Book for bugs, typos, errors, stylistic enhancements, and clarity, revised contents of the Jupyter Book, and wrote the manuscript. <a href="https://github.com/shawnrhoads">S. A. R.</a> learned to implement the relevant course methods through conducting research and participating in various summer courses (e.g., <a href="https://mindsummerschool.org/">2018 MIND Computational Summer School</a>, 2018 Neuroscience School of Advanced Studies in Social Decision-Making, <a href="https://www.cpcourse.org/">2019 Computational Psychiatry Summer Course</a>). He also received relevant pedagogical training as a Teaching Assistant (TA) for <a href="https://academy.neuromatch.io/">Neuromatch Academy</a>, as a TA for Dr.&nbsp;Maximilian Risenhuber’s Computational Neuroscience course, and as a participant in the <a href="https://cndls.georgetown.edu/atprogram/">Apprenticeship in Teaching Program</a> at Georgetown University. The course materials were created to make the hands-on elements from these experiences as well as smaller, related workshops led by <a href="https://github.com/shawnrhoads">S. A. R.</a> more accessible in university settings and online. <a href="https://github.com/gllg4009">L. G.</a> participated in the course as a student in spring 2021, reviewed the tutorials and contents of the Jupyter Book for bugs, typos, errors, stylistic enhancements, and clarity, revised contents of the Jupyter Book, and wrote the manuscript.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Zhang &amp; Sohail, 2025</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

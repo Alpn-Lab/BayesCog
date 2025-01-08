@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science - An introduction to the Stan programming language</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../workshops/03.bernoulli_coin/qmd/intro.html" rel="next">
+<link href="../../../workshops/02.binomial_globe/qmd/stan_intro.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/02.binomial_globe/qmd/stan_intro.html">Workshop 4: Introduction to building models in Stan</a></li><li class="breadcrumb-item"><a href="../../../workshops/02.binomial_globe/qmd/stan_binomial.html">Building models in Stan</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://alpnlab.github.io" rel="" title="Openscapes.org" class="quarto-navigation-tool px-1" aria-label="Openscapes.org"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/alpnlab" rel="" title="Quarto website tutorial" class="quarto-navigation-tool px-1" aria-label="Quarto website tutorial"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/openscapes" rel="" title="Openscapes Twitter" class="quarto-navigation-tool px-1" aria-label="Openscapes Twitter"><i class="bi bi-twitter"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to BayesCog!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../course_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Workshop 1: R Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 1: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R/RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+ <span class="menu-text">Workshop 2: Probability and an introduction to Bayes’ theorem</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 2: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability and Bayes’ theorem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Workshop 3: Building simple models conceptually</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 3: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linking data to parameters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The globe-tossing experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markov chain Monte Carlo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">Workshop 4: Introduction to building models in Stan</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 4: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Building models in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Workshop 5: Bernoulli and linear regression models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 5: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical notes on Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli and linear regression models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Workshop 6: Reinforcement learning models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 6: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of cognitive modeling and reinforcement learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing the Rescorla-Wagner model in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Workshop 7: Hierachical Bayesian modeling</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 7: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hierarchical Bayesian models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reparameterization and optimizing Stan code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Workshop 8: Model comparison</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 8: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Workshop 9: Debugging in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 9: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging in Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A principled modeling workflow</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">Bonus workshop: Introduction to model-based fMRI</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to model-based fMRI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-stan" id="toc-what-is-stan" class="nav-link active" data-scroll-target="#what-is-stan">What is Stan?</a></li>
+  <li><a href="#the-basic-stan-model" id="toc-the-basic-stan-model" class="nav-link" data-scroll-target="#the-basic-stan-model">The basic Stan model</a></li>
+  <li><a href="#programming-a-binomial-model-in-stan" id="toc-programming-a-binomial-model-in-stan" class="nav-link" data-scroll-target="#programming-a-binomial-model-in-stan">Programming a binomial model in Stan</a>
+  <ul class="collapse">
+  <li><a href="#defining-the-data" id="toc-defining-the-data" class="nav-link" data-scroll-target="#defining-the-data">Defining the data</a></li>
+  <li><a href="#creating-the-stan-model" id="toc-creating-the-stan-model" class="nav-link" data-scroll-target="#creating-the-stan-model">Creating the Stan model</a></li>
+  <li><a href="#running-the-stan-model-in-r" id="toc-running-the-stan-model-in-r" class="nav-link" data-scroll-target="#running-the-stan-model-in-r">Running the Stan model in R</a></li>
+  <li><a href="#running-the-model-and-examining-the-output" id="toc-running-the-model-and-examining-the-output" class="nav-link" data-scroll-target="#running-the-model-and-examining-the-output">Running the model and examining the output</a></li>
+  </ul></li>
+  <li><a href="#what-is-a-bayesian-model" id="toc-what-is-a-bayesian-model" class="nav-link" data-scroll-target="#what-is-a-bayesian-model">What is a Bayesian model?</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sohaamir/BayesCog/edit/main/workshops/02.binomial_globe/qmd/stan_binomial.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sohaamir/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">An introduction to the Stan programming language</h1>
+<p class="subtitle lead">Building our binomial model for the globe-tossing experiment in Stan</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>In our last workshop, we learned about model construction using McElreath’s framework<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<ol type="1">
+<li>Creating a data story to motivate our model</li>
+<li>Updating our model with observed data</li>
+<li>Evaluating and potentially revising our model</li>
+</ol>
+<p>We then applied this framework to build a binomial model, where we:</p>
+<ul>
+<li>Defined our parameter of interest (<span class="math inline">\(θ\)</span>, the proportion of water)</li>
+<li>Specified our likelihood function (the binomial distribution)</li>
+<li>Implemented grid approximation to compute the posterior distribution (for 20 points)</li>
+</ul>
+<p>While grid approximation proved effective for our single-parameter model, we discussed its limitations when dealing with multiple parameters. This led us to explore Markov chain Monte Carlo (MCMC) methods - a more scalable approach to sampling from posterior distributions in complex models.</p>
+<p>We then learned how MCMC works, by combining random sampling (Monte Carlo) to explore the parameter space, and defined state transitions (Markov chains) to guide samples toward regions of high posterior probability. We also demonstrated this through a practical example using the Metropolis algorithm.</p>
+<p><strong>But how do we program these models?</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/modelling_workflow.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption">
+<p>We are now at the model construction stage in our analysis workflow.</p>
+</div>
+<section id="what-is-stan" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-stan">What is Stan?</h2>
+<p>Stan<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> is a probabilistic programming language designed specifically for statistical modeling and high-performance statistical computation. It was developed by Andrew Gelman, Bob Carpenter, and others at Columbia University, and named after Stanislaw Ulam, who pioneered Monte Carlo methods. It is a popular approach to statistical modeling, with the core Stan paper being cited over 8,300 citations, surpassing the older JAGS program (introduced in 2003, ~7,200 citations). The popularity of Stan has been furthered by the development of user-friendly interfaces, particularly the <code>brms</code> (Bayesian Regression Models using Stan) R package, which also introduced in 2017, has already accumulated over 8,500 citations.</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/stan_citations.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption">
+<p>Citations for JAGS, Stan and <code>brms</code> as of 1/1/2025.</p>
+</div>
+<p>Stan is widely used across many scientific disciplines. While its roots are in statistics and probability (and is most used among those in this field), Stan is also popular in experimental psychology and neuroscience.</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/stan_web_of_science.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption">
+<p>Web of Science, retrieved 05/2021</p>
+</div>
+<p>But what is Stan and how it is implemented? Stan is it’s own programming language, like <code>R</code> or Python, but also has an interface with other platforms and softwares. You can even run Stan from <a href="https://mc-stan.org/users/interfaces/cmdstan">the command line</a>. In our case, we will specifically be using Stan with <code>R</code>, and so will rely upon the <code>R</code> interface to Stan <a href="https://mc-stan.org/users/interfaces/rstan">RStan</a>.</p>
+<p><strong>RStan acts as a bridge between <code>R</code> and Stan - it takes our Stan model code (which we write in a separate <code>.stan</code> file), compiles it into C++, runs the model, and returns the results in a format that’s easy to work with in <code>R</code>.</strong> The workflow typically involves:</p>
+<ol type="1">
+<li>Writing our model code in Stan</li>
+<li>Preparing our data in <code>R</code> in a format Stan can understand</li>
+<li>Using RStan functions to compile and run the model</li>
+<li>Accessing and analyzing the results back in <code>R</code></li>
+</ol>
+<p>This separation between Stan and <code>R</code> is powerful because it lets us use Stan’s efficient computation engine while also being able to use <code>R</code>’s extensive tools for data manipulation and visualization.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/r_and_stan.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.2em;">
+<p>The relationship between Stan and R. We feed the data from R into Stan, which then samples it using our Stan model. These samples are then fed back into R for analysis and inference.</p>
+</div>
+</section>
+<section id="the-basic-stan-model" class="level2">
+<h2 class="anchored" data-anchor-id="the-basic-stan-model">The basic Stan model</h2>
+<p>Unlike <code>R</code> or Python, Stan is a block-based language, consisting of distinct sections of code that serve specific purposes in our model specification and computation. Here’s a breakdown of each block and its purpose:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ... read in external data...</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ... parameters to be sampled by HMC ...</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ... statistical/cognitive model ...</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong><code>data</code></strong></p>
+<p>This block declares and defines the data that your model will use.</p>
+<ul>
+<li>Here, you specify the input data that you’ll provide from <code>R</code>. This includes the dimensions (number of observations) and the actual data values.</li>
+</ul>
+<p><strong><code>parameters</code></strong></p>
+<p>Here you declare the parameters that Stan will estimate.</p>
+<ul>
+<li>These are the unknown quantities in your model that you want to determine. Each parameter needs constraints on its possible values (like being positive or between 0 and 1).</li>
+</ul>
+<p><strong><code>model</code></strong></p>
+<p>This is where you specify your statistical model. This is how we link the data to the unknown parameter. It includes:</p>
+<ul>
+<li>Priors for your parameters</li>
+<li>The likelihood function relating parameters to data</li>
+<li>Any constraints or relationships between variables</li>
+</ul>
+<p><strong>Each block serves a specific purpose in the modeling pipeline, and understanding when to use each one is key to writing efficient Stan programs.</strong> There are other blocks - which we will cover in future workshops - but for now, it is enough to understand that these three blocks are the most important when writing your Stan model.</p>
+<p>With this in mind, let’s revisit the globe tossing example from earlier.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/globe.png" class="img-fluid figure-img" style="width:20.0%"></p>
+</figure>
+</div>
+<p>Recall that we repeatedly tossed a globe containing an unknown parameter <span class="math inline">\(\theta\)</span>, representing some true proportion of water covering the globe.</p>
+<p>We tossed the globe nine times, with the nine samples being:</p>
+<p><span class="math display">\[W L W W W L W L W\]</span></p>
+<p>where <span class="math inline">\(W\)</span> indicates water and <span class="math inline">\(L\)</span> indicates land.</p>
+<p>So, we ultimately observed six <span class="math inline">\(W\)</span> (water) observations and three <span class="math inline">\(L\)</span> (land) observations.</p>
+<p><strong>This data can be more formally expressed using probability notation.</strong> If we let <span class="math inline">\(N\)</span> represent the total number of trials, we can alternatively write:</p>
+<p><span class="math display">\[W \sim \text{Binomial}(N, \theta)\]</span></p>
+<p>Which is equivalent to writing the full probability mass function:</p>
+<p><span class="math display">\[p(w | N,\theta) = \binom{N}{w}\theta^w(1-\theta)^{N-w}\]</span></p>
+<p>Both expressions read as: “<span class="math inline">\(W\)</span> is distributed as a binomial distribution, with number of trials <span class="math inline">\(N\)</span>, and success rate <span class="math inline">\(\theta\)</span>.”</p>
+<p>This mathematical notation is particularly useful as it maps directly to how we’ll specify our model in Stan.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="The $\sim$">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The <span class="math inline">\(\sim\)</span>
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The tilde symbol (<span class="math inline">\(\sim\)</span>) is used in both mathematical notation and in Stan code to denote that a variable follows a particular probability distribution.</p>
+</div>
+</div>
+<p>Often in papers, you will also see the model graphed visually using a particular notation<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>.</p>
+<p>On the left hand side below is a table describing this notation, which separates variables into two categories:</p>
+<ol type="1">
+<li><p>Whether they are continuous or discrete</p></li>
+<li><p>Whether they are observed or unobserved</p></li>
+</ol>
+<p>If the variable is observed, then it is shaded, and if unobserved, it is clear. If the variable is continuous, it is placed within a circle, if it is discrete, it is placed within a square.</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/binomial_graphical_model.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div style="height: 20px;">
+
+</div>
+<p>Let’s apply this notation to our globe tossing model. Remember our variables:</p>
+<ul>
+<li><span class="math inline">\(θ\)</span> is a continuous, unobserved parameter representing the true proportion of water</li>
+<li><span class="math inline">\(N\)</span> is a discrete, observed value representing the number of tosses</li>
+<li><span class="math inline">\(w\)</span> is a discrete, observed value, representing the number of water observations</li>
+</ul>
+<p>We can represent this in the graph (a Directed Acrylic Graph, DAG) shown above on the right, which shows the dependencies between variables using arrows:</p>
+<ul>
+<li><span class="math inline">\(θ\)</span> our unknown parameter is at the top, with a uniform prior distribution between 0 and 1</li>
+<li><span class="math inline">\(N\)</span> is simply the number of trials (tosses)</li>
+<li><span class="math inline">\(w\)</span> the number of water observations, follows a Binomial distribution with parameters <span class="math inline">\(N\)</span> and <span class="math inline">\(θ\)</span></li>
+</ul>
+<p>Remember that the shaded boxes indicate observed quantities (<span class="math inline">\(N\)</span> and <span class="math inline">\(w\)</span>), whilst unshaded circles indicate parameters we want to estimate (<span class="math inline">\(θ\)</span>).</p>
+<p>Ultimately, this graphical representation is useful when constructing our model, as it helps us visualize:</p>
+<ul>
+<li>The hierarchical structure of our model</li>
+<li>Which variables depend on others</li>
+<li>What we observe versus what we need to estimate</li>
+<li>The probability distributions involved</li>
+</ul>
+</section>
+<section id="programming-a-binomial-model-in-stan" class="level2">
+<h2 class="anchored" data-anchor-id="programming-a-binomial-model-in-stan">Programming a binomial model in Stan</h2>
+<p>Let’s now build our binomial model using the Stan programming language, and run the model through the RStudio interface.</p>
+<section id="defining-the-data" class="level3">
+<h3 class="anchored" data-anchor-id="defining-the-data">Defining the data</h3>
+<p>Open the script <code>binomial_globe_main.R</code>, which is the <code>R</code> script that will run our Stan model.</p>
+<p>At the top of the script, you can see the following code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span>(<span class="at">list=</span><span class="fu">ls</span>(<span class="at">all=</span><span class="cn">TRUE</span>))</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="dv">6</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">9</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>dataList <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">w=</span>w, <span class="at">N=</span>N)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Here we clear the workspace, assign our parameter values for the number of samples, <code>N</code>, and the number of water observations, <code>w</code>. Importantly, because we need to send this data to our Stan model, we convert the data into a data list using the <code>list</code> function.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Why do we use a data list?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Why do we use a data list?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that stan models, when executed, get compiled to C++. Subsequently, Stan doesn’t understand <code>R</code>’s data frame structure. Data lists are simpler data structures that can be more easily translated between <code>R</code> and Stan’s C++ implementation.</p>
+</div>
+</div>
+<p>Now that the data is properly defined and stored, the next stage is to write our Stan model.</p>
+</section>
+<section id="creating-the-stan-model" class="level3">
+<h3 class="anchored" data-anchor-id="creating-the-stan-model">Creating the Stan model</h3>
+<p>Open the <code>binomial_globe_model.stan</code> file. The model has already been created for you:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">data</span> {</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; w;</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>&gt; N;</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="kw">parameters</span> {</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; theta;</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="kw">model</span> {</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">// theta ~ uniform(0,1);</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  w ~ binomial(N, theta);</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-caution callout-titled" title="Stan files and the empty line">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Stan files and the empty line
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that there is a blank line at the bottom of the Stan model code. This must be the case for all <code>.stan</code> files!</p>
+</div>
+</div>
+<p>Remember that the three main blocks that we need in any Stan model are the <code>data</code>, <code>parameters</code> and <code>model</code> blocks. But what do each of these blocks mean and why do we choose the certain values that they are?</p>
+<div style="font-size: 20px;">
+<strong>Data</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>We use the <code>data</code> block to declare variables we’ll receive from <code>R</code>. <strong>Importantly, the names need to match between your <code>R</code> script and Stan model.</strong></p>
+<p>Within the block, there are a number of technical notes:</p>
+<ul>
+<li><code>int</code> specifies that these are integer values (whole numbers)</li>
+<li><code>&lt;lower=0&gt;</code> constrains these values to be non-negative, since you can’t have negative counts</li>
+<li>Each line ends with a semicolon (<code>;</code>) because Stan is based on C++, where statements must be terminated with semicolons</li>
+</ul>
+<p>Ultimately, this code tells the Stan model to expect non-negative integers for our two data variables, <span class="math inline">\(w\)</span> and <span class="math inline">\(N\)</span>.</p>
+<div style="font-size: 20px;">
+<strong>Parameters</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>We use the <code>parameters</code> block to declare the variables that we would like to estimate.</p>
+<p>Again, within the block there are specifics that we must declare:</p>
+<ul>
+<li>We declare that the parameter, <span class="math inline">\(θ\)</span>, can take decimal values by adding <code>real</code> (i.e., a continuous parameter)</li>
+<li><code>&lt;lower=0,upper=1&gt;</code> constrains <span class="math inline">\(θ\)</span> to be a probability between 0 and 1</li>
+</ul>
+<p>This code tells the Stan model that we want to estimate <span class="math inline">\(θ\)</span>, which can take any decimal value constrained between 0 and 1.</p>
+<div style="font-size: 20px;">
+<strong>Model</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>The model block specifies our statistical model (i.e., our likelihood function).</p>
+<p><code>w ~ binomial(N, theta)</code> specifies that <span class="math inline">\(w\)</span> follows a binomial distribution with:</p>
+<ul>
+<li><span class="math inline">\(N\)</span> trials</li>
+<li><span class="math inline">\(θ\)</span> probability of success (observing water)</li>
+<li>The <span class="math inline">\(\sim\)</span> operator means “is distributed as”</li>
+</ul>
+<p>So, this block simply translates to: “The number of water observations follows a binomial distribution according to the number of trials and the proportion of water on the globe”.</p>
+<p>However, there is an additional line, which is optional in this specific case. Recall that in Bayesian inference, we need a prior (initial belief) for our parameters. In this case, we could (but don’t have to), set a uniform prior between 0 and 1. This reflects an implicit uniform prior which is uninformed. In other words, we have no prior evidence to suggest that the values of <span class="math inline">\(θ\)</span> should be a certain value.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="Not specifying a prior">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Not specifying a prior
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The reason why we do not have to specify our prior in this case is that when no prior is specified, Stan uses a uniform prior by default for bounded parameters. Ultimately, even in this scenario, priors should always be coded for clarity.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled" title="Checking your Stan model">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Checking your Stan model
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>It is recommended to always check if your Stan model has been correctly written. To do this, click on the ‘Check’ tab on the top right of the main <code>R</code> window.</p>
+<p>If there are no issues, the the following message will appear in the console:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>&gt; rstan:::rstudio_stanc(<span class="st">"workshops/02.binomial_globe/_scripts/binomial_globe_model.stan"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>workshops/<span class="fl">02.</span>binomial_globe/_scripts/binomial_globe_model.stan is syntactically correct.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>However, if for example, you removed a semi-colon from one of the lines, the following error message will appear:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>&gt; rstan:::rstudio_stanc(<span class="st">"workshops/02.binomial_globe/_scripts/binomial_globe_model.stan"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> stanc(filename, allow_undefined = TRUE) : <span class="dv">0</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>Syntax error <span class="cf">in</span> 'string', line <span class="dv">11</span>, column <span class="dv">0</span> to column <span class="dv">1</span>, parsing error:</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>   -------------------------------------------------</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="dv">9</span>:    <span class="co">//p ~ uniform(0,1);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="dv">10</span>:    w ~ binomial(N, theta)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="dv">11</span>:  }</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>         ^</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>   -------------------------------------------------</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>Ill-formed <span class="st">"~"</span>-statement. Expected <span class="st">";"</span> or <span class="st">"T["</span> optional expression <span class="st">","</span> optional expression <span class="st">"];"</span>.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can then fix the error and re-check. Debugging in Stan will be covered in more detail in Workshop 9 of the course.</p>
+</div>
+</div>
+</section>
+<section id="running-the-stan-model-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="running-the-stan-model-in-r">Running the Stan model in R</h3>
+<p>So now we have both defined our data and created the Stan model, we can now run the model through our <code>R</code> script. But, this is not as straight-forward as simply pressing ‘Run’. We need to set-up our <code>R</code> script to run the model according to our specifications.</p>
+<p>Here is the relevant section of the <code>binomial_globe_main.R</code> script:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Running Stan #### </span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">mc.cores =</span> <span class="dv">4</span>)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>modelFile <span class="ot">&lt;-</span> <span class="st">'_scripts/binomial_globe_model.stan'</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>nIter     <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>nChains   <span class="ot">&lt;-</span> <span class="dv">4</span> </span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>nWarmup   <span class="ot">&lt;-</span> <span class="fu">floor</span>(nIter<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>nThin     <span class="ot">&lt;-</span> <span class="dv">1</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Estimating"</span>, modelFile, <span class="st">"model... </span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>startTime <span class="ot">=</span> <span class="fu">Sys.time</span>(); <span class="fu">print</span>(startTime)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Calling"</span>, nChains, <span class="st">"simulations in Stan... </span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>fit_globe <span class="ot">&lt;-</span> rstan<span class="sc">::</span><span class="fu">stan</span>(modelFile,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>                  <span class="at">data    =</span> dataList,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>                  <span class="at">chains  =</span> nChains,</span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>                  <span class="at">iter    =</span> nIter,</span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>                  <span class="at">warmup  =</span> nWarmup,</span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>                  <span class="at">thin    =</span> nThin,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>                  <span class="at">init    =</span> <span class="st">"random"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">seed    =</span> <span class="dv">1450154626</span>)</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Finishing"</span>, modelFile, <span class="st">"model simulation ... </span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>endTime <span class="ot">=</span> <span class="fu">Sys.time</span>(); <span class="fu">print</span>(endTime)  </span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"It took"</span>,<span class="fu">as.character.Date</span>(endTime <span class="sc">-</span> startTime), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-important callout-titled" title="Installing Rstan">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Installing Rstan
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>If running the script, you should double check if <code>rstan</code> is installed. You can do this by:</p>
+<ul>
+<li>Run <code>installed.packages()</code> and look for <code>rstan</code></li>
+<li>Simply try <code>library(rstan)</code> - if it errors, it’s not installed</li>
+</ul>
+<p>If you do not have <code>rstan</code> installed, please follow the <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">RStan Getting Started</a> guide or the <code>renv</code> guide in the ‘Course Overview’ page on this website.</p>
+</div>
+</div>
+<div style="font-size: 20px;">
+<strong>Set-up and configuration</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>The first section mainly specifies our Stan environment. It loads the <code>rstan</code> package and using <code>auto_write = TRUE</code> saves compiled Stan programs to avoid recompilation. Setting <code>mc.cores</code> controls the processing power for the Stan process. Setting this to 4 enables parallel processing across 4 CPU cores for faster sampling.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Determining how many cores to use">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Determining how many cores to use
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can check how many cores are available by running <code>parallel::detectCores()</code>. For example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> parallel<span class="sc">::</span><span class="fu">detectCores</span>()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">12</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Generally, it’s recommended to use 1 core per chain. This allows for each chain to be ran by each separate CPU concurrently.</p>
+</div>
+</div>
+<div style="font-size: 20px;">
+<strong>Sampling parameters</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>The next section defines our MCMC sampling strategy. After using <code>modelFile</code> to specify the path to our <code>.stan</code> model file we set:</p>
+<ul>
+<li><code>nIter</code> - total iterations per chain (2000) i.e., the number of visits that the MCMC robot makes. We need enough iterations to explore the parameter space thoroughly, and 2000 is often sufficient for simple models like ours</li>
+<li><code>nChains</code> - number of parallel chains for convergence diagnostics (4). Multiple chains help assess convergence. If chains reach similar distributions from different starting points, then we’re more confident in our results. Four chains is standard practice - enough to assess convergence without excessive computation</li>
+<li><code>nWarmup</code> - discards first X iterations as burn-in period (1000). The initial samples might be poor if chains start in certain regions of the parameter space. Discarding them ensures we only use samples from when chains have “settled”.</li>
+<li><code>nThin</code> keeps every sample (no thinning). Thinning means keeping every nth sample, which is useful if samples are highly autocorrelated. Ours is a simple model, so we don’t need to thin.</li>
+</ul>
+<div style="font-size: 20px;">
+<strong>Time tracking</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>We simply record the start and the end time to determine how long the model took to run. This is useful for adjusting our settings if the runtime is too long.</p>
+<div style="font-size: 20px;">
+<strong>Model execution</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>We then run our model, through the <code>stan()</code>function and save its output to <code>fit_globe</code>. When we run this function, we’re doing several important things:</p>
+<ol type="1">
+<li><p>First, the function reads our Stan model file, compiles it to C++ code, and runs the MCMC sampling process using all the parameters we’ve specified - the number of chains, iterations, warm-up period, and so on.</p></li>
+<li><p>Two additional settings are the <code>init</code> which defines the initial starting point (which is random) and the <code>seed</code>. The <code>seed</code> if set, means that the results are reproducible, but only within our own machine.</p></li>
+<li><p>We assign the output to <code>fit_globe</code>. Because the output is complex, not a collection of numbers or basic results - we create a <code>stanfit</code> object, which is a specialized <code>R</code> object designed specifically for Stan model outputs. This object is like a container that holds everything about our model’s results. It contains all the posterior samples for our parameter <span class="math inline">\(θ\)</span>, but it also includes diagnostic information about how well the sampling worked, metrics about whether our chains converged properly, details about the model specification, and various other metadata about the sampling process.</p></li>
+</ol>
+</section>
+<section id="running-the-model-and-examining-the-output" class="level3">
+<h3 class="anchored" data-anchor-id="running-the-model-and-examining-the-output">Running the model and examining the output</h3>
+<p>Let’s now run the Stan model. You can do this by highlighting the code included in the previous code block in the <code>R</code> script.</p>
+<p>When it is running, you should see the following output in the console:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>starting worker pid<span class="ot">=</span><span class="dv">56934</span> on localhost<span class="sc">:</span><span class="dv">11017</span> at <span class="dv">12</span><span class="sc">:</span><span class="dv">53</span><span class="sc">:</span><span class="fl">01.273</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>starting worker pid<span class="ot">=</span><span class="dv">56947</span> on localhost<span class="sc">:</span><span class="dv">11017</span> at <span class="dv">12</span><span class="sc">:</span><span class="dv">53</span><span class="sc">:</span><span class="fl">01.551</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>starting worker pid<span class="ot">=</span><span class="dv">56960</span> on localhost<span class="sc">:</span><span class="dv">11017</span> at <span class="dv">12</span><span class="sc">:</span><span class="dv">53</span><span class="sc">:</span><span class="fl">01.802</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>starting worker pid<span class="ot">=</span><span class="dv">56973</span> on localhost<span class="sc">:</span><span class="dv">11017</span> at <span class="dv">12</span><span class="sc">:</span><span class="dv">53</span><span class="sc">:</span><span class="fl">02.058</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>SAMPLING FOR MODEL <span class="st">'anon_model'</span> <span class="fu">NOW</span> (CHAIN <span class="dv">1</span>).</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Gradient evaluation took <span class="fl">8e-06</span> seconds</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> <span class="dv">1000</span> transitions using <span class="dv">10</span> leapfrog steps per transition would take <span class="fl">0.08</span> seconds.</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Adjust your expectations accordingly<span class="sc">!</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>    <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2000</span> [  <span class="dv">0</span>%]  (Warmup)</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>  <span class="dv">200</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">10</span>%]  (Warmup)</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>  <span class="dv">400</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">20</span>%]  (Warmup)</span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>  <span class="dv">600</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">30</span>%]  (Warmup)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>  <span class="dv">800</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">40</span>%]  (Warmup)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1000</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">50</span>%]  (Warmup)</span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1001</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">50</span>%]  (Sampling)</span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1200</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">60</span>%]  (Sampling)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1400</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">70</span>%]  (Sampling)</span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1600</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">80</span>%]  (Sampling)</span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1800</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">90</span>%]  (Sampling)</span>
+<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">2000</span> <span class="sc">/</span> <span class="dv">2000</span> [<span class="dv">100</span>%]  (Sampling)</span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
+<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span>  Elapsed Time<span class="sc">:</span> <span class="fl">0.007</span> <span class="fu">seconds</span> (Warm<span class="sc">-</span>up)</span>
+<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span>                <span class="fl">0.007</span> <span class="fu">seconds</span> (Sampling)</span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span>                <span class="fl">0.014</span> <span class="fu">seconds</span> (Total)</span>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This visually shows the MCMC chains at work. We can see that the first 1000 samples are labelled as ‘Warmup’ and also how long the process takes.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="Model running times">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Model running times
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The model upon it’s first run will take around 1-2 minutes, depending on the processing power of your machine. However, if you run it again it will take significantly shorter. This is because we have set the model to avoid recompilation through <code>rstan_options(auto_write = TRUE)</code></p>
+</div>
+</div>
+<p>Once the model has finished running, we can examine the output. What exactly is the output? What are the data generated? There’s a lot to cover in that regard, so for now we will just focus on some basic checks.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(fit_globe)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>plot_trace_excl_warm_up <span class="ot">&lt;-</span> <span class="fu">stan_trace</span>(fit_globe, <span class="at">pars =</span> <span class="st">'theta'</span>, <span class="at">inc_warmup =</span> F)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>plot_trace_incl_warm_up <span class="ot">&lt;-</span> <span class="fu">stan_trace</span>(fit_globe, <span class="at">pars =</span> <span class="st">'theta'</span>, <span class="at">inc_warmup =</span> T)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>plot_dens_cmb <span class="ot">&lt;-</span> <span class="fu">stan_dens</span>(fit_globe, <span class="at">separate_chains =</span> F, <span class="at">fill =</span> <span class="st">'skyblue'</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>plot_dens_sep <span class="ot">&lt;-</span> <span class="fu">stan_dens</span>(fit_globe, <span class="at">separate_chains =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>If we print <code>fit_globe</code> we get the following:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(fit_globe)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Inference <span class="cf">for</span> Stan model<span class="sc">:</span> anon_model.</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> chains, each with iter<span class="ot">=</span><span class="dv">2000</span>; warmup<span class="ot">=</span><span class="dv">1000</span>; thin<span class="ot">=</span><span class="dv">1</span>; </span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>post<span class="sc">-</span>warmup draws per chain<span class="ot">=</span><span class="dv">1000</span>, total post<span class="sc">-</span>warmup draws<span class="ot">=</span><span class="fl">4000.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       mean se_mean   sd  <span class="fl">2.5</span><span class="sc">%   25%</span>   <span class="dv">50</span><span class="sc">%   75%</span> <span class="fl">97.5</span>% n_eff Rhat</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>theta  <span class="fl">0.64</span>    <span class="fl">0.00</span> <span class="fl">0.14</span>  <span class="fl">0.35</span>  <span class="fl">0.55</span>  <span class="fl">0.65</span>  <span class="fl">0.74</span>  <span class="fl">0.87</span>  <span class="dv">1483</span>    <span class="dv">1</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>lp__  <span class="sc">-</span><span class="fl">7.71</span>    <span class="fl">0.02</span> <span class="fl">0.69</span> <span class="sc">-</span><span class="fl">9.78</span> <span class="sc">-</span><span class="fl">7.86</span> <span class="sc">-</span><span class="fl">7.44</span> <span class="sc">-</span><span class="fl">7.27</span> <span class="sc">-</span><span class="fl">7.21</span>  <span class="dv">1886</span>    <span class="dv">1</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>Samples were drawn using <span class="fu">NUTS</span>(diag_e) at Tue Dec <span class="dv">24</span> <span class="dv">13</span><span class="sc">:</span><span class="dv">18</span><span class="sc">:</span><span class="dv">04</span> <span class="fl">2024.</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>For each parameter, n_eff is a crude measure of effective sample size,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>and Rhat is the potential scale reduction factor on split <span class="fu">chains</span> (at </span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>convergence, <span class="at">Rhat=</span><span class="dv">1</span>).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This output gives us key information about our binomial model’s parameter estimation. Let’s break down what these numbers mean:</p>
+<p>For our parameter of interest, <span class="math inline">\(θ\)</span>, which represents the proportion of water in our globe-tossing example:</p>
+<ul>
+<li>The posterior mean is 0.64, suggesting it is most likely that 64% of the globe is covered in water</li>
+<li>The 95% credible interval ranges from 0.35 to 0.87</li>
+<li>The median (50th percentile) is 0.65, very close to our mean</li>
+</ul>
+<p>We can also see some results for the model diagnostics:</p>
+<ul>
+<li><p><strong>Effective Sample Size (n_eff):</strong> This tells us how many truly independent samples we got from our model. Even though we have 4000 total samples, they aren’t all completely independent from each other. The <code>n_eff</code> of 1483 means we effectively have about 1,483 independent samples, which is a good value; a general rule of thumb is that we want this to be above 1000.</p></li>
+<li><p><strong>Rhat:</strong> Rhat (the Gelman-Rubin statistic<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>) helps us check if our chains are converging to the same distribution. 1 is the ideal value, values above 1.1 are problematic.</p></li>
+</ul>
+<p>These results tell us we have a well-behaved model that’s giving us reliable estimates of <span class="math inline">\(θ\)</span>. The relatively tight credible interval also gives us a good sense of the uncertainty in our estimate.</p>
+<p>We can also visually examine the samples by plotting them. Checking the MCMC traces is important for determining whether the traces are mixing well and have converged. A good trace plot should look like a “fuzzy caterpillar” - showing random fluctuations around a stable mean value.</p>
+<p>You can see the MCMC traceplots for the four chains below, both with and without the burn-in period. In the <code>R</code> script, just highlight and run the following code (i.e., to plot the traces do not assign it to a variable).</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">stan_trace</span>(fit_globe, <span class="at">pars =</span> <span class="st">'theta'</span>, <span class="at">inc_warmup =</span> F)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stan_trace</span>(fit_globe, <span class="at">pars =</span> <span class="st">'theta'</span>, <span class="at">inc_warmup =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/mcmc_trace_with_warmup.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/mcmc_trace.png" class="img-fluid figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+<p><strong>Our traceplots suggest that the chains have performed well.</strong> The four chains show good mixing and overlap, indicating they’re exploring the same regions of the parameter space independently. After the warmup period, you can see that the chains are sampling consistently around the posterior mean of 0.64.</p>
+<p>To more clearly see our samples, we can instead plot them as a histogram, showing the posterior density distribution for our parameter <span class="math inline">\(\theta\)</span> estimated from our MCMC sampling:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># highlight and run the following code in the script</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>stan_dens(fit_globe, separate_chains = FALSE, fill = 'skyblue')</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>stan_dens(fit_globe, separate_chains = TRUE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/theta_posterior.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<div class="image-caption">
+<p>The posterior mean is highlighted with a black bar.</p>
+</div>
+<p>In this case, the confidence (blue shaded region) and outer levels (black lines) are set at the default values of 80% and 95% respectively:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ci_level<span class="sc">:</span> <span class="fl">0.8</span> (<span class="dv">80</span>% intervals)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>outer_level<span class="sc">:</span> <span class="fl">0.95</span> (<span class="dv">95</span>% intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+</section>
+<section id="what-is-a-bayesian-model" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-a-bayesian-model">What is a Bayesian model?</h2>
+<p>What we have done in this workshop is to estimate the value of some unknown parameter given some experimental data, using a Bayesian approach.</p>
+<p>However, if one was to say that they are working on “Bayesian models” of cognition, what does that mean? Bayesian modeling is a wider semantic construct than many realize, encompassing both how we structure our models and how we estimate their parameters. This distinction is crucial for understanding the different types of Bayesian approaches in statistical modeling and cognitive science.</p>
+<p><strong>The term “Bayesian” can actually refer to two distinct aspects of modeling: the model’s structure and the method used for parameter estimation.</strong></p>
+<ul>
+<li>The model structure determines whether parameters are treated as random variables with probability distributions (Bayesian) or as fixed, unknown constants (non-Bayesian).</li>
+<li>Meanwhile, parameter estimation methods can either produce full probability distributions through Bayesian inference or provide point estimates through non-Bayesian methods (e.g., Maximum Likelihood Estimation).</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/bayesian_matrix.png" class="img-fluid figure-img" style="width:50.0%"></p>
+</figure>
+</div>
+<div class="image-caption">
+<p>A Bayesian matrix of modeling approaches.</p>
+</div>
+<p>This creates an interesting matrix of possibilities in modeling approaches. For instance, consider the Bayesian Brain Hypothesis<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>, a prominent theory in cognitive science. The theory (in a one-sentence nutshell) proposes that the brain maintains probabilistic models of the world, continuously updating them with new sensory information.</p>
+<ul>
+<li><p>This is inherently Bayesian in structure because it assumes the brain maintains and updates probability distributions.</p></li>
+<li><p>However, when researchers implement these models, they might use either Bayesian estimation methods (like MCMC sampling) or non-Bayesian approaches (like maximum likelihood estimation). On the graph, this could be represented by the yellow or green square.</p></li>
+</ul>
+<p>On-the-other-hand, our globe-tossing example consists of the model generating the data (binomial model using coin flips/globe tosses) which is frequentist, but we’re using Bayesian methods to estimate parameters.</p>
+<ul>
+<li>On the graph, this would be represented by the orange square.</li>
+</ul>
+<p><strong>Hopefully this matrix helps to clarify what we mean when we say we’re working with Bayesian models, and about which aspects of our approach are Bayesian!</strong></p>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>McElreath, R. (2020). Statistical Rethinking: A Bayesian Course with Examples in R and Stan, 2nd Ed. CRC Press.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Carpenter, B., Gelman, A., Hoffman, M. D., Lee, D., Goodrich, B., Betancourt, M., … &amp; Riddell, A. (2017). Stan: A probabilistic programming language. Journal of statistical software, 76.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Lee, M. D., &amp; Wagenmakers, E. J. (2014). Bayesian cognitive modeling: A practical course. Cambridge university press.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Gelman, A., &amp; Rubin, D. B. (1992). Inference from iterative simulation using multiple sequences. Statistical science, 7(4), 457-472.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Colombo, M., &amp; Seriès, P. (2012). Bayes in the brain—on Bayesian modelling in neuroscience. The British journal for the philosophy of science.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../workshops/02.binomial_globe/qmd/stan_intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workshop 4: Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../workshops/03.bernoulli_coin/qmd/intro.html" class="pagination-link">
+        <span class="nav-page-text">Workshop 5: Overview</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Zhang &amp; Sohail, 2025</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

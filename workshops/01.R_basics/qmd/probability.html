@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science - Probability and Bayes’ theorem</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../workshops/02.binomial_globe/qmd/intro.html" rel="next">
+<link href="../../../workshops/01.R_basics/qmd/intro_probability.html" rel="prev">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/01.R_basics/qmd/intro_probability.html">Workshop 2: Probability and an introduction to Bayes’ theorem</a></li><li class="breadcrumb-item"><a href="../../../workshops/01.R_basics/qmd/probability.html">Probability and Bayes’ theorem</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../../../index.html" class="sidebar-logo-link">
+      <img src="../../../images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://alpnlab.github.io" rel="" title="Openscapes.org" class="quarto-navigation-tool px-1" aria-label="Openscapes.org"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/alpnlab" rel="" title="Quarto website tutorial" class="quarto-navigation-tool px-1" aria-label="Quarto website tutorial"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/openscapes" rel="" title="Openscapes Twitter" class="quarto-navigation-tool px-1" aria-label="Openscapes Twitter"><i class="bi bi-twitter"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to BayesCog!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../course_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+ <span class="menu-text">Workshop 1: R Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 1: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R/RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Workshop 2: Probability and an introduction to Bayes’ theorem</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 2: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Probability and Bayes’ theorem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Workshop 3: Building simple models conceptually</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 3: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linking data to parameters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The globe-tossing experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markov chain Monte Carlo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Workshop 4: Introduction to building models in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 4: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Building models in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Workshop 5: Bernoulli and linear regression models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 5: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical notes on Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli and linear regression models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Workshop 6: Reinforcement learning models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 6: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of cognitive modeling and reinforcement learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing the Rescorla-Wagner model in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">Workshop 7: Hierachical Bayesian modeling</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 7: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hierarchical Bayesian models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reparameterization and optimizing Stan code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">Workshop 8: Model comparison</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 8: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Workshop 9: Debugging in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 9: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging in Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A principled modeling workflow</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">Bonus workshop: Introduction to model-based fMRI</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to model-based fMRI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction-to-probability" id="toc-introduction-to-probability" class="nav-link active" data-scroll-target="#introduction-to-probability">Introduction to probability</a>
+  <ul class="collapse">
+  <li><a href="#discrete-and-continuous-probability" id="toc-discrete-and-continuous-probability" class="nav-link" data-scroll-target="#discrete-and-continuous-probability">Discrete and continuous probability</a></li>
+  <li><a href="#probability-distributions-in-r" id="toc-probability-distributions-in-r" class="nav-link" data-scroll-target="#probability-distributions-in-r">Probability distributions in R</a></li>
+  </ul></li>
+  <li><a href="#joint-marginal-and-conditional-probability" id="toc-joint-marginal-and-conditional-probability" class="nav-link" data-scroll-target="#joint-marginal-and-conditional-probability">Joint, marginal and conditional probability</a>
+  <ul class="collapse">
+  <li><a href="#understanding-continuous-probability-distributions" id="toc-understanding-continuous-probability-distributions" class="nav-link" data-scroll-target="#understanding-continuous-probability-distributions">Understanding continuous probability distributions</a></li>
+  </ul></li>
+  <li><a href="#bayes-theorem" id="toc-bayes-theorem" class="nav-link" data-scroll-target="#bayes-theorem">Bayes’ theorem</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sohaamir/BayesCog/edit/main/workshops/01.R_basics/qmd/probability.qmd" class="toc-action">Edit this page</a></p><p><a href="https://github.com/sohaamir/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="probability.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Probability and Bayes’ theorem</h1>
+<p class="subtitle lead">Introducing key probability concepts and how they lead to Bayesian statistics</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="introduction-to-probability" class="level2">
+<h2 class="anchored" data-anchor-id="introduction-to-probability">Introduction to probability</h2>
+<p><strong>Probability is a mathematical way of describing how likely an outcome or event is to occur.</strong> In other words, we assign numbers to a set of possibilities associated with an event.</p>
+<p>Probability has several key properties<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
+<ul>
+<li>The probability <span class="math inline">\(p\)</span> of an event must be between 0 and 1</li>
+</ul>
+<p><span class="math display">\[
+p \in [0,1]
+\]</span></p>
+<ul>
+<li>The sum of all outcomes associated with an event should be 1</li>
+</ul>
+<p><span class="math display">\[
+\sum p = 1
+\]</span></p>
+<section id="discrete-and-continuous-probability" class="level3">
+<h3 class="anchored" data-anchor-id="discrete-and-continuous-probability">Discrete and continuous probability</h3>
+<p>There are two types of probability, discrete and continuous, which depend on the type of event.</p>
+<p>In the event of a fair coin flip, there are two discrete outcomes: heads or tails. If we roll a fair die, there are six possible discrete outcomes, 1, 2, 3, 4, 5 or 6.</p>
+<p><strong>When the event is discrete, we describe probability as it’s mass, using a probability mass function (PMF).</strong> In the example below<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, we’re looking at test scores where students can only get whole numbers of questions correct (0 to 8 correct answers). The graph shows the probability mass for each possible outcome, where each bar represents the probability of a student getting exactly that number of correct answers. For instance, we can see that getting 6 correct answers has the highest probability (around 0.3 or 30%).</p>
+<p><br></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/discrete_mass.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<p>We can use this PMF to calculate various probabilities, such as:</p>
+<ul>
+<li>The probability of a student getting exactly 5 correct (height of the bar at 5)</li>
+<li>The probability of getting 5 or more correct (sum of bars from 5 to 8)</li>
+<li>The probability of getting fewer than 4 correct (sum of bars from 0 to 3)</li>
+</ul>
+<p><strong>When dealing with continuous probability, where outcomes can take any value within a range (like height, weight, or reaction times), we use density functions to describe probability.</strong></p>
+<p>There are two key functions which help us work with continuous probabilities:</p>
+<p>The Probability Density Function (PDF):</p>
+<ul>
+<li>Shows the relative likelihood of different values occurring</li>
+<li>The area under the curve between any two points represents the probability of observing a value in that range</li>
+<li>The total area under the entire curve must equal 1</li>
+<li>While the y-axis values can exceed 1, they aren’t probabilities themselves, they are arbitrary values</li>
+</ul>
+<p>The Cumulative Distribution Function (CDF):</p>
+<ul>
+<li>Shows the probability of observing a value less than or equal to any given point</li>
+<li>Always increases from 0 to 1</li>
+<li>Useful for finding probabilities of ranges and percentiles</li>
+</ul>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/pdf_cdf.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<div class="image-caption" style="font-size: 1.3em;">
+<p>The PDF and CDF for a normal distribution at two points (65 and 70)</p>
+</div>
+<p>For example, the graph above<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> depicts both the CDF and PDF for some normally distributed data. You can see how the density of the PDF and the value of the CDF both change when we calculate the probability of a value being less than 65 and then 70.</p>
+<div class="callout callout-style-default callout-important callout-titled" title="The probability of exact values">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+The probability of exact values
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Remember that unlike discrete events, the probability of any exact value in a continuous distribution is actually zero - we must instead talk about ranges of values.</p>
+</div>
+</div>
+<p>Here is another example of the difference between discrete and continuous probability:</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/discrete_and_continuous.png" class="img-fluid figure-img" style="width:90.0%"></p>
+</figure>
+</div>
+<p>For discrete data, let’s assume we have a bag of marbles, each labelled with a number from 1 to 100. We then reach into the bag, pull out a marble and place it back into the bag. In this case, we have a total of 100 possible events (<span class="math inline">\(X\)</span>), each with a discrete probability of:</p>
+<p><span class="math display">\[
+P(X=x) = \frac{1}{100}
+\]</span> The sum of all possible events is therefore:</p>
+<p><span class="math display">\[
+\sum_{x=1}^{100} P(X=x) = 1
+\]</span></p>
+<p>In the continuous data example, let’s assume we randomly sample the height <span class="math inline">\((H)\)</span> of a number of people in the population. In a continuous variable like height, there are infinitely many possible values between, say, 1.75m and 1.85m. These values can be expressed with infinite precision (e.g., 1.81, 1.801, 1.800000000000…1). <strong>Because there are infinitely many values, the probability of any single, exact value (like exactly 1.8m) is zero.</strong></p>
+<p>Instead, we can calculate the probability of having a height between two values (e.g., between 1.75m and 1.85m), by calculating the area under the curve of the PDF over that range using integration:</p>
+<p><span class="math display">\[
+P(1.75 \leq H \leq 1.85) = \int_{1.75}^{1.85} f(h)dh
+\]</span></p>
+<p>where <span class="math inline">\(f(h)\)</span> is the probability density function for height.</p>
+</section>
+<section id="probability-distributions-in-r" class="level3">
+<h3 class="anchored" data-anchor-id="probability-distributions-in-r">Probability distributions in R</h3>
+<p>There are several probability functions in <code>R</code> that we can use. The example below demonstrates their use for a normal distribution with mean 0 and standard deviation 1. These four <code>R</code> functions help us work with this distribution in different ways:</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/r_dists.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p><code>dnorm()</code> - Density Function: Shows the probability density at any point</p>
+<p><code>pnorm()</code> - Cumulative Probability Function: Shows the probability of getting a value less than or equal to x</p>
+<p><code>qnorm()</code> - Quantile Function: Given a probability, tells you the corresponding x-value</p>
+<p><code>rnorm()</code> - Random Number Generator: Generates random numbers following the normal distribution, plotted using a histogram</p>
+</section>
+</section>
+<section id="joint-marginal-and-conditional-probability" class="level2">
+<h2 class="anchored" data-anchor-id="joint-marginal-and-conditional-probability">Joint, marginal and conditional probability</h2>
+<p>So far, we have only discussed the probability of a single event, i.e., a coin can either be a head or tail, height can be between two values etc. However, in the real world, there are often complex situations where we do not have one type of event, we might have multiple events.</p>
+<p>When working with multiple events, we need to understand three important probability concepts:</p>
+<div style="font-size: 22px;">
+<strong>Joint probability</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>Joint probability represents the likelihood of two events occurring together.</p>
+<p>For any two events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, we write this as <span class="math inline">\(p(A,B)\)</span>, which equals <span class="math inline">\(p(B,A)\)</span>.</p>
+<p>For example, if we’re interested in weather conditions, <span class="math inline">\(p(\text{rain}, \text{cold})\)</span> represents the probability that it is both raining and cold. This is the probability of rain intersecting with the probability of cold weather.</p>
+<div style="font-size: 22px;">
+<strong>Marginal probability</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>Marginal probability is the probability of one event occurring, regardless of the other event. We write this as <span class="math inline">\(p(A)\)</span> for event <span class="math inline">\(A\)</span>, representing the probability of <span class="math inline">\(A\)</span> irrespective of <span class="math inline">\(B\)</span>.</p>
+<p>Using our weather example, <span class="math inline">\(p(\text{rain})\)</span> represents the overall probability of rain, regardless of temperature.</p>
+<p>Mathematically, we can express this as:</p>
+<p><span class="math display">\[p(\text{rain}) = p(\text{rain}, \text{cold}) + p(\text{rain}, \text{not cold})\]</span></p>
+<div style="font-size: 22px;">
+<strong>Conditional probability</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>Conditional probability is the probability of one event occurring, given that another event has already occurred. We write this as <span class="math inline">\(p(A|B)\)</span>, representing the probability of <span class="math inline">\(A\)</span> given that <span class="math inline">\(B\)</span> has occurred.</p>
+<p>The fundamental equation relating joint and conditional probability is:</p>
+<p><span class="math display">\[p(A,B) = p(A|B)p(B)\]</span></p>
+<p>In our weather example, <span class="math inline">\(p(\text{rain}|\text{cold})\)</span> represents the probability of rain given that it is cold. This gives us:</p>
+<p><span class="math display">\[p(\text{rain}, \text{cold}) = p(\text{rain}|\text{cold})p(\text{cold})\]</span></p>
+<p>This relationship helps us understand how these different types of probability are connected and how we can calculate one from the others.</p>
+<p>Let’s further look at how these probabilities work using concrete examples, where X represents rain (1 = rain, 0 = no rain) and Y represents cold (1 = cold, 0 = not cold).</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/weather_table.png" class="img-fluid figure-img" style="width:40.0%"></p>
+</figure>
+</div>
+<div style="font-size: 20px;">
+<strong>Joint Probability</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>From the table, we can read the joint probabilities directly:</p>
+<p><span class="math inline">\(P(X = 0, Y = 1) = 0.1\)</span> (probability of no rain and cold)</p>
+<p><span class="math inline">\(P(X = 1, Y = 1) = 0.5\)</span> (probability of rain and cold)</p>
+<p><span class="math inline">\(P(X = 1, Y = 0) = 0.1\)</span> (probability of rain and not cold)</p>
+<p><span class="math inline">\(P(X = 0, Y = 0) = 0.3\)</span> (probability of no rain and not cold)</p>
+<p>Note that these sum to 1: 0.1 + 0.5 + 0.1 + 0.3 = 1</p>
+<div style="font-size: 20px;">
+<strong>Marginal Probability</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>To find marginal probabilities, we sum across rows or columns:</p>
+<p>For Y = 1 (cold):</p>
+<p><span class="math inline">\(P(Y = 1) = 0.5 + 0.1 = 0.6\)</span> (sum across the top row)</p>
+<p>For X = 0 (no rain):</p>
+<p><span class="math inline">\(P(X = 0) = 0.1 + 0.3 = 0.4\)</span> (sum across the second column)</p>
+<div style="font-size: 20px;">
+<strong>Conditional Probability</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>To find conditional probabilities, we use the formula:</p>
+<p><span class="math display">\[
+P(X|Y) = \frac{P(X,Y)}{P(Y)}
+\]</span></p>
+<p>For example, <span class="math inline">\(P(X = 1|Y = 1)\)</span> (probability of rain given it’s cold):</p>
+<p><span class="math display">\[
+P(X = 1|Y = 1) = \frac{P(X = 1, Y = 1)}{P(Y = 1)} = \frac{0.5}{0.6} = 0.833
+\]</span></p>
+<p>This means that when it’s cold, there’s about an 83.3% chance of rain.</p>
+<section id="understanding-continuous-probability-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="understanding-continuous-probability-distributions">Understanding continuous probability distributions</h3>
+<p>Unlike discrete probabilities where we can create a simple table of all possible outcomes, continuous events deal with variables that can take on any value within a range.</p>
+<p><strong>For these events we instead calculate the same three probabilities that we used for discrete events, but as distributions</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/joint_distribution.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div style="font-size: 22px;">
+<strong>Joint distribution</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>When we have two continuous variables (x and y), their joint distribution shows how they vary together. The brighter/more intense regions show where combinations of x and y values are more likely to occur.</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/conditional_distribution.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div style="font-size: 22px;">
+<strong>Conditional distribution</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>The conditional distribution shows how one variable is distributed when we fix the other variable at specific values. The shape of these distributions can change depending on which y-value we’re looking at, showing how the two variables are related.</p>
+<div style="height: 20px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/conditional_distribution.png" class="img-fluid figure-img" style="width:60.0%"></p>
+</figure>
+</div>
+<div style="font-size: 22px;">
+<strong>Marginal distribution</strong>
+</div>
+<div style="height: 16px;">
+
+</div>
+<p>The marginal distributions (shown on the sides of the joint distribution) represent the overall distribution of each variable independently, regardless of the other variable’s value. Mathematically, these are obtained by integrating the joint distribution over all values of the other variable.</p>
+</section>
+</section>
+<section id="bayes-theorem" class="level2">
+<h2 class="anchored" data-anchor-id="bayes-theorem">Bayes’ theorem</h2>
+<p>So, now that we know how we calculate the probabilities of continuous events, we can move on to describe Bayes’ theorem.</p>
+<p><strong>Bayes’ theorem is a fundamental concept in probability theory that helps us update our beliefs about events based on new evidence.</strong> It builds directly on the concepts of conditional, joint, and marginal probability that we discussed earlier.</p>
+<p>To get a better understanding of what Bayes’ theorem tell us, let’s derive it step by step using what we know about probability:</p>
+<p>We start with the equation for joint probability that we saw earlier:</p>
+<p><span class="math display">\[
+p(A,B) = p(A|B)p(B)
+\]</span></p>
+<p>We also know that joint probability is symmetric:</p>
+<p><span class="math display">\[
+p(A,B) = p(B,A)
+\]</span></p>
+<p>Therefore:</p>
+<p><span class="math display">\[
+p(B,A) = p(B|A)p(A)
+\]</span></p>
+<p>And since <span class="math inline">\(p(A,B) = p(B,A)\)</span>, we can write:</p>
+<p><span class="math display">\[
+p(A|B)p(B) = p(B|A)p(A)
+\]</span></p>
+<p>Solving for <span class="math inline">\(p(A|B)\)</span>, we get Bayes’ theorem:</p>
+<p><span class="math display">\[
+p(A|B) = \frac{p(B|A)p(A)}{p(B)}
+\]</span></p>
+<p>Each term in Bayes’ theorem has a specific interpretation:</p>
+<ul>
+<li><span class="math inline">\(p(A)\)</span> is the prior probability - our initial belief about event A</li>
+<li><span class="math inline">\(p(B|A)\)</span> is the likelihood - probability of observing the evidence if A is true</li>
+<li><span class="math inline">\(p(B)\)</span> is the marginal likelihood - total probability of observing the evidence</li>
+<li><span class="math inline">\(p(A|B)\)</span> is the posterior probability - what we want to know after observing evidence</li>
+</ul>
+<p><strong>So what Bayes’ theorem tells us is that we can find the probability of an event A happening, given that we observed event B, by using our prior knowledge about both events. It’s equivalent to updating what we believe based on new information.</strong></p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Bayes' in a nutshell">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bayes’ in a nutshell
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>You can think of Bayes’ theorem as starting with an initial guess about something (prior), seeing some evidence (likelihood), and then making a better guess (posterior) based on that evidence.</p>
+</div>
+</div>
+<p>For example, let’s return to our weather scenario. If we want to know the probability it’s cold given that it’s raining, we would use:</p>
+<p><span class="math display">\[
+p(\text{cold}|\text{rain}) = \frac{p(\text{rain}|\text{cold})p(\text{cold})}{p(\text{rain})}
+\]</span></p>
+<p>This allows us to update our belief about the temperature based each new observation of rain.</p>
+<p>Let’s explore how Bayes’ theorem works in practice using a real-world example of the relationship between eye and hair colour in a population<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
+<div style="height: 10px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/eye_hair_table.png" class="img-fluid figure-img" style="width:70.0%"></p>
+</figure>
+</div>
+<p>The table above displays both joint probabilities for each combination and marginal probabilities for each characteristic, which is exactly what we need for Bayes’ theorem:</p>
+<p>The joint probabilities <span class="math inline">\(p(A,B)\)</span> show us how likely each specific combination is. For instance:</p>
+<ul>
+<li>Having brown eyes and black hair: <span class="math inline">\(p(\text{brown},\text{black}) = 0.11\)</span></li>
+<li>Having blue eyes and blond hair: <span class="math inline">\(p(\text{blue},\text{blond}) = 0.16\)</span></li>
+</ul>
+<p>The marginal probabilities in the table give us <span class="math inline">\(p(A)\)</span> and <span class="math inline">\(p(B)\)</span>:</p>
+<ul>
+<li>For hair color (bottom row): <span class="math inline">\(p(\text{brunette}) = 0.48\)</span>, <span class="math inline">\(p(\text{blond}) = 0.21\)</span>, etc.</li>
+<li>For eye color (right column): <span class="math inline">\(p(\text{brown}) = 0.37\)</span>, <span class="math inline">\(p(\text{blue}) = 0.36\)</span>, etc.</li>
+</ul>
+<div style="height: 10px;">
+
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/conditional_probability_table.png" class="img-fluid figure-img" style="width:80.0%"></p>
+</figure>
+</div>
+<p>Using these values, we can then apply Bayes’ theorem, for example, to find the <strong>probability of blonde hair given blue eyes:</strong></p>
+<p><span class="math display">\[
+p(\text{blond}|\text{blue}) = \frac{p(\text{blue}|\text{blond})p(\text{blond})}{p(\text{blue})} = \frac{0.16}{0.36} = 0.45
+\]</span></p>
+<div class="callout callout-style-default callout-important callout-titled" title="What did we just do?">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+What did we just do?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To summarise, we have gone from the “prior” (marginal) beliefs about hair colour before knowing eye colour, to the “posterior” (conditional) beliefs about hair color given the observed eye colour. Without knowing the eye colour, the probability of blonde hair in the population is 0.21. But knowing that the eyes are blue, the probability of blonde hair is 0.45.</p>
+</div>
+</div>
+<div class="tabset-margin-container"></div><div class="panel-tabset" title="Exercise 4">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" aria-current="page">Exercise 4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Answer</a></li></ul>
+<div class="tab-content" title="Exercise 4">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>We will now tackle a problem posed in the excellent textbook: <em>Doing Bayesian data analysis: A tutorial with R, JAGS, and Stan</em>, by John Kruschke.</p>
+<p>“Suppose that in the general population, the probability of having a rare disease is 1/1000. We denote the true presence or absence of the disease as the value of a parameter, <span class="math inline">\(\theta\)</span>, that can have the value <span class="math inline">\(\theta = ☹\)</span> if disease is present in a person, or the value <span class="math inline">\(\theta = ☺\)</span> if the disease is absent.</p>
+<p>The base rate of the disease is therefore denoted <span class="math inline">\(p(\theta = ☹) = 0.001\)</span>.</p>
+<p>Suppose(1): a test for the disease that has a 99% hit rate: <span class="math inline">\(p(T=+|\theta = ☹) = 0.99\)</span></p>
+<p>Suppose(2): the test has a false alarm rate of 5%: <span class="math inline">\(p(T=+|\theta = ☺) = 0.05\)</span></p>
+<p><strong>Q: Suppose we sample a person at random from the population, administer the test, and it comes up positive. What is the posterior probability that the person has the disease?“</strong></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Let’s solve this step by step using Bayes’ theorem to find <span class="math inline">\(p(\theta = ☹|T=+)\)</span>:</p>
+<p>First, let’s recall Bayes’ theorem: <span class="math display">\[
+p(A|B) = \frac{p(B|A)p(A)}{p(B)}
+\]</span> In our case: <span class="math display">\[
+p(\theta = ☹|T=+) = \frac{p(T=+|\theta = ☹)p(\theta = ☹)}{p(T=+)}
+\]</span> We know a few things already:</p>
+<ul>
+<li>Prior probability: <span class="math inline">\(p(\theta = ☹) = 0.001\)</span></li>
+<li>Hit rate: <span class="math inline">\(p(T=+|\theta = ☹) = 0.99\)</span></li>
+<li>False alarm rate: <span class="math inline">\(p(T=+|\theta = ☺) = 0.05\)</span></li>
+</ul>
+<p>So, we have: <span class="math display">\[
+p(\theta = ☹|T=+) = \frac{(0.99)(0.001)}{p(T=+)}
+\]</span> Meaning that we still need to calculate <span class="math inline">\(p(T=+)\)</span> (total probability of getting a positive test result) in the denominator: <span class="math display">\[
+p(T=+) = p(T=+|\theta = ☹)p(\theta = ☹) + p(T=+|\theta = ☺)p(\theta = ☺)
+\]</span></p>
+<p>Which gives: <span class="math display">\[p(T=+) = (0.99)(0.001) + (0.05)(0.999) = 0.00099 + 0.04995 = 0.05094\]</span> Now we can plug everything into Bayes’ theorem: <span class="math display">\[p(\theta = ☹|T=+) = \frac{(0.99)(0.001)}{0.05094} = 0.0194\]</span> <strong>Therefore, even though the test came back positive, there is only about a 1.94% chance that the person actually has the disease.</strong></p>
+<p>This surprising result shows that even with a very accurate test (99% hit rate), if the condition is very rare (0.1% of population), most positive results will actually be false alarms!</p>
+</div>
+</div>
+</div>
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Kolmogorov, A. N., &amp; Bharucha-Reid, A. T. (2018). Foundations of the theory of probability: Second English Edition. Courier Dover Publications.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Farrell, S., &amp; Lewandowsky, S. (2018). Computational modeling of cognition and behavior. Cambridge University Press.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Wolfram Demonstrations Project. Connecting the CDF and the PDF.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Ma, E. J. (2018). Joint, conditional, and marginal probability distributions. Eric J. Ma’s Blog. Retrieved from https://ericmjl.github.io/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Kruschke, J. (2014). Doing Bayesian data analysis: A tutorial with R, JAGS, and Stan.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="../../../workshops/01.R_basics/qmd/intro_probability.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Workshop 2: Overview</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="../../../workshops/02.binomial_globe/qmd/intro.html" class="pagination-link">
+        <span class="nav-page-text">Workshop 3: Overview</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© Zhang &amp; Sohail, 2025</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>
