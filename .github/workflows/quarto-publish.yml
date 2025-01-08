@@ -2,8 +2,8 @@ name: Quarto Publish
 
 on:
   workflow_dispatch:
-  push:
-    branches: main
+  # push: # temporarily disable as we are using quarto publish gh-pages to update the website
+  #  branches: main
 
 jobs:
   build-deploy:
