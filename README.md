@@ -6,16 +6,15 @@
 <br/>
 [![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Flei_zhang_lz&label=lei_zhang_lz)](https://twitter.com/lei_zhang_lz)
 [![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2FAamirNSohail&label=AamirNSohail)](https://twitter.com/AamirNSohail)
-:::
 
 <p align="center">
-  <img src="https://github.com/sohaamir/BayesCog/blob/main/images/introduction/bayes_banner.png" alt="Bayes Banner" width="700" height="400">
+  <img src="https://github.com/sohaamir/BayesCog/blob/main/images/introduction/bayes_banner.png" alt="Bayes Banner" width="90%">
 </p>
 
 This website[^1] is an adapted version of teaching materials originally made for the <ins>award winning</ins>\* **BayesCog** seminar at the [Faculty of Psychology](https://psychologie.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/en/), as part of the Advanced Seminar for master's students (Mind and Brain track; recorded during Summer Term 2020/2021).
 Further content from the [BayesCog workshop at UKE Hamburg](https://github.com/lei-zhang/BayesCog_Part1) (2023) have also been added. 
 
-**Recording**: Recordings from the original version of the course are available on [YouTube](https://www.youtube.com/watch?v=8RpLF7ufZs4&list=PLfRTb2z8k2x9gNBypgMIj3oNLF8lqM44-) (also see below).
+**Recording**: Recordings from the original version of the course are available on [YouTube](https://www.youtube.com/watch?v=8RpLF7ufZs4&list=PLfRTb2z8k2x9gNBypgMIj3oNLF8lqM44-).
 The most recent recording from the 2021 summer semester is also available on [YouTube](https://youtube.com/playlist?list=PLfRTb2z8k2x8ZCqDJ0WEFNs2ymXQCliLa).
 
 **Outreach**: [**Twitter thread**](https://twitter.com/lei_zhang_lz/status/1276506555660275714?s=20) (being **liked 700+ times** on Twitter) summarizing the contents of the course. 
@@ -25,7 +24,7 @@ The most recent recording from the 2021 summer semester is also available on [Yo
 ## Table of contents
 
 - [Course Summary](#course-summary)
-- [List of Folders and Content](#-folders-content)
+- [List of folders and contents](#-folders-content)
 - [Setup](#setup)
 - [Contributors](#contributors)
 - [License](#-license)
@@ -39,7 +38,7 @@ Computational modeling and mathematical modeling provide an insightful quantitat
 In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics, statistical distibrutions and reinforcement learning. 
 We will use [R/RStudio](https://posit.co/download/rstudio-desktop/) and a newly developed statistical computing language - [Stan](mc-stan.org) - to perform Bayesian analyses, ranging from simple binomial models and linear regression models to more complex hierarchical reinforcement learning (RL) models.
 
-## List of Folders and Content
+## List of folders and contents
 
 Folder | Task | Model
 -----  | ---- | ----
@@ -73,7 +72,7 @@ git clone https://github.com/your-username/BayesCog.git
 cd BayesCog
 ```
 
-3. Install the relevant `R` packages using `renv`
+4. Install the relevant `R` packages using `renv`
 
 Open `R` in the project directory (`BayesCog.Rproj`) and run:
 
@@ -104,7 +103,7 @@ This course is licensed under a [Creative Commons Attribution-ShareAlike 4.0 Int
 You are free to share, copy, and redistribute the material in any medium or format. Additionally, you can adapt, remix, transform, and build upon the material for any purpose, including commercial use.
 However, you must provide appropriate attribution, including credit to the original source, a link to the license, and an indication if changes were made. Furthermore, if you remix, transform, or build upon the material, you are required to distribute your contributions under the same license as the original.
 
-![](images/introduction/cc_by_sa.png){width="10%"}
+<img src="images/introduction/cc_by_sa.png" width="10%">
 
 
 ## Citing

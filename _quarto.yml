@@ -7,7 +7,7 @@ website:
   title: "BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science" 
   site-url: https://sohaamir.github.io/BayesCog/
   repo-url: https://github.com/sohaamir/BayesCog
-  repo-actions: [edit, issue]
+  repo-actions: [issue]
   
   page-footer:
     right: "This page is built with 🧠, ☕ and [Quarto](https://quarto.org/)."
