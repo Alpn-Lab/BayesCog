@@ -18,10 +18,10 @@ The course material would not be possible without the prior work of many others.
 
 We are hoping to further expand the content covered in this course. Examples for additional workshops include: 
 
-- Applying more computational models (delay discounting, intertemporal choice)
-- Computational modeling of decision-making tasks using the [`hBayesDM`](https://ccs-lab.github.io/hBayesDM/index.html) package[^2] in `R` 
+- Applying a wider family of computational models (delay discounting, intertemporal choice)
+- Computational modeling of decision-making tasks using the [`hBayesDM`](https://ccs-lab.github.io/hBayesDM/index.html) package[^1] in `R` 
 - Practical examples of implementing model-based fMRI
 
-[^2]: Ahn, W. Y., Haines, N., & Zhang, L. (2017). Revealing neurocomputational mechanisms of reinforcement learning and decision-making with the hBayesDM package. Computational Psychiatry (Cambridge, Mass.), 1, 24.
+[^1]: Ahn, W. Y., Haines, N., & Zhang, L. (2017). Revealing neurocomputational mechanisms of reinforcement learning and decision-making with the hBayesDM package. Computational Psychiatry (Cambridge, Mass.), 1, 24.
 
 So make sure to stay up-to-date with the website by starring ⭐ the GitHub repository!

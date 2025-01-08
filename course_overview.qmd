@@ -99,9 +99,9 @@ Folder | Task | Model
 10.model_based |  WIP | WIP
 11.delay_discounting |  WIP | WIP
 
-In addition to following along with the taught material, **there are a number of exercises that you can work through.** The code and solutions to the exercises in some cases will be worked through, but will not in others. In all cases however, the materials to work through the exercises are provided.
+In addition to following along with the taught material, **there are a number of exercises that you can work through.** The code and solutions to the exercises will be worked through on the website in some cases, but not in others. In all cases however, the materials to work through the exercises yourself are provided.
 
-Specifically, each folder above will typically have the two sub-folders: `_data` and `_scripts`. 
+Specifically, each workshop folder above will typically have two sub-folders: `_data` and `_scripts`. 
 Each `_scripts` folder will also contain separate files with and without the `master` suffix. 
 
 ```bash
@@ -112,9 +112,7 @@ Each `_scripts` folder will also contain separate files with and without the `ma
 │   └── R_basics_master.R
 ```
 
-**The base script will contain the necessary code without the solutions, whilst the `master` script also contains the solutions.**
-
-Whilst the structure of the workshops on this website does not exactly match those in the folder, details on which scripts and data to use is always given.
+**The base scripts will often contain the necessary code; details on which scripts and data to use is always given.**
 
 :::{.callout-note title="Exercise is optional"}
 You do not have to work through the exercises to benefit from and complete this course, but is recommended if you are wanting to gain practical experience with programming in Stan!
@@ -124,33 +122,30 @@ You do not have to work through the exercises to benefit from and complete this 
 
 There is no additional set-up needed if you aim to work solely from the website. However, to run the analyses on your computer, several software and packages must be installed.
 
-Firstly, clone and change to the project directory:
+- Install the latest version of `R` [here](https://cloud.r-project.org/bin/macosx/) and RStudio [here](https://posit.co/download/rstudio-desktop/)
+
+- Install and set-up the latest version of RStan [here](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started)
+
+To create the environment, first clone the repository and change to the project directory:
 
 ```bash
 git clone https://github.com/sohaamir/BayesCog.git
 cd BayesCog
 ```
 
-### Software
+Various analyses across the workshops require specific packages to be installed. This project uses `renv` to manage package dependencies. 
 
-1. Install the latest version of `R` [here](https://cloud.r-project.org/bin/macosx/) and RStudio [here](https://posit.co/download/rstudio-desktop/)
-2. Install and set-up the latest version of RStan [here](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started)
+To set up the environment:
 
-### R packages
-
-In addition to software, various analyses across the workshops require specific packages to be installed. 
-
-This project uses `renv` to manage package dependencies. To set up the environment:
-
-1. Open `R` in the project directory (`BayesCog.Rproj`) and run:
+1. Open `R` in the project directory (`BayesCog.Rproj`) and run in the `R` console:
 
 ```r
 source("setup.R")
 ```
 
 After running this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. 
-All you will need to do is to load the packages required for the relevant scripts e.g., `library(rstan)`.
+All you need to do is to load the packages required for the relevant scripts when necessary e.g., `library(rstan)`.
 
 :::{.callout-tip title="Querying packages"}
-You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to Files/Plots tab) or by running `library()`.
+You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to 'Files/Plots' tab) or by running `library()`.
 :::
