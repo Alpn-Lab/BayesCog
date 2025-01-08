@@ -148,7 +148,8 @@ This project uses `renv` to manage package dependencies. To set up the environme
 source("setup.R")
 ```
 
-After running this command once, the project environment will load automatically whenever you open the project.
+After running this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. 
+All you will need to do is to load the packages required for the relevant scripts e.g., `library(rstan)`.
 
 :::{.callout-tip title="Querying packages"}
 You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to Files/Plots tab) or by running `library()`.
