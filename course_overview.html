@@ -559,62 +559,63 @@ Pre-requisites
 </thead>
 <tbody>
 <tr class="odd">
-<td>01.R_basics</td>
+<td><code>01.R_basics</code></td>
 <td>NA</td>
 <td>NA</td>
 </tr>
 <tr class="even">
-<td>02.binomial_globe</td>
+<td><code>02.binomial_globe</code></td>
 <td>Globe toss</td>
-<td>Binomial Model</td>
+<td>Binomial model</td>
 </tr>
 <tr class="odd">
-<td>03.bernoulli_coin</td>
+<td><code>03.bernoulli_coin</code></td>
 <td>Coin flip</td>
-<td>Bernoulli Model</td>
+<td>Bernoulli model</td>
 </tr>
 <tr class="even">
-<td>04.regression_height</td>
+<td><code>04.regression_height</code></td>
 <td>Observed weight and height</td>
 <td>Linear regression model</td>
 </tr>
 <tr class="odd">
-<td>05.regression_height_poly</td>
+<td><code>05.regression_height_poly</code>*</td>
 <td>Observed weight and height</td>
 <td>Polynomial regression model</td>
 </tr>
 <tr class="even">
-<td>06.reinforcement_learning</td>
+<td><code>06.reinforcement_learning</code></td>
 <td>2-armed bandit task</td>
 <td>Simple reinforcement learning (RL)</td>
 </tr>
 <tr class="odd">
-<td>07.optm_rl</td>
+<td><code>07.optm_rl</code></td>
 <td>2-armed bandit task</td>
 <td>Simple reinforcement learning (RL)</td>
 </tr>
 <tr class="even">
-<td>08.compare_models</td>
+<td><code>08.compare_models</code></td>
 <td>Probabilistic reversal learning task</td>
 <td>Simple and Fictitious RL models</td>
 </tr>
 <tr class="odd">
-<td>09.debugging</td>
+<td><code>09.debugging</code></td>
 <td>Memory Retention</td>
 <td>Exponential decay model</td>
 </tr>
 <tr class="even">
-<td>10.model_based</td>
+<td><code>10.model_based</code>*</td>
 <td>WIP</td>
 <td>WIP</td>
 </tr>
 <tr class="odd">
-<td>11.delay_discounting</td>
+<td><code>11.delay_discounting</code>*</td>
 <td>WIP</td>
 <td>WIP</td>
 </tr>
 </tbody>
 </table>
+<p>*Workshops 5, 10 and 11 have yet to be added, so watch this space!</p>
 <p>In addition to following along with the taught material, <strong>there are a number of exercises that you can work through.</strong> The code and solutions to the exercises will be worked through on the website in some cases, but not in others. In all cases however, the materials to work through the exercises yourself are provided.</p>
 <p>Specifically, each workshop folder above will typically have two sub-folders: <code>_data</code> and <code>_scripts</code>. Each <code>_scripts</code> folder will also contain separate files with and without the <code>master</code> suffix.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> R_basics.Rproj</span>
@@ -622,8 +623,8 @@ Pre-requisites
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _scripts</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> ├── R_basics.R</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> └── R_basics_master.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p><strong>The base scripts will often contain the necessary code; details on which scripts and data to use is always given.</strong></p>
-<div class="callout callout-style-default callout-note callout-titled" title="Exercise is optional">
+<p>The base scripts will often contain the necessary code; details on which scripts and data to use during the workshops is always given.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Exercise is optional">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -634,6 +635,20 @@ Exercise is optional
 </div>
 <div class="callout-body-container callout-body">
 <p>You do not have to work through the exercises to benefit from and complete this course, but is recommended if you are wanting to gain practical experience with programming in Stan!</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled" title="A note on programming syntax">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+A note on programming syntax
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The course materials and Stan models were primarily written in 2020-21. Both Stan and <code>R</code> are ever-evolving programming languages where certain features and practices are likely to change over time. Therefore whilst the Stan models and <code>R</code> scripts in the course materials will run correctly without issue, proper syntax may not always be followed.</p>
+<p><strong>You should always consult the most recent documentation for best practices when programming!</strong></p>
 </div>
 </div>
 </section>
