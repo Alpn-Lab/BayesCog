@@ -3,8 +3,8 @@
 # =============================================================================
 # debugging excercise: simple exponential decay model for memory retention task
 #
-# Lei Zhang
-# lei.zhang@univie.ac.at
+# Lei Zhang, University of Birmingham
+# l.zhang.13@bham.ac.uk
 #
 # Adapted from Lee & Wagenmakers, 2013
 
@@ -24,7 +24,7 @@ k <- matrix(c(18, 18, 16, 13, 9, 6, 4, 4, 4,
               14, 10,  6,  4, 4, 4, 4, 4, 4), nrow=ns, ncol=nt, byrow=T)
 
 
-dataList  <- list(k         = k,          # items remmebered
+dataList  <- list(k         = k,          # items remembered
                   nItem     = nItem,      # total number of items
                   intervals = intervals,  # time intervals
                   ns        = ns,         # number of subjects
@@ -65,13 +65,10 @@ cat("It took",as.character.Date(endTime - startTime), "\n")
 # =============================================================================
 #### Model Summary and Diagnostics #### 
 # =============================================================================
-print(fit_coin1)
+print(fit_mem)
 
-plot_trace_excl_warm_up <- stan_trace(fit_coin1, pars = 'theta', inc_warmup = F)
-plot_trace_incl_warm_up <- stan_trace(fit_coin1, pars = 'theta', inc_warmup = T)
+plot_trace_excl_warm_up <- stan_trace(fit_mem, pars = c('alpha_mu', "beta_mu"), inc_warmup = F)
+plot_trace_incl_warm_up <- stan_trace(fit_mem, pars = c('alpha_mu', "beta_mu"), inc_warmup = T)
 
-plot_dens_cmb <- stan_dens(fit_coin1, separate_chains = F)
-plot_dens_sep <- stan_dens(fit_coin1, separate_chains = T)
-
-plot_dens <- stan_plot(fit_coin2, pars = 'theta', show_density = T)
+plot_dens <- stan_plot(fit_mem, pars = c('alpha_mu', "beta_mu"), show_density = T)
 ggsave(plot = plot_dens, "_plots/dens.png", width = 6, height = 4, type = "cairo-png", units = "in")

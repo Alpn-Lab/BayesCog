@@ -11,8 +11,8 @@ format: html
 
 The course material would not be possible without the prior work of many others. In particular we would like to acknowledge:
 
-- Simon Farrell (University of Western Australia), John Kruschke (Indiana University), Ben Lambert (University of Oxford), Stephan Lewandowsky (University of Bristol), Michael Lee (University of California, Irvine), Richard McElreath (Max Planck Institute for Evolutionary Anthropology), and Eric-Jan Wagenmakers (University of Amsterdam) for their excellent textbooks which have heavily shaped the course content and structure
-- Woo-Young Ahn (Seoul National University), Nate Haines (Ohio State University), Jan Gläscher (UKE Hamburg) and Antonius Wiehler (ICM, Paris) for their ...
+- Simon Farrell, John Kruschke, Ben Lambert, Stephan Lewandowsky, Michael Lee, Richard McElreath, and Eric-Jan Wagenmakers for their excellent textbooks which have heavily shaped the course content and structure
+- Woo-Young Ahn, Nate Haines, Jan Gläscher and Antonius Wiehler for their ...
 
 ## Future content
 

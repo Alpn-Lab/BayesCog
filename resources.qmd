@@ -40,6 +40,8 @@ It is recommended that beginners to Bayesian statistics should work their way do
 
 Ahn, W. Y., Haines, N., & Zhang, L. (2017). Revealing neurocomputational mechanisms of reinforcement learning and decision-making with the hBayesDM package. Computational Psychiatry, 1, 24-57. [https://doi.org/10.1162/CPSY_a_00002](https://doi.org/10.1162/CPSY_a_00002)
 
+Baribault, B., & Collins, A. G. E. (2023). Troubleshooting Bayesian cognitive models. Psychological Methods. [https://doi.org/10.1037/met0000554](https://doi.org/10.1037/met0000554)
+
 Daw, N. D. (2011). Trial-by-trial data analysis using computational models. Decision Making, Affect, and Learning: Attention and Performance XXIII, 23, 3-38. [https://doi.org/10.1093/acprof:oso/9780199600434.003.0001](https://doi.org/10.1093/acprof:oso/9780199600434.003.0001)
 
 Etz, A., Gronau, Q. F., Dablander, F., Edelsbrunner, P. A., & Baribault, B. (2018). How to become a Bayesian in eight easy steps: An annotated reading list. Psychonomic Bulletin & Review, 25(1), 219-234. [https://doi.org/10.3758/s13423-017-1317-5](https://doi.org/10.3758/s13423-017-1317-5)

@@ -87,17 +87,19 @@ The materials for the workshops are split across sub-folders within `/workshops`
 
 Folder | Task | Model
 -----  | ---- | ----
-01.R_basics |NA | NA
-02.binomial_globe | Globe toss | Binomial Model
-03.bernoulli_coin | Coin flip  | Bernoulli Model
-04.regression_height | Observed weight and height | Linear regression model
-05.regression_height_poly |  Observed weight and height | Polynomial regression model
-06.reinforcement_learning  | 2-armed bandit task |   Simple reinforcement learning (RL)
-07.optm_rl   | 2-armed bandit task |   Simple reinforcement learning (RL)
-08.compare_models | Probabilistic reversal learning task |  Simple and Fictitious RL models
-09.debugging |  Memory Retention | Exponential decay model
-10.model_based |  WIP | WIP
-11.delay_discounting |  WIP | WIP
+`01.R_basics` |NA | NA
+`02.binomial_globe` | Globe toss | Binomial model
+`03.bernoulli_coin` | Coin flip  | Bernoulli model
+`04.regression_height` | Observed weight and height | Linear regression model
+`05.regression_height_poly`* |  Observed weight and height | Polynomial regression model
+`06.reinforcement_learning`  | 2-armed bandit task |   Simple reinforcement learning (RL)
+`07.optm_rl`   | 2-armed bandit task |   Simple reinforcement learning (RL)
+`08.compare_models` | Probabilistic reversal learning task |  Simple and Fictitious RL models
+`09.debugging` |  Memory Retention | Exponential decay model
+`10.model_based`* |  WIP | WIP
+`11.delay_discounting`* |  WIP | WIP
+
+*Workshops 5, 10 and 11 have yet to be added, so watch this space!
 
 In addition to following along with the taught material, **there are a number of exercises that you can work through.** The code and solutions to the exercises will be worked through on the website in some cases, but not in others. In all cases however, the materials to work through the exercises yourself are provided.
 
@@ -112,10 +114,17 @@ Each `_scripts` folder will also contain separate files with and without the `ma
 │   └── R_basics_master.R
 ```
 
-**The base scripts will often contain the necessary code; details on which scripts and data to use is always given.**
+The base scripts will often contain the necessary code; details on which scripts and data to use during the workshops is always given.
 
-:::{.callout-note title="Exercise is optional"}
+:::{.callout-tip title="Exercise is optional"}
 You do not have to work through the exercises to benefit from and complete this course, but is recommended if you are wanting to gain practical experience with programming in Stan!
+:::
+
+:::{.callout-note title="A note on programming syntax"}
+The course materials and Stan models were primarily written in 2020-21. Both Stan and `R` are ever-evolving programming languages where certain features and practices are likely to change over time. 
+Therefore whilst the Stan models and `R` scripts in the course materials will run correctly without issue, proper syntax may not always be followed. 
+
+**You should always consult the most recent documentation for best practices when programming!**
 :::
 
 ## Set-up

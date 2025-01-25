@@ -5,8 +5,6 @@ subtitle: "Bayesian Statistics and Hierarchical Bayesian Modeling for Psychologi
 
 ![](images/introduction/bayes_banner.png){width="100%"}
 
-## Welcome {#welcome}
-
 ::: {.content-visible when-format="html"}
 [![GitHub repo size](https://img.shields.io/github/repo-size/lei-zhang/BayesCog_Wien?color=brightgreen&logo=github)](https://github.com/lei-zhang/BayesCog_Wien)
 [![GitHub language count](https://img.shields.io/github/languages/count/lei-zhang/BayesCog_Wien?color=brightgreen&logo=github)](https://github.com/lei-zhang/BayesCog_Wien)
@@ -15,6 +13,8 @@ subtitle: "Bayesian Statistics and Hierarchical Bayesian Modeling for Psychologi
 [![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Flei_zhang_lz&label=lei_zhang_lz)](https://twitter.com/lei_zhang_lz)
 [![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2FAamirNSohail&label=AamirNSohail)](https://twitter.com/AamirNSohail)
 :::
+
+## Welcome {#welcome}
 
 This website[^1][^2] is an adapted version of teaching materials originally made for the <ins>award winning</ins>\* **BayesCog** seminar at the [Faculty of Psychology](https://psychologie.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/en/), as part of the Advanced Seminar for master's students (Mind and Brain track; recorded during Summer Term 2020/2021).
 Further content from the [BayesCog workshop at UKE Hamburg](https://github.com/lei-zhang/BayesCog_Part1) (2023) have also been added. 

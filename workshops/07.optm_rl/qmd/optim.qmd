@@ -495,6 +495,6 @@ The density plots generated show that the parameter space is more thoroughly sam
 
 ![](/images/07.optm_rl/hierarchical_optim_density_plots.png){fig-align="center" width="90%"}
 
-# CHECK THIS EXERCISE WITH LEI!!!
-
-1. I don't get the distributions on the left
+:::{.callout-note title="Sampling variability"}
+Recall that Stan's sampling will differ across hardware (even with the same seed), meaning that your distributions may look slightly different!
+:::
