@@ -1,6 +1,6 @@
 # BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science
 
-![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fsohaamir%2FBayesCog&countColor=%23ff8a65&style=flat)
+![Visitors](https://pageview.vercel.app/?github_user=sohaamir/BayesCog)
 [![GitHub contributors](https://img.shields.io/github/contributors/sohaamir/BayesCog.svg)](https://github.com/sohaamir/BayesCog/graphs/contributors) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/sohaamir/BayesCog?color=orange&logo=github)](https://github.com/sohaamir/BayesCog)
 [![GitHub repo size](https://img.shields.io/github/repo-size/sohaamir/BayesCog?color=brightgreen&logo=github)](https://github.com/sohaamir/BayesCog)
