@@ -2,126 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sohaamir.github.io/BayesCog/resources.html</loc>
-    <lastmod>2025-01-25T13:31:03.961Z</lastmod>
+    <lastmod>2025-01-30T18:13:41.462Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/course_overview.html</loc>
-    <lastmod>2025-01-25T13:31:01.836Z</lastmod>
+    <lastmod>2025-01-30T18:13:39.863Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/index.html</loc>
-    <lastmod>2025-01-25T13:31:00.435Z</lastmod>
+    <lastmod>2025-01-30T18:13:38.537Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/02.binomial_globe/qmd/stan_intro.html</loc>
-    <lastmod>2025-01-25T13:30:58.311Z</lastmod>
+    <lastmod>2025-01-30T18:13:36.817Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/02.binomial_globe/qmd/intro.html</loc>
-    <lastmod>2025-01-25T13:30:55.949Z</lastmod>
+    <lastmod>2025-01-30T18:13:34.857Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/02.binomial_globe/qmd/mcmc.html</loc>
-    <lastmod>2025-01-25T13:30:48.497Z</lastmod>
+    <lastmod>2025-01-30T18:13:28.625Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/01.R_basics/qmd/working_with_data.html</loc>
-    <lastmod>2025-01-25T13:30:46.907Z</lastmod>
+    <lastmod>2025-01-30T18:13:27.427Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/01.R_basics/qmd/introduction_to_r.html</loc>
-    <lastmod>2025-01-25T13:30:34.405Z</lastmod>
+    <lastmod>2025-01-30T18:13:17.662Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/03.bernoulli_coin/qmd/stan_notes.html</loc>
-    <lastmod>2025-01-25T13:30:25.090Z</lastmod>
+    <lastmod>2025-01-30T18:13:09.963Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html</loc>
-    <lastmod>2025-01-25T13:30:23.890Z</lastmod>
+    <lastmod>2025-01-30T18:13:08.435Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/09.debugging/qmd/intro.html</loc>
-    <lastmod>2025-01-25T13:30:21.829Z</lastmod>
+    <lastmod>2025-01-30T18:13:05.414Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html</loc>
-    <lastmod>2025-01-25T13:30:14.249Z</lastmod>
+    <lastmod>2025-01-30T18:12:54.280Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/rl_concepts.html</loc>
-    <lastmod>2025-01-25T13:30:13.230Z</lastmod>
+    <lastmod>2025-01-30T18:12:53.299Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/rl_stan.html</loc>
-    <lastmod>2025-01-25T13:30:11.338Z</lastmod>
+    <lastmod>2025-01-30T18:12:51.021Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/07.optm_rl/qmd/optim.html</loc>
-    <lastmod>2025-01-25T13:30:09.926Z</lastmod>
+    <lastmod>2025-01-30T18:12:49.333Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/08.compare_models/qmd/intro.html</loc>
-    <lastmod>2025-01-25T13:30:07.386Z</lastmod>
+    <lastmod>2025-01-30T18:12:46.350Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/08.compare_models/qmd/model_comparison.html</loc>
-    <lastmod>2025-01-25T13:30:08.825Z</lastmod>
+    <lastmod>2025-01-30T18:12:47.868Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/10.model_based/qmd/model_fmri.html</loc>
-    <lastmod>2025-01-25T13:30:10.423Z</lastmod>
+    <lastmod>2025-01-30T18:12:49.944Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html</loc>
-    <lastmod>2025-01-25T13:30:12.088Z</lastmod>
+    <lastmod>2025-01-30T18:12:52.036Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/intro.html</loc>
-    <lastmod>2025-01-25T13:30:13.743Z</lastmod>
+    <lastmod>2025-01-30T18:12:53.761Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/09.debugging/qmd/debugging.html</loc>
-    <lastmod>2025-01-25T13:30:21.398Z</lastmod>
+    <lastmod>2025-01-30T18:13:04.878Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/09.debugging/qmd/workflow.html</loc>
-    <lastmod>2025-01-25T13:30:22.575Z</lastmod>
+    <lastmod>2025-01-30T18:13:06.697Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/03.bernoulli_coin/qmd/intro.html</loc>
-    <lastmod>2025-01-25T13:30:24.379Z</lastmod>
+    <lastmod>2025-01-30T18:13:09.062Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/01.R_basics/qmd/intro.html</loc>
-    <lastmod>2025-01-25T13:30:25.611Z</lastmod>
+    <lastmod>2025-01-30T18:13:10.390Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/01.R_basics/qmd/probability.html</loc>
-    <lastmod>2025-01-25T13:30:35.591Z</lastmod>
+    <lastmod>2025-01-30T18:13:18.618Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/01.R_basics/qmd/intro_probability.html</loc>
-    <lastmod>2025-01-25T13:30:47.446Z</lastmod>
+    <lastmod>2025-01-30T18:13:27.841Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/02.binomial_globe/qmd/binomial_model.html</loc>
-    <lastmod>2025-01-25T13:30:55.351Z</lastmod>
+    <lastmod>2025-01-30T18:13:34.430Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/02.binomial_globe/qmd/stan_binomial.html</loc>
-    <lastmod>2025-01-25T13:30:57.849Z</lastmod>
+    <lastmod>2025-01-30T18:13:36.415Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/workshops/02.binomial_globe/qmd/data_and_parameters.html</loc>
-    <lastmod>2025-01-25T13:30:59.385Z</lastmod>
+    <lastmod>2025-01-30T18:13:37.671Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/conclusion.html</loc>
-    <lastmod>2025-01-25T13:31:00.858Z</lastmod>
+    <lastmod>2025-01-30T18:13:38.960Z</lastmod>
   </url>
   <url>
     <loc>https://sohaamir.github.io/BayesCog/paper.html</loc>
-    <lastmod>2025-01-25T13:31:03.300Z</lastmod>
+    <lastmod>2025-01-30T18:13:40.924Z</lastmod>
   </url>
 </urlset>

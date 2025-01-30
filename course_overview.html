@@ -442,7 +442,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#aims-and-philosophy" id="toc-aims-and-philosophy" class="nav-link active" data-scroll-target="#aims-and-philosophy">Aims and philosophy</a></li>
   <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link" data-scroll-target="#pre-requisites">Pre-requisites</a></li>
   <li><a href="#list-of-folders-and-contents" id="toc-list-of-folders-and-contents" class="nav-link" data-scroll-target="#list-of-folders-and-contents">List of folders and contents</a></li>
-  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set-up</a></li>
+  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set-up</a>
+  <ul class="collapse">
+  <li><a href="#using-rstudio-and-renv" id="toc-using-rstudio-and-renv" class="nav-link" data-scroll-target="#using-rstudio-and-renv">Using RStudio and <code>renv</code></a></li>
+  <li><a href="#building-the-docker-image" id="toc-building-the-docker-image" class="nav-link" data-scroll-target="#building-the-docker-image">Building the Docker image</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sohaamir/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
@@ -654,7 +658,10 @@ A note on programming syntax
 </section>
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
-<p>There is no additional set-up needed if you aim to work solely from the website. However, to run the analyses on your computer, several software and packages must be installed.</p>
+<p>There is no additional set-up needed if you aim to work solely from the website. However, to work on the exercises yourself, several software and packages are required.</p>
+<section id="using-rstudio-and-renv" class="level3">
+<h3 class="anchored" data-anchor-id="using-rstudio-and-renv">Using RStudio and <code>renv</code></h3>
+<p>You can work with the course material by installing the software and packages locally. To do this:</p>
 <ul>
 <li><p>Install the latest version of <code>R</code> <a href="https://cloud.r-project.org/bin/macosx/">here</a> and RStudio <a href="https://posit.co/download/rstudio-desktop/">here</a></p></li>
 <li><p>Install and set-up the latest version of RStan <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">here</a></p></li>
@@ -662,13 +669,10 @@ A note on programming syntax
 <p>To create the environment, first clone the repository and change to the project directory:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sohaamir/BayesCog.git</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> BayesCog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Various analyses across the workshops require specific packages to be installed. This project uses <code>renv</code> to manage package dependencies.</p>
-<p>To set up the environment:</p>
-<ol type="1">
-<li>Open <code>R</code> in the project directory (<code>BayesCog.Rproj</code>) and run in the <code>R</code> console:</li>
-</ol>
+<p>The various analyses across the workshops require specific packages to be installed. This project uses <code>renv</code> to manage package dependencies.</p>
+<p>To set up the environment firstly open <code>RStudio</code> in the project root and run in the console:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"setup.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After running this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. All you need to do is to load the packages required for the relevant scripts when necessary e.g., <code>library(rstan)</code>.</p>
+<p>After executing this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. All you need to do is to load the packages required for the relevant scripts when necessary e.g., <code>library(rstan)</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Querying packages">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -682,8 +686,33 @@ Querying packages
 <p>You can always check if you are missing a certain package by clicking on the ‘Packages’ tab (next to ‘Files/Plots’ tab) or by running <code>library()</code>.</p>
 </div>
 </div>
+</section>
+<section id="building-the-docker-image" class="level3">
+<h3 class="anchored" data-anchor-id="building-the-docker-image">Building the Docker image</h3>
+<p>We also provide a Docker image which can be used to create an R/RStudio container with the required packages. This assumes you have <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> installed.</p>
+<p>To do so, after cloning the <code>git</code> repository as above, from the project root run:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull sohamir/bayescog_test:latest</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--mount</span> type=bind,source=<span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>,target=/home/rstudio/project <span class="dt">\</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> PASSWORD=your_chosen_password <span class="dt">\</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--name</span> bayescog_test <span class="dt">\</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  sohamir/bayescog_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>This will mount the Docker image onto the BayesCog repository.</p>
+<p>Then, navigate to http://localhost:8787/ in a browser, and type your username (which is always ‘rstudio’) and the password chosen in the command prior.</p>
+<p>Then once RStudio has loaded, click on the <code>project</code> folder and the BayesCog material will be there.</p>
+<p>To start/stop the container, type (from the command line):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> start bayescog_test</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop bayescog_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>To see/remove the container type:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm your_docker_image</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>And to see/remove the image, type:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi your_docker_image <span class="co"># e.g. docker rmi sohamir/bayescog_test</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
+</section>
 </section>
 
 
