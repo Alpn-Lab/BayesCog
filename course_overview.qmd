@@ -158,3 +158,23 @@ All you need to do is to load the packages required for the relevant scripts whe
 :::{.callout-tip title="Querying packages"}
 You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to 'Files/Plots' tab) or by running `library()`.
 :::
+
+### Building the Docker image
+
+We also provide a Docker image which can be used to create an RStudio container with the required packages installed. 
+
+To do so, after cloning the git repository, run from the project root:
+
+```bash
+docker pull aasohail/bayescog_test:latest
+
+docker run -p 8787:8787 \
+  --mount type=bind,source=$(pwd),target=/home/rstudio/project \
+  -e PASSWORD=your_chosen_password \
+  --name bayescog_test \
+  aasohail/bayescog_test
+```
+
+
+
+Then 

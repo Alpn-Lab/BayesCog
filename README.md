@@ -1,11 +1,10 @@
 # BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science
 
-[![GitHub repo size](https://img.shields.io/github/repo-size/lei-zhang/BayesCog_Wien?color=brightgreen&logo=github)](https://github.com/lei-zhang/BayesCog_Wien)
-[![GitHub language count](https://img.shields.io/github/languages/count/lei-zhang/BayesCog_Wien?color=brightgreen&logo=github)](https://github.com/lei-zhang/BayesCog_Wien)
-[![GitHub last commit](https://img.shields.io/github/last-commit/lei-zhang/BayesCog_Wien?color=orange&logo=github)](https://github.com/lei-zhang/BayesCog_Wien) 
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Fsohaamir%2FBayesCog&countColor=%23ff8a65&style=flat)
+[![GitHub contributors](https://img.shields.io/github/contributors/sohaamir/BayesCog.svg)](https://github.com/sohaamir/BayesCog/graphs/contributors) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/sohaamir/BayesCog?color=orange&logo=github)](https://github.com/sohaamir/BayesCog)
+[![GitHub repo size](https://img.shields.io/github/repo-size/sohaamir/BayesCog?color=brightgreen&logo=github)](https://github.com/sohaamir/BayesCog)
 <br/>
-[![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2Flei_zhang_lz&label=lei_zhang_lz)](https://twitter.com/lei_zhang_lz)
-[![X (formerly Twitter) URL](https://img.shields.io/twitter/url?url=https%3A%2F%2Fx.com%2FAamirNSohail&label=AamirNSohail)](https://twitter.com/AamirNSohail)
 
 <p align="center">
   <img src="https://github.com/sohaamir/BayesCog/blob/main/images/introduction/bayes_banner.png" alt="Bayes Banner" width="90%">
