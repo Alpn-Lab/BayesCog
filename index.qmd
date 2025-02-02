@@ -10,8 +10,6 @@ subtitle: "Bayesian Statistics and Hierarchical Bayesian Modeling for Psychologi
 [![GitHub contributors](https://img.shields.io/github/contributors/sohaamir/BayesCog.svg)](https://github.com/sohaamir/BayesCog/graphs/contributors) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/sohaamir/BayesCog?color=orange&logo=github)](https://github.com/sohaamir/BayesCog)
 [![GitHub repo size](https://img.shields.io/github/repo-size/sohaamir/BayesCog?color=brightgreen&logo=github)](https://github.com/sohaamir/BayesCog)
-
-<br/>
 :::
 
 ## Welcome {#welcome}

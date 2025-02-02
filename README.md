@@ -53,33 +53,82 @@ Folder | Task | Model
 10.model_based |  WIP | WIP
 11.delay_discounting |  WIP | WIP
 
-## Setup
+## Set-up
 
-The course requires minimal set-up, however requires specific software:
+There is no additional set-up needed if you aim to work solely from the website. However, to work on the exercises yourself, several software and packages are required. 
 
-1. Install the latest version of `R` [here](https://cloud.r-project.org/bin/macosx/) and RStudio [here](https://posit.co/download/rstudio-desktop/)
+### Locally using RStudio and `renv`
 
-2. Install and set-up the latest version of RStan [here](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started)
+You can work with the course material by **installing the software and packages locally.** To do this:
 
-Then:
+- Install the latest version of `R` [here](https://cloud.r-project.org/bin/macosx/) and RStudio [here](https://posit.co/download/rstudio-desktop/)
 
-3. Clone the repository and change directory into the project root:
+- Install and set-up the latest version of RStan [here](https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started)
+
+To create the environment, first clone the repository and change to the project directory:
 
 ```bash
-# Clone the repository
-git clone https://github.com/your-username/BayesCog.git
+git clone https://github.com/sohaamir/BayesCog.git
 cd BayesCog
 ```
 
-4. Install the relevant `R` packages using `renv`
+The various analyses across the workshops require specific packages to be installed. This project uses `renv` to manage package dependencies. 
 
-Open `R` in the project directory (`BayesCog.Rproj`) and run:
+To set up the environment, firstly open `RStudio` in the project root and run in the console:
 
 ```r
 source("setup.R")
 ```
 
-After running this command once, the project environment will load automatically whenever you open the project.
+After executing this command once, the project environment will **load automatically whenever you open the project,** for both project root and individual workshops. 
+All you need to do is to load the packages required for the relevant scripts when necessary e.g., `library(rstan)`.
+
+:::{.callout-tip title="Querying packages"}
+You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to 'Files/Plots' tab) or by running `library()`.
+:::
+
+### Building the Docker image
+
+We also provide a Docker image which can be used to create an R/RStudio container with the required packages. This assumes you have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed.
+
+To do so, after cloning the `git` repository as above, from the project root run:
+
+```bash
+docker pull sohamir/bayescog_test:latest
+
+docker run -p 8787:8787 \
+  --mount type=bind,source=$(pwd),target=/home/rstudio/project \
+  -e PASSWORD=your_chosen_password \
+  --name bayescog_test \
+  sohamir/bayescog_test
+```
+
+This will mount the Docker image onto the BayesCog repository. 
+
+Then, navigate to [http://localhost:8787](http://localhost:8787/) in a browser, and type your username (which is always 'rstudio') and the password chosen in the command prior.
+
+Then once RStudio has loaded, click on the `project` folder and the BayesCog material will appear.
+
+To start/stop the container, type (from the command line):
+
+```bash
+docker start bayescog_test
+docker stop bayescog_test
+```
+
+To see/remove the container type:
+
+```bash
+docker ps -a
+docker rm your_docker_image
+```
+
+And to see/remove the image, type:
+
+```bash
+docker images
+docker rmi your_docker_image # e.g. docker rmi sohamir/bayescog_test
+```
 
 ## Contributors
 

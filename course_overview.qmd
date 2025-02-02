@@ -131,9 +131,9 @@ Therefore whilst the Stan models and `R` scripts in the course materials will ru
 
 There is no additional set-up needed if you aim to work solely from the website. However, to work on the exercises yourself, several software and packages are required. 
 
-### Using RStudio and `renv`
+### Locally using RStudio and `renv`
 
-You can work with the course material by installing the software and packages locally. To do this:
+You can work with the course material by **installing the software and packages locally.** To do this:
 
 - Install the latest version of `R` [here](https://cloud.r-project.org/bin/macosx/) and RStudio [here](https://posit.co/download/rstudio-desktop/)
 
@@ -148,13 +148,13 @@ cd BayesCog
 
 The various analyses across the workshops require specific packages to be installed. This project uses `renv` to manage package dependencies. 
 
-To set up the environment firstly open `RStudio` in the project root and run in the console:
+To set up the environment, firstly open `RStudio` in the project root and run in the console:
 
 ```r
 source("setup.R")
 ```
 
-After executing this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. 
+After executing this command once, the project environment will **load automatically whenever you open the project,** for both project root and individual workshops. 
 All you need to do is to load the packages required for the relevant scripts when necessary e.g., `library(rstan)`.
 
 :::{.callout-tip title="Querying packages"}
@@ -179,9 +179,9 @@ docker run -p 8787:8787 \
 
 This will mount the Docker image onto the BayesCog repository. 
 
-Then, navigate to http://localhost:8787/ in a browser, and type your username (which is always 'rstudio') and the password chosen in the command prior.
+Then, navigate to [http://localhost:8787](http://localhost:8787/) in a browser, and type your username (which is always 'rstudio') and the password chosen in the command prior.
 
-Then once RStudio has loaded, click on the `project` folder and the BayesCog material will be there.
+Then once RStudio has loaded, click on the `project` folder and the BayesCog material will appear.
 
 To start/stop the container, type (from the command line):
 
