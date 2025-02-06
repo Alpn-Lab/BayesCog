@@ -9,6 +9,7 @@
 01.R_basics/_scripts/learning_task.m
 /.quarto/
 /_site/
+.venv/
 
 # remove after the paper is done
 paper.bib
