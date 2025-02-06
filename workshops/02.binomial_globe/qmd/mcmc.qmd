@@ -70,7 +70,7 @@ Markov chains were first introduced by Russian mathematician Andrey Markov in 19
 ![](/images/02.binomial_globe/monte_carlo_night.png){fig-align="center" width="70%"}
 
 ::: {.image-caption}
-A picture of the Monte Carlo Casino taken by A.S.
+A picture of the Monte Carlo Casino taken by one of the contributors
 :::
 
 When we combine these concepts, we get Markov chain Monte Carlo (MCMC)! With respect to sampling from the posterior distribution:
