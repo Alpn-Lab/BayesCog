@@ -1,13 +1,13 @@
 # BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science
 
-![Visitors](https://pageview.vercel.app/?github_user=sohaamir/BayesCog)
-[![GitHub contributors](https://img.shields.io/github/contributors/sohaamir/BayesCog.svg)](https://github.com/sohaamir/BayesCog/graphs/contributors) 
-[![GitHub last commit](https://img.shields.io/github/last-commit/sohaamir/BayesCog?color=orange&logo=github)](https://github.com/sohaamir/BayesCog)
-[![GitHub repo size](https://img.shields.io/github/repo-size/sohaamir/BayesCog?color=brightgreen&logo=github)](https://github.com/sohaamir/BayesCog)
+![Visitors](https://pageview.vercel.app/?github_user=alpn-lab/BayesCog)
+[![GitHub contributors](https://img.shields.io/github/contributors/alpn-lab/BayesCog.svg)](https://github.com/alpn-lab/BayesCog/graphs/contributors) 
+[![GitHub last commit](https://img.shields.io/github/last-commit/alpn-lab/BayesCog?color=orange&logo=github)](https://github.com/alpn-lab/BayesCog)
+[![GitHub repo size](https://img.shields.io/github/repo-size/alpn-lab/BayesCog?color=brightgreen&logo=github)](https://github.com/alpn-lab/BayesCog)
 <br/>
 
 <p align="center">
-  <img src="https://github.com/sohaamir/BayesCog/blob/main/images/introduction/bayes_banner.png" alt="Bayes Banner" width="90%">
+  <img src="https://github.com/alpn-lab/BayesCog/blob/main/images/introduction/bayes_banner.png" alt="Bayes Banner" width="90%">
 </p>
 
 This website[^1] is an adapted version of teaching materials originally made for the <ins>award winning</ins>\* **BayesCog** seminar at the [Faculty of Psychology](https://psychologie.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/en/), as part of the Advanced Seminar for master's students (Mind and Brain track; recorded during Summer Term 2020/2021).
@@ -68,7 +68,7 @@ You can work with the course material by **installing the software and packages 
 To create the environment, first clone the repository and change to the project directory:
 
 ```bash
-git clone https://github.com/sohaamir/BayesCog.git
+git clone https://github.com/alpn-lab/BayesCog.git
 cd BayesCog
 ```
 

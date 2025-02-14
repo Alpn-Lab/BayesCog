@@ -142,7 +142,7 @@ You can work with the course material by **installing the software and packages 
 To create the environment, first clone the repository and change to the project directory:
 
 ```bash
-git clone https://github.com/sohaamir/BayesCog.git
+git clone https://github.com/alpn-lab/BayesCog.git
 cd BayesCog
 ```
 

@@ -5,8 +5,8 @@ project:
 website: 
   page-navigation: true
   title: "BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science" 
-  site-url: https://sohaamir.github.io/BayesCog/
-  repo-url: https://github.com/sohaamir/BayesCog
+  site-url: https://alpn-lab.github.io/BayesCog
+  repo-url: https://github.com/alpn-lab/BayesCog
   repo-actions: [issue]
   
   page-footer:
@@ -19,10 +19,10 @@ website:
     align: center
     tools: 
       - icon: globe
-        href: https://alpnlab.github.io
+        href: https://alpn-lab.github.io
         text: "ALPN Lab Website"
       - icon: github
-        href: https://github.com/alpnlab
+        href: https://github.com/alpn-lab
         text: "ALPN Lab GitHub"
       - icon: twitter
         href: https://twitter.com/ALPN_Lab
