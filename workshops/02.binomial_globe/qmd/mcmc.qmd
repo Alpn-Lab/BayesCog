@@ -93,7 +93,7 @@ Here's an practical example demonstrating the idea behind MCMC, using a specific
 MCMC refers to a specific method of sampling, of which the Metropolis algorithm is just one example. We will discuss more examples of MCMC including Hamiltonian Monte Carlo (HMC), the specific type used by Stan.
 :::
 
-Charles is a billionaire who made his fortune in the energy industry. Unfortunately, Charles has 10 ex-wives and wants to divide his time visiting them proportionally to how much he likes them (his posterior distribution). As it happens, his 10 ex-wives live in a line along a street, numbered 1-10 in order. His preferences are:
+[Charles](https://simpsons.fandom.com/wiki/Charles_Montgomery_Burns) is a billionaire who made his fortune in the energy industry. Unfortunately, Charles has 10 ex-wives and wants to divide his time visiting them proportionally to how much he likes them (his posterior distribution). As it happens, his 10 ex-wives live in a line along a street, numbered 1-10 in order. His preferences are:
 
 | House |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  | 10  |
 |:--------|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|

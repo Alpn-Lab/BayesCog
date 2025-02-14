@@ -2,29 +2,34 @@
 title: Resources
 ---
 
-Here are a selection of resources available to help with this course as well as more generally.
+Here are a selection of resources available to help with this course as well as more generally with cognitive modeling and RStan.
 
 ## Textbooks
 
 <div style="font-size: 22px;"><strong>R Programming</strong></div>
 <div style="height: 16px;"></div>
 
-- Kabacoff, R. (2015). R in Action, 2nd Ed. Manning Publications.
-- Wickham, H., & Grolemund, G. (2017). R for Data Science. O'Reilly Media.
+Kabacoff, R. (2015). R in Action, 2nd Ed. Manning Publications.
+
+Wickham, H., & Grolemund, G. (2017). R for Data Science. O'Reilly Media.
 
 <div style="font-size: 22px;"><strong>General statistics</strong></div>
 <div style="height: 16px;"></div>
 
-- Poldrack, R. A. (2019). Statistical Thinking for the 21st Century. [http://statsthinking21.org/](http://statsthinking21.org/)
+Poldrack, R. A. (2019). Statistical Thinking for the 21st Century. [http://statsthinking21.org/](http://statsthinking21.org/)
 
 <div style="font-size: 22px;"><strong>Bayesian statistics and modeling in Stan</strong></div>
 <div style="height: 16px;"></div>
 
-- Lambert, B. (2018). A Student's Guide to Bayesian Statistics. Sage.
-- McElreath, R. (2020). Statistical Rethinking: A Bayesian Course with Examples in R and Stan, 2nd Ed. CRC Press.
-- Kruschke, J. K. (2015). Doing Bayesian Data Analysis: A Tutorial with R, JAGS, and Stan, 2nd Ed. Academic Press.
-- Pruim, R. (2019). (Re)Doing Bayesian data analysis. [https://rpruim.github.io/Kruschke-Notes/](https://rpruim.github.io/Kruschke-Notes/)
-- Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2013). Bayesian Data Analysis, 3rd Ed. Chapman and Hall/CRC.
+Lambert, B. (2018). A Student's Guide to Bayesian Statistics. Sage.
+
+McElreath, R. (2020). Statistical Rethinking: A Bayesian Course with Examples in R and Stan, 2nd Ed. CRC Press.
+
+Kruschke, J. K. (2015). Doing Bayesian Data Analysis: A Tutorial with R, JAGS, and Stan, 2nd Ed. Academic Press.
+
+Pruim, R. (2019). (Re)Doing Bayesian data analysis. [https://rpruim.github.io/Kruschke-Notes/](https://rpruim.github.io/Kruschke-Notes/)
+
+Gelman, A., Carlin, J. B., Stern, H. S., Dunson, D. B., Vehtari, A., & Rubin, D. B. (2013). Bayesian Data Analysis, 3rd Ed. Chapman and Hall/CRC.
 
 :::{.callout-tip title="Which textbook should I start with?"}
 It is recommended that beginners to Bayesian statistics should work their way down from this list starting with *A Student's Guide to Bayesian Statistics*, whilst those with some experience should start with *Statistical Rethinking: A Bayesian Course with Examples in R and Stan*.
@@ -33,8 +38,9 @@ It is recommended that beginners to Bayesian statistics should work their way do
 <div style="font-size: 22px;"><strong>Cognitive modeling</strong></div>
 <div style="height: 16px;"></div>
 
-- Farrell, S., & Lewandowsky, S. (2018). Computational Modeling of Cognition and Behavior. Cambridge University Press.
-- Lee, M. D., & Wagenmakers, E. J. (2014). Bayesian Cognitive Modeling: A Practical Course. Cambridge University Press.
+Farrell, S., & Lewandowsky, S. (2018). Computational Modeling of Cognition and Behavior. Cambridge University Press.
+
+Lee, M. D., & Wagenmakers, E. J. (2014). Bayesian Cognitive Modeling: A Practical Course. Cambridge University Press.
 
 ## Journal articles
 
