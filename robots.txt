@@ -1,1 +1,1 @@
-Sitemap: https://sohaamir.github.io/BayesCog/sitemap.xml
+Sitemap: https://alpn-lab.github.io/BayesCog/sitemap.xml

@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -61,8 +80,6 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -94,8 +111,8 @@ ul.task-list li input[type="checkbox"] {
       <img src="./images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://alpnlab.github.io" rel="" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/alpnlab" rel="" title="ALPN Lab GitHub" class="quarto-navigation-tool px-1" aria-label="ALPN Lab GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://alpn-lab.github.io" rel="" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/alpn-lab" rel="" title="ALPN Lab GitHub" class="quarto-navigation-tool px-1" aria-label="ALPN Lab GitHub"><i class="bi bi-github"></i></a>
     <a href="https://twitter.com/ALPN_Lab" rel="" title="ALPN Lab Twitter" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Twitter"><i class="bi bi-twitter"></i></a>
 </div>
       </div>
@@ -409,19 +426,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#summary" id="toc-summary" class="nav-link active" data-scroll-target="#summary">Summary</a></li>
   <li><a href="#statement-of-need" id="toc-statement-of-need" class="nav-link" data-scroll-target="#statement-of-need">Statement of Need</a></li>
   <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives">Learning Objectives</a></li>
-  <li><a href="#tutorials-exercises" id="toc-tutorials-exercises" class="nav-link" data-scroll-target="#tutorials-exercises">Tutorials &amp; Exercises</a>
-  <ul class="collapse">
-  <li><a href="#module-01---scientific-python" id="toc-module-01---scientific-python" class="nav-link" data-scroll-target="#module-01---scientific-python">Module 01 - Scientific Python</a></li>
-  <li><a href="#module-02---introduction-to-modeling" id="toc-module-02---introduction-to-modeling" class="nav-link" data-scroll-target="#module-02---introduction-to-modeling">Module 02 - Introduction to Modeling</a></li>
-  <li><a href="#module-03---reinforcement-learning" id="toc-module-03---reinforcement-learning" class="nav-link" data-scroll-target="#module-03---reinforcement-learning">Module 03 - Reinforcement Learning</a></li>
-  <li><a href="#module-04---social-learning" id="toc-module-04---social-learning" class="nav-link" data-scroll-target="#module-04---social-learning">Module 04 - Social Learning</a></li>
-  </ul></li>
+  <li><a href="#course-overview" id="toc-course-overview" class="nav-link" data-scroll-target="#course-overview">Course Overview</a></li>
   <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions">Future Directions</a></li>
   <li><a href="#acknowledgments" id="toc-acknowledgments" class="nav-link" data-scroll-target="#acknowledgments">Acknowledgments</a></li>
   <li><a href="#author-contributions" id="toc-author-contributions" class="nav-link" data-scroll-target="#author-contributions">Author Contributions</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sohaamir/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -472,175 +483,230 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="summary" class="level1">
 <h1>Summary</h1>
-<p>We present a semester-long educational course (see 14-week <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-01_Course-Schedule.html">schedule</a>) and <a href="https://shawnrhoads.github.io/gu-psyc-347">Jupyter Book</a> that provides introductory training in specifying, implementing, and interpreting computational models that characterize human social behavior and neuroscience. Through readings, discussions, and labs (e.g., Jupyter Notebook tutorials using Python), students will receive hands-on training in using mathematical models to test specific theories and hypotheses and explain unobservable aspects of complex social cognitive processes and behaviors. These aspects broadly include learning from and for others, learning about others, and social influences on decision-making and mental states.</p>
-<p>Background in introductory psychological science and basic research methods/statistics is highly recommended prior to participating in this course. Programming experience is helpful, but not required or expected. Although the course content is tailored for undergraduate students, it was developed to be easily adapted for trainees at higher career stages.</p>
+<p>We present BayesCog, an openly-available online course for the computational modeling of human behaviour (cognitive modeling) using Bayesian inference. Assuming little to no prior experience, students will be formally grounded in key concepts including Bayesian statistics and reinforcement learning, and practically, will build, assess, and compare models using the R interface to the Stan programming language, Rstan. Starting with binary choice models, students will learn to estimate parameters representing latent components of behaviour by fitting reinforcement learning models, both at the individual and group-level.</p>
+<p>The course is generally suitable for those interested in developing models of human cognition at any level of experience. In making the course openly available, we aim for computational modeling under the Bayesian approach to be more strongly represented in the psychological sciences.</p>
 </section>
 <section id="statement-of-need" class="level1">
 <h1>Statement of Need</h1>
-<p>Developing formalized computational models is among the most promising approaches for advancing theories in psychological science and neuroscience <span class="citation" data-cites="Guest2021">(<a href="#ref-Guest2021" role="doc-biblioref"><strong>Guest2021?</strong></a>)</span>, including characterizing theories regarding the neural basis of social behavior <span class="citation" data-cites="Stanley2013 Cheong2017 Jolly2017">(<a href="#ref-Stanley2013" role="doc-biblioref"><strong>Stanley2013?</strong></a>; <a href="#ref-Cheong2017" role="doc-biblioref"><strong>Cheong2017?</strong></a>; <a href="#ref-Jolly2017" role="doc-biblioref"><strong>Jolly2017?</strong></a>)</span>. This practice requires researchers to explicitly formalize scientific theories as quantifiable predictions that can be tested and falsified with empirical data. Computational models in research offer several advantages: they remove any ambiguity of verbal descriptions of theories, constrain the dimensionality of theories, shift focus away from null hypothesis significance testing in low-dimensional experimental designs (e.g., 2 x 2 factorial designs), and provide an open and reproducible approach (via programming code) for testing formal models of a theory <span class="citation" data-cites="Jolly2017 Guest2021">(<a href="#ref-Jolly2017" role="doc-biblioref"><strong>Jolly2017?</strong></a>; <a href="#ref-Guest2021" role="doc-biblioref"><strong>Guest2021?</strong></a>)</span>.</p>
-<p>Despite the promise and increased use of computational models to characterize human social behavior and neuroscience <span class="citation" data-cites="Zhang2019">(<a href="#ref-Zhang2019" role="doc-biblioref"><strong>Zhang2019?</strong></a>)</span>, few psychology programs actually offer quantitative training required for introductory level computational modeling and literacy <span class="citation" data-cites="Guest2021 Jolly2017">(<a href="#ref-Guest2021" role="doc-biblioref"><strong>Guest2021?</strong></a>; <a href="#ref-Jolly2017" role="doc-biblioref"><strong>Jolly2017?</strong></a>)</span>. Although summer schools (e.g., <a href="https://academy.neuromatch.io/">Neuromatch Academy</a> <span class="citation" data-cites="VanViegen2021">(<a href="#ref-VanViegen2021" role="doc-biblioref"><strong>VanViegen2021?</strong></a>)</span>, <a href="http://mindsummerschool.org/">Methods in Neuroscience at Dartmouth</a> (MIND), <a href="https://neurohackademy.org/">Neurohackademy</a>, <a href="https://cmah.eu/">Cognitive Modeling Academy</a>), self-guided online tutorials and papers <span class="citation" data-cites="Wilson2019 Zhang2019 Lockwood2020">(<a href="#ref-Wilson2019" role="doc-biblioref"><strong>Wilson2019?</strong></a>; <a href="#ref-Zhang2019" role="doc-biblioref"><strong>Zhang2019?</strong></a>; <a href="#ref-Lockwood2020" role="doc-biblioref"><strong>Lockwood2020?</strong></a>)</span>, and community-oriented workshops (e.g., Brainhack Global <span class="citation" data-cites="Craddock2016 Gau2021">(<a href="#ref-Craddock2016" role="doc-biblioref"><strong>Craddock2016?</strong></a>; <a href="#ref-Gau2021" role="doc-biblioref"><strong>Gau2021?</strong></a>)</span>) have filled this pedagogical gap in recent years, these programs may not reach audiences who are not familiar with computational modeling in research (e.g., undergraduates).</p>
-<p>Therefore, we present course materials and accompanying Jupyter Book <span class="citation" data-cites="ExecutableBooksCommunity2020">(<a href="#ref-ExecutableBooksCommunity2020" role="doc-biblioref"><strong>ExecutableBooksCommunity2020?</strong></a>)</span> to make training in computational modeling more accessible to both teachers and students in university settings and online.</p>
+<p>Computational modeling is a general framework for inferring unobserved latent parameters from observed data. Whilst implemented in other disciplines (e.g., physics) for centuries, it’s application specifically towards understanding the human mind (i.e., cognitive modeling) <span class="citation" data-cites="Farrell2018">(<a href="#ref-Farrell2018" role="doc-biblioref">Farrell and Lewandowsky 2018</a>)</span> is a relatively recent approach, one exponentially increasing in popularity <span class="citation" data-cites="Palminteri2017">(<a href="#ref-Palminteri2017" role="doc-biblioref">Palminteri, Wyart, and Koechlin 2017</a>)</span>. By formalising cognitive processes as mathematical operations, cognitive models generate specific, testable hypotheses about observable behaviour, which can be objectively compared and falsified <span class="citation" data-cites="Palminteri2017 Guest2021 Rocca2021">(<a href="#ref-Palminteri2017" role="doc-biblioref">Palminteri, Wyart, and Koechlin 2017</a>; <a href="#ref-Guest2021" role="doc-biblioref">Guest and Martin 2021</a>; <a href="#ref-Rocca2021" role="doc-biblioref">Rocca and Yarkoni 2021</a>)</span>. Cognitive models present a key framework for understanding how the brain implements cognitive processes such as decision making and (social) learning <span class="citation" data-cites="Eckstein2021 FeldmanHall2021">(<a href="#ref-Eckstein2021" role="doc-biblioref">Eckstein, Wilbrecht, and Collins 2021</a>; <a href="#ref-FeldmanHall2021" role="doc-biblioref">FeldmanHall and Nassar 2021</a>)</span> and their aberration in mental health disorders <span class="citation" data-cites="Huys2016 Hauser2022">(<a href="#ref-Huys2016" role="doc-biblioref">Huys, Maia, and Frank 2016</a>; <a href="#ref-Hauser2022" role="doc-biblioref">Hauser et al. 2022</a>)</span>.</p>
+<p>Complementing this approach is the application of Bayesian methods for parameter estimation <span class="citation" data-cites="Annis2017">(<a href="#ref-Annis2017" role="doc-biblioref"><strong>Annis2017?</strong></a>)</span>. Historically restrictive due to their computational burden, these methods are now more accessible though the development of multiple programming languages and software such as JAGS <span class="citation" data-cites="Plummer2003">(<a href="#ref-Plummer2003" role="doc-biblioref">Plummer et al. 2003</a>)</span> and Stan <span class="citation" data-cites="Carpenter2017">(<a href="#ref-Carpenter2017" role="doc-biblioref">Carpenter et al. 2017</a>)</span> which automate the sampling process used for parameter estimation. Bayesian methods confer advantages over frequentist approaches (e.g., Maximum Likelihood Estimation, MLE), by quantifying the uncertainty, and when implemented hierarchically, permit simultaneous estimation of individual and group-level parameters while appropriately pooling information across participants <span class="citation" data-cites="Lee2011">(<a href="#ref-Lee2011" role="doc-biblioref">Lee 2011</a>)</span>.</p>
+<p>Using Bayesian models of cognition in one’s own research requires a conceptual understanding of Bayesian statistics and cognitive modeling, as well as the practical skills to translate these models into code. Textbooks <span class="citation" data-cites="Lee2014 Kruschke2014 Lambert2018 McElreath2018">(<a href="#ref-Lee2014" role="doc-biblioref">Lee and Wagenmakers 2014</a>; <a href="#ref-Kruschke2014" role="doc-biblioref">Kruschke 2014</a>; <a href="#ref-Lambert2018" role="doc-biblioref">Lambert 2018</a>; <a href="#ref-McElreath2018" role="doc-biblioref">McElreath 2018</a>)</span> and tutorial papers <span class="citation" data-cites="Wilson2019 Zhang2020 Lockwood2021 Baribault2023">(<a href="#ref-Wilson2019" role="doc-biblioref">Wilson and Collins 2019</a>; <a href="#ref-Zhang2020" role="doc-biblioref">Zhang et al. 2020</a>; <a href="#ref-Lockwood2021" role="doc-biblioref">Lockwood and Klein-Flügge 2021</a>; <a href="#ref-Baribault2023" role="doc-biblioref">Baribault and Collins 2023</a>)</span> have made learning these skills more accessible, but are often not freely available, and challenging for students with little to no prior experience. Additionally, whilst free, online courses for the computational modeling of cognition currently exist, these are few and far between, and exclusively cover non-Bayesian implementations in Python <span class="citation" data-cites="Rhoads2022">(<a href="#ref-Rhoads2022" role="doc-biblioref">Rhoads and Gan 2022</a>)</span> and MATLAB [OReilly2015], as well as Bayesian approaches in Python <span class="citation" data-cites="NivLab2021">(<a href="#ref-NivLab2021" role="doc-biblioref">Lab 2021</a>)</span>. A full course implementing Bayesian models of cognition through the R programming language is therefore a valuable yet currently non-existent resource.</p>
 </section>
 <section id="learning-objectives" class="level1">
 <h1>Learning Objectives</h1>
-<p>Throughout this course, students are expected to meet the following goals:</p>
+<p>In the course, students will:</p>
 <ul>
-<li>Understand the following: what are computational models, why use computational models, when to use computational models, and how models are fit to data</li>
-<li>Survey selected topics on social behavior through readings, discussions, and labs (e.g., Jupyter Notebook tutorials using Python)</li>
-<li>Learn how to write code for data science using the Python programming language and Jupyter Notebooks</li>
-<li>Fit mathematical models to data and evaluate their performance</li>
-<li>Interpret the results of social behavioral experiments</li>
-<li>Gain a richer understanding of how computational modeling advances psychological science and neuroscience</li>
+<li>Build a foundational knowledge of Bayesian statistics and inference, and how it differs from frequentist definitions of probability</li>
+<li>Understand Bayesian parameter estimation and the conceptual basis of sampling techniques including Markov chain Monte Carlo (MCMC)</li>
+<li>Understand how Bayesian statistics can be applied to uncover latent parameters of cognition through cognitive modeling</li>
+<li>Practically build and code discrete choice and regression models using RStan</li>
+<li>Learn the basic reinforcement learning (RL) concepts</li>
+<li>Build a simple RL model (Rescorla-Wagner) using RStan</li>
+<li>Understand the conceptual basis of hierarchical models and implement them practically in RStan</li>
+<li>Be able to evaluate model performance and perform model comparison using the <code>loo</code> package in R</li>
+<li>Ultimately, be able to apply computational modeling in their own experiments</li>
 </ul>
-<p>The course begins with readings and discussions on the utility of computational modeling in psychological science and neuroscience (see <a href="#Statement-of-Need">Statement of Need</a>) and training in scientific Python (<strong>Module 01</strong>). Students will learn how to set up an <a href="https://anaconda.org/">Anaconda</a> Environment and work in <a href="https://colab.research.google.com">Google Colaboratory</a> to run Python code in Executable Notebooks. They will then learn the basics of the Python programming language, including using <code>numpy</code> for scientific computing <span class="citation" data-cites="Numpy">(<a href="#ref-Numpy" role="doc-biblioref"><strong>Numpy?</strong></a>)</span>, <code>pandas</code> for data management <span class="citation" data-cites="Pandas">(<a href="#ref-Pandas" role="doc-biblioref"><strong>Pandas?</strong></a>)</span>, and <code>matplotlib</code> for data visualization <span class="citation" data-cites="Matplotlib">(<a href="#ref-Matplotlib" role="doc-biblioref"><strong>Matplotlib?</strong></a>)</span>.</p>
-<p>Then, students will learn the basics of modeling (<strong>Module 02</strong>). Using simulated data, they will learn how to fit linear and nonlinear models using least-squares minimization with a grid search, the <code>scipy.optimize.minimize</code> module <span class="citation" data-cites="Scipy">(<a href="#ref-Scipy" role="doc-biblioref"><strong>Scipy?</strong></a>)</span>, and the analytic solution for least-squares optimization. Using real data <span class="citation" data-cites="OConnell2021">(<a href="#ref-OConnell2021" role="doc-biblioref"><strong>OConnell2021?</strong></a>)</span>, they will learn how to estimate parameters (e.g., intercepts, slopes) from a linear model using both Ordinary Least Squares (OLS) and Maximum Likelihood Estimation (MLE). They will also learn how to assess model performance using <span class="math inline">\(R^2\)</span> and the Bayesian Information Criterion. They will compare their produced results to the actual results from the paper.</p>
-<p>Next, students will learn the basics of reinforcement learning in non-social contexts (<strong>Module 03</strong>). They will learn how to run a “Two-Armed Bandit” experiment using PsychoPy <span class="citation" data-cites="Peirce2019">(<a href="#ref-Peirce2019" role="doc-biblioref"><strong>Peirce2019?</strong></a>)</span> and explore behavioral data from the task. Following exercises adapted from <span class="citation" data-cites="Wilson2019">(<a href="#ref-Wilson2019" role="doc-biblioref"><strong>Wilson2019?</strong></a>)</span> and implemented in Python, students will simulate learning using three models: (1) random responding, (2) noisy win-stay-lose-shift, and (3) Rescorla-Wagner reinforcement learning. They will use MLE to fit reinforcement learning models to simulated data and recover model parameters (e.g., learning rate, temperature) <span class="citation" data-cites="Palminteri2017">(<a href="#ref-Palminteri2017" role="doc-biblioref"><strong>Palminteri2017?</strong></a>)</span>.</p>
-<p>During the second half of the course, students will apply what they have learned in the context of social experiences and interactions <span class="citation" data-cites="Lockwood2020 Zhang2019">(<a href="#ref-Lockwood2020" role="doc-biblioref"><strong>Lockwood2020?</strong></a>; <a href="#ref-Zhang2019" role="doc-biblioref"><strong>Zhang2019?</strong></a>)</span> with an increased focus on reading empirical research papers with computational models, presenting findings and interpreting results in journal club settings, and discussing with other students. Topics include learning about threats from others, learning how actions affect the outcomes of others, theory of mind, updating beliefs about others’ states and traits, and social influences on decision-making. They will complete an adapted version of a social reinforcement learning task <span class="citation" data-cites="Lockwood2016">(<a href="#ref-Lockwood2016" role="doc-biblioref"><strong>Lockwood2016?</strong></a>)</span> in PsychoPy <span class="citation" data-cites="Peirce2019">(<a href="#ref-Peirce2019" role="doc-biblioref"><strong>Peirce2019?</strong></a>)</span> and develop models in Python to evaluate and compare the likelihood of each model given real data (<strong>Module 04</strong>). Finally, they will develop their own project and write a research proposal (formatted using guidelines for the National Science Foundation <a href="https://nsfgrfp.org/">Graduate Research Fellowship Program Award</a> application).</p>
-<p>All course materials were designed to be modular. For example, if students are knowledgeable in Python basics and Jupyter Notebook (<strong>Module 01</strong>), then teachers could begin with model fitting (<strong>Module 02</strong>). If students are knowledgeable in model fitting with maximum likelihood estimation (<strong>Module 02</strong>), teachers could start with reinforcement learning (<strong>Module 03</strong>). Any tutorial can be adopted, transformed, or built upon for other educational purposes (e.g., courses, single class sessions, workshops) under a <a href="https://github.com/shawnrhoads/gu-psyc-347/blob/master/LICENSE">Creative Commons Attribution-ShareAlike 4.0 International License</a>. Information on how teachers can use these materials can be found in the <a href="https://github.com/shawnrhoads/gu-psyc-347/blob/master/README.md">README documentation</a>.</p>
-<p>During the first iteration of the course in the spring 2021, students were 54.5% seniors (4th year), 36.4% juniors (3rd year), and 9.1% sophomores (2nd year). Broadly, students reported that they enrolled in the course to learn how to use Python and computational modeling to accelerate psychological research, to learn how to work with data and research methodology beyond a traditional research methods &amp; statistics course, to learn skills relevant to a career in data science, and to gain a different perspective on topics from other classes. Most students reported spending 3-5 hours per week on readings and assignments (one student reported spending up to 10 hours and one student reported spending less than three hours). On a scale from 1 (strongly disagree) to 5 (strongly agree), students reported that the course was academically challenging and rigorous (<em>M</em>=4.75, <em>SD</em>=0.43) and that the course materials (<em>M</em>=4.00, <em>SD</em>=1.22), course-specific technologies (<em>M</em>=4.00, <em>SD</em>=1.22), and assignments (<em>M</em>=4.25, <em>SD</em>=0.83) helped them meet the stated learning objectives of the course.</p>
+<p>Prior to the first workshop, the course begins by summarizing the broader philosophy in which the techniques and methods are implemented. Specifically, this concerns Marr’s influential three levels of analysis <span class="citation" data-cites="Marr1982">(<a href="#ref-Marr1982" role="doc-biblioref">Marr 1982</a>)</span>, which describe how algorithmic-level models can help understand behaviour. Doing so shapes the course material within this framework, demonstrating the necessity for building strong theories in psychology <span class="citation" data-cites="Press2022">(<a href="#ref-Press2022" role="doc-biblioref">Press, Yon, and Heyes 2022</a>)</span>. Assuming no prior experience with programming, the course proper (Workshop 01) begins with a basic introduction to the R programming language and the RStudio interface <span class="citation" data-cites="RStudio2020">(<a href="#ref-RStudio2020" role="doc-biblioref">RStudio Team 2020</a>)</span>. This introductory workshop first provides a general introduction to data structures, variables, and packages, after which students will work with simulated data from a reversal learning task, performing basic summary statistics including correlation and regression, and visualizing the results using the <code>ggplot2</code> package <span class="citation" data-cites="Wickham2016">(<a href="#ref-Wickham2016" role="doc-biblioref">Wickham 2016</a>)</span>.</p>
+<p>In Workshop 02, students will be introduced to Bayesian statistics, learning the differences between Bayesian and frequentist definitions of probability. This can be conceptually difficult for those with little statistical or mathematical experience, the material therefore slowly builds to the concept of Bayes’ theorem from simpler probability concepts including joint, conditional and marginal probability, and probability types – discrete and continuous. These concepts are put into practical use in Workshop 03, where the Bayesian approach is transformed from a purely mathematical concept to a system where one can determine the values of unknown parameters from data. The goal of Bayesian inference - computing the probability distribution of model parameters given the observed data – is also introduced, firstly using a simple instance, grid approximation, adapted from <span class="citation" data-cites="McElreath2018">(<a href="#ref-McElreath2018" role="doc-biblioref">McElreath 2018</a>)</span>. Students will subsequently learn that for more complex models, sampling procedures which approximate the posterior distribution are used. To this end, a popular approach – Markov chain Monte Carlo (MCMC) – is conceptually described.</p>
+<p>At this point, students will have the conceptual knowledge of Bayesian statistics and probability to practically implement models. Workshop 04 introduces students to the Stan programming language <span class="citation" data-cites="Carpenter2017">(<a href="#ref-Carpenter2017" role="doc-biblioref">Carpenter et al. 2017</a>)</span> and it’s R interface RStan <span class="citation" data-cites="StanTeam2024">(<a href="#ref-StanTeam2024" role="doc-biblioref">Stan Development Team 2024</a>)</span>. Following an overview of Stan syntax, students will construct a binomial model estimating the same parameter calculated by grid approximation in the previous workshop. In doing so, students will become familiar with the relationship between Stan and R, with models being coded in a .stan file, and sourced to the respective R script. Students will also examine basic outputs of the sampler, including the summary statistics, and by plotting the posterior density distribution. Workshop 5 builds upon this introductory workshop by introducing some specific properties of Stan, including vectorization and variable declaration, and introduces two more models: the Bernoulli model and linear regression.</p>
+<p>In Workshop 6, we turn to the specific application of these methods to infer latent cognitive processes. A basic overview to the principles of cognitive modeling is followed by an introduction to reinforcement learning, a popular theory of human behaviour. To this end, a simple reinforcement learning algorithm consisting of the Rescorla-Wagner model <span class="citation" data-cites="Rescorla1972">(<a href="#ref-Rescorla1972" role="doc-biblioref">Rescorla and Wagner 1972</a>)</span>, and softmax choice rule is introduced. Students will then practically implement this ‘Simple RL’ model in Stan, for simulated choice data for a single subject, before fitting multiple subjects. For the latter exercise, students will do so in two ways, by firstly looping across subjects and fitting each subject individually. In doing so, they will learn about statistical concerns with parameter estimation in groups. Workshop 7 directly builds upon this topic by introducing hierarchical Bayesian models <span class="citation" data-cites="Lee2012">(<a href="#ref-Lee2012" role="doc-biblioref"><strong>Lee2012?</strong></a>)</span> for parameter estimation. Introducing the concepts of ‘hyperparameters’ and ‘hyperpriors’, students will then run a hierarchical implementation of the Simple RL model. Given that Bayesian cognitive models often require troubleshooting for parameter estimation [Baribault2023] optimization strategies are also introduced in this workshop. Specifically, this covers Stan’s sampling parameters and reparameterization; the latter being particularly relevant for hierarchical models.</p>
+<p>Model comparison is introduced in Workshop 8, with the basis behind model fitting, predictive accuracy and information criterion firstly described. Taking Widely Applicable Information Criterion (WAIC) as an example, students will subsequently compare two RL models: the Simple RL and ‘Fictitious RL’ using the <code>loo</code> package <span class="citation" data-cites="Behtari2024">(<a href="#ref-Behtari2024" role="doc-biblioref"><strong>Behtari2024?</strong></a>)</span> in R, and plot posterior predictive checks as a measure of model validation. The final workshop (Workshop 9) describes key strategies for code debugging in Stan, using a purposely error-laden delay-discounting model [<span class="citation" data-cites="Lee2014">Lee and Wagenmakers (<a href="#ref-Lee2014" role="doc-biblioref">2014</a>)</span>) for students to interactively troubleshoot problematic code. To conclude, a published study <span class="citation" data-cites="Crawley2020">(<a href="#ref-Crawley2020" role="doc-biblioref">Crawley et al. 2020</a>)</span> where computational models were implemented to uncover learning differences is described, providing real-case examples of model and parameter recovery.</p>
+<p>The course begins from the shared assumption of no-to-little prior experience among students with programming and statistics, however specific workshops may be skipped for certain audiences. For example, if students are comfortable with the RStudio environment, teachers could begin with Workshop 2. Similarly, if looking to introduce experienced Stan users to the specific topic of modeling cognitive processes through RL, Workshop 6 provides an ideal starting point. Any tutorial can be adopted, transformed, or built upon for other educational purposes (e.g., courses, single class sessions, workshops) under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
+<p>All course workshops are accompanied by example data and scripts, the latter provided in both uncompleted and completed versions where appropriate. All software required for the course are open-source and easy to install; instructions are provided in the ‘Course overview’ page. Whilst specific R packages (<code>rstan</code>, <code>loo</code>, <code>ggplot2</code>) are required, the course uses <code>renv</code> <span class="citation" data-cites="Ushey2025">(<a href="#ref-Ushey2025" role="doc-biblioref"><strong>Ushey2025?</strong></a>)</span> to simplify the installation process. Users simply run a single command which installs the required packages for all successive R sessions. However, <code>renv</code> only provides a simplified solution to reproducibility and can be mired by system dependencies and versions of RStudio. Therefore, users can alternatively, pull a <a href="https://hub.docker.com/repository/docker/sohamir/bayescog_test/general">pre-made Docker image</a>, building a container locally to host the RStudio environment. This does not necessitate users to have R or RStudio installed - only <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> maintaining a more consistent and reproducible development environment across different systems and platforms. In either case, generating the working environment requires minimal effort (Fig 1.) Detailed guidance on how to recreate the working environments in both cases are provided on the course website.</p>
+<p><img src="figure.png" class="img-fluid" alt="Figure 1."> The course materials are hosted on GitHub can be downloaded locally using the <code>git clone</code> command. Users have two options if wanting to replicate the environment for the course materials. If they would like to work on their own installation and version of RStudio, they can use <code>renv</code> to install all required packages and dependencies. Conversely, if users would like to work on a specific RStudio version, they can pull the provided Docker image, which also installs the required R packages on an RStudio server. In either case, the required dependencies are minimal (R/RStudio or Docker), and recreating the environment only involves running one or two commands.</p>
 </section>
-<section id="tutorials-exercises" class="level1">
-<h1>Tutorials &amp; Exercises</h1>
-<section id="module-01---scientific-python" class="level2">
-<h2 class="anchored" data-anchor-id="module-01---scientific-python">Module 01 - Scientific Python</h2>
+<section id="course-overview" class="level1">
+<h1>Course Overview</h1>
 <table class="table">
+<colgroup>
+<col style="width: 38%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
 <thead>
 <tr class="header">
-<th></th>
-<th style="text-align: center;">Run</th>
-<th style="text-align: center;">View</th>
+<th>Folder</th>
+<th>Task</th>
+<th>Model</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Tutorial: Jupyter Notebooks</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-00_Jupyter-Notebooks-Colab.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-00_Jupyter-Notebooks.html">Open in Book</a></td>
+<td>01.R_basics</td>
+<td>NA</td>
+<td>NA</td>
 </tr>
 <tr class="even">
-<td>Tutorial: Python Basics</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-01_Intro-to-Python.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-01_Intro-to-Python.html">Open in Book</a></td>
+<td>02.binomial_globe</td>
+<td>Globe toss</td>
+<td>Binomial Model</td>
 </tr>
 <tr class="odd">
-<td>Tutorial: Working with Data</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-02_Working-with-Data.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-02_Working-with-Data.html">Open in Book</a></td>
+<td>03.bernoulli_coin</td>
+<td>Coin flip</td>
+<td>Bernoulli Model</td>
 </tr>
 <tr class="even">
-<td>Exercise</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-01-03_Python-Exercises.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-01-03_Python-Exercises.html">Open in Book</a></td>
+<td>04.regression_height</td>
+<td>Observed weight and height</td>
+<td>Linear regression model</td>
+</tr>
+<tr class="odd">
+<td>05.regression_height_poly</td>
+<td>Observed weight and height</td>
+<td>Polynomial regression model</td>
+</tr>
+<tr class="even">
+<td>06.reinforcement_learning</td>
+<td>2-armed bandit task</td>
+<td>Simple reinforcement learning (RL)</td>
+</tr>
+<tr class="odd">
+<td>07.optm_rl</td>
+<td>2-armed bandit task</td>
+<td>Simple reinforcement learning (RL)</td>
+</tr>
+<tr class="even">
+<td>08.compare_models</td>
+<td>Probabilistic reversal learning task</td>
+<td>Simple and Fictitious RL models</td>
+</tr>
+<tr class="odd">
+<td>09.debugging</td>
+<td>Memory Retention</td>
+<td>Exponential decay model</td>
+</tr>
+<tr class="even">
+<td>10.model_based</td>
+<td>NA</td>
+<td>NA</td>
 </tr>
 </tbody>
 </table>
-</section>
-<section id="module-02---introduction-to-modeling" class="level2">
-<h2 class="anchored" data-anchor-id="module-02---introduction-to-modeling">Module 02 - Introduction to Modeling</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">Run</th>
-<th style="text-align: center;">View</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Tutorial: Linear Modeling</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-02-00_Linear-Modeling.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-02-00_Linear-Modeling.html">Open in Book</a></td>
-</tr>
-<tr class="even">
-<td>Tutorial: Nonlinear Modeling</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-02-01_Nonlinear-Modeling.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-02-01_Nonlinear-Modeling.html">Open in Book</a></td>
-</tr>
-<tr class="odd">
-<td>Exercise</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-02-02_Modeling-Exercises.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-02-02_Modeling-Exercises.html">Open in Book</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="module-03---reinforcement-learning" class="level2">
-<h2 class="anchored" data-anchor-id="module-03---reinforcement-learning">Module 03 - Reinforcement Learning</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">Run</th>
-<th style="text-align: center;">View</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Tutorial: Two-Armed Bandit</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-03-00_Two-Armed-Bandit.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-03-00_Two-Armed-Bandit.html">Open in Book</a></td>
-</tr>
-<tr class="even">
-<td>Tutorial: Models of Learning</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-03-01_Models-of-Learning.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-03-01_Models-of-Learning.html">Open in Book</a></td>
-</tr>
-<tr class="odd">
-<td>Exercise</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-03-02_RL-Exercises.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-03-02_RL-Exercises.html">Open in Book</a></td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="module-04---social-learning" class="level2">
-<h2 class="anchored" data-anchor-id="module-04---social-learning">Module 04 - Social Learning</h2>
-<table class="table">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;">Run</th>
-<th style="text-align: center;">View</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Tutorial: Prosocial Learning</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-04-00_Social-Learning.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-04-00_Social-Learning.html">Open in Book</a></td>
-</tr>
-<tr class="even">
-<td>Exercise</td>
-<td style="text-align: center;"><a href="https://colab.research.google.com/github/shawnrhoads/gu-psyc-347/blob/master/docs/module-04-01_Prosocial-RL-Exercises.ipynb">Open in Colab</a></td>
-<td style="text-align: center;"><a href="https://shawnrhoads.github.io/gu-psyc-347/module-04-01_Prosocial-RL-Exercises.html">Open in Book</a></td>
-</tr>
-</tbody>
-</table>
-<p>Students have the option to interact with each tutorial notebook using one of two ways. The first option entails <a href="https://docs.anaconda.com/anaconda/install/">installing Anaconda 3</a> on their local computers with a <a href="https://raw.githubusercontent.com/shawnrhoads/gu-psyc-347/master/course-env.yml">custom environment</a> made for this course and then opening each notebook using Jupyter Notebook. Teachers can walk students through the installation steps using the instructions provided on the <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-04_Getting-Started.html">Getting Started</a> page. However, this can be rather difficult to implement with students’ different machines, operating systems, background, etc. As a fail-safe, students also have the option to use <a href="https://colab.research.google.com/">Google Colaboratory</a>, which runs the code on Google’s cloud servers for <strong>free</strong>. There is a button at the top of each tutorial page that opens each Jupyter Book page in Google Colaboratory.</p>
-<p>Once students are able to run notebooks (locally or on the cloud), they can interact with all of the code in the tutorials. Teachers should guide students through all of the “tutorials”, which, for example, will allow them to demonstrate to students how tweaking certain variables in real-time would change the outputs. The “exercises” at the end of each module were created for the students to apply what they have learned. They can work on these by themselves or in groups. Links to example solutions for all exercises are provided on each page. In addition, teachers should familiarize themselves with the <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-03_Reading-List.html">recommended readings</a> associated with each module and use them to introduce students to each topic, generate discussions and ideas among students, and provide relevant background for each tutorial. For example, the Wilson &amp; Collins (2019) paper can be assigned for reading and discussion prior to beginning any notebook tutorials for <strong>Module 03</strong>.</p>
-<p>For additional background on the content covered in each tutorial (technical or theoretical), teachers and students are encouraged to review the references and/or resources listed at the beginning of each tutorial or the non-exhaustive list of resources on the <a href="https://github.com/shawnrhoads/gu-psyc-347/blob/master/RESOURCES.md">Resources page</a>. Content-related questions from students, teachers, and contributors related to the course can also be submitted directly on the GitHub repository. However, we request that individuals make a good faith effort searching for their answer in the relevant readings or resources listed at the beginning of each tutorial before submitting questions.</p>
-</section>
 </section>
 <section id="future-directions" class="level1">
 <h1>Future Directions</h1>
-<p>This course will introduce trainees to using computational models for characterizing human social behavior and neuroscience. However, the covered topics are not exhaustive or comprehensive. We provide a <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-03_Reading-List.html">growing list of literature</a> that extends beyond the purview of the course. Furthermore, available tutorials only cover a selected range of topics. We welcome contributions from the community to extend the breadth and depth of tutorials. These extensions may include improving or expanding existing content (e.g., stylistic improvements, alternative optimization algorithms), adding new tutorials on topics covered throughout the course, or adding new tutorials on related topics not covered throughout the course.</p>
-<p>We appreciate any feedback on errors, omitted credit, or new ideas for this evolving project. These can be communicated on GitHub by either <a href="https://github.com/shawnrhoads/gu-psyc-347/issues/new?labels=bug&amp;template=issue-template.yml">reporting an issue</a> or <a href="https://github.com/shawnrhoads/gu-psyc-347/issues/new?labels=enhancement&amp;template=enhancement-template.yml">requesting an enhancement</a>. All contributions will be credited and should follow the community guidelines outlined on the <a href="https://shawnrhoads.github.io/gu-psyc-347/module-00-06_Contributing.html">Contribution page</a>.</p>
+<p>The BayesCog course provides a general introduction to Bayesian statistics and computational modeling within the context of psychological research. Subsequently, the materials and topics could be developed further. This includes expanding the family of models beyond reinforcement learning, introducing the application of computational methods with neuroimaging data <span class="citation" data-cites="Gläscher2010 deHollander2016">(<a href="#ref-Gläscher2010" role="doc-biblioref"><strong>Gläscher2010?</strong></a>; <a href="#ref-deHollander2016" role="doc-biblioref">Hollander, Forstmann, and Brown 2016</a>)</span> and discussing theory-based modeling of psychiatric disorders <span class="citation" data-cites="Maia2017">(<a href="#ref-Maia2017" role="doc-biblioref">Maia, Huys, and Frank 2017</a>)</span>. Furthermore, the Stan programming language remains technically challenging, leading to the development of user-friendly packages for computational modeling <span class="citation" data-cites="Ahn2017">(<a href="#ref-Ahn2017" role="doc-biblioref">Ahn, Haines, and Zhang 2017</a>)</span>. Tutorials on how to implement these packages could further broaden the use of computational methods within the psychological sciences.</p>
+<p>To this end, we openly receive feedback and suggestions from the wider community. Broader comments can be communicated on the <a href="https://github.com/alpn-lab/BayesCog/issues">GitHub repository</a> by either reporting an issue or requesting an enhancement. On-the-other-hand, we recommend major changes to be made communicated beforehand and – if appropriate - made directly by forking the repository and pushing changes to the main branch. A member of the contributing team will then review the changes. Accepted contributions will be credited and following the community guidelines outlined on the CONTIBUTORS page.</p>
 </section>
 <section id="acknowledgments" class="level1">
 <h1>Acknowledgments</h1>
-<p><a href="https://github.com/shawnrhoads">S. A. R.</a> is grateful to <a href="https://deborahstearns.blogspot.com/">Dr.&nbsp;Deborah Sterns</a>, <a href="https://www.joscelinrocha.com/">Joscelin Rocha-Hidalgo</a>, and the <a href="https://cndls.georgetown.edu/">Georgetown Center for New Designs in Learning &amp; Scholarship</a> (CNDLS) for allowing him to use their teaching resources throughout the development of this syllabus. He is also grateful to <a href="https://github.com/kellycm">Kelly C. Martin</a> and <a href="https://github.com/PaigeAmormino">Paige Amormino</a> for reviewing initial drafts of this manuscript, <a href="https://jupyter.org/">Project Jupyter</a> for making it possible to create and share these materials in a Jupyter Book <span class="citation" data-cites="ExecutableBooksCommunity2020">(<a href="#ref-ExecutableBooksCommunity2020" role="doc-biblioref"><strong>ExecutableBooksCommunity2020?</strong></a>)</span>, and all the students who participated during the first semester of this course (Spring 2021) for their insightful class contributions and feedback. The format of this course was largely inspired by the <a href="https://mindsummerschool.org/">MIND Computational Summer School</a>, <a href="https://academy.neuromatch.io/">Neuromatch Academy</a> <span class="citation" data-cites="VanViegen2021">(<a href="#ref-VanViegen2021" role="doc-biblioref"><strong>VanViegen2021?</strong></a>)</span>, Dr.&nbsp;Maximilian Risenhuber’s Computational Neuroscience course, Dr.&nbsp;Robert C. Wilson’s <a href="http://u.arizona.edu/~bob/web_NSCS344/">Modeling the Mind course</a>, Dr.&nbsp;Luke J. Chang’s <a href="https://dartbrains.org/content/intro.html">DartBrains Jupyter Book</a> <span class="citation" data-cites="Chang2020">(<a href="#ref-Chang2020" role="doc-biblioref"><strong>Chang2020?</strong></a>)</span>, the research conducted in Dr.&nbsp;Abigail A. Marsh’s <a href="https://aamarsh.wordpress.com/lab/">Laboratory on Social and Affective Neuroscience</a>, and the countless conversations with colleagues about the selected topics.</p>
+<p>L.Z. is grateful to …</p>
+<p><a href="https://sohaamir.github.io/">A.S.</a> is grateful to Lei Zhang for developing the initial version of these materials, including slides, code, and GitHub repositories. He would also like to thank the creators of existing open-source materials, including Shawn Rhoads’ Computational Models of Human Social Behavior and Neuroscience <span class="citation" data-cites="Rhoads2022">(<a href="#ref-Rhoads2022" role="doc-biblioref">Rhoads and Gan 2022</a>)</span>, Luke Chang’s DartBrains: An online open access resource for learning functional neuroimaging analysis methods in Python <span class="citation" data-cites="Chang2020">(<a href="#ref-Chang2020" role="doc-biblioref">Chang et al. 2020</a>)</span> and Magdalena Chechlacz’s <a href="https://chbh-opensource.github.io/mri-on-bear-edu/">MRI on BEAR</a>.</p>
 </section>
 <section id="author-contributions" class="level1">
 <h1>Author Contributions</h1>
-<p><a href="https://github.com/shawnrhoads">S. A. R.</a> designed and taught the course, generated the tutorials, assembled the Jupyter Book, reviewed the tutorials and contents of the Jupyter Book for bugs, typos, errors, stylistic enhancements, and clarity, revised contents of the Jupyter Book, and wrote the manuscript. <a href="https://github.com/shawnrhoads">S. A. R.</a> learned to implement the relevant course methods through conducting research and participating in various summer courses (e.g., <a href="https://mindsummerschool.org/">2018 MIND Computational Summer School</a>, 2018 Neuroscience School of Advanced Studies in Social Decision-Making, <a href="https://www.cpcourse.org/">2019 Computational Psychiatry Summer Course</a>). He also received relevant pedagogical training as a Teaching Assistant (TA) for <a href="https://academy.neuromatch.io/">Neuromatch Academy</a>, as a TA for Dr.&nbsp;Maximilian Risenhuber’s Computational Neuroscience course, and as a participant in the <a href="https://cndls.georgetown.edu/atprogram/">Apprenticeship in Teaching Program</a> at Georgetown University. The course materials were created to make the hands-on elements from these experiences as well as smaller, related workshops led by <a href="https://github.com/shawnrhoads">S. A. R.</a> more accessible in university settings and online. <a href="https://github.com/gllg4009">L. G.</a> participated in the course as a student in spring 2021, reviewed the tutorials and contents of the Jupyter Book for bugs, typos, errors, stylistic enhancements, and clarity, revised contents of the Jupyter Book, and wrote the manuscript.</p>
+<p>L.Z. created, designed and taught the original course materials by creating the slides, writing the Stan and R code, creating and interpreting the datasets and recording the <a href="https://www.youtube.com/playlist?list=PLfRTb2z8k2x9gNBypgMIj3oNLF8lqM44-">YouTube videos</a>.</p>
+<p>L.Z. developed the course using prior experience …</p>
+<p>L.Z. was supported by …</p>
+<p>A.S. created the website, added the content by converting, editing and expanding the source material. A.S. adapted the material using prior experience as a Teaching Assistant, adapting course materials for Magdalena Chechlacz’s Magnetic Resonance Imaging in Cognitive Neuroscience (MRICN) module at the University of Birmingham. Both authors revised the course materials and wrote the manuscript. The course materials were created to make the content more generally accessible and engaging, both generally and for students taught by L.Z. and A.S.</p>
+<p>A.S. is supported by an MRC AIM iCASE DTP Studentship (Ref: MR/W007002/1).</p>
 </section>
 <section id="references" class="level1">
-<h1>References</h1>
+
+
 
 
 </section>
 
-</main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Ahn2017" class="csl-entry" role="listitem">
+Ahn, Woo-Young, Nathaniel Haines, and Lei Zhang. 2017. <span>“Revealing <span>Neurocomputational</span> <span>Mechanisms</span> of <span>Reinforcement</span> <span>Learning</span> and <span>Decision</span>-<span>Making</span> <span>With</span> the <span class="nocase">hBayesDM</span> <span>Package</span>.”</span> <em>Computational Psychiatry (Cambridge, Mass.)</em> 1 (October): 24–57. <a href="https://doi.org/10.1162/CPSY_a_00002">https://doi.org/10.1162/CPSY_a_00002</a>.
+</div>
+<div id="ref-Baribault2023" class="csl-entry" role="listitem">
+Baribault, Beth, and Anne G. E. Collins. 2023. <span>“Troubleshooting <span>Bayesian</span> Cognitive Models.”</span> <em>Psychological Methods</em>, March. <a href="https://doi.org/10.1037/met0000554">https://doi.org/10.1037/met0000554</a>.
+</div>
+<div id="ref-Carpenter2017" class="csl-entry" role="listitem">
+Carpenter, Bob, Andrew Gelman, Matthew D. Hoffman, Daniel Lee, Ben Goodrich, Michael Betancourt, Marcus A. Brubaker, Jiqiang Guo, Peter Li, and Allen Riddell. 2017. <span>“Stan: <span>A</span> <span>Probabilistic</span> <span>Programming</span> <span>Language</span>.”</span> <em>Journal of Statistical Software</em> 76: 1. <a href="https://doi.org/10.18637/jss.v076.i01">https://doi.org/10.18637/jss.v076.i01</a>.
+</div>
+<div id="ref-Chang2020" class="csl-entry" role="listitem">
+Chang, LJ, J Huckins, JH Cheong, S Brietzke, MA Lindquist, and TD Wager. 2020. <span>“DartBrains: An Online Open Access Resource for Learning Functional Neuroimaging Analysis Methods in Python.”</span> Zenodo. https://doi. org/10.5281/zenodo.
+</div>
+<div id="ref-Crawley2020" class="csl-entry" role="listitem">
+Crawley, Daisy, Lei Zhang, Emily JH Jones, Jumana Ahmad, Bethany Oakley, Antonia San José Cáceres, Tony Charman, et al. 2020. <span>“Modeling Flexible Behavior in Childhood to Adulthood Shows Age-Dependent Learning Mechanisms and Less Optimal Learning in Autism in Each Age Group.”</span> <em>PLoS Biology</em> 18 (10): e3000908.
+</div>
+<div id="ref-Eckstein2021" class="csl-entry" role="listitem">
+Eckstein, Maria K, Linda Wilbrecht, and Anne GE Collins. 2021. <span>“What Do Reinforcement Learning Models Measure? <span>Interpreting</span> Model Parameters in Cognition and Neuroscience.”</span> <em>Current Opinion in Behavioral Sciences</em>, Value based decision-making, 41 (October): 128–37. <a href="https://doi.org/10.1016/j.cobeha.2021.06.004">https://doi.org/10.1016/j.cobeha.2021.06.004</a>.
+</div>
+<div id="ref-Farrell2018" class="csl-entry" role="listitem">
+Farrell, Simon, and Stephan Lewandowsky. 2018. <em>Computational <span>Modeling</span> of <span>Cognition</span> and <span>Behavior</span></em>. Cambridge University Press.
+</div>
+<div id="ref-FeldmanHall2021" class="csl-entry" role="listitem">
+FeldmanHall, Oriel, and Matthew R. Nassar. 2021. <span>“The Computational Challenge of Social Learning.”</span> <em>Trends in Cognitive Sciences</em> 25 (12): 1045–57. <a href="https://doi.org/10.1016/j.tics.2021.09.002">https://doi.org/10.1016/j.tics.2021.09.002</a>.
+</div>
+<div id="ref-Guest2021" class="csl-entry" role="listitem">
+Guest, Olivia, and Andrea E. Martin. 2021. <span>“How <span>Computational</span> <span>Modeling</span> <span>Can</span> <span>Force</span> <span>Theory</span> <span>Building</span> in <span>Psychological</span> <span>Science</span>.”</span> <em>Perspectives on Psychological Science</em> 16 (4): 789–802. <a href="https://doi.org/10.1177/1745691620970585">https://doi.org/10.1177/1745691620970585</a>.
+</div>
+<div id="ref-Hauser2022" class="csl-entry" role="listitem">
+Hauser, Tobias U., Vasilisa Skvortsova, Munmun De Choudhury, and Nikolaos Koutsouleris. 2022. <span>“The Promise of a Model-Based Psychiatry: Building Computational Models of Mental Ill Health.”</span> <em>The Lancet Digital Health</em> 4 (11): e816–28. <a href="https://doi.org/10.1016/S2589-7500(22)00152-2">https://doi.org/10.1016/S2589-7500(22)00152-2</a>.
+</div>
+<div id="ref-deHollander2016" class="csl-entry" role="listitem">
+Hollander, Gilles de, Birte U. Forstmann, and Scott D. Brown. 2016. <span>“Different <span>Ways</span> of <span>Linking</span> <span>Behavioral</span> and <span>Neural</span> <span>Data</span> via <span>Computational</span> <span>Cognitive</span> <span>Models</span>.”</span> <em>Biological Psychiatry: Cognitive Neuroscience and Neuroimaging</em> 1 (2): 101–9. <a href="https://doi.org/10.1016/j.bpsc.2015.11.004">https://doi.org/10.1016/j.bpsc.2015.11.004</a>.
+</div>
+<div id="ref-Huys2016" class="csl-entry" role="listitem">
+Huys, Quentin J. M., Tiago V. Maia, and Michael J. Frank. 2016. <span>“Computational Psychiatry as a Bridge from Neuroscience to Clinical Applications.”</span> <em>Nature Neuroscience</em> 19 (3): 404–13. <a href="https://doi.org/10.1038/nn.4238">https://doi.org/10.1038/nn.4238</a>.
+</div>
+<div id="ref-Kruschke2014" class="csl-entry" role="listitem">
+Kruschke, John. 2014. <em>Doing <span>Bayesian</span> <span>Data</span> <span>Analysis</span>: <span>A</span> <span>Tutorial</span> with <span>R</span>, <span>JAGS</span>, and <span>Stan</span></em>. Academic Press.
+</div>
+<div id="ref-NivLab2021" class="csl-entry" role="listitem">
+Lab, Niv. 2021. <span>“NivStan.”</span> 2021. <a href="https://nivlab.github.io/nivstan/">https://nivlab.github.io/nivstan/</a>.
+</div>
+<div id="ref-Lambert2018" class="csl-entry" role="listitem">
+Lambert, Ben. 2018. <em>A <span>Student</span>’s <span>Guide</span> to <span>Bayesian</span> <span>Statistics</span></em>. SAGE.
+</div>
+<div id="ref-Lee2011" class="csl-entry" role="listitem">
+Lee, Michael D. 2011. <span>“How Cognitive Modeling Can Benefit from Hierarchical <span>Bayesian</span> Models.”</span> <em>Journal of Mathematical Psychology</em>, Special <span>Issue</span> on <span>Hierarchical</span> <span>Bayesian</span> <span>Models</span>, 55 (1): 1–7. <a href="https://doi.org/10.1016/j.jmp.2010.08.013">https://doi.org/10.1016/j.jmp.2010.08.013</a>.
+</div>
+<div id="ref-Lee2014" class="csl-entry" role="listitem">
+Lee, Michael D., and Eric-Jan Wagenmakers. 2014. <em>Bayesian <span>Cognitive</span> <span>Modeling</span>: <span>A</span> <span>Practical</span> <span>Course</span></em>. Cambridge University Press.
+</div>
+<div id="ref-Lockwood2021" class="csl-entry" role="listitem">
+Lockwood, Patricia L, and Miriam C Klein-Flügge. 2021. <span>“Computational Modelling of Social Cognition and Behaviour-a Reinforcement Learning Primer.”</span> <em>Social Cognitive and Affective Neuroscience</em> 16 (8): 761–71. <a href="https://doi.org/10.1093/scan/nsaa040">https://doi.org/10.1093/scan/nsaa040</a>.
+</div>
+<div id="ref-Maia2017" class="csl-entry" role="listitem">
+Maia, Tiago V., Quentin J. M. Huys, and Michael J. Frank. 2017. <span>“Theory-<span>Based</span> <span>Computational</span> <span>Psychiatry</span>.”</span> <em>Biological Psychiatry</em> 82 (6): 382–84. <a href="https://doi.org/10.1016/j.biopsych.2017.07.016">https://doi.org/10.1016/j.biopsych.2017.07.016</a>.
+</div>
+<div id="ref-Marr1982" class="csl-entry" role="listitem">
+Marr, David. 1982. <span>“Vision: A Computational Investigation into the Human Representation and Processing of Visual Information.”</span>
+</div>
+<div id="ref-McElreath2018" class="csl-entry" role="listitem">
+McElreath, Richard. 2018. <em>Statistical <span>Rethinking</span>: <span>A</span> <span>Bayesian</span> <span>Course</span> with <span>Examples</span> in <span>R</span> and <span>Stan</span></em>. New York: Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781315372495">https://doi.org/10.1201/9781315372495</a>.
+</div>
+<div id="ref-Palminteri2017" class="csl-entry" role="listitem">
+Palminteri, Stefano, Valentin Wyart, and Etienne Koechlin. 2017. <span>“The <span>Importance</span> of <span>Falsification</span> in <span>Computational</span> <span>Cognitive</span> <span>Modeling</span>.”</span> <em>Trends in Cognitive Sciences</em> 21 (6): 425–33. <a href="https://doi.org/10.1016/j.tics.2017.03.011">https://doi.org/10.1016/j.tics.2017.03.011</a>.
+</div>
+<div id="ref-Plummer2003" class="csl-entry" role="listitem">
+Plummer, Martyn et al. 2003. <span>“JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling.”</span> In <em>Proceedings of the 3rd International Workshop on Distributed Statistical Computing</em>, 124:1–10. 125.10. Vienna, Austria.
+</div>
+<div id="ref-Press2022" class="csl-entry" role="listitem">
+Press, Clare, Daniel Yon, and Cecilia Heyes. 2022. <span>“Building Better Theories.”</span> <em>Current Biology</em> 32 (1): R13–17. <a href="https://doi.org/10.1016/j.cub.2021.11.027">https://doi.org/10.1016/j.cub.2021.11.027</a>.
+</div>
+<div id="ref-Rescorla1972" class="csl-entry" role="listitem">
+Rescorla, Robert A., and Allan R. Wagner. 1972. <span>“A Theory of Pavlovian Conditioning: Variations in the Effectiveness of Reinforcement and Nonreinforcement.”</span> In <em>Classical Conditioning II: Current Research and Theory</em>, edited by A. H. Black and W. F. Prokasy, 64–99. New York: Appleton-Century-Crofts.
+</div>
+<div id="ref-Rhoads2022" class="csl-entry" role="listitem">
+Rhoads, Shawn A, and Lin Gan. 2022. <span>“Computational Models of Human Social Behavior and Neuroscience: An Open Educational Course and Jupyter Book to Advance Computational Training.”</span> <em>Journal of Open Source Education</em> 5 (47): 146.
+</div>
+<div id="ref-Rocca2021" class="csl-entry" role="listitem">
+Rocca, Roberta, and Tal Yarkoni. 2021. <span>“Putting <span>Psychology</span> to the <span>Test</span>: <span>Rethinking</span> <span>Model</span> <span>Evaluation</span> <span>Through</span> <span>Benchmarking</span> and <span>Prediction</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 4 (3): 25152459211026864. <a href="https://doi.org/10.1177/25152459211026864">https://doi.org/10.1177/25152459211026864</a>.
+</div>
+<div id="ref-RStudio2020" class="csl-entry" role="listitem">
+RStudio Team. 2020. <em>RStudio: Integrated Development Environment for r</em>. Boston, MA: RStudio, PBC. <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.
+</div>
+<div id="ref-StanTeam2024" class="csl-entry" role="listitem">
+Stan Development Team. 2024. <span>“<span>RStan</span>: The <span>R</span> Interface to <span>Stan</span>.”</span> <a href="https://mc-stan.org/">https://mc-stan.org/</a>.
+</div>
+<div id="ref-Wickham2016" class="csl-entry" role="listitem">
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+</div>
+<div id="ref-Wilson2019" class="csl-entry" role="listitem">
+Wilson, Robert C, and Anne GE Collins. 2019. <span>“Ten Simple Rules for the Computational Modeling of Behavioral Data.”</span> Edited by Timothy E Behrens. <em>eLife</em> 8 (November): e49547. <a href="https://doi.org/10.7554/eLife.49547">https://doi.org/10.7554/eLife.49547</a>.
+</div>
+<div id="ref-Zhang2020" class="csl-entry" role="listitem">
+Zhang, Lei, Lukas Lengersdorff, Nace Mikus, Jan Gläscher, and Claus Lamm. 2020. <span>“Using Reinforcement Learning Models in Social Neuroscience: Frameworks, Pitfalls and Suggestions of Best Practices.”</span> <em>Social Cognitive and Affective Neuroscience</em> 15 (6): 695–707. <a href="https://doi.org/10.1093/scan/nsaa089">https://doi.org/10.1093/scan/nsaa089</a>.
+</div>
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

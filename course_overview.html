@@ -127,8 +127,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <img src="./images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://alpnlab.github.io" rel="" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/alpnlab" rel="" title="ALPN Lab GitHub" class="quarto-navigation-tool px-1" aria-label="ALPN Lab GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://alpn-lab.github.io" rel="" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/alpn-lab" rel="" title="ALPN Lab GitHub" class="quarto-navigation-tool px-1" aria-label="ALPN Lab GitHub"><i class="bi bi-github"></i></a>
     <a href="https://twitter.com/ALPN_Lab" rel="" title="ALPN Lab Twitter" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Twitter"><i class="bi bi-twitter"></i></a>
 </div>
       </div>
@@ -444,11 +444,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#list-of-folders-and-contents" id="toc-list-of-folders-and-contents" class="nav-link" data-scroll-target="#list-of-folders-and-contents">List of folders and contents</a></li>
   <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set-up</a>
   <ul class="collapse">
-  <li><a href="#using-rstudio-and-renv" id="toc-using-rstudio-and-renv" class="nav-link" data-scroll-target="#using-rstudio-and-renv">Using RStudio and <code>renv</code></a></li>
+  <li><a href="#locally-using-rstudio-and-renv" id="toc-locally-using-rstudio-and-renv" class="nav-link" data-scroll-target="#locally-using-rstudio-and-renv">Locally using RStudio and <code>renv</code></a></li>
   <li><a href="#building-the-docker-image" id="toc-building-the-docker-image" class="nav-link" data-scroll-target="#building-the-docker-image">Building the Docker image</a></li>
   </ul></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/sohaamir/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -659,20 +659,20 @@ A note on programming syntax
 <section id="set-up" class="level2">
 <h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
 <p>There is no additional set-up needed if you aim to work solely from the website. However, to work on the exercises yourself, several software and packages are required.</p>
-<section id="using-rstudio-and-renv" class="level3">
-<h3 class="anchored" data-anchor-id="using-rstudio-and-renv">Using RStudio and <code>renv</code></h3>
-<p>You can work with the course material by installing the software and packages locally. To do this:</p>
+<section id="locally-using-rstudio-and-renv" class="level3">
+<h3 class="anchored" data-anchor-id="locally-using-rstudio-and-renv">Locally using RStudio and <code>renv</code></h3>
+<p>You can work with the course material by <strong>installing the software and packages locally.</strong> To do this:</p>
 <ul>
 <li><p>Install the latest version of <code>R</code> <a href="https://cloud.r-project.org/bin/macosx/">here</a> and RStudio <a href="https://posit.co/download/rstudio-desktop/">here</a></p></li>
 <li><p>Install and set-up the latest version of RStan <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">here</a></p></li>
 </ul>
 <p>To create the environment, first clone the repository and change to the project directory:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sohaamir/BayesCog.git</span>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/alpn-lab/BayesCog.git</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> BayesCog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>The various analyses across the workshops require specific packages to be installed. This project uses <code>renv</code> to manage package dependencies.</p>
-<p>To set up the environment firstly open <code>RStudio</code> in the project root and run in the console:</p>
+<p>To set up the environment, firstly open <code>RStudio</code> in the project root and run in the console:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"setup.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After executing this command once, the project environment will load automatically whenever you open the project, for both project root and individual workshops. All you need to do is to load the packages required for the relevant scripts when necessary e.g., <code>library(rstan)</code>.</p>
+<p>After executing this command once, the project environment will <strong>load automatically whenever you open the project,</strong> for both project root and individual workshops. All you need to do is to load the packages required for the relevant scripts when necessary e.g., <code>library(rstan)</code>.</p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Querying packages">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -699,8 +699,8 @@ Querying packages
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--name</span> bayescog_test <span class="dt">\</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  sohamir/bayescog_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This will mount the Docker image onto the BayesCog repository.</p>
-<p>Then, navigate to http://localhost:8787/ in a browser, and type your username (which is always ‘rstudio’) and the password chosen in the command prior.</p>
-<p>Then once RStudio has loaded, click on the <code>project</code> folder and the BayesCog material will be there.</p>
+<p>Then, navigate to <a href="http://localhost:8787/">http://localhost:8787</a> in a browser, and type your username (which is always ‘rstudio’) and the password chosen in the command prior.</p>
+<p>Then once RStudio has loaded, click on the <code>project</code> folder and the BayesCog material will appear.</p>
 <p>To start/stop the container, type (from the command line):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> start bayescog_test</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop bayescog_test</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
