@@ -1,1 +1,3 @@
 workshops/08.compare_models/_outputs/*.RData filter=lfs diff=lfs merge=lfs -text
+workshops/08.compare_models/_outputs/fit_RL_ppc.RData filter=lfs diff=lfs merge=lfs -text
+workshops/08.compare_models/_outputs/fit_RLfict_ppc.RData filter=lfs diff=lfs merge=lfs -text
