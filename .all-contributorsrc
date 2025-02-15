@@ -7,6 +7,16 @@
   "commitType": "docs",
   "commitConvention": "angular",
   "contributors": [
+    {
+      "login": "lei-zhang",
+      "name": "Dr. Lei Zhang",
+      "avatar_url": "https://avatars.githubusercontent.com/u/16256709?v=4",
+      "profile": "http://lei-zhang.net",
+      "contributions": [
+        "code",
+        "maintenance"
+      ]
+    }
   ],
   "contributorsPerLine": 7,
   "skipCi": true,
