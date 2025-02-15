@@ -133,6 +133,13 @@ docker rmi your_docker_image # e.g. docker rmi sohamir/bayescog
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="http://lei-zhang.net"><img src="https://avatars.githubusercontent.com/u/16256709?v=4?s=100" width="100px;" alt="Dr. Lei Zhang"/><br /><sub><b>Dr. Lei Zhang</b></sub></a><br /><a href="https://github.com/Alpn-Lab/BayesCog/commits?author=lei-zhang" title="Code">💻</a> <a href="#maintenance-lei-zhang" title="Maintenance">🚧</a></td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- markdownlint-restore -->
 <!-- prettier-ignore-end -->
