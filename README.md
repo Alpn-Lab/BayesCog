@@ -83,9 +83,7 @@ source("setup.R")
 After executing this command once, the project environment will **load automatically whenever you open the project,** for both project root and individual workshops. 
 All you need to do is to load the packages required for the relevant scripts when necessary e.g., `library(rstan)`.
 
-:::{.callout-tip title="Querying packages"}
-You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to 'Files/Plots' tab) or by running `library()`.
-:::
+> You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to 'Files/Plots' tab) or by running `library()`.
 
 ### Building the Docker image
 
