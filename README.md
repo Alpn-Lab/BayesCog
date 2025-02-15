@@ -92,13 +92,13 @@ We also provide a Docker image which can be used to create an R/RStudio containe
 To do so, after cloning the `git` repository as above, from the project root run:
 
 ```bash
-docker pull sohamir/bayescog_test:latest
+docker pull sohamir/bayescog:latest
 
 docker run -p 8787:8787 \
   --mount type=bind,source=$(pwd),target=/home/rstudio/project \
   -e PASSWORD=your_chosen_password \
-  --name bayescog_test \
-  sohamir/bayescog_test
+  --name bayescog \
+  sohamir/bayescog
 ```
 
 This will mount the Docker image onto the BayesCog repository. 
@@ -110,8 +110,8 @@ Then once RStudio has loaded, click on the `project` folder and the BayesCog mat
 To start/stop the container, type (from the command line):
 
 ```bash
-docker start bayescog_test
-docker stop bayescog_test
+docker start bayescog
+docker stop bayescog
 ```
 
 To see/remove the container type:
@@ -125,7 +125,7 @@ And to see/remove the image, type:
 
 ```bash
 docker images
-docker rmi your_docker_image # e.g. docker rmi sohamir/bayescog_test
+docker rmi your_docker_image # e.g. docker rmi sohamir/bayescog
 ```
 
 ## Contributors
@@ -133,14 +133,13 @@ docker rmi your_docker_image # e.g. docker rmi sohamir/bayescog_test
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
-<table>
-  <tbody>
-    <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/lei-zhang"><img src="https://avatars.githubusercontent.com/u/16256709?v=4?s=100" width="150px;" alt="Lei Zhang"/><br /><sub><b>Lei Zhang</b></sub></a><br /><a href="#maintenance-lei-zhang" title="Maintenance">🚧</a> <a href="#content-lei-zhang" title="Content">🖋</a></td>
-       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sohaamir"><img src="https://avatars.githubusercontent.com/u/35841800?v=4?s=100" width="150px;" alt="Aamir Sohail"/><br /><sub><b>Aamir Sohail</b></sub></a><br /><a href="#maintenance-sohaamir" title="Maintenance">🚧</a> <a href="#content-sohaamir" title="Content">🖋</a></td>
-    </tr>
-  </tbody>
-</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://allcontributors.org) specification.
 
 ## License
 
