@@ -25,5 +25,3 @@ Topics for this workshop include:
 :::{.callout-note title="Working directory for this workshop"}
 Model code and `R` scripts for this workshop are located in the (`/workshops/01.R_basics`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
 :::
-
-**The copy of this workshop notes can be found on the [course GitHub page]().**

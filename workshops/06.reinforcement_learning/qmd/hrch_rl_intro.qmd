@@ -22,4 +22,3 @@ The goals of this workshop are to:
 Model code and `R` scripts for this workshop are located in the (`/workshops/06.reinforcement_learning`) and (`/workshops/07.optm_rl`) directories. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
 :::
 
-**The copy of this workshop notes can be found on the [course GitHub page]().**

@@ -21,4 +21,3 @@ The goals of this workshop are to:
 Model code and `R` scripts for this workshop are located in the (`/workshops/03.bernoulli_coin`) and (`/workshops/04.regression_height`) directories. Set your working directory to (`/workshops/03.bernoulli_coin`) to begin with. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
 :::
 
-**The copy of this workshop notes can be found on the [course GitHub page]().**

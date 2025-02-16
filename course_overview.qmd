@@ -194,7 +194,7 @@ To see/remove the container type:
 
 ```bash
 docker ps -a
-docker rm your_docker_image
+docker rm your_docker_container # e.g. docker rm bayescog
 ```
 
 And to see/remove the image, type:
