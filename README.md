@@ -147,7 +147,7 @@ git push origin main
 
 And once the changes have been pushed, re-build the website by running:
 
-`quarto publish gh-pages'
+`quarto publish gh-pages`
 
 If you do not have admin privileges, you can commit the changes to the `main` branch by following the steps below:
 
