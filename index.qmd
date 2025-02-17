@@ -14,8 +14,8 @@ subtitle: "Bayesian Statistics and Hierarchical Bayesian Modeling for Psychologi
 
 ## Welcome {#welcome}
 
-This website[^1][^2] is an adapted version of teaching materials originally made for the <ins>award winning</ins>\* **BayesCog** seminar at the [Faculty of Psychology](https://psychologie.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/en/), as part of the Advanced Seminar for master's students (Mind and Brain track; recorded during Summer Term 2020/2021).
-Further content from the [BayesCog workshop at UKE Hamburg](https://github.com/lei-zhang/BayesCog_Part1) (2023) have also been added. 
+This website is an adapted version of teaching materials originally made for the <ins>award winning</ins>\* **BayesCog** seminar at the [Faculty of Psychology](https://psychologie.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/en/), as part of the Advanced Seminar for master's students (Mind and Brain track; recorded during Summer Term 2020/2021).
+Further content from the [BayesCog workshop at UKE Hamburg](https://github.com/lei-zhang/BayesCog_Part1) (2023) have also been added[^1]. 
 
 **Recording**: Recordings from the original version of the course are available on [YouTube](https://www.youtube.com/watch?v=8RpLF7ufZs4&list=PLfRTb2z8k2x9gNBypgMIj3oNLF8lqM44-) (also see below).
 The most recent recording from the 2021 summer semester is also available on [YouTube](https://youtube.com/playlist?list=PLfRTb2z8k2x8ZCqDJ0WEFNs2ymXQCliLa).
@@ -27,7 +27,7 @@ The most recent recording from the 2021 summer semester is also available on [Yo
 ## Course summary
 Computational modeling and mathematical modeling provide an insightful quantitative framework that allows researchers to inspect latent processes and to understand hidden mechanisms. Hence, computational modeling has gained increasing attention in many areas of cognitive science through cognitive modeling in recent years. One illustration of this trend is the growing popularity of Bayesian approaches to cognitive modeling. **This course teaches the theoretical and practical knowledge necessary to perform, evaluate and interpret Bayesian modeling analyses, with a specific emphasis towards modeling latent cognitive processes.**
 
-In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics and reinforcement learning. 
+In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics[^2] and reinforcement learning. 
 We will use [R/RStudio](https://posit.co/download/rstudio-desktop/) and a newly developed statistical computing language - [Stan](mc-stan.org) - to perform Bayesian analyses, ranging from simple binomial models and linear regression models to more complex hierarchical reinforcement learning (RL) models. We will also learn how to implement several key validation measures including model comparison, model recovery and posterior predictive checks.
 
 ## Contributors
