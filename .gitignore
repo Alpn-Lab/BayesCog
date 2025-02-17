@@ -1,17 +1,31 @@
+# R project files and history
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 *.Rhistory
-01.R_basics/.Rproj.user/E5E84BA0/pcs/files-pane.pper
 *.pper
+
+# Specific R project paths
+01.R_basics/.Rproj.user/E5E84BA0/pcs/files-pane.pper
 01.R_basics/.Rproj.user/E5E84BA0/sources/prop/INDEX
+
+# MATLAB scripts
 01.R_basics/_scripts/learning_task.m
+
+# Quarto and site build directories
 /.quarto/
 /_site/
+
+# Python virtual environment
 .venv/
 
-# remove after the paper is done
+# Temporary paper files (to be removed when paper is published)
 paper.bib
 paper.md
+
+# Paper figure
+figure.pptx
+
+# macOS system files
 **/.DS_Store
