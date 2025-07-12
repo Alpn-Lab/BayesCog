@@ -2,126 +2,126 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/resources.html</loc>
-    <lastmod>2025-02-17T09:39:09.264Z</lastmod>
+    <lastmod>2025-02-15T12:14:25.473Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/course_overview.html</loc>
-    <lastmod>2025-02-17T09:39:07.595Z</lastmod>
+    <lastmod>2025-02-16T15:54:27.199Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/index.html</loc>
-    <lastmod>2025-02-17T09:39:05.953Z</lastmod>
+    <lastmod>2025-07-12T11:40:44.300Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/02.binomial_globe/qmd/stan_intro.html</loc>
-    <lastmod>2025-02-17T09:39:04.302Z</lastmod>
+    <lastmod>2025-02-16T15:58:01.628Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/02.binomial_globe/qmd/intro.html</loc>
-    <lastmod>2025-02-17T09:39:02.416Z</lastmod>
+    <lastmod>2025-02-16T15:58:18.216Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/02.binomial_globe/qmd/mcmc.html</loc>
-    <lastmod>2025-02-17T09:38:56.363Z</lastmod>
+    <lastmod>2025-02-12T08:08:19.214Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/01.R_basics/qmd/working_with_data.html</loc>
-    <lastmod>2025-02-17T09:38:55.151Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.399Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/01.R_basics/qmd/introduction_to_r.html</loc>
-    <lastmod>2025-02-17T09:38:46.718Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.398Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/03.bernoulli_coin/qmd/stan_notes.html</loc>
-    <lastmod>2025-02-17T09:38:39.443Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.484Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html</loc>
-    <lastmod>2025-02-17T09:38:38.493Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.483Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/09.debugging/qmd/intro.html</loc>
-    <lastmod>2025-02-17T09:38:36.704Z</lastmod>
+    <lastmod>2025-02-16T15:58:18.263Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html</loc>
-    <lastmod>2025-02-17T09:38:30.708Z</lastmod>
+    <lastmod>2025-02-16T15:58:18.220Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/rl_concepts.html</loc>
-    <lastmod>2025-02-17T09:38:29.845Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.849Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/rl_stan.html</loc>
-    <lastmod>2025-02-17T09:38:27.940Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.850Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/07.optm_rl/qmd/optim.html</loc>
-    <lastmod>2025-02-17T09:38:26.568Z</lastmod>
+    <lastmod>2025-01-25T12:48:18.926Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/08.compare_models/qmd/intro.html</loc>
-    <lastmod>2025-02-17T09:38:24.142Z</lastmod>
+    <lastmod>2025-02-16T15:58:18.243Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/08.compare_models/qmd/model_comparison.html</loc>
-    <lastmod>2025-02-17T09:38:25.506Z</lastmod>
+    <lastmod>2025-01-08T08:35:02.941Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/10.model_based/qmd/model_fmri.html</loc>
-    <lastmod>2025-02-17T09:38:27.061Z</lastmod>
+    <lastmod>2025-01-08T08:35:03.016Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html</loc>
-    <lastmod>2025-02-17T09:38:28.683Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.847Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/06.reinforcement_learning/qmd/intro.html</loc>
-    <lastmod>2025-02-17T09:38:30.281Z</lastmod>
+    <lastmod>2025-02-16T15:58:18.243Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/09.debugging/qmd/debugging.html</loc>
-    <lastmod>2025-02-17T09:38:36.293Z</lastmod>
+    <lastmod>2025-01-08T08:35:02.989Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/09.debugging/qmd/workflow.html</loc>
-    <lastmod>2025-02-17T09:38:37.326Z</lastmod>
+    <lastmod>2025-01-08T08:35:02.990Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/03.bernoulli_coin/qmd/intro.html</loc>
-    <lastmod>2025-02-17T09:38:38.915Z</lastmod>
+    <lastmod>2025-02-16T15:58:18.216Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/01.R_basics/qmd/intro.html</loc>
-    <lastmod>2025-02-17T09:38:39.849Z</lastmod>
+    <lastmod>2025-02-16T15:57:40.202Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/01.R_basics/qmd/probability.html</loc>
-    <lastmod>2025-02-17T09:38:47.602Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.398Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/01.R_basics/qmd/intro_probability.html</loc>
-    <lastmod>2025-02-17T09:38:55.546Z</lastmod>
+    <lastmod>2025-02-16T15:57:34.887Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/02.binomial_globe/qmd/binomial_model.html</loc>
-    <lastmod>2025-02-17T09:39:02.009Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.452Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/02.binomial_globe/qmd/stan_binomial.html</loc>
-    <lastmod>2025-02-17T09:39:03.892Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.454Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/workshops/02.binomial_globe/qmd/data_and_parameters.html</loc>
-    <lastmod>2025-02-17T09:39:05.126Z</lastmod>
+    <lastmod>2025-01-08T08:35:01.452Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/conclusion.html</loc>
-    <lastmod>2025-02-17T09:39:06.468Z</lastmod>
+    <lastmod>2025-02-16T10:01:53.754Z</lastmod>
   </url>
   <url>
     <loc>https://alpn-lab.github.io/BayesCog/paper.html</loc>
-    <lastmod>2025-02-17T09:39:08.687Z</lastmod>
+    <lastmod>2025-07-12T11:28:48.541Z</lastmod>
   </url>
 </urlset>

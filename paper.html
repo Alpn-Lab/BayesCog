@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.7.29">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="dcterms.date" content="2025-01-01">
+<meta name="dcterms.date" content="2025-07-12">
 
-<title>BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science - BayesCog: A freely available course in Bayesian statistics and Hierarchical Bayesian Modeling for Psychological Science</title>
+<title>BayesCog: A freely available course in Bayesian statistics and hierarchical Bayesian modeling for psychological science – BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -25,6 +25,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -49,22 +50,29 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0224bdd51591b0a31db3e9ad7e31eb12.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -73,6 +81,7 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -80,23 +89,52 @@ div.csl-indent {
 }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked">
+<body class="nav-sidebar docked quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">BayesCog: A freely available course in Bayesian statistics and Hierarchical Bayesian Modeling for Psychological Science</li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">BayesCog: A freely available course in Bayesian statistics and hierarchical Bayesian modeling for psychological science</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -105,15 +143,15 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation docked overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
       <a href="./index.html" class="sidebar-logo-link">
       <img src="./images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
-    <a href="https://alpn-lab.github.io" rel="" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
-    <a href="https://github.com/alpn-lab" rel="" title="ALPN Lab GitHub" class="quarto-navigation-tool px-1" aria-label="ALPN Lab GitHub"><i class="bi bi-github"></i></a>
-    <a href="https://twitter.com/ALPN_Lab" rel="" title="ALPN Lab Twitter" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://alpn-lab.github.io" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/alpn-lab" title="ALPN Lab GitHub" class="quarto-navigation-tool px-1" aria-label="ALPN Lab GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/ALPN_Lab" title="ALPN Lab Twitter" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Twitter"><i class="bi bi-twitter"></i></a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -137,9 +175,9 @@ div.csl-indent {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 1: R Basics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -166,9 +204,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 2: Probability and an introduction to Bayes’ theorem</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -189,9 +227,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 3: Building simple models conceptually</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -224,9 +262,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 4: Introduction to building models in Stan</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -247,9 +285,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 5: Bernoulli and linear regression models</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -276,9 +314,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 6: Reinforcement learning models</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -305,9 +343,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 7: Hierachical Bayesian modeling</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -334,9 +372,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 8: Model comparison</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -357,9 +395,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 9: Debugging in Stan</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -386,9 +424,9 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
  <span class="menu-text">Bonus workshop: Introduction to model-based fMRI</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -416,7 +454,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -431,14 +469,14 @@ div.csl-indent {
   <li><a href="#author-contributions" id="toc-author-contributions" class="nav-link" data-scroll-target="#author-contributions">Author Contributions</a></li>
   <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
-<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BayesCog: A freely available course in Bayesian statistics and Hierarchical Bayesian Modeling for Psychological Science</h1>
+<h1 class="title">BayesCog: A freely available course in Bayesian statistics and hierarchical Bayesian modeling for psychological science</h1>
 </div>
 
 
@@ -449,20 +487,20 @@ div.csl-indent {
     <div class="quarto-title-meta-contents">
     <p class="author">Lei Zhang <a href="https://orcid.org/0000-0002-9586-595X" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             1, 2, 3
           </p>
       </div>
-      <div class="quarto-title-meta-contents">
+    <div class="quarto-title-meta-contents">
     <p class="author">Aamir Sohail <a href="https://orcid.org/0009-0000-6584-4579" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
-    <div class="quarto-title-meta-contents">
+  <div class="quarto-title-meta-contents">
         <p class="affiliation">
             1, 2
           </p>
       </div>
-    </div>
+  </div>
 
 <div class="quarto-title-meta">
 
@@ -470,7 +508,7 @@ div.csl-indent {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 1, 2025</p>
+      <p class="date">July 12, 2025</p>
     </div>
   </div>
   
@@ -478,18 +516,25 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="summary" class="level1">
 <h1>Summary</h1>
-<p>We present BayesCog, an openly-available online course for the computational modeling of human behaviour (cognitive modeling) using Bayesian inference. Assuming little to no prior experience, students will be formally grounded in key concepts including Bayesian statistics and reinforcement learning, and practically, will build, assess, and compare models using the R interface to the Stan programming language, Rstan. Starting with binary choice models, students will learn to estimate parameters representing latent components of behaviour by fitting reinforcement learning models, both at the individual and group-level.</p>
+<p>We present <a href="https://alpn-lab.github.io/BayesCog/">BayesCog</a>, an openly-available online course for the computational modeling of human behavior (i.e., cognitive modeling) using Bayesian inference, with reinforcement learning as a core example throughout the course. Assuming little to no prior experience, audience of this course will be formally grounded in key concepts including Bayesian statistics and reinforcement learning, and practically, will build, assess, compare, and validate models using the R interface to the Stan programming language, RStan. Starting with binary choice models, the audience will learn to estimate parameters representing latent components of behavior by fitting reinforcement learning models, both at the individual and group-level, eventually with hierarchical modeling.</p>
 <p>The course is generally suitable for those interested in developing models of human cognition at any level of experience. In making the course openly available, we aim for computational modeling under the Bayesian approach to be more strongly represented in the psychological sciences.</p>
 </section>
 <section id="statement-of-need" class="level1">
 <h1>Statement of Need</h1>
-<p>Computational modeling is a general framework for inferring unobserved latent parameters from observed data. Whilst implemented in other disciplines (e.g., physics) for centuries, it’s application specifically towards understanding the human mind (i.e., cognitive modeling) <span class="citation" data-cites="Farrell2018">(<a href="#ref-Farrell2018" role="doc-biblioref">Farrell and Lewandowsky 2018</a>)</span> is a relatively recent approach, one exponentially increasing in popularity <span class="citation" data-cites="Palminteri2017">(<a href="#ref-Palminteri2017" role="doc-biblioref">Palminteri, Wyart, and Koechlin 2017</a>)</span>. By formalising cognitive processes as mathematical operations, cognitive models generate specific, testable hypotheses about observable behaviour, which can be objectively compared and falsified <span class="citation" data-cites="Palminteri2017 Guest2021 Rocca2021">(<a href="#ref-Palminteri2017" role="doc-biblioref">Palminteri, Wyart, and Koechlin 2017</a>; <a href="#ref-Guest2021" role="doc-biblioref">Guest and Martin 2021</a>; <a href="#ref-Rocca2021" role="doc-biblioref">Rocca and Yarkoni 2021</a>)</span>. Cognitive models present a key framework for understanding how the brain implements cognitive processes such as decision making and (social) learning <span class="citation" data-cites="Eckstein2021 FeldmanHall2021">(<a href="#ref-Eckstein2021" role="doc-biblioref">Eckstein, Wilbrecht, and Collins 2021</a>; <a href="#ref-FeldmanHall2021" role="doc-biblioref">FeldmanHall and Nassar 2021</a>)</span> and their aberration in mental health disorders <span class="citation" data-cites="Huys2016 Hauser2022">(<a href="#ref-Huys2016" role="doc-biblioref">Huys, Maia, and Frank 2016</a>; <a href="#ref-Hauser2022" role="doc-biblioref">Hauser et al. 2022</a>)</span>.</p>
-<p>Complementing this approach is the application of Bayesian methods for parameter estimation <span class="citation" data-cites="Annis2017">(<a href="#ref-Annis2017" role="doc-biblioref">Annis and Palmeri 2018</a>)</span>. Historically restrictive due to their computational burden, these methods are now more accessible though the development of multiple programming languages and software such as JAGS <span class="citation" data-cites="Plummer2003">(<a href="#ref-Plummer2003" role="doc-biblioref">Plummer et al. 2003</a>)</span> and Stan <span class="citation" data-cites="Carpenter2017">(<a href="#ref-Carpenter2017" role="doc-biblioref">Carpenter et al. 2017</a>)</span> which automate the sampling process used for parameter estimation. Bayesian methods confer advantages over frequentist approaches (e.g., Maximum Likelihood Estimation, MLE), by quantifying the uncertainty, and when implemented hierarchically, permit simultaneous estimation of individual and group-level parameters while appropriately pooling information across participants <span class="citation" data-cites="Lee2011">(<a href="#ref-Lee2011" role="doc-biblioref">Lee 2011</a>)</span>.</p>
-<p>Using Bayesian models of cognition in one’s own research requires a conceptual understanding of Bayesian statistics and cognitive modeling, as well as the practical skills to translate these models into code. Textbooks <span class="citation" data-cites="Lee2014 Kruschke2014 Lambert2018 McElreath2018">(<a href="#ref-Lee2014" role="doc-biblioref">Lee and Wagenmakers 2014</a>; <a href="#ref-Kruschke2014" role="doc-biblioref">Kruschke 2014</a>; <a href="#ref-Lambert2018" role="doc-biblioref">Lambert 2018</a>; <a href="#ref-McElreath2018" role="doc-biblioref">McElreath 2018</a>)</span> and tutorial papers <span class="citation" data-cites="Wilson2019 Zhang2020 Lockwood2021 Baribault2023">(<a href="#ref-Wilson2019" role="doc-biblioref">Wilson and Collins 2019</a>; <a href="#ref-Zhang2020" role="doc-biblioref">Zhang et al. 2020</a>; <a href="#ref-Lockwood2021" role="doc-biblioref">Lockwood and Klein-Flügge 2021</a>; <a href="#ref-Baribault2023" role="doc-biblioref">Baribault and Collins 2023</a>)</span> have made learning these skills more accessible, but are often not freely available, and challenging for students with little to no prior experience. Additionally, whilst free, online courses for the computational modeling of cognition currently exist, these are few and far between, and exclusively cover non-Bayesian implementations in Python <span class="citation" data-cites="Rhoads2022">(<a href="#ref-Rhoads2022" role="doc-biblioref">Rhoads and Gan 2022</a>)</span> and MATLAB [OReilly2015], as well as Bayesian approaches in Python <span class="citation" data-cites="NivLab2021">(<a href="#ref-NivLab2021" role="doc-biblioref">Lab 2021</a>)</span>. A full course implementing Bayesian models of cognition through the R programming language is therefore a valuable yet currently non-existent resource.</p>
+<p>Computational modeling is a general framework that uses mathematical equations to infer unobserved latent processes, variables, and parameters from observed data. Whilst implemented in other disciplines (e.g., physics, chemistry, and, astronomy) for centuries, its application specifically towards understanding the human mind (i.e., learning, memory, decision-making, language) <span class="citation" data-cites="Farrell2018">(<a href="#ref-Farrell2018" role="doc-biblioref">Farrell and Lewandowsky 2018</a>)</span> is a relatively recent approach (known as cognitive modeling), one exponentially increasing in popularity <span class="citation" data-cites="Palminteri2017">(<a href="#ref-Palminteri2017" role="doc-biblioref">Palminteri, Wyart, and Koechlin 2017</a>)</span>. By formalising cognitive processes as mathematical operations and free parameters, cognitive models generate specific, testable hypotheses about observable behavior, which can be objectively compared, verified, and falsified <span class="citation" data-cites="Guest2021 Palminteri2017 Pan2022 Rocca2021 Zhang2020">(<a href="#ref-Guest2021" role="doc-biblioref">Guest and Martin 2021</a>; <a href="#ref-Palminteri2017" role="doc-biblioref">Palminteri, Wyart, and Koechlin 2017</a>; <a href="#ref-Pan2022" role="doc-biblioref">W. Pan et al. 2022</a>; <a href="#ref-Rocca2021" role="doc-biblioref">Rocca and Yarkoni 2021</a>; <a href="#ref-Zhang2020" role="doc-biblioref">Zhang et al. 2020</a>)</span>. When combined with other modalities of measurement, such as functional magnetic resonance imaging (fMRI), cognitive models present a key framework for understanding how the brain implements cognitive processes such as decision making and (social) learning <span class="citation" data-cites="Eckstein2021 FeldmanHall2021">(<a href="#ref-Eckstein2021" role="doc-biblioref">Eckstein, Wilbrecht, and Collins 2021</a>; <a href="#ref-FeldmanHall2021" role="doc-biblioref">FeldmanHall and Nassar 2021</a>)</span> and their aberration in mental health disorders <span class="citation" data-cites="Hauser2022 Huys2016 Sohail2024">(<a href="#ref-Hauser2022" role="doc-biblioref">Hauser et al. 2022</a>; <a href="#ref-Huys2016" role="doc-biblioref">Huys, Maia, and Frank 2016</a>; <a href="#ref-Sohail2024" role="doc-biblioref">Sohail and Zhang 2024</a>)</span>.</p>
+<p>Complementing this approach is the application of Bayesian methods for parameter estimation <span class="citation" data-cites="Annis2018">(<a href="#ref-Annis2018" role="doc-biblioref">Annis and Palmeri 2018</a>)</span>, which applies the Bayes rule to obtain the posterior distribution of model parameters given the observed data (1):</p>
+<p><span class="math display">\[\begin{equation}
+P(\theta|D) = \frac{P(D|\theta) \cdot P(\theta)}{P(D)}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(P(\theta|D)\)</span> is the posterior distribution, <span class="math inline">\(P(D|\theta)\)</span> is the likelihood, <span class="math inline">\(P(\theta)\)</span> is the prior distribution, and <span class="math inline">\(P(D)\)</span> is the marginal likelihood.</p>
+<p>Bayesian methods confer advantages over frequentist approaches (e.g., Maximum Likelihood Estimation, MLE), by quantifying the uncertainty, and when implemented hierarchically, permit simultaneous estimation of individual and group-level parameters while appropriately pooling information across participants <span class="citation" data-cites="Lee2011">(<a href="#ref-Lee2011" role="doc-biblioref">M. D. Lee 2011</a>)</span>. Historically restrictive due to their computational burden, these methods are now more accessible though the development of multiple programming languages and software such as JAGS <span class="citation" data-cites="Plummer2003">(<a href="#ref-Plummer2003" role="doc-biblioref">Plummer et al. 2003</a>)</span> and Stan <span class="citation" data-cites="Carpenter2017">(<a href="#ref-Carpenter2017" role="doc-biblioref">Carpenter et al. 2017</a>)</span> which optimize the sampling process used for parameter estimation using approaches such as Markov chain Monte Carlo (MCMC).</p>
+<p>Using Bayesian models of cognition in one’s own research requires a conceptual understanding of both Bayesian statistics and cognitive modeling, as well as the practical skills to translate these models into computer code. Textbooks <span class="citation" data-cites="Kruschke2014 Lambert2018 Lee2014 McElreath2018">(<a href="#ref-Kruschke2014" role="doc-biblioref">Kruschke 2014</a>; <a href="#ref-Lambert2018" role="doc-biblioref">Lambert 2018</a>; <a href="#ref-Lee2014" role="doc-biblioref">M. D. Lee and Wagenmakers 2014</a>; <a href="#ref-McElreath2018" role="doc-biblioref">McElreath 2018</a>)</span> and tutorial papers <span class="citation" data-cites="Baribault2023 Lockwood2021 Wilson2019 Zhang2020">(<a href="#ref-Baribault2023" role="doc-biblioref">Baribault and Collins 2023</a>; <a href="#ref-Lockwood2021" role="doc-biblioref">Lockwood and Klein-Flügge 2021</a>; <a href="#ref-Wilson2019" role="doc-biblioref">Wilson and Collins 2019</a>; <a href="#ref-Zhang2020" role="doc-biblioref">Zhang et al. 2020</a>)</span> have made learning these skills more accessible, but are often not freely available, and challenging for researchers, especially early career researchers with little to no prior experience. Additionally, whilst free, online courses for the computational modeling of cognition currently exist, these are few and far between, and exclusively cover non-Bayesian implementations in Python <span class="citation" data-cites="Rhoads2022">(<a href="#ref-Rhoads2022" role="doc-biblioref">Rhoads and Gan 2022</a>)</span> and MATLAB <span class="citation" data-cites="OReilly2015">(<a href="#ref-OReilly2015" role="doc-biblioref">O’Reilly and Ouden 2015</a>)</span>, as well as Bayesian approaches in Python <span class="citation" data-cites="NivLab2021">(<a href="#ref-NivLab2021" role="doc-biblioref">Lab 2021</a>)</span>. A full course implementing Bayesian models of cognition through the open source R programming language is therefore a valuable yet currently non-existent resource.</p>
 </section>
 <section id="learning-objectives" class="level1">
 <h1>Learning Objectives</h1>
@@ -497,40 +542,36 @@ div.csl-indent {
 <ul>
 <li>Build a foundational knowledge of Bayesian statistics and inference, and how it differs from frequentist definitions of probability</li>
 <li>Understand Bayesian parameter estimation and the conceptual basis of sampling techniques including Markov chain Monte Carlo (MCMC)</li>
-<li>Understand how Bayesian statistics can be applied to uncover latent parameters of cognition through cognitive modeling</li>
+<li>Understand how Bayesian statistics can be applied to uncover latent processes and parameters of cognition through cognitive modeling</li>
 <li>Practically build and code discrete choice and regression models using RStan</li>
 <li>Learn the basic reinforcement learning (RL) concepts</li>
 <li>Build a simple RL model (Rescorla-Wagner) using RStan</li>
 <li>Understand the conceptual basis of hierarchical models and implement them practically in RStan</li>
 <li>Be able to evaluate model performance and perform model comparison using the <code>loo</code> package in R</li>
-<li>Ultimately, be able to apply computational modeling in their own experiments</li>
+<li>Ultimately be able to apply computational modeling in their own experiments</li>
 </ul>
-<p>Prior to the first workshop, the course begins by summarizing the broader philosophy in which the techniques and methods are implemented. Specifically, this concerns Marr’s influential three levels of analysis <span class="citation" data-cites="Marr1982">(<a href="#ref-Marr1982" role="doc-biblioref">Marr 1982</a>)</span>, which describe how algorithmic-level models can help understand behaviour. Doing so shapes the course material within this framework, demonstrating the necessity for building strong theories in psychology <span class="citation" data-cites="Press2022">(<a href="#ref-Press2022" role="doc-biblioref">Press, Yon, and Heyes 2022</a>)</span>. Assuming no prior experience with programming, the course proper (Workshop 01) begins with a basic introduction to the R programming language and the RStudio interface <span class="citation" data-cites="RStudio2020">(<a href="#ref-RStudio2020" role="doc-biblioref">RStudio Team 2020</a>)</span>. This introductory workshop first provides a general introduction to data structures, variables, and packages, after which students will work with simulated data from a reversal learning task, performing basic summary statistics including correlation and regression, and visualizing the results using the <code>ggplot2</code> package <span class="citation" data-cites="Wickham2016">(<a href="#ref-Wickham2016" role="doc-biblioref">Wickham 2016</a>)</span>.</p>
-<p>In Workshop 02, students will be introduced to Bayesian statistics, learning the differences between Bayesian and frequentist definitions of probability. This can be conceptually difficult for those with little statistical or mathematical experience, the material therefore slowly builds to the concept of Bayes’ theorem from simpler probability concepts including joint, conditional and marginal probability, and probability types – discrete and continuous. These concepts are put into practical use in Workshop 03, where the Bayesian approach is transformed from a purely mathematical concept to a system where one can determine the values of unknown parameters from data. The goal of Bayesian inference - computing the probability distribution of model parameters given the observed data – is also introduced, firstly using a simple instance, grid approximation, adapted from <span class="citation" data-cites="McElreath2018">(<a href="#ref-McElreath2018" role="doc-biblioref">McElreath 2018</a>)</span>. Students will subsequently learn that for more complex models, sampling procedures which approximate the posterior distribution are used. To this end, a popular approach – Markov chain Monte Carlo (MCMC) – is conceptually described.</p>
-<p>At this point, students will have the conceptual knowledge of Bayesian statistics and probability to practically implement models. Workshop 04 introduces students to the Stan programming language <span class="citation" data-cites="Carpenter2017">(<a href="#ref-Carpenter2017" role="doc-biblioref">Carpenter et al. 2017</a>)</span> and it’s R interface RStan <span class="citation" data-cites="StanTeam2024">(<a href="#ref-StanTeam2024" role="doc-biblioref">Stan Development Team 2024</a>)</span>. Following an overview of Stan syntax, students will construct a binomial model estimating the same parameter calculated by grid approximation in the previous workshop. In doing so, students will become familiar with the relationship between Stan and R, with models being coded in a .stan file, and sourced to the respective R script. Students will also examine basic outputs of the sampler, including the summary statistics, and by plotting the posterior density distribution. Workshop 5 builds upon this introductory workshop by introducing some specific properties of Stan, including vectorization and variable declaration, and introduces two more models: the Bernoulli model and linear regression.</p>
-<p>In Workshop 6, we turn to the specific application of these methods to infer latent cognitive processes. A basic overview to the principles of cognitive modeling is followed by an introduction to reinforcement learning, a popular theory of human behaviour. To this end, a simple reinforcement learning algorithm consisting of the Rescorla-Wagner model <span class="citation" data-cites="Rescorla1972">(<a href="#ref-Rescorla1972" role="doc-biblioref">Rescorla and Wagner 1972</a>)</span>, and softmax choice rule is introduced. Students will then practically implement this ‘Simple RL’ model in Stan, for simulated choice data for a single subject, before fitting multiple subjects. For the latter exercise, students will do so in two ways, by firstly looping across subjects and fitting each subject individually. In doing so, they will learn about statistical concerns with parameter estimation in groups. Workshop 7 directly builds upon this topic by introducing hierarchical Bayesian models <span class="citation" data-cites="Lee2011">(<a href="#ref-Lee2011" role="doc-biblioref">Lee 2011</a>)</span> for parameter estimation. Introducing the concepts of ‘hyperparameters’ and ‘hyperpriors’, students will then run a hierarchical implementation of the Simple RL model. Given that Bayesian cognitive models often require troubleshooting for parameter estimation [Baribault2023] optimization strategies are also introduced in this workshop. Specifically, this covers Stan’s sampling parameters and reparameterization; the latter being particularly relevant for hierarchical models.</p>
-<p>Model comparison is introduced in Workshop 8, with the basis behind model fitting, predictive accuracy and information criterion firstly described. Taking Widely Applicable Information Criterion (WAIC) as an example, students will subsequently compare two RL models: the Simple RL and ‘Fictitious RL’ using the <code>loo</code> package <span class="citation" data-cites="Vehtari2024">(<a href="#ref-Vehtari2024" role="doc-biblioref">Vehtari et al. 2024</a>)</span> in R, and plot posterior predictive checks as a measure of model validation. The final workshop (Workshop 9) describes key strategies for code debugging in Stan, using a purposely error-laden delay-discounting model [<span class="citation" data-cites="Lee2014">Lee and Wagenmakers (<a href="#ref-Lee2014" role="doc-biblioref">2014</a>)</span>) for students to interactively troubleshoot problematic code. To conclude, a published study <span class="citation" data-cites="Crawley2020">(<a href="#ref-Crawley2020" role="doc-biblioref">Crawley et al. 2020</a>)</span> where computational models were implemented to uncover learning differences is described, providing real-case examples of model and parameter recovery.</p>
+<p>Prior to the first workshop, the course begins by summarizing the broader philosophy in which the techniques and methods are implemented. Specifically, this concerns Marr’s influential three levels of analysis <span class="citation" data-cites="Marr1982">(<a href="#ref-Marr1982" role="doc-biblioref">Marr 1982</a>)</span>, which describe how algorithmic-level (as opposed to computational and implementation levels) models can help understand behavior. Doing so shapes the course material within this framework, demonstrating the necessity for building strong theories in psychology <span class="citation" data-cites="Press2022">(<a href="#ref-Press2022" role="doc-biblioref">Press, Yon, and Heyes 2022</a>)</span>. Assuming no prior experience with programming, the course properly (Workshop 01) begins with a basic introduction to the R programming language and the RStudio interface <span class="citation" data-cites="RStudio2020">(<a href="#ref-RStudio2020" role="doc-biblioref">RStudio Team 2020</a>)</span>. This introductory workshop first provides a general introduction to data structures, variables, and packages, after which students will work with simulated data from a reversal learning task, performing basic summary statistics including correlation and regression, and visualizing the results using the <code>ggplot2</code> package <span class="citation" data-cites="Wickham2016">(<a href="#ref-Wickham2016" role="doc-biblioref">Wickham 2016</a>)</span>.</p>
+<p>In Workshop 02, students will be introduced to Bayesian statistics, learning the differences between Bayesian and frequentist definitions of probability. This can be conceptually difficult for those with little statistical or mathematical experience, the material therefore slowly builds to the concept of Bayes’ theorem from simpler probability concepts including joint, conditional and marginal probability, and probability types – discrete and continuous. These concepts are put into practical use in Workshop 03, where the Bayesian approach is transformed from a purely mathematical concept to a system where one can determine the values of unknown parameters from data. The goal of Bayesian inference - computing the probability distribution of model parameters given the observed data – is also introduced, firstly using a simple instance, grid approximation, adapted from <span class="citation" data-cites="McElreath2018">(<a href="#ref-McElreath2018" role="doc-biblioref">McElreath 2018</a>)</span>. Students will subsequently learn that for more complex models, sampling procedures which approximate the posterior distribution are used. To this end, a popular approach – Markov chain Monte Carlo (MCMC) – is conceptually introduced.</p>
+<p>At this point, students will have the conceptual knowledge of Bayesian statistics and probability to practically implement models. Workshop 04 introduces students to the Stan programming language <span class="citation" data-cites="Carpenter2017">(<a href="#ref-Carpenter2017" role="doc-biblioref">Carpenter et al. 2017</a>)</span> and it’s R interface RStan <span class="citation" data-cites="StanTeam2024">(<a href="#ref-StanTeam2024" role="doc-biblioref">Stan Development Team 2024</a>)</span>. Following an overview of Stan syntax, students will construct a binomial model for a coin flipping toy example, estimating the same parameter calculated by grid approximation in the previous workshop. In doing so, students will become familiar with the relationship between Stan and R, with models being coded in a <code>*.stan</code> file, and sourced to the respective R script. Students will also examine basic outputs of the sampler, including the summary statistics, and by plotting the posterior density distribution. Workshop 5 builds upon this introductory workshop by introducing some specific properties and advantageous features of Stan (as opposed to other packages like JAGs), including vectorization and variable declaration, and introduces two more models: the Bernoulli model and linear regression.</p>
+<p>Having built a solid foundation of understanding Bayesian statistics in Workshops 1-5, in Workshop 6, we turn to the specific application of these methods to infer latent cognitive processes. A basic overview to the principles of cognitive modeling is followed by an introduction to reinforcement learning, a popular theory of human behavior that has been widely used in the last decades <span class="citation" data-cites="Dayan2008 Lee2012 Daw2011 Niv2009">(<a href="#ref-Dayan2008" role="doc-biblioref">Dayan and Niv 2008</a>; <a href="#ref-Lee2012" role="doc-biblioref">D. Lee, Seo, and Jung 2012</a>; <a href="#ref-Daw2011" role="doc-biblioref">Daw et al. 2011</a>; <a href="#ref-Niv2009" role="doc-biblioref">Niv 2009</a>)</span>. To this end, we introduce a simple reinforcement learning algorithm consisting of the Rescorla-Wagner model <span class="citation" data-cites="Rescorla1972">(<a href="#ref-Rescorla1972" role="doc-biblioref">Rescorla and Wagner 1972</a>)</span> that uses an error-driven rule (e.g., through reward prediction error) to update value computation, and a softmax choice rule quantifies the stochasticity and randomness in human action. Students will then practically implement this ‘Simple RL’ model in Stan, for simulated choice data for a single subject, before fitting multiple subjects. For the latter exercise, students will do so in two ways, by firstly looping across subjects and fitting each subject individually. In doing so, they will learn about statistical concerns with parameter estimation in groups and drawbacks of these two approaches. Workshop 7 directly builds upon this topic by introducing hierarchical Bayesian models <span class="citation" data-cites="Lee2012">(<a href="#ref-Lee2012" role="doc-biblioref">D. Lee, Seo, and Jung 2012</a>)</span> for simultaneously estimating both group- and individual level parameters. Conceptually, this means that all individuals are assumed to be drawn from a common, higher-level, group distribution, meanwhile maintain their individual level variation. Introducing the concepts of ‘hyperparameters’ and ‘hyperpriors’, students will then run a hierarchical implementation of the Simple RL model. Given that Bayesian cognitive models often require troubleshooting for parameter estimation <span class="citation" data-cites="Baribault2023">(<a href="#ref-Baribault2023" role="doc-biblioref">Baribault and Collins 2023</a>)</span>, optimization strategies are also introduced in this workshop. Specifically, this covers Stan’s sampling parameters and reparameterization; the latter being particularly relevant for hierarchical models.</p>
+<p>Model comparison is introduced in Workshop 8, with the basis behind model fitting, predictive accuracy and information criterion firstly described. Taking Widely Applicable Information Criterion (WAIC) as an example, students will subsequently compare two RL models: the Simple RL (updating value computation only for the chosen option) and ‘Fictitious RL’ (updating value computation for both the chosen and unchosen options) using the <code>loo</code> package <span class="citation" data-cites="Vehtari2015">(<a href="#ref-Vehtari2015" role="doc-biblioref">Vehtari et al. 2015</a>)</span> in R, and plot posterior predictive checks as a measure of model validation. The final workshop (Workshop 9) describes key strategies for code writing styles and code debugging in Stan, using a purposely error-laden delay-discounting model <span class="citation" data-cites="Lee2014">(<a href="#ref-Lee2014" role="doc-biblioref">M. D. Lee and Wagenmakers 2014</a>)</span> for students to interactively troubleshoot problematic code. To conclude, a published study <span class="citation" data-cites="Crawley2020">(<a href="#ref-Crawley2020" role="doc-biblioref">Crawley et al. 2020</a>)</span> where computational models were implemented to uncover learning differences is described, providing real-case examples of model and parameter recovery.</p>
 <p>The course begins from the shared assumption of no-to-little prior experience among students with programming and statistics, however specific workshops may be skipped for certain audiences. For example, if students are comfortable with the RStudio environment, teachers could begin with Workshop 2. Similarly, if looking to introduce experienced Stan users to the specific topic of modeling cognitive processes through RL, Workshop 6 provides an ideal starting point. Any tutorial can be adopted, transformed, or built upon for other educational purposes (e.g., courses, single class sessions, workshops) under a Creative Commons Attribution-ShareAlike 4.0 International License.</p>
-<p>All course workshops are accompanied by example data and scripts, the latter provided in both uncompleted and completed versions where appropriate. All software required for the course are open-source and easy to install; instructions are provided in the ‘Course overview’ page. Whilst specific R packages (<code>rstan</code>, <code>loo</code>, <code>ggplot2</code>) are required, the course uses <code>renv</code> <span class="citation" data-cites="Ushey2025">(<a href="#ref-Ushey2025" role="doc-biblioref">Ushey and Wickham 2025</a>)</span> to simplify the installation process. Users simply run a single command which installs the required packages for all successive R sessions. However, <code>renv</code> only provides a simplified solution to reproducibility and can be mired by system dependencies and versions of RStudio. Therefore, users can alternatively, pull a <a href="https://hub.docker.com/repository/docker/sohamir/bayescog/general">pre-made Docker image</a>, building a container locally to host the RStudio environment. This does not necessitate users to have R or RStudio installed - only <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> maintaining a more consistent and reproducible development environment across different systems and platforms. In either case, generating the working environment requires minimal effort (Fig 1.) Detailed guidance on how to recreate the working environments in both cases are provided on the course website.</p>
-<p><img src="figure.png" class="img-fluid" alt="Figure 1."> The course materials are hosted on GitHub can be downloaded locally using the <code>git clone</code> command. Users have two options if wanting to replicate the environment for the course materials. If they would like to work on their own installation and version of RStudio, they can use <code>renv</code> to install all required packages and dependencies. Conversely, if users would like to work on a specific RStudio version, they can pull the provided Docker image, which also installs the required R packages on an RStudio server. In either case, the required dependencies are minimal (R/RStudio or Docker), and recreating the environment only involves running one or two commands.</p>
+<p>All course workshops are accompanied by example data and scripts, the latter provided in both uncompleted and completed versions where appropriate. All software required for the course are open-source and easy to install; instructions are provided in the ‘Course overview’ page. Whilst specific R packages (<code>rstan</code>, <code>loo</code>, <code>ggplot2</code>) are required, the course uses <code>renv</code> <span class="citation" data-cites="Ushey2023">(<a href="#ref-Ushey2023" role="doc-biblioref">Ushey and Wickham 2023</a>)</span> to simplify the installation process. Users simply run a single command which installs the required packages for all successive R sessions. However, <code>renv</code> only provides a simplified solution to reproducibility and can be mired by system dependencies and versions of RStudio. Therefore, users can alternatively, pull a pre-made Docker image building a container locally to host the RStudio environment. This does not necessitate users to have R or RStudio installed - only Docker Desktop - maintaining a more consistent and reproducible development environment across different systems and platforms. In either case, generating the working environment requires minimal effort (Figure 1.). Detailed guidance on how to recreate the working environment in both cases are provided on the course website.</p>
+<p><img src="fig1.png" class="img-fluid" alt="Figure 1."> <strong>Figure 1.</strong> The course materials are hosted on GitHub can be downloaded locally using the <code>git clone</code> command. Users have two options if wanting to replicate the environment for the course materials. For working on one’s own installation and version of RStudio, <code>renv</code> manages all required packages and dependencies. Conversely, if users would like to work on a specific RStudio version, they can pull the provided Docker image, which installs the required R packages on an RStudio server. In either case, the required dependencies are minimal (R/RStudio or Docker), and recreating the environment only involves running one or two simple commands. Icons from <a href="https://icons8.com/">icons8.com</a></p>
 </section>
 <section id="future-directions" class="level1">
 <h1>Future Directions</h1>
-<p>The BayesCog course provides a general introduction to Bayesian statistics and computational modeling within the context of psychological research. Subsequently, the materials and topics could be developed further. This includes expanding the family of models beyond reinforcement learning, introducing the application of computational methods with neuroimaging data <span class="citation" data-cites="Glascher2010 deHollander2016">(<a href="#ref-Glascher2010" role="doc-biblioref">Gläscher and O’Doherty 2010</a>; <a href="#ref-deHollander2016" role="doc-biblioref">Hollander, Forstmann, and Brown 2016</a>)</span> and discussing theory-based modeling of psychiatric disorders <span class="citation" data-cites="Maia2017">(<a href="#ref-Maia2017" role="doc-biblioref">Maia, Huys, and Frank 2017</a>)</span>. Furthermore, the Stan programming language remains technically challenging, leading to the development of user-friendly packages for computational modeling <span class="citation" data-cites="Ahn2017">(<a href="#ref-Ahn2017" role="doc-biblioref">Ahn, Haines, and Zhang 2017</a>)</span>. Tutorials on how to implement these packages could further broaden the use of computational methods within the psychological sciences.</p>
-<p>To this end, we openly receive feedback and suggestions from the wider community. Broader comments can be communicated on the <a href="https://github.com/alpn-lab/BayesCog/issues">GitHub repository</a> by either reporting an issue or requesting an enhancement. On-the-other-hand, we recommend major changes to be made communicated beforehand and – if appropriate - made directly by forking the repository and pushing changes to the main branch. A member of the contributing team will then review the changes. Accepted contributions will be credited and following the community guidelines outlined on the CONTIBUTORS page.</p>
+<p>The BayesCog course provides a general introduction to Bayesian statistics and computational modeling within the context of psychological research. Subsequently, the materials and topics could easily be developed further. This includes using computational methods with neuroimaging data <span class="citation" data-cites="Glascher2010 deHollander2016">(<a href="#ref-Glascher2010" role="doc-biblioref">Glascher and O’Doherty 2010</a>; <a href="#ref-deHollander2016" role="doc-biblioref">Hollander, Forstmann, and Brown 2016</a>)</span>, understanding behaviors in the social world <span class="citation" data-cites="Kutlikova2023 Pan2023">(<a href="#ref-Kutlikova2023" role="doc-biblioref">Kutlikova et al. 2023</a>; <a href="#ref-Pan2023" role="doc-biblioref">Y. Pan et al. 2023</a>)</span>, and the theory-based modeling of psychiatric disorders <span class="citation" data-cites="Maia2017 Sohail2024 Suter2025">(<a href="#ref-Maia2017" role="doc-biblioref">Maia, Huys, and Frank 2017</a>; <a href="#ref-Sohail2024" role="doc-biblioref">Sohail and Zhang 2024</a>; <a href="#ref-Suter2025" role="doc-biblioref">Suter, Černis, and Zhang 2025</a>)</span>. Furthermore, the Stan programming language remains technically challenging, leading to the development of user-friendly packages for computational modeling <span class="citation" data-cites="Ahn2017">(<a href="#ref-Ahn2017" role="doc-biblioref">Ahn, Haines, and Zhang 2017</a>)</span>. Tutorials on how to implement these packages could further broaden the use of computational methods within the psychological sciences. In the era of large language models (LLMs) and generative AI, the audience are also encouraged to combine this course with LLM tools such as ChatGPT to explore a more tailored learning experience <span class="citation" data-cites="Sohail2025a Sohail2025b">(<a href="#ref-Sohail2025a" role="doc-biblioref">Sohail and Zhang 2025</a>; <a href="#ref-Sohail2025b" role="doc-biblioref">Sohail and Lin 2025</a>)</span>.</p>
+<p>To this end, we openly receive feedback and suggestions from the wider community. Broader comments can be communicated on the <a href="https://github.com/Alpn-Lab/BayesCog/issues">GitHub repository</a> by either reporting an issue or requesting an enhancement. On-the-other-hand, we recommend major changes to be made communicated beforehand and – if appropriate - made directly by forking the repository and pushing changes to the main branch. A member of the contributing team will then review the changes. Accepted contributions will be credited and following the community guidelines outlined on the CONTIBUTORS page.</p>
 </section>
 <section id="acknowledgments" class="level1">
 <h1>Acknowledgments</h1>
-<p>L.Z. is grateful to …</p>
-<p><a href="https://sohaamir.github.io/">A.S.</a> is grateful to Lei Zhang for developing the initial version of these materials, including slides, code, and GitHub repositories. He would also like to thank the creators of existing open-source materials, including Shawn Rhoads’ Computational Models of Human Social Behavior and Neuroscience <span class="citation" data-cites="Rhoads2022">(<a href="#ref-Rhoads2022" role="doc-biblioref">Rhoads and Gan 2022</a>)</span>, Luke Chang’s DartBrains: An online open access resource for learning functional neuroimaging analysis methods in Python <span class="citation" data-cites="Chang2020">(<a href="#ref-Chang2020" role="doc-biblioref">Chang et al. 2020</a>)</span> and Magdalena Chechlacz’s <a href="https://chbh-opensource.github.io/mri-on-bear-edu/">MRI on BEAR</a>.</p>
+<p><a href="https://sohaamir.github.io/">A.S.</a> would like to thank Lei Zhang for developing the initial version of these materials, including slides, code, and GitHub repositories. A.S. and <a href="https://lei-zhang.net/">L.Z</a> would also like to acknowledge existing open-source materials, including Shawn Rhoads’ Computational Models of Human Social Behavior and Neuroscience <span class="citation" data-cites="Rhoads2022">(<a href="#ref-Rhoads2022" role="doc-biblioref">Rhoads and Gan 2022</a>)</span>, Luke Chang’s ‘DartBrains: An online open access resource for learning functional neuroimaging analysis methods in Python’ <span class="citation" data-cites="Chang2020">(<a href="#ref-Chang2020" role="doc-biblioref">Chang et al. 2020</a>)</span> and Magdalena Chechlacz’s ‘MRI on BEAR’ course in neuroimaging <span class="citation" data-cites="Sohail2025c">(<a href="#ref-Sohail2025c" role="doc-biblioref">Sohail et al. 2025</a>)</span>, who influenced the development of these materials.</p>
+<p>L.Z. is supported by the Wellcome Trust (228268/Z/23/Z) and Royal Society (IES\243253). A.S. is supported by an MRC AIM iCASE DTP Studentship (Ref: MR/W007002/1).</p>
 </section>
 <section id="author-contributions" class="level1">
 <h1>Author Contributions</h1>
-<p>L.Z. created, designed and taught the original course materials by creating the slides, writing the Stan and R code, creating and interpreting the datasets and recording the <a href="https://www.youtube.com/playlist?list=PLfRTb2z8k2x9gNBypgMIj3oNLF8lqM44-">YouTube videos</a>.</p>
-<p>L.Z. developed the course using prior experience …</p>
-<p>L.Z. was supported by …</p>
-<p>A.S. created the website, added the content by converting, editing and expanding the source material. A.S. adapted the material using prior experience as a Teaching Assistant, adapting course materials for Magdalena Chechlacz’s Magnetic Resonance Imaging in Cognitive Neuroscience (MRICN) module at the University of Birmingham. Both authors revised the course materials and wrote the manuscript. The course materials were created to make the content more generally accessible and engaging, both generally and for students taught by L.Z. and A.S.</p>
-<p>A.S. is supported by an MRC AIM iCASE DTP Studentship (Ref: MR/W007002/1).</p>
+<p>L.Z. created, designed and taught the original course materials by developing the syllabus, writing the Stan and R code and creating and interpreting the datasets. A.S. created the website, adding the content by converting, editing and expanding the source material written by L.Z. L.Z. and A.S. both revised the course materials and wrote the manuscript.</p>
 </section>
 <section id="references" class="level1">
 
@@ -539,18 +580,18 @@ div.csl-indent {
 
 </section>
 
-<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
 <div id="ref-Ahn2017" class="csl-entry" role="listitem">
-Ahn, Woo-Young, Nathaniel Haines, and Lei Zhang. 2017. <span>“Revealing <span>Neurocomputational</span> <span>Mechanisms</span> of <span>Reinforcement</span> <span>Learning</span> and <span>Decision</span>-<span>Making</span> <span>With</span> the <span class="nocase">hBayesDM</span> <span>Package</span>.”</span> <em>Computational Psychiatry (Cambridge, Mass.)</em> 1 (October): 24–57. <a href="https://doi.org/10.1162/CPSY_a_00002">https://doi.org/10.1162/CPSY_a_00002</a>.
+Ahn, Woo-Young, Nathaniel Haines, and Lei Zhang. 2017. <span>“Revealing <span>Neurocomputational</span> <span>Mechanisms</span> of <span>Reinforcement</span> <span>Learning</span> and <span>Decision</span>-<span>Making</span> <span>With</span> the <span class="nocase">hBayesDM</span> <span>Package</span>.”</span> <em>Computational Psychiatry (Cambridge, Mass.)</em> 1: 24–57.
 </div>
-<div id="ref-Annis2017" class="csl-entry" role="listitem">
-Annis, Jeffrey, and Thomas J. Palmeri. 2018. <span>“Bayesian Statistical Approaches to Evaluating Cognitive Models.”</span> <em>WIREs Cognitive Science</em> 9 (2): e1458. <a href="https://doi.org/10.1002/wcs.1458">https://doi.org/10.1002/wcs.1458</a>.
+<div id="ref-Annis2018" class="csl-entry" role="listitem">
+Annis, Jeffrey, and Thomas J Palmeri. 2018. <span>“Bayesian Statistical Approaches to Evaluating Cognitive Models.”</span> <em>Wiley Interdisciplinary Reviews: Cognitive Science</em> 9 (2): e1458.
 </div>
 <div id="ref-Baribault2023" class="csl-entry" role="listitem">
-Baribault, Beth, and Anne G. E. Collins. 2023. <span>“Troubleshooting <span>Bayesian</span> Cognitive Models.”</span> <em>Psychological Methods</em>, March. <a href="https://doi.org/10.1037/met0000554">https://doi.org/10.1037/met0000554</a>.
+Baribault, Beth, and Anne G. E. Collins. 2023. <span>“Troubleshooting <span>Bayesian</span> Cognitive Models.”</span> <em>Psychological Methods</em>.
 </div>
 <div id="ref-Carpenter2017" class="csl-entry" role="listitem">
-Carpenter, Bob, Andrew Gelman, Matthew D. Hoffman, Daniel Lee, Ben Goodrich, Michael Betancourt, Marcus A. Brubaker, Jiqiang Guo, Peter Li, and Allen Riddell. 2017. <span>“Stan: <span>A</span> <span>Probabilistic</span> <span>Programming</span> <span>Language</span>.”</span> <em>Journal of Statistical Software</em> 76: 1. <a href="https://doi.org/10.18637/jss.v076.i01">https://doi.org/10.18637/jss.v076.i01</a>.
+Carpenter, Bob, Andrew Gelman, Matthew D. Hoffman, Daniel Lee, Ben Goodrich, Michael Betancourt, Marcus A. Brubaker, Jiqiang Guo, Peter Li, and Allen Riddell. 2017. <span>“Stan: <span>A</span> <span>Probabilistic</span> <span>Programming</span> <span>Language</span>.”</span> <em>Journal of Statistical Software</em> 76: 1.
 </div>
 <div id="ref-Chang2020" class="csl-entry" role="listitem">
 Chang, LJ, J Huckins, JH Cheong, S Brietzke, MA Lindquist, and TD Wager. 2020. <span>“DartBrains: An Online Open Access Resource for Learning Functional Neuroimaging Analysis Methods in Python.”</span> Zenodo. https://doi. org/10.5281/zenodo.
@@ -558,340 +599,550 @@ Chang, LJ, J Huckins, JH Cheong, S Brietzke, MA Lindquist, and TD Wager. 2020. <
 <div id="ref-Crawley2020" class="csl-entry" role="listitem">
 Crawley, Daisy, Lei Zhang, Emily JH Jones, Jumana Ahmad, Bethany Oakley, Antonia San José Cáceres, Tony Charman, et al. 2020. <span>“Modeling Flexible Behavior in Childhood to Adulthood Shows Age-Dependent Learning Mechanisms and Less Optimal Learning in Autism in Each Age Group.”</span> <em>PLoS Biology</em> 18 (10): e3000908.
 </div>
+<div id="ref-Daw2011" class="csl-entry" role="listitem">
+Daw, Nathaniel D, Samuel J Gershman, Ben Seymour, Peter Dayan, and Raymond J Dolan. 2011. <span>“Model-Based Influences on Humans’ Choices and Striatal Prediction Errors.”</span> <em>Neuron</em> 69 (6): 1204–15.
+</div>
+<div id="ref-Dayan2008" class="csl-entry" role="listitem">
+Dayan, Peter, and Yael Niv. 2008. <span>“Reinforcement Learning: The Good, the Bad and the Ugly.”</span> <em>Current Opinion in Neurobiology</em> 18 (2): 185–96.
+</div>
 <div id="ref-Eckstein2021" class="csl-entry" role="listitem">
-Eckstein, Maria K, Linda Wilbrecht, and Anne GE Collins. 2021. <span>“What Do Reinforcement Learning Models Measure? <span>Interpreting</span> Model Parameters in Cognition and Neuroscience.”</span> <em>Current Opinion in Behavioral Sciences</em>, Value based decision-making, 41 (October): 128–37. <a href="https://doi.org/10.1016/j.cobeha.2021.06.004">https://doi.org/10.1016/j.cobeha.2021.06.004</a>.
+Eckstein, Maria K, Linda Wilbrecht, and Anne GE Collins. 2021. <span>“What Do Reinforcement Learning Models Measure? <span>Interpreting</span> Model Parameters in Cognition and Neuroscience.”</span> <em>Current Opinion in Behavioral Sciences</em> 41: 128–37.
 </div>
 <div id="ref-Farrell2018" class="csl-entry" role="listitem">
 Farrell, Simon, and Stephan Lewandowsky. 2018. <em>Computational <span>Modeling</span> of <span>Cognition</span> and <span>Behavior</span></em>. Cambridge University Press.
 </div>
 <div id="ref-FeldmanHall2021" class="csl-entry" role="listitem">
-FeldmanHall, Oriel, and Matthew R. Nassar. 2021. <span>“The Computational Challenge of Social Learning.”</span> <em>Trends in Cognitive Sciences</em> 25 (12): 1045–57. <a href="https://doi.org/10.1016/j.tics.2021.09.002">https://doi.org/10.1016/j.tics.2021.09.002</a>.
+FeldmanHall, Oriel, and Matthew R. Nassar. 2021. <span>“The Computational Challenge of Social Learning.”</span> <em>Trends in Cognitive Sciences</em> 25 (12): 1045–57.
 </div>
 <div id="ref-Glascher2010" class="csl-entry" role="listitem">
-Gläscher, Jan P., and John P. O’Doherty. 2010. <span>“Model-Based Approaches to Neuroimaging: Combining Reinforcement Learning Theory with <span class="nocase">fMRI</span> Data.”</span> <em>WIREs Cognitive Science</em> 1 (4): 501–10. <a href="https://doi.org/10.1002/wcs.57">https://doi.org/10.1002/wcs.57</a>.
+Glascher, Jan P., and John P. O’Doherty. 2010. <span>“Model-Based Approaches to Neuroimaging: Combining Reinforcement Learning Theory with <span class="nocase">fMRI</span> Data.”</span> <em>WIREs Cognitive Science</em> 1 (4): 501–10.
 </div>
 <div id="ref-Guest2021" class="csl-entry" role="listitem">
-Guest, Olivia, and Andrea E. Martin. 2021. <span>“How <span>Computational</span> <span>Modeling</span> <span>Can</span> <span>Force</span> <span>Theory</span> <span>Building</span> in <span>Psychological</span> <span>Science</span>.”</span> <em>Perspectives on Psychological Science</em> 16 (4): 789–802. <a href="https://doi.org/10.1177/1745691620970585">https://doi.org/10.1177/1745691620970585</a>.
+Guest, Olivia, and Andrea E. Martin. 2021. <span>“How <span>Computational</span> <span>Modeling</span> <span>Can</span> <span>Force</span> <span>Theory</span> <span>Building</span> in <span>Psychological</span> <span>Science</span>.”</span> <em>Perspectives on Psychological Science</em> 16 (4): 789–802.
 </div>
 <div id="ref-Hauser2022" class="csl-entry" role="listitem">
-Hauser, Tobias U., Vasilisa Skvortsova, Munmun De Choudhury, and Nikolaos Koutsouleris. 2022. <span>“The Promise of a Model-Based Psychiatry: Building Computational Models of Mental Ill Health.”</span> <em>The Lancet Digital Health</em> 4 (11): e816–28. <a href="https://doi.org/10.1016/S2589-7500(22)00152-2">https://doi.org/10.1016/S2589-7500(22)00152-2</a>.
+Hauser, Tobias U., Vasilisa Skvortsova, Munmun De Choudhury, and Nikolaos Koutsouleris. 2022. <span>“The Promise of a Model-Based Psychiatry: Building Computational Models of Mental Ill Health.”</span> <em>The Lancet Digital Health</em> 4 (11): e816–28.
 </div>
 <div id="ref-deHollander2016" class="csl-entry" role="listitem">
-Hollander, Gilles de, Birte U. Forstmann, and Scott D. Brown. 2016. <span>“Different <span>Ways</span> of <span>Linking</span> <span>Behavioral</span> and <span>Neural</span> <span>Data</span> via <span>Computational</span> <span>Cognitive</span> <span>Models</span>.”</span> <em>Biological Psychiatry: Cognitive Neuroscience and Neuroimaging</em> 1 (2): 101–9. <a href="https://doi.org/10.1016/j.bpsc.2015.11.004">https://doi.org/10.1016/j.bpsc.2015.11.004</a>.
+Hollander, Gilles de, Birte U. Forstmann, and Scott D. Brown. 2016. <span>“Different <span>Ways</span> of <span>Linking</span> <span>Behavioral</span> and <span>Neural</span> <span>Data</span> via <span>Computational</span> <span>Cognitive</span> <span>Models</span>.”</span> <em>Biological Psychiatry: Cognitive Neuroscience and Neuroimaging</em> 1 (2): 101–9.
 </div>
 <div id="ref-Huys2016" class="csl-entry" role="listitem">
-Huys, Quentin J. M., Tiago V. Maia, and Michael J. Frank. 2016. <span>“Computational Psychiatry as a Bridge from Neuroscience to Clinical Applications.”</span> <em>Nature Neuroscience</em> 19 (3): 404–13. <a href="https://doi.org/10.1038/nn.4238">https://doi.org/10.1038/nn.4238</a>.
+Huys, Quentin J. M., Tiago V. Maia, and Michael J. Frank. 2016. <span>“Computational Psychiatry as a Bridge from Neuroscience to Clinical Applications.”</span> <em>Nature Neuroscience</em> 19 (3): 404–13.
 </div>
 <div id="ref-Kruschke2014" class="csl-entry" role="listitem">
 Kruschke, John. 2014. <em>Doing <span>Bayesian</span> <span>Data</span> <span>Analysis</span>: <span>A</span> <span>Tutorial</span> with <span>R</span>, <span>JAGS</span>, and <span>Stan</span></em>. Academic Press.
 </div>
+<div id="ref-Kutlikova2023" class="csl-entry" role="listitem">
+Kutlikova, Hana H, Lei Zhang, Christoph Eisenegger, Jack van Honk, and Claus Lamm. 2023. <span>“Testosterone Eliminates Strategic Prosocial Behavior Through Impacting Choice Consistency in Healthy Males.”</span> <em>Neuropsychopharmacology</em> 48 (10): 1541–50.
+</div>
 <div id="ref-NivLab2021" class="csl-entry" role="listitem">
-Lab, Niv. 2021. <span>“NivStan.”</span> 2021. <a href="https://nivlab.github.io/nivstan/">https://nivlab.github.io/nivstan/</a>.
+Lab, Niv. 2021. <span>“NivStan.”</span> 2021.
 </div>
 <div id="ref-Lambert2018" class="csl-entry" role="listitem">
 Lambert, Ben. 2018. <em>A <span>Student</span>’s <span>Guide</span> to <span>Bayesian</span> <span>Statistics</span></em>. SAGE.
 </div>
+<div id="ref-Lee2012" class="csl-entry" role="listitem">
+Lee, Daeyeol, Hyojung Seo, and Min Whan Jung. 2012. <span>“Neural Basis of Reinforcement Learning and Decision Making.”</span> <em>Annual Review of Neuroscience</em> 35 (1): 287–308.
+</div>
 <div id="ref-Lee2011" class="csl-entry" role="listitem">
-Lee, Michael D. 2011. <span>“How Cognitive Modeling Can Benefit from Hierarchical <span>Bayesian</span> Models.”</span> <em>Journal of Mathematical Psychology</em>, Special <span>Issue</span> on <span>Hierarchical</span> <span>Bayesian</span> <span>Models</span>, 55 (1): 1–7. <a href="https://doi.org/10.1016/j.jmp.2010.08.013">https://doi.org/10.1016/j.jmp.2010.08.013</a>.
+Lee, Michael D. 2011. <span>“How Cognitive Modeling Can Benefit from Hierarchical <span>Bayesian</span> Models.”</span> <em>Journal of Mathematical Psychology</em> 55 (1): 1–7.
 </div>
 <div id="ref-Lee2014" class="csl-entry" role="listitem">
 Lee, Michael D., and Eric-Jan Wagenmakers. 2014. <em>Bayesian <span>Cognitive</span> <span>Modeling</span>: <span>A</span> <span>Practical</span> <span>Course</span></em>. Cambridge University Press.
 </div>
 <div id="ref-Lockwood2021" class="csl-entry" role="listitem">
-Lockwood, Patricia L, and Miriam C Klein-Flügge. 2021. <span>“Computational Modelling of Social Cognition and Behaviour-a Reinforcement Learning Primer.”</span> <em>Social Cognitive and Affective Neuroscience</em> 16 (8): 761–71. <a href="https://doi.org/10.1093/scan/nsaa040">https://doi.org/10.1093/scan/nsaa040</a>.
+Lockwood, Patricia L, and Miriam C Klein-Flügge. 2021. <span>“Computational Modelling of Social Cognition and Behaviour-a Reinforcement Learning Primer.”</span> <em>Social Cognitive and Affective Neuroscience</em> 16 (8): 761–71.
 </div>
 <div id="ref-Maia2017" class="csl-entry" role="listitem">
-Maia, Tiago V., Quentin J. M. Huys, and Michael J. Frank. 2017. <span>“Theory-<span>Based</span> <span>Computational</span> <span>Psychiatry</span>.”</span> <em>Biological Psychiatry</em> 82 (6): 382–84. <a href="https://doi.org/10.1016/j.biopsych.2017.07.016">https://doi.org/10.1016/j.biopsych.2017.07.016</a>.
+Maia, Tiago V., Quentin J. M. Huys, and Michael J. Frank. 2017. <span>“Theory-<span>Based</span> <span>Computational</span> <span>Psychiatry</span>.”</span> <em>Biological Psychiatry</em> 82 (6): 382–84.
 </div>
 <div id="ref-Marr1982" class="csl-entry" role="listitem">
-Marr, David. 1982. <span>“Vision: A Computational Investigation into the Human Representation and Processing of Visual Information.”</span>
+Marr, David. 1982. <em>Vision: A Computational Investigation into the Human Representation and Processing of Visual Information</em>. W.H. Freeman; Company.
 </div>
 <div id="ref-McElreath2018" class="csl-entry" role="listitem">
-McElreath, Richard. 2018. <em>Statistical <span>Rethinking</span>: <span>A</span> <span>Bayesian</span> <span>Course</span> with <span>Examples</span> in <span>R</span> and <span>Stan</span></em>. New York: Chapman; Hall/CRC. <a href="https://doi.org/10.1201/9781315372495">https://doi.org/10.1201/9781315372495</a>.
+McElreath, Richard. 2018. <em>Statistical <span>Rethinking</span>: <span>A</span> <span>Bayesian</span> <span>Course</span> with <span>Examples</span> in <span>R</span> and <span>Stan</span></em>. Chapman; Hall/CRC.
+</div>
+<div id="ref-Niv2009" class="csl-entry" role="listitem">
+Niv, Yael. 2009. <span>“Reinforcement Learning in the Brain.”</span> <em>Journal of Mathematical Psychology</em> 53 (3): 139–54.
+</div>
+<div id="ref-OReilly2015" class="csl-entry" role="listitem">
+O’Reilly, Jill X., and E. M. den Ouden Hanneke. 2015. <span>“Models of Learning.”</span> 2015.
 </div>
 <div id="ref-Palminteri2017" class="csl-entry" role="listitem">
-Palminteri, Stefano, Valentin Wyart, and Etienne Koechlin. 2017. <span>“The <span>Importance</span> of <span>Falsification</span> in <span>Computational</span> <span>Cognitive</span> <span>Modeling</span>.”</span> <em>Trends in Cognitive Sciences</em> 21 (6): 425–33. <a href="https://doi.org/10.1016/j.tics.2017.03.011">https://doi.org/10.1016/j.tics.2017.03.011</a>.
+Palminteri, Stefano, Valentin Wyart, and Etienne Koechlin. 2017. <span>“The <span>Importance</span> of <span>Falsification</span> in <span>Computational</span> <span>Cognitive</span> <span>Modeling</span>.”</span> <em>Trends in Cognitive Sciences</em> 21 (6): 425–33.
+</div>
+<div id="ref-Pan2022" class="csl-entry" role="listitem">
+Pan, Wanke, Haiyang Geng, Lei Zhang, Alexander Fengler, M Frank, R Zhang, and Hu Chuan-Peng. 2022. <span>“A Hitchhiker’s Guide to Bayesian Hierarchical Drift-Diffusion Modeling with Docker-HDDM.”</span> <em>PsyArXiv</em> 10.
+</div>
+<div id="ref-Pan2023" class="csl-entry" role="listitem">
+Pan, Yafeng, Mikkel C Vinding, Lei Zhang, Daniel Lundqvist, and Andreas Olsson. 2023. <span>“A Brain-to-Brain Mechanism for Social Transmission of Threat Learning.”</span> <em>Advanced Science</em> 10 (28): 2304037.
 </div>
 <div id="ref-Plummer2003" class="csl-entry" role="listitem">
-Plummer, Martyn et al. 2003. <span>“JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling.”</span> In <em>Proceedings of the 3rd International Workshop on Distributed Statistical Computing</em>, 124:1–10. 125.10. Vienna, Austria.
+Plummer, Martyn et al. 2003. <span>“JAGS: A Program for Analysis of Bayesian Graphical Models Using Gibbs Sampling.”</span> In, 1–10.
 </div>
 <div id="ref-Press2022" class="csl-entry" role="listitem">
-Press, Clare, Daniel Yon, and Cecilia Heyes. 2022. <span>“Building Better Theories.”</span> <em>Current Biology</em> 32 (1): R13–17. <a href="https://doi.org/10.1016/j.cub.2021.11.027">https://doi.org/10.1016/j.cub.2021.11.027</a>.
+Press, Clare, Daniel Yon, and Cecilia Heyes. 2022. <span>“Building Better Theories.”</span> <em>Current Biology</em> 32 (1): R13–17.
 </div>
 <div id="ref-Rescorla1972" class="csl-entry" role="listitem">
-Rescorla, Robert A., and Allan R. Wagner. 1972. <span>“A Theory of Pavlovian Conditioning: Variations in the Effectiveness of Reinforcement and Nonreinforcement.”</span> In <em>Classical Conditioning II: Current Research and Theory</em>, edited by A. H. Black and W. F. Prokasy, 64–99. New York: Appleton-Century-Crofts.
+Rescorla, Robert A., and Allan R. Wagner. 1972. <span>“A Theory of Pavlovian Conditioning: Variations in the Effectiveness of Reinforcement and Nonreinforcement.”</span> In, 64–99. Appleton-Century-Crofts.
 </div>
 <div id="ref-Rhoads2022" class="csl-entry" role="listitem">
 Rhoads, Shawn A, and Lin Gan. 2022. <span>“Computational Models of Human Social Behavior and Neuroscience: An Open Educational Course and Jupyter Book to Advance Computational Training.”</span> <em>Journal of Open Source Education</em> 5 (47): 146.
 </div>
 <div id="ref-Rocca2021" class="csl-entry" role="listitem">
-Rocca, Roberta, and Tal Yarkoni. 2021. <span>“Putting <span>Psychology</span> to the <span>Test</span>: <span>Rethinking</span> <span>Model</span> <span>Evaluation</span> <span>Through</span> <span>Benchmarking</span> and <span>Prediction</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 4 (3): 25152459211026864. <a href="https://doi.org/10.1177/25152459211026864">https://doi.org/10.1177/25152459211026864</a>.
+Rocca, Roberta, and Tal Yarkoni. 2021. <span>“Putting <span>Psychology</span> to the <span>Test</span>: <span>Rethinking</span> <span>Model</span> <span>Evaluation</span> <span>Through</span> <span>Benchmarking</span> and <span>Prediction</span>.”</span> <em>Advances in Methods and Practices in Psychological Science</em> 4 (3): 25152459211026864.
 </div>
 <div id="ref-RStudio2020" class="csl-entry" role="listitem">
-RStudio Team. 2020. <em>RStudio: Integrated Development Environment for r</em>. Boston, MA: RStudio, PBC. <a href="http://www.rstudio.com/">http://www.rstudio.com/</a>.
+RStudio Team. 2020. <em>RStudio: Integrated Development Environment for r</em>.
+</div>
+<div id="ref-Sohail2025b" class="csl-entry" role="listitem">
+Sohail, Aamir, and Zhicheng Lin. 2025. <span>“Recalibrating Academic Expertise in the Age of Generative AI.”</span> <em>Available at SSRN 5224452</em>.
+</div>
+<div id="ref-Sohail2025c" class="csl-entry" role="listitem">
+Sohail, Aamir, Andrew J. Quinn, James J. Carpenter, Peter C. Hansen, and Magdalena Chechlacz. 2025. <span>“<span class="nocase">MRI on BEAR (Birmingham Environment for Academic Research): Magnetic Resonance Imaging in Cognitive Neuroscience at the Centre for Human Brain Health</span>.”</span>
+</div>
+<div id="ref-Sohail2024" class="csl-entry" role="listitem">
+Sohail, Aamir, and Lei Zhang. 2024. <span>“Informing the Treatment of Social Anxiety Disorder with Computational and Neuroimaging Data.”</span> <em>Psychoradiology</em> 4: kkae010.
+</div>
+<div id="ref-Sohail2025a" class="csl-entry" role="listitem">
+———. 2025. <span>“Using Large Language Models to Facilitate Academic Work in the Psychological Sciences.”</span> <em>Current Psychology</em> 44 (9): 7910–18.
 </div>
 <div id="ref-StanTeam2024" class="csl-entry" role="listitem">
-Stan Development Team. 2024. <span>“<span>RStan</span>: The <span>R</span> Interface to <span>Stan</span>.”</span> <a href="https://mc-stan.org/">https://mc-stan.org/</a>.
+Stan Development Team. 2024. <span>“<span>RStan</span>: The <span>R</span> Interface to <span>Stan</span>.”</span>
 </div>
-<div id="ref-Ushey2025" class="csl-entry" role="listitem">
-Ushey, Kevin, and Hadley Wickham. 2025. <em>Renv: Project Environments</em>. <a href="https://rstudio.github.io/renv/">https://rstudio.github.io/renv/</a>.
+<div id="ref-Suter2025" class="csl-entry" role="listitem">
+Suter, Gwynnevere, Emma Černis, and Lei Zhang. 2025. <span>“Interpersonal Computational Modelling of Social Synchrony in Schizophrenia and Beyond.”</span> <em>Psychoradiology</em> 5: kkaf011.
 </div>
-<div id="ref-Vehtari2024" class="csl-entry" role="listitem">
-Vehtari, Aki, Jonah Gabry, Måns Magnusson, Yuling Yao, Paul-Christian Bürkner, Topi Paananen, and Andrew Gelman. 2024. <span>“Loo: Efficient Leave-One-Out Cross-Validation and WAIC for Bayesian Models.”</span> <a href="https://mc-stan.org/loo/">https://mc-stan.org/loo/</a>.
+<div id="ref-Ushey2023" class="csl-entry" role="listitem">
+Ushey, Kevin, and Hadley Wickham. 2023. <span>“Renv: Project Environments.”</span> <em>R Package Version</em> 1 (2).
+</div>
+<div id="ref-Vehtari2015" class="csl-entry" role="listitem">
+Vehtari, Aki, Jonah Gabry, Måns Magnusson, Yuling Yao, Paul-Christian Bürkner, Topi Paananen, and Andrew Gelman. 2015. <span>“Loo: Efficient Leave-One-Out Cross-Validation and WAIC for Bayesian Models.”</span> <em>(No Title)</em>.
 </div>
 <div id="ref-Wickham2016" class="csl-entry" role="listitem">
-Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York. <a href="https://ggplot2.tidyverse.org">https://ggplot2.tidyverse.org</a>.
+Wickham, Hadley. 2016. <em>Ggplot2: Elegant Graphics for Data Analysis</em>. Springer-Verlag New York.
 </div>
 <div id="ref-Wilson2019" class="csl-entry" role="listitem">
-Wilson, Robert C, and Anne GE Collins. 2019. <span>“Ten Simple Rules for the Computational Modeling of Behavioral Data.”</span> Edited by Timothy E Behrens. <em>eLife</em> 8 (November): e49547. <a href="https://doi.org/10.7554/eLife.49547">https://doi.org/10.7554/eLife.49547</a>.
+Wilson, Robert C, and Anne GE Collins. 2019. <span>“Ten Simple Rules for the Computational Modeling of Behavioral Data.”</span> <em>eLife</em> 8: e49547.
 </div>
 <div id="ref-Zhang2020" class="csl-entry" role="listitem">
-Zhang, Lei, Lukas Lengersdorff, Nace Mikus, Jan Gläscher, and Claus Lamm. 2020. <span>“Using Reinforcement Learning Models in Social Neuroscience: Frameworks, Pitfalls and Suggestions of Best Practices.”</span> <em>Social Cognitive and Affective Neuroscience</em> 15 (6): 695–707. <a href="https://doi.org/10.1093/scan/nsaa089">https://doi.org/10.1093/scan/nsaa089</a>.
+Zhang, Lei, Lukas Lengersdorff, Nace Mikus, Jan Glascher, and Claus Lamm. 2020. <span>“Using Reinforcement Learning Models in Social Neuroscience: Frameworks, Pitfalls and Suggestions of Best Practices.”</span> <em>Social Cognitive and Affective Neuroscience</em> 15 (6): 695–707.
 </div>
 </div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
       }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
+      return false;
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/alpn-lab\.github\.io\/BayesCog");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
-</script>
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
-    <div class="nav-footer-left">© Zhang &amp; Sohail, 2025</div>   
+    <div class="nav-footer-left">
+<p>© Zhang &amp; Sohail, 2025</p>
+</div>   
     <div class="nav-footer-center">
       &nbsp;
-    </div>
-    <div class="nav-footer-right">This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
   </div>
 </footer>
+
 
 
 
