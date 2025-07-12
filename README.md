@@ -110,8 +110,6 @@ Then, navigate to [http://localhost:8787](http://localhost:8787/) in a browser, 
 
 Then once RStudio has loaded, click on the `project` folder and the BayesCog material will appear. You will not need to install any packages, only to load them when running various operations.
 
-Running the container for the first time will prevent further input in the terminal. You can exit this using `Ctrl/Cmd+C`. 
-
 Subsequently, to start/stop the container, type (from the command line):
 
 ```bash
