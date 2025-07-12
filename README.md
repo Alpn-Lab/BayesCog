@@ -209,7 +209,7 @@ If you use materials from this course in your work or research, please cite it a
 
 ```
 Zhang, L., & Sohail, A. (2025). BayesCog: Bayesian statistics and hierarchical Bayesian modeling for psychological science. 
-[Lesson]. Zenodo. https://doi.org/10.5281/zenodo.15869809
+[Lesson]. Zenodo. https://doi.org/10.5281/zenodo.15870394
 ```
 
 For BibTeX users:
@@ -220,7 +220,7 @@ For BibTeX users:
     author = {Zhang, Lei and Sohail, Aamir},
     year = {2025},
     publisher = {Zenodo},
-    doi = {10.5281/zenodo.15869809},
+    doi = {10.5281/zenodo.15870394},
     note = {Lesson},
     repository = {https://github.com/Alpn-Lab/BayesCog}
 }
