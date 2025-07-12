@@ -36,7 +36,7 @@ The most recent recording from the 2021 summer semester is also available on [Yo
 Computational modeling and mathematical modeling provide an insightful quantitative framework that allows researchers to inspect latent processes and to understand hidden mechanisms. Hence, computational modeling has gained increasing attention in many areas of cognitive science through **cognitive modeling**. One illustration of this trend is the growing popularity of Bayesian approaches to cognitive modeling. To this end, this course teaches the theoretical and practical knowledge necessary to perform, evaluate and interpret Bayesian modeling analyses, with a specific emphasis towards modeling latent cognitive processes. 
 
 In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics, statistical distibrutions and reinforcement learning. 
-We will use [R/RStudio](https://posit.co/download/rstudio-desktop/) and a newly developed statistical computing language - [Stan](mc-stan.org) - to perform Bayesian analyses, ranging from simple binomial models and linear regression models to more complex hierarchical reinforcement learning (RL) models.
+We will use [R/RStudio](https://posit.co/download/rstudio-desktop/) and a newly developed statistical computing language - [Stan](https://mc-stan.org) - to perform Bayesian analyses, ranging from simple binomial models and linear regression models to more complex hierarchical reinforcement learning (RL) models.
 
 ## List of folders and contents
 
@@ -199,7 +199,7 @@ This course is licensed under a [Creative Commons Attribution-ShareAlike 4.0 Int
 You are free to share, copy, and redistribute the material in any medium or format. Additionally, you can adapt, remix, transform, and build upon the material for any purpose, including commercial use.
 However, you must provide appropriate attribution, including credit to the original source, a link to the license, and an indication if changes were made. Furthermore, if you remix, transform, or build upon the material, you are required to distribute your contributions under the same license as the original.
 
-<img src="images/introduction/cc_by_sa.png" width="10%">
+<img src="images/introduction/cc_by_sa.png" width="13%">
 
 ## Citing
 
@@ -207,7 +207,7 @@ If you use materials from this course in your work or research, please cite it a
 
 ```
 Zhang, L., & Sohail, A. (2025). BayesCog: Bayesian statistics and hierarchical Bayesian modeling for psychological science. 
-[Online course]. Zenodo. https://doi.org/[DOI_HERE]
+[Lesson]. Zenodo. https://doi.org/10.5281/zenodo.15869809
 ```
 
 For BibTeX users:
@@ -218,17 +218,14 @@ For BibTeX users:
     author = {Zhang, Lei and Sohail, Aamir},
     year = {2025},
     publisher = {Zenodo},
-    doi = {DOI_HERE},
-    url = {ZENODO_URL},
-    note = {Online course},
-    repository = {https://github.com/REPOSITORY_URL}
+    doi = {10.5281/zenodo.15869809},
+    note = {Lesson},
+    repository = {https://github.com/Alpn-Lab/BayesCog}
 }
 ```
 
-Note: Once this course is published on Zenodo, this citation information will be updated with the corresponding DOI and URL.
-
 ## Contact
 
-For bug reports, issues or comments, please contact [Lei Zhang](mailto:lei.zhang.13@bham.ac.uk), or [Aamir Sohail](mailto:axs2210@bham.ac.uk), or open a thread on the GitHub repository.
+For bug reports, issues or comments, please contact [Lei Zhang](mailto:lei.zhang.13@bham.ac.uk) or [Aamir Sohail](mailto:axs2210@bham.ac.uk), or open a thread on the GitHub repository.
 
 [^1]: Bayes' photo credit: Burrsettles (2016). The three faces of Bayes. Slackprop.
