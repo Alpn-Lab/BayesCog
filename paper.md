@@ -82,7 +82,7 @@ To this end, we openly receive feedback and suggestions from the wider community
 
 # Acknowledgments
 
-[A.S.](https://sohaamir.github.io/) would like to thank Lei Zhang for developing the initial version of these materials, including slides, code, and GitHub repositories. A.S. and [L.Z](https://lei-zhang.net/) would also like to acknowledge existing open-source materials, including Shawn Rhoads’ Computational Models of Human Social Behavior and Neuroscience [@Rhoads2022], Luke Chang’s 'DartBrains: An online open access resource for learning functional neuroimaging analysis methods in Python' [@Chang2020] and Magdalena Chechlacz’s 'MRI on BEAR' course in neuroimaging [@Sohail2025c], who influenced the development of these materials.
+[A.S.](https://sohaamir.github.io/) would like to thank Lei Zhang for developing the initial version of these materials, including slides, code, and GitHub repositories. A.S. and [L.Z](https://lei-zhang.net/) would also like to acknowledge existing open-source materials, including Shawn Rhoads’ 'Computational Models of Human Social Behavior and Neuroscience' [@Rhoads2022], Luke Chang’s 'DartBrains: An online open access resource for learning functional neuroimaging analysis methods in Python' [@Chang2020] and Magdalena Chechlacz’s 'MRI on BEAR' [@Sohail2025c], who influenced the development of these materials.
 
 L.Z. is supported by the Wellcome Trust (228268/Z/23/Z) and Royal Society Royal Society (IES\\R3\\243253). A.S. is supported by an MRC AIM iCASE DTP Studentship (Ref: MR/W007002/1).
 
