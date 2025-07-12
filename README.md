@@ -90,25 +90,29 @@ All you need to do is to load the packages required for the relevant scripts whe
 
 We also provide a Docker image which can be used to create an R/RStudio container with the required packages. This assumes you have [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed.
 
-To do so, after cloning the `git` repository as above, from the project root run:
+To do so, after cloning the `git` repository as above, open Docker Desktop and then from the project root run:
 
 ```bash
 docker pull sohamir/bayescog:latest
 
-docker run -p 8787:8787 \
+docker run -d -p 8787:8787 \
   --mount type=bind,source=$(pwd),target=/home/rstudio/project \
   -e PASSWORD=your_chosen_password \
   --name bayescog \
   sohamir/bayescog
 ```
 
+> Make sure to replace the PASSWORD argument with your own password!
+
 This will mount the Docker image onto the BayesCog repository. 
 
 Then, navigate to [http://localhost:8787](http://localhost:8787/) in a browser, and type your username (which is always 'rstudio') and the password chosen in the command prior.
 
-Then once RStudio has loaded, click on the `project` folder and the BayesCog material will appear.
+Then once RStudio has loaded, click on the `project` folder and the BayesCog material will appear. You will not need to install any packages, only to load them when running various operations.
 
-To start/stop the container, type (from the command line):
+Running the container for the first time will prevent further input in the terminal. You can exit this using `Ctrl/Cmd+C`. 
+
+Subsequently, to start/stop the container, type (from the command line):
 
 ```bash
 docker start bayescog
