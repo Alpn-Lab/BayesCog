@@ -20,10 +20,6 @@
 # Python virtual environment
 .venv/
 
-# Temporary paper files (to be removed when paper is published)
-paper.bib
-paper.md
-
 # Paper figure
 figure.pptx
 
