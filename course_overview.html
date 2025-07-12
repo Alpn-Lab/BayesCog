@@ -701,18 +701,22 @@ Querying packages
 <section id="building-the-docker-image" class="level3">
 <h3 class="anchored" data-anchor-id="building-the-docker-image">Building the Docker image</h3>
 <p>We also provide a Docker image which can be used to create an R/RStudio container with the required packages. This assumes you have <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> installed.</p>
-<p>To do so, after cloning the <code>git</code> repository as above, from the project root run:</p>
+<p>To do so, after cloning the <code>git</code> repository as above, open Docker Desktop and then from the project root run:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull sohamir/bayescog:latest</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--mount</span> type=bind,source=<span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>,target=/home/rstudio/project <span class="dt">\</span></span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> PASSWORD=your_chosen_password <span class="dt">\</span></span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--name</span> bayescog <span class="dt">\</span></span>
 <span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  sohamir/bayescog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<blockquote class="blockquote">
+<p>Make sure to replace the PASSWORD argument with your own password!</p>
+</blockquote>
 <p>This will mount the Docker image onto the BayesCog repository.</p>
 <p>Then, navigate to <a href="http://localhost:8787/">http://localhost:8787</a> in a browser, and type your username (which is always ‘rstudio’) and the password chosen in the command prior.</p>
 <p>Then once RStudio has loaded, click on the <code>project</code> folder and the BayesCog material will appear.</p>
-<p>To start/stop the container, type (from the command line):</p>
+<p>Running the container for the first time will prevent further input in the terminal. You can exit this using <code>Ctrl/Cmd+C</code>. You will not need to install any packages, only to load them when running various operations.</p>
+<p>Subsequently, to start/stop the container, type (from the command line):</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> start bayescog</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop bayescog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>To see/remove the container type:</p>
