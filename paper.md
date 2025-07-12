@@ -98,6 +98,6 @@ L.Z. is supported by the Wellcome Trust (228268/Z/23/Z) and Royal Society Royal 
 
 # Author Contributions
 
-L.Z. created, designed and taught the original course materials by developing the syllabus, writing the Stan and R code and creating and interpreting the datasets. A.S. created the website, adding the content by converting, editing and expanding the source material written by L.Z. L.Z. and A.S. both revised the course materials and wrote the manuscript. 
+L.Z. created, designed and taught the original course materials by developing the syllabus, writing the Stan and R code and creating and interpreting the datasets. A.S. created the website, adding the content by converting, editing and expanding the source material written by L.Z. L.Z. and A.S. revised the course materials and wrote the manuscript. 
 
 # References
