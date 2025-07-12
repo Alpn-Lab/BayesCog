@@ -88,8 +88,7 @@ However, you must provide appropriate attribution, including credit to the origi
 If you use materials from this course in your work or research, please cite it as:
 
 ```tex
-Zhang, L., & Sohail, A. (2025). BayesCog: Bayesian statistics and hierarchical Bayesian modeling for psychological science. 
-[Lesson]. Zenodo. https://doi.org/10.5281/zenodo.15870394
+Zhang, L., & Sohail, A. (2025). BayesCog: Bayesian statistics and hierarchical Bayesian modeling for psychological science. [Lesson]. Zenodo. https://doi.org/10.5281/zenodo.15870394
 ```
 
 For BibTeX users:
