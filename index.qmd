@@ -1,12 +1,12 @@
 ---
 title: "BayesCog"
-subtitle: "Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science"
+subtitle: "Bayesian statistics and hierarchical Bayesian modeling for psychological science"
 ---
 
 ![](images/introduction/bayes_banner.png){width="100%"}
 
 ::: {.content-visible when-format="html"}
-![Visitors](https://pageview.vercel.app/?github_user=alpn-lab/BayesCog)
+![Visitors](https://hitscounter.dev/api/hit?url=https%3A%2F%2Falpn-lab.github.io%2FBayesCog%2F&label=Visitors&icon=github&color=%23e35d6a&message=&style=flat&tz=Europe%2FLondon)
 [![GitHub contributors](https://img.shields.io/github/contributors/alpn-lab/BayesCog.svg)](https://github.com/alpn-lab/BayesCog/graphs/contributors) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/alpn-lab/BayesCog?color=orange&logo=github)](https://github.com/alpn-lab/BayesCog)
 [![GitHub repo size](https://img.shields.io/github/repo-size/alpn-lab/BayesCog?color=brightgreen&logo=github)](https://github.com/alpn-lab/BayesCog)
@@ -87,13 +87,13 @@ However, you must provide appropriate attribution, including credit to the origi
 
 If you use materials from this course in your work or research, please cite it as:
 
-Zhang, L., & Sohail, A. (2025). BayesCog: Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science [Online course]. Zenodo. https://doi.org/[DOI_HERE]
+Zhang, L., & Sohail, A. (2025). BayesCog: Bayesian statistics and hierarchical Bayesian modeling for psychological science [Online course]. Zenodo. https://doi.org/[DOI_HERE]
 
 For BibTeX users:
 
 ```tex
 @online{zhang_sohail_2025,
-    title = {BayesCog: Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science},
+    title = {BayesCog: Bayesian statistics and hierarchical Bayesian modeling for psychological science},
     author = {Zhang, Lei and Sohail, Aamir},
     year = {2025},
     publisher = {Zenodo},

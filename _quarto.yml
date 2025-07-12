@@ -4,7 +4,7 @@ project:
   
 website: 
   page-navigation: true
-  title: "BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science" 
+  title: "BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science" 
   site-url: https://alpn-lab.github.io/BayesCog
   repo-url: https://github.com/alpn-lab/BayesCog
   repo-actions: [issue]

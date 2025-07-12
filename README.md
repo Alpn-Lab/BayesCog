@@ -1,6 +1,6 @@
-# BayesCog - Bayesian Statistics and Hierarchical Bayesian Modeling for Psychological Science
+# BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science
 
-![Visitors](https://pageview.vercel.app/?github_user=alpn-lab/BayesCog)
+![Visitors](https://hitscounter.dev/api/hit?url=https%3A%2F%2Falpn-lab.github.io%2FBayesCog%2F&label=Visitors&icon=github&color=%23e35d6a&message=&style=flat&tz=Europe%2FLondon)
 [![GitHub contributors](https://img.shields.io/github/contributors/alpn-lab/BayesCog.svg)](https://github.com/alpn-lab/BayesCog/graphs/contributors) 
 [![GitHub last commit](https://img.shields.io/github/last-commit/alpn-lab/BayesCog?color=orange&logo=github)](https://github.com/alpn-lab/BayesCog)
 [![GitHub repo size](https://img.shields.io/github/repo-size/alpn-lab/BayesCog?color=brightgreen&logo=github)](https://github.com/alpn-lab/BayesCog)
