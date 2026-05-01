@@ -244,7 +244,7 @@ The conditional distribution shows how one variable is distributed when we fix t
 
 <div style="height: 20px;"></div>
 
-![](/images/01.R_basics/conditional_distribution.png){fig-align="center" width="60%"}
+![](/images/01.R_basics/marginal_distribution.png){fig-align="center" width="60%"}
 
 <div style="font-size: 22px;"><strong>Marginal distribution</strong></div>
 <div style="height: 16px;"></div>
