@@ -183,6 +183,7 @@ If approved, we will both add the changes and you to the 'Contributors' list bel
     <tr>
       <td align="center" valign="top" width="14.28%"><a href="http://lei-zhang.net"><img src="https://avatars.githubusercontent.com/u/16256709?v=4?s=100" width="100px;" alt="Dr. Lei Zhang"/><br /><sub><b>Dr. Lei Zhang</b></sub></a><br /><a href="https://github.com/Alpn-Lab/BayesCog/commits?author=lei-zhang" title="Code">💻</a> <a href="#maintenance-lei-zhang" title="Maintenance">🚧</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://sohaamir.github.io"><img src="https://avatars.githubusercontent.com/u/35841800?v=4?s=100" width="100px;" alt="Aamir Sohail"/><br /><sub><b>Aamir Sohail</b></sub></a><br /><a href="https://github.com/Alpn-Lab/BayesCog/commits?author=sohaamir" title="Code">💻</a> <a href="#maintenance-sohaamir" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://zhilinsu.com/"><img src="https://avatars.githubusercontent.com/u/45993513?v=4?s=100" width="100px;" alt="Zhi-Lin Su"/><br /><sub><b>Zhi-Lin Su</b></sub></a><br /><a href="https://github.com/Alpn-Lab/BayesCog/commits?author=zhilinsu" title="Code">💻</a></td>
     </tr>
   </tbody>
 </table>
