@@ -26,6 +26,15 @@
         "code",
         "maintenance"
       ]
+    },
+    {
+      "login": "zhilinsu",
+      "name": "Zhi-Lin Su",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45993513?v=4",
+      "profile": "https://zhilinsu.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
