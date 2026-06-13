@@ -134,9 +134,10 @@ cat("It took",as.character.Date(endTime - startTime), "\n")
 LL1 <- extract_log_lik(fit_rl1)
 LL2 <- extract_log_lik(fit_rl2)
 
-loo1 <- loo(LL1)
-loo2 <- loo(LL2)
-compare(loo1, loo2) # positive difference indicates the 2nd model's predictive accuracy is higher
+( loo1 <- loo(LL1) )  # PSIS-LOO-CV; prints elpd_loo, p_loo, looic + Pareto-k diagnostic
+( loo2 <- loo(LL2) )
+
+loo_compare(loo1, loo2) # positive elpd difference indicates the 2nd model's predictive accuracy is higher
 
 
 

@@ -18,8 +18,8 @@ We then applied this framework to build a binomial model, where we:
 - Specified our likelihood function (the binomial distribution)
 - Implemented grid approximation to compute the posterior distribution (for 20 points)
 
-While grid approximation proved effective for our single-parameter model, we discussed its limitations when dealing with multiple parameters. 
-This led us to explore Markov chain Monte Carlo (MCMC) methods - a more scalable approach to sampling from posterior distributions in complex models. 
+While grid approximation proved effective for our single-parameter model, we discussed its limitations when dealing with multiple parameters.
+This led us to explore Markov chain Monte Carlo (MCMC) methods - a more scalable approach to sampling from posterior distributions in complex models.
 
 We then learned how MCMC works, by combining random sampling (Monte Carlo) to explore the parameter space, and defined state transitions (Markov chains) to guide samples toward regions of high posterior probability. We also demonstrated this through a practical example using the Metropolis algorithm.
 
@@ -55,7 +55,7 @@ Stan is widely used across many scientific disciplines. While its roots are in s
 Web of Science, retrieved 05/2021
 :::
 
-But what is Stan and how it is implemented? Stan is it's own programming language, like `R` or Python, but also has an interface with other platforms and softwares. You can even run Stan from [the command line](https://mc-stan.org/users/interfaces/cmdstan). 
+But what is Stan and how it is implemented? Stan is it's own programming language, like `R` or Python, but also has an interface with other platforms and softwares. You can even run Stan from [the command line](https://mc-stan.org/users/interfaces/cmdstan).
 In our case, we will specifically be using Stan with `R`, and so will rely upon the `R` interface to Stan [RStan](https://mc-stan.org/users/interfaces/rstan).
 
 **RStan acts as a bridge between `R` and Stan - it takes our Stan model code (which we write in a separate `.stan` file), compiles it into C++, runs the model, and returns the results in a format that's easy to work with in `R`.** The workflow typically involves:
@@ -94,13 +94,13 @@ model {
 
 **`data`**
 
-This block declares and defines the data that your model will use. 
+This block declares and defines the data that your model will use.
 
 - Here, you specify the input data that you'll provide from `R`. This includes the dimensions (number of observations) and the actual data values.
 
 **`parameters`**
 
-Here you declare the parameters that Stan will estimate. 
+Here you declare the parameters that Stan will estimate.
 
 - These are the unknown quantities in your model that you want to determine. Each parameter needs constraints on its possible values (like being positive or between 0 and 1).
 
@@ -114,7 +114,7 @@ This is where you specify your statistical model. This is how we link the data t
 
 **Each block serves a specific purpose in the modeling pipeline, and understanding when to use each one is key to writing efficient Stan programs.** There are other blocks - which we will cover in future workshops - but for now, it is enough to understand that these three blocks are the most important when writing your Stan model.
 
-With this in mind, let's revisit the globe tossing example from earlier. 
+With this in mind, let's revisit the globe tossing example from earlier.
 
 ![](/images/02.binomial_globe/stan/globe.png){fig-align="center" width="20%"}
 
@@ -124,7 +124,7 @@ We tossed the globe nine times, with the nine samples being:
 
 $$W L W W W L W L W$$
 
-where $W$ indicates water and $L$ indicates land. 
+where $W$ indicates water and $L$ indicates land.
 
 So, we ultimately observed six $W$ (water) observations and three $L$ (land) observations.
 
@@ -138,13 +138,13 @@ $$p(w | N,\theta) = \binom{N}{w}\theta^w(1-\theta)^{N-w}$$
 
 Both expressions read as: "$W$ is distributed as a binomial distribution, with number of trials $N$, and success rate $\theta$."
 
-This mathematical notation is particularly useful as it maps directly to how we'll specify our model in Stan. 
+This mathematical notation is particularly useful as it maps directly to how we'll specify our model in Stan.
 
 :::{.callout-note title="The $\sim$"}
 The tilde symbol ($\sim$) is used in both mathematical notation and in Stan code to denote that a variable follows a particular probability distribution.
 :::
 
-Often in papers, you will also see the model graphed visually using a particular notation[^3]. 
+Often in papers, you will also see the model graphed visually using a particular notation[^3].
 
 On the left hand side below is a table describing this notation, which separates variables into two categories:
 
@@ -186,7 +186,7 @@ Ultimately, this graphical representation is useful when constructing our model,
 
 ## Programming a binomial model in Stan
 
-Let's now build our binomial model using the Stan programming language, and run the model through the RStudio interface. 
+Let's now build our binomial model using the Stan programming language, and run the model through the RStudio interface.
 
 ### Defining the data
 
@@ -273,7 +273,7 @@ The model block specifies our statistical model (i.e., our likelihood function).
 
 So, this block simply translates to: "The number of water observations follows a binomial distribution according to the number of trials and the proportion of water on the globe".
 
-However, there is an additional line, which is optional in this specific case. Recall that in Bayesian inference, we need a prior (initial belief) for our parameters. In this case, we could (but don't have to), set a uniform prior between 0 and 1. 
+However, there is an additional line, which is optional in this specific case. Recall that in Bayesian inference, we need a prior (initial assumption) for our parameters. In this case, we could (but don't have to), set a uniform prior between 0 and 1.
 This reflects an implicit uniform prior which is uninformed. In other words, we have no prior evidence to suggest that the values of $θ$ should be a certain value.
 
 :::{.callout-important title="Not specifying a prior"}
@@ -317,7 +317,7 @@ We need to set-up our `R` script to run the model according to our specification
 Here is the relevant section of the `binomial_globe_main.R` script:
 
 ```r
-#### Running Stan #### 
+#### Running Stan ####
 
 library(rstan)
 rstan_options(auto_write = TRUE)
@@ -325,7 +325,7 @@ options(mc.cores = 4)
 
 modelFile <- '_scripts/binomial_globe_model.stan'
 nIter     <- 2000
-nChains   <- 4 
+nChains   <- 4
 nWarmup   <- floor(nIter/2)
 nThin     <- 1
 
@@ -343,7 +343,7 @@ fit_globe <- rstan::stan(modelFile,
                   seed    = 1450154626)
 
 cat("Finishing", modelFile, "model simulation ... \n")
-endTime = Sys.time(); print(endTime)  
+endTime = Sys.time(); print(endTime)
 cat("It took",as.character.Date(endTime - startTime), "\n")
 ```
 :::{.callout-important title="Installing Rstan"}
@@ -390,13 +390,13 @@ We simply record the start and the end time to determine how long the model took
 <div style="font-size: 20px;"><strong>Model execution</strong></div>
 <div style="height: 16px;"></div>
 
-We then run our model, through the `stan() `function and save its output to `fit_globe`. When we run this function, we're doing several important things: 
+We then run our model, through the `stan() `function and save its output to `fit_globe`. When we run this function, we're doing several important things:
 
 1. First, the function reads our Stan model file, compiles it to C++ code, and runs the MCMC sampling process using all the parameters we've specified - the number of chains, iterations, warm-up period, and so on.
 
 2. Two additional settings are the `init` which defines the initial starting point (which is random) and the `seed`. The `seed` if set, means that the results are reproducible, but only within our own machine.
 
-3. We assign the output to `fit_globe`. Because the output is complex, not a collection of numbers or basic results - we create a `stanfit` object, which is a specialized `R` object designed specifically for Stan model outputs. 
+3. We assign the output to `fit_globe`. Because the output is complex, not a collection of numbers or basic results - we create a `stanfit` object, which is a specialized `R` object designed specifically for Stan model outputs.
 This object is like a container that holds everything about our model's results. It contains all the posterior samples for our parameter $θ$, but it also includes diagnostic information about how well the sampling worked, metrics about whether our chains converged properly, details about the model specification, and various other metadata about the sampling process.
 
 ### Running the model and examining the output
@@ -412,12 +412,12 @@ starting worker pid=56960 on localhost:11017 at 12:53:01.802
 starting worker pid=56973 on localhost:11017 at 12:53:02.058
 
 SAMPLING FOR MODEL 'anon_model' NOW (CHAIN 1).
-Chain 1: 
+Chain 1:
 Chain 1: Gradient evaluation took 8e-06 seconds
 Chain 1: 1000 transitions using 10 leapfrog steps per transition would take 0.08 seconds.
 Chain 1: Adjust your expectations accordingly!
-Chain 1: 
-Chain 1: 
+Chain 1:
+Chain 1:
 Chain 1: Iteration:    1 / 2000 [  0%]  (Warmup)
 Chain 1: Iteration:  200 / 2000 [ 10%]  (Warmup)
 Chain 1: Iteration:  400 / 2000 [ 20%]  (Warmup)
@@ -430,11 +430,11 @@ Chain 1: Iteration: 1400 / 2000 [ 70%]  (Sampling)
 Chain 1: Iteration: 1600 / 2000 [ 80%]  (Sampling)
 Chain 1: Iteration: 1800 / 2000 [ 90%]  (Sampling)
 Chain 1: Iteration: 2000 / 2000 [100%]  (Sampling)
-Chain 1: 
+Chain 1:
 Chain 1:  Elapsed Time: 0.007 seconds (Warm-up)
 Chain 1:                0.007 seconds (Sampling)
 Chain 1:                0.014 seconds (Total)
-Chain 1: 
+Chain 1:
 ```
 
 This visually shows the MCMC chains at work. We can see that the first 1000 samples are labelled as 'Warmup' and also how long the process takes.
@@ -461,7 +461,7 @@ If we print `fit_globe` we get the following:
 ```r
 > print(fit_globe)
 Inference for Stan model: anon_model.
-4 chains, each with iter=2000; warmup=1000; thin=1; 
+4 chains, each with iter=2000; warmup=1000; thin=1;
 post-warmup draws per chain=1000, total post-warmup draws=4000.
 
        mean se_mean   sd  2.5%   25%   50%   75% 97.5% n_eff Rhat
@@ -470,7 +470,7 @@ lp__  -7.71    0.02 0.69 -9.78 -7.86 -7.44 -7.27 -7.21  1886    1
 
 Samples were drawn using NUTS(diag_e) at Tue Dec 24 13:18:04 2024.
 For each parameter, n_eff is a crude measure of effective sample size,
-and Rhat is the potential scale reduction factor on split chains (at 
+and Rhat is the potential scale reduction factor on split chains (at
 convergence, Rhat=1).
 ```
 
@@ -484,16 +484,16 @@ For our parameter of interest, $θ$, which represents the proportion of water in
 
 We can also see some results for the model diagnostics:
 
-- **Effective Sample Size (n_eff):** This tells us how many truly independent samples we got from our model. Even though we have 4000 total samples, they aren't all completely independent from each other. The `n_eff` of 1483 means we effectively have about 1,483 independent samples, which is a good value; a general rule of thumb is that we want this to be above 1000.
+- **Effective Sample Size (n_eff):** This is an estimate of the number of *independent* samples that would carry the same amount of information as the (autocorrelated) samples we actually got from our model. Because successive MCMC draws are correlated, our 4000 total samples are not all independent of one another. The `n_eff` of 1483 means our chains carry roughly as much information as 1,483 independent draws, which is a good value; a general rule of thumb is that we want this to be above 1000.
 
-- **Rhat:** Rhat (the Gelman-Rubin statistic[^4]) helps us check if our chains are converging to the same distribution. 1 is the ideal value, values above 1.1 are problematic.
+- **R-hat (Rhat, $\hat{R}$):** $\hat{R}$ helps us check whether our chains are converging to the same distribution. 1 is the ideal value, and values above 1.1 are problematic [^4].
 
 These results tell us we have a well-behaved model that's giving us reliable estimates of $θ$. The relatively tight credible interval also gives us a good sense of the uncertainty in our estimate.
 
-[^4]: Gelman, A., & Rubin, D. B. (1992). Inference from iterative simulation using multiple sequences. Statistical science, 7(4), 457-472.
+[^4]: Vehtari, A., Gelman, A., Simpson, D., Carpenter, B., & Bürkner, P.-C. (2021). Rank-normalization, folding, and localization: An improved $\hat{R}$ for assessing convergence of MCMC. Bayesian Analysis, 16(2), 667-718.
 
-We can also visually examine the samples by plotting them. Checking the MCMC traces is important for determining whether the traces are mixing well and have converged. 
-A good trace plot should look like a "fuzzy caterpillar" - showing random fluctuations around a stable mean value. 
+We can also visually examine the samples by plotting them. Checking the MCMC traces is important for determining whether the traces are mixing well and have converged.
+A good trace plot should look like a "fuzzy caterpillar" - showing random fluctuations around a stable mean value.
 
 You can see the MCMC traceplots for the four chains below, both with and without the burn-in period. In the `R` script, just highlight and run the following code (i.e., to plot the traces do not assign it to a variable).
 
@@ -506,8 +506,21 @@ stan_trace(fit_globe, pars = 'theta', inc_warmup = TRUE)
 
 ![](/images/02.binomial_globe/stan/mcmc_trace.png){fig-align="center" width="100%"}
 
-**Our traceplots suggest that the chains have performed well.** The four chains show good mixing and overlap, indicating they're exploring the same regions of the parameter space independently. 
+**Our traceplots suggest that the chains have performed well.** The four chains show good mixing and overlap, indicating they're exploring the same regions of the parameter space independently.
 After the warmup period, you can see that the chains are sampling consistently around the posterior mean of 0.64.
+
+:::{.callout-tip title="Rank plots: a more sensitive alternative to trace plots"}
+While trace plots remain a common and intuitive diagnostic, they can hide subtle differences between chains. *Rank plots* are often more informative: they pool all draws across chains, rank them, and then show the distribution of ranks within each chain. If the chains are sampling from the same distribution, these should look approximately uniform. The `bayesplot` package provides these, for example:
+
+```r
+library(bayesplot)
+mcmc_rank_ecdf(fit_globe, pars = "theta", prob = 0.99, plot_diff = TRUE)
+```
+
+<!-- TODO (reviewer R2.7): add actual rank plots generated from our globe-tossing model parameters (run the code above, save the figure to images/, and embed it here). -->
+:::
+
+(TO DO: add actual rank plots from our parameters)
 
 To more clearly see our samples, we can instead plot them as a histogram, showing the posterior density distribution for our parameter $\theta$ estimated from our MCMC sampling:
 
@@ -538,7 +551,7 @@ However, if one was to say that they are working on "Bayesian models" of cogniti
 
 **The term "Bayesian" can actually refer to two distinct aspects of modeling: the model's structure and the method used for parameter estimation.**
 
-- The model structure determines whether parameters are treated as random variables with probability distributions (Bayesian) or as fixed, unknown constants (non-Bayesian). 
+- The model structure determines whether parameters are treated as random variables with probability distributions (Bayesian) or as fixed, unknown constants (non-Bayesian).
 - Meanwhile, parameter estimation methods can either produce full probability distributions through Bayesian inference or provide point estimates through non-Bayesian methods (e.g., Maximum Likelihood Estimation).
 
 ![](/images/02.binomial_globe/stan/bayesian_matrix.png){fig-align="center" width="50%"}
@@ -552,7 +565,7 @@ The theory (in a one-sentence nutshell) proposes that the brain maintains probab
 
 [^5]: Colombo, M., & Seriès, P. (2012). Bayes in the brain—on Bayesian modelling in neuroscience. The British journal for the philosophy of science.
 
-- This is inherently Bayesian in structure because it assumes the brain maintains and updates probability distributions. 
+- This is inherently Bayesian in structure because it assumes the brain maintains and updates probability distributions.
 
 - However, when researchers implement these models, they might use either Bayesian estimation methods (like MCMC sampling) or non-Bayesian approaches (like maximum likelihood estimation). On the graph, this could be represented by the yellow or green square.
 

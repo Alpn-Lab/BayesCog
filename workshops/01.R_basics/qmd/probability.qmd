@@ -226,37 +226,37 @@ Unlike discrete probabilities where we can create a simple table of all possible
 
 [^4]: Ma, E. J. (2018). Joint, conditional, and marginal probability distributions. Eric J. Ma's Blog. Retrieved from https://ericmjl.github.io/blog/2018/8/7/joint-conditional-and-marginal-probability-distributions
 
-![](/images/01.R_basics/joint_distribution.png){fig-align="center" width="60%"}
-
 <div style="font-size: 22px;"><strong>Joint distribution</strong></div>
 <div style="height: 16px;"></div>
 
-When we have two continuous variables (x and y), their joint distribution shows how they vary together. The brighter/more intense regions show where combinations of x and y values are more likely to occur. 
+When we have two continuous variables (x and y), their joint distribution shows how they vary together. The brighter/more intense regions show where combinations of x and y values are more likely to occur.
+
+![](/images/01.R_basics/joint_distribution.png){fig-align="center" width="60%"}
 
 <div style="height: 20px;"></div>
-
-![](/images/01.R_basics/conditional_distribution.png){fig-align="center" width="60%"}
 
 <div style="font-size: 22px;"><strong>Conditional distribution</strong></div>
 <div style="height: 16px;"></div>
 
 The conditional distribution shows how one variable is distributed when we fix the other variable at specific values. The shape of these distributions can change depending on which y-value we're looking at, showing how the two variables are related.
 
-<div style="height: 20px;"></div>
-
 ![](/images/01.R_basics/conditional_distribution.png){fig-align="center" width="60%"}
+
+<div style="height: 20px;"></div>
 
 <div style="font-size: 22px;"><strong>Marginal distribution</strong></div>
 <div style="height: 16px;"></div>
 
-The marginal distributions (shown on the sides of the joint distribution) represent the overall distribution of each variable independently, regardless of the other variable's value. Mathematically, these are obtained by integrating the joint distribution over all values of the other variable. 
+The marginal distributions (shown on the sides of the joint distribution) represent the overall distribution of each variable independently, regardless of the other variable's value. Mathematically, these are obtained by integrating the joint distribution over all values of the other variable.
+
+![](/images/01.R_basics/marginal_distribution.png){fig-align="center" width="60%"}
 
 
 ## Bayes' theorem
 
 So, now that we know how we calculate the probabilities of continuous events, we can move on to describe Bayes' theorem. 
 
-**Bayes' theorem is a fundamental concept in probability theory that helps us update our beliefs about events based on new evidence.** 
+**Bayes' theorem is a fundamental concept in probability theory that helps us update our knowledge about events based on new evidence.**
 It builds directly on the concepts of conditional, joint, and marginal probability that we discussed earlier.
 
 To get a better understanding of what Bayes' theorem tell us, let's derive it step by step using what we know about probability:
@@ -293,12 +293,12 @@ $$
 
 Each term in Bayes' theorem has a specific interpretation:
 
-- $p(A)$ is the prior probability - our initial belief about event A
+- $p(A)$ is the prior probability - our prior knowledge about event A
 - $p(B|A)$ is the likelihood - probability of observing the evidence if A is true
 - $p(B)$ is the marginal likelihood - total probability of observing the evidence
 - $p(A|B)$ is the posterior probability - what we want to know after observing evidence
 
-**So what Bayes' theorem tells us is that we can find the probability of an event A happening, given that we observed event B, by using our prior knowledge about both events. It's equivalent to updating what we believe based on new information.**
+**So what Bayes' theorem tells us is that we can find the probability of an event A happening, given that we observed event B, by using our prior knowledge about both events. It's equivalent to updating what we know based on new information.**
 
 ::: {.callout-tip title="Bayes' in a nutshell"}
 You can think of Bayes' theorem as starting with an initial guess about something (prior), seeing some evidence (likelihood), and then making a better guess (posterior) based on that evidence.
@@ -310,7 +310,7 @@ $$
 p(\text{cold}|\text{rain}) = \frac{p(\text{rain}|\text{cold})p(\text{cold})}{p(\text{rain})}
 $$
 
-This allows us to update our belief about the temperature based each new observation of rain.
+This allows us to update our knowledge about the temperature with each new observation of rain.
 
 Let's explore how Bayes' theorem works in practice using a real-world example of the relationship between eye and hair colour in a population[^5].
 
@@ -343,7 +343,7 @@ p(\text{blond}|\text{blue}) = \frac{p(\text{blue}|\text{blond})p(\text{blond})}{
 $$
 
 ::: {.callout-important title="What did we just do?"}
-To summarise, we have gone from the “prior” (marginal) beliefs about hair colour before knowing eye colour, to the “posterior” (conditional) beliefs about hair color given the observed eye colour. Without knowing the eye colour, the probability of blonde hair in the population is 0.21. But knowing that the eyes are blue, the probability of blonde hair is 0.45.
+To summarise, we have gone from the “prior” (marginal) knowledge about hair colour before knowing eye colour, to the “posterior” (conditional) knowledge about hair colour given the observed eye colour. Without knowing the eye colour, the probability of blonde hair in the population is 0.21. But knowing that the eyes are blue, the probability of blonde hair is 0.45.
 :::
 
 ::: {.panel-tabset title="Exercise 4"}

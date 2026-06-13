@@ -26,3 +26,4 @@ figure.pptx
 # macOS system files
 **/.DS_Store
 .DS_Store
+.tokensave

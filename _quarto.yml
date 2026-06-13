@@ -11,7 +11,7 @@ website:
   
   page-footer:
     right: "This page is built with 🧠, ☕ and [Quarto](https://quarto.org/)."
-    left: "&copy; Zhang & Sohail, 2025"
+    left: "&copy; Zhang & Sohail, 2026"
     
   sidebar:
     logo: "images/alpn_logo_with_text.png"

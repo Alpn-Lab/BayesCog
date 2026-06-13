@@ -40,7 +40,7 @@ On the other hand, when we fit each subject independently (random effects), we i
 
 ## Hierarchical models: an ideal middle ground
 
-**Hierarchical (Bayesian) modeling offers a solution by finding a middle ground between these two extremes, by taking into account that whilst people are different, their parameters are likely to come from some common distribution.** 
+**Hierarchical (Bayesian) modeling offers a solution by finding a middle ground between these two extremes, by taking into account that whilst people are different, their parameters are likely to come from some common distribution.**
 
 Hierarchical models:
 
@@ -71,17 +71,17 @@ The hierarchical structure consists of three main levels:
 What makes this approach powerful is how these levels interact during parameter estimation, **with the estimation of individual-level parameters $(\theta)$ informed by two sources simultaneously: the subject's own data $(y)$ and the group-level distribution $(\phi)$.** Similarly, the group-level parameter ($\phi$) are estimated based on the patterns observed across all individual parameter estimates. This creates a dynamic interaction where each level simultaneously informs the others during the estimation process.
 
 :::{.callout-note title="Group level parameters in a reinforcement learning model"}
-In our reinforcement learning context, we might assume that learning rates across the population follow a normal distribution. In this case, we can replace $\phi$ with two parameters: 
+In our reinforcement learning context, we might assume that learning rates across the population follow a normal distribution. In this case, we can replace $\phi$ with two parameters:
 
-1. $\mu_\theta$ would represent the average learning rate in the population, 
-2. while $\sigma_\theta$ would represent how much variation exists between individuals. 
+1. $\mu_\theta$ would represent the average learning rate in the population,
+2. while $\sigma_\theta$ would represent how much variation exists between individuals.
 
 However, we could choose different distributions if we had reason to believe the parameters follow a different pattern at the group level.
 :::
 
 This simultaneous estimation at all levels allows the model to find the right balance between individual differences and group-level patterns, leading to more robust parameter estimates than we could achieve by analyzing each subject in isolation or treating all subjects as identical.
 
-We can also describe the hierarchical approach in terms of Bayes' theorem. **Recall that in Bayesian analysis, we aim to update our prior beliefs about parameters using observed data to arrive at posterior estimates.** With hierarchical modeling, we're simply extending this approach to handle multiple levels of parameters - both individual and group-level - simultaneously.
+We can also describe the hierarchical approach in terms of Bayes' theorem. **Recall that in Bayesian analysis, we aim to update our prior knowledge about parameters using observed data to arrive at posterior estimates.** With hierarchical modeling, we're simply extending this approach to handle multiple levels of parameters - both individual and group-level - simultaneously.
 
 This multilevel structure described through Bayes' theorem is:
 
@@ -93,9 +93,9 @@ $P(D|\Theta)$ the data level: the likelihood of observing our choice data given 
 
 $P(\Theta|\Phi)$ the individual parameter level: how individual parameters $(\Theta, \Phi)$ vary around the population parameters
 
-$P(\Phi)$ the population level: our prior beliefs about the population-level parameters (e.g., group mean and variance)
+$P(\Phi)$ the population level: our prior knowledge about the population-level parameters (e.g., group mean and variance)
 
-The multiplication of these components during estimation reflects how information flows between levels in our hierarchical structure, with each level informing the others simultaneously. 
+The multiplication of these components during estimation reflects how information flows between levels in our hierarchical structure, with each level informing the others simultaneously.
 
 Another (more intuitive) way to understand the hierarchical appraoch is to understand the relationship between the distributions of both individual and group-level parameters:
 
@@ -127,7 +127,7 @@ The hierarchical model - and how it builds upon our previous model which fits mu
 The hierarchical Rescorla-Wagner model with hyperparameters highlighted in red
 :::
 
-We now simply state that the two parameters of interest, the learning rate $\alpha$, and inverse temperature $τ$, come from a group level distribution. 
+We now simply state that the two parameters of interest, the learning rate $\alpha$, and inverse temperature $τ$, come from a group level distribution.
 We will assume in this case that this is normally-distributed at the population level, and so define four hyperparameters:
 
 - **Learning rate:** with group-level mean $(\mu_\alpha)$  and group-level standard deviation $(\sigma_\alpha)$
@@ -158,10 +158,10 @@ The structure, parameters and priors of the hierarchical model
 
 Remember that the core computational mechanisms of our reinforcement learning model - the value update equation (Rescorla-Wagner learning) and the softmax choice rule - remain unchanged in the hierarchical version:
 
-Value update: 
+Value update:
 
 $$V_{i,t+1}^c = V_{i,t}^c + \alpha_i(R_{i,t} - V_{i,t}^c)$$
-Choice probability: 
+Choice probability:
 
 $$p_{i,t}(C=A) = \frac{1}{1 + e^{\tau_i(V_{i,t}(B)-V_{i,t}(A))}}$$
 
@@ -191,13 +191,19 @@ $$\tau_i \sim \text{Normal}(\mu_\tau, \sigma_\tau)_{\mathcal{T}(0,3)}$$
 
 However, notice the subscript $\mathcal{T}$ with these distributions - this indicates these are truncated normal distributions. We need this truncation because **the normal distribution extends infinitely in both directions, so truncating them ensures our parameters stay bounded.**
 
+<!-- TODO (reviewer R2.3): add prior distribution images for Normal(0,1) and a Beta distribution here, and note the difference between using a truncated Normal vs a (scaled) Beta for bounded parameters. -->
+
 :::{.callout-note title="Bounding parameters and MCMC sampling"}
 Bounding parameters - whilst often theoretically necessary (like keeping learning rates between 0 and 1) - can sometimes create challenges for MCMC sampling. When a parameter gets close to its boundary, many of the MCMC's proposed steps will be rejected because they would land outside the valid range. This is like trying to take random walks near a wall - many of the steps would simply hit the wall. Monitoring your chain mixing, convergence diagnostics and parameter estimates can help to determine whether this is the case.
+
+It is worth noting that this "wall" picture describes a *direct* implementation of MCMC. Modern samplers such as the No-U-Turn Sampler (NUTS) used by Stan do not actually sample bounded parameters directly: they internally *transform* a bounded parameter onto an unconstrained space (e.g. via a log or logit transformation), sample there - where there are no walls to hit - and then transform back. As a result, the practical difficulties these samplers encounter usually arise not from the boundaries themselves, but from the *geometry* of the posterior, such as funnels or sharp ridges (something we return to in the next workshop on reparameterization).
 :::
 
 :::{.callout-important title="Setting priors"}
-The priors used in this tutorial are chosen for pedagogical reasons and may not be appropriate for your particular research question. You should set your priors according to several factors including your specific research context, theoretical understanding, and existing literature in your field.
+The priors used in this tutorial are chosen for pedagogical reasons and may not be appropriate for your particular research question. For example, a beta distribution prior may be preferred for the X parameter instead of the Normal(0, 1). You should set your priors according to several factors including your specific research context, theoretical understanding, and existing literature in your field.
 :::
+
+(TO DO: add prior distribution images for Normal(0,1) and beta distribution, and note the difference)
 
 ## Creating the hierarchical Rescorla-Wagner model in Stan
 
@@ -214,13 +220,13 @@ parameters {
   real<lower=0> tau_sd;
 
   real<lower=0,upper=1> lr[nSubjects];
-  real<lower=0,upper=3> tau[nSubjects];  
+  real<lower=0,upper=3> tau[nSubjects];
 }
 ```
 
 Where we declare our parameters:
 
-- `lr_mu` and `tau_mu` are our group-level means ($\mu_\alpha$ and $\mu_\tau$) 
+- `lr_mu` and `tau_mu` are our group-level means ($\mu_\alpha$ and $\mu_\tau$)
 
 - `lr_sd and tau_sd` are our group-level standard deviations ($\sigma_\alpha$ and $\sigma_\tau$)
 
@@ -232,14 +238,14 @@ Remember that the `parameters` block declares variables and their bounds, but no
 model {
   lr_sd  ~ cauchy(0,1);
   tau_sd ~ cauchy(0,3);
-  
+
   // give the prior here: how individual-level parameters are connected to the group-level parameters
   lr ~ normal(lr_mu, lr_sd);
   tau ~ normal(tau_mu, tau_sd);
-  
+
   ...
   ...
-  
+
 ```
 
 - The lines `lr_sd ~ cauchy(0,1)` and `tau_sd ~ cauchy(0,3)` specify our Cauchy priors for the group-level standard deviations. The zero-bounded constraint in the parameters block automatically makes this a half-Cauchy (only positive values).
@@ -255,4 +261,3 @@ Recall that Stan implicitly sets a uniform prior if a distribution if not explic
 
 Remember to only highlight and run the appropriate sections of the script!
 :::
-

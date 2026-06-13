@@ -1,10 +1,10 @@
 ---
 title: "Model comparison"
-subtitle: "Model fitting, information criteria and posterior predictive checks"
+subtitle: "Model fitting, cross-validation and posterior predictive checks"
 format: html
 ---
 
-Let's think back to the quote by George Box mentioned earlier in the course: 
+Let's think back to the quote by George Box mentioned earlier in the course:
 
 ::: {.quote-large style="font-size: 1.3em"}
 > "Essentially, all the models are wrong, but some are useful." - George E.P. Box (1976)
@@ -12,12 +12,12 @@ Let's think back to the quote by George Box mentioned earlier in the course:
 
 This is particularly relevant in cognitive modeling, **where no model can perfectly capture human cognition.** However, some models provide more useful approximations than others.
 
-Consider our reinforcement learning example: we might have several competing hypotheses about how people learn from rewards. Perhaps some participants use a simple learning strategy with a single learning rate, while others might use different learning rates for positive and negative outcomes. 
+Consider our reinforcement learning example: we might have several competing hypotheses about how people learn from rewards. Perhaps some participants use a simple learning strategy with a single learning rate, while others might use different learning rates for positive and negative outcomes.
 Or maybe some individuals incorporate uncertainty into their learning process. Each of these hypotheses can be formalized as a different computational model, but which one best describes our participants' behaviour?
 
 Model comparison provides us with systematic tools to answer this question. Rather than simply accepting the first model that seems to fit our data reasonably well, we can fit multiple models and compare which is best. In relation to Box's quote, we want to see which model is the least wrong!
 
-## Model fitting and the Goldilocks principle 
+## Model fitting and the Goldilocks principle
 
 Have a look at the graph below, which shows polynomials of different orders being fitted to some data, where $M$ represents the order of the polynomial:
 
@@ -68,11 +68,11 @@ But how do we determine which model is best? A more philosophical rule follows O
 
 Specifically concerning model selection, we should therefore prefer simpler models when they provide similar explanatory power or make fewer assumptions; $M = 2$ or $M = 4$ might provide the best balance - capturing the main trend in the data without overfitting.
 
-## Information criteria
+## Cross-validation
 
 As a result, we would like to know which model best fits the data but also generalizes to new unobserved data.
 
-But how do we define and implement this objectively? One way is through cross-validation. 
+But how do we define and implement this objectively? One way is through cross-validation.
 
 <div style="height: 20px;"></div>
 
@@ -91,112 +91,43 @@ The basic principle is straightforward: we divide our dataset into two parts:
 The figure above shows a specific type: $k$-fold cross-validation, where the data is divided into $k$ equal sections, and each section takes a turn being the validation set while the remaining sections form the training set.
 
 :::{.callout-note title="Leave-One-Out Cross Validation (LOOCV)"}
-**Leave-One-Out Cross Validation (LOOCV) is a special case of $k$-fold cross-validation** where $k$ equals the number of data points in the dataset, meaning you leave out just one data point for validation while training on all others, repeating for every point in the dataset. While LOOCV provides nearly unbiased estimates of model performance, it can be computationally expensive for large datasets since you need to train the model $n$ times (where $n$ is your sample size), compared to $k$-fold which only requires training $k$ times. 
+**Leave-One-Out Cross Validation (LOOCV) is a special case of $k$-fold cross-validation** where $k$ equals the number of data points in the dataset, meaning you leave out just one data point for validation while training on all others, repeating for every point in the dataset. While LOOCV provides nearly unbiased estimates of model performance, it can be computationally expensive for large datasets since you need to train the model $n$ times (where $n$ is your sample size), compared to $k$-fold which only requires training $k$ times.
 :::
 
 Cross-validation is particularly useful when we have a fixed amount of data and won't be collecting more. Rather than using all our data to fit the model, we deliberately hold some back to simulate how well our model might perform on future observations. **This helps us detect overfitting - if a model performs much better on the training data than the validation data, it's likely overfitting.**
 
-However, cross-validation comes with some practical limitations. We need to perform this process for each model we want to compare, which can be computationally intensive. 
+However, cross-validation comes with some practical limitations. We need to perform this process for each model we want to compare, which can be computationally intensive.
 For complex models or large datasets, this can make cross-validation quite time-consuming.
 
-In the Bayesian context, there's an interesting alternative approach. While nothing prevents us from using cross-validation with Bayesian models, holding out data makes our posterior distributions more diffuse, since we're using less information to estimate our parameters.
-Instead, Bayesians typically condition on all available data and use "information criteria" to evaluate how well a model is expected to predict out of sample.
-**While cross-validation directly tests this by holding out data, information criteria provide mathematical approximations to cross-validation that are computationally more efficient.**
+In the Bayesian context, there's an elegant alternative. While nothing prevents us from using cross-validation with Bayesian models, holding out data makes our posterior distributions more diffuse, since we're using less information to estimate our parameters. Refitting the model many times - once per fold, or $n$ times for full LOOCV - is also computationally expensive.
 
-Information criteria are mathematical formulas that balance two components:
+Instead, we would like to fit the model **once**, conditioning on all the available data, and still estimate how well it is expected to predict a held-out observation. This is what **Pareto-smoothed importance sampling leave-one-out cross-validation (PSIS-LOO-CV)** lets us do.
 
-1. How well the model fits the observed data (goodness of fit)
+### PSIS-LOO-CV
 
-2. A penalty term for model complexity (to prevent overfitting)
+The idea behind PSIS-LOO-CV[^2] is to reuse the posterior samples we already have from fitting the full dataset. For each observation $i$, we want to know what the model would have predicted for $y_i$ had we *not* used $y_i$ to fit it. We can approximate that leave-one-out posterior by **reweighting** our existing posterior samples - giving less weight to the samples that were most influenced by $y_i$.
 
-Commonly used information criteria are:
+[^2]: Vehtari, A., Gelman, A., & Gabry, J. (2017). Practical Bayesian model evaluation using leave-one-out cross-validation and WAIC. Statistics and Computing, 27, 1413-1432.
 
-<div style="font-size: 22px;"><strong>Akaike Information Criterion (AIC)</strong></div>
-<div style="height: 16px;"></div>
+The key quantity PSIS-LOO-CV estimates is the **expected log pointwise predictive density (elpd)** - a measure of how well the model is expected to predict new, unseen data - computed from a single model fit:
 
-The original information criterion, introduced by Hirotugu Akaike, is calculated as:
+$$\text{elpd}_\text{loo} = \sum_{i=1}^n \log p(y_i \mid y_{-i})$$
 
-$$AIC = -2(\log\mathcal{L}) + 2k$$
+where $p(y_i \mid y_{-i})$ is the predictive density for observation $i$ given all the *other* observations. Higher elpd means a better expected out-of-sample prediction.
 
-where: 
-
-$\mathcal{L}$ is the maximum likelihood , and $k$ is the number of parameters in the model.
-
-<div style="font-size: 22px;"><strong>Deviance Information Criterion (DIC)</strong></div>
-<div style="height: 16px;"></div>
-
-DIC was developed specifically for Bayesian models, extending AIC to handle hierarchical models:
-
-$$DIC = -2(\log\mathcal{L}) + 2p_D$$
-
-where:
-
-$p_D$ is the effective number of parameters, accounting for how parameters might be constrained by the hierarchical structure.
-
-<div style="font-size: 22px;"><strong>Widely Applicable Information Criterion (WAIC)</strong></div>
-<div style="height: 16px;"></div>
-
-**WAIC is currently considered the most accurate approximation to leave-one-out (LOO) cross-validation.** It computes the predictive accuracy for each data point and includes a correction for effective number of parameters:
-
-$$WAIC = -2(lpd - p_{WAIC})$$
-
-where:
-
-$lpd$ is the log pointwise predictive density, and $p_{WAIC}$ accounts for model complexity, determined by:
-
-$$lpd = \sum_{i=1}^n \log \left(\frac{1}{S}\sum_{s=1}^S p(y_i|\theta^s)\right)$$
-
-$$p_{WAIC} = \sum_{i=1}^n V_{s=1}^S(\log p(y_i|\theta^s))$$
-
-where: 
-
-- $S$ is the number of posterior samples, 
-
-- $\theta^s$ are the parameter values in sample $s$, 
-
-- and $V$ represents the sample variance over the $S$ samples.
-
-**We will be using the WAIC for model comparison in this course, as it provides the best approximation to leave-one-out cross-validation.** Unlike AIC and DIC, WAIC uses the full posterior distribution rather than just point estimates, making it more appropriate for Bayesian models.
-
-We can see this in the table below, which compares the accuracy of different information criteria to the leave-one-out cross-validation (LOO-CV) ground truth[^2].
-As highlighted, the WAIC performs best relative to the AIC and DIC.
-
-[^2]: Gelman, A., Hwang, J., & Vehtari, A. (2014). Understanding predictive information criteria for Bayesian models. Statistics and computing, 24, 997-1016.
-
-<div style="height: 20px;"></div>
-
-![](/images/08.compare_models/ic_comparison.png){fig-align="center" width="70%"}
-
-::: {.image-caption style="font-size: 1.5em;"}
-WAIC outperforms AIC and DIC when approximating LOOCV
+:::{.callout-note title="What about AIC, DIC and BIC?"}
+Alternative model-selection criteria include the Akaike (AIC), Deviance (DIC) and Bayesian (BIC) information criteria. AIC and DIC estimate predictive accuracy from point estimates rather than the full posterior, while BIC aims to identify the "true" model under specific assumptions about the data-generating process. PSIS-LOO-CV - with its focus on predictive accuracy using the full posterior, and a diagnostic for its own reliability (Pareto-$\hat{k}$) - is widely recommended for Bayesian model comparison and is the appropriate choice for our purpose.
 :::
 
-How is the WAIC calculated? Remember that the likelihood tells us how probable our observed data is under a particular model, with higher likelihood values suggesting the model does a better job of explaining the observed data. **However, simply choosing the model with the highest likelihood can be misleading as this would always favour more complex models.**
+## Model comparison using PSIS-LOO-CV
 
-WAIC estimates how well our model would predict new data (out-of-sample prediction) by:
-
-- Using the likelihood to measure how well the model fits each individual data point
-
-- Accounting for uncertainty in our parameter estimates by averaging across many possible parameter values (our posterior samples)
-
-- Penalizing models that make very different predictions when parameters change slightly (a sign of overfitting)
-
-**The resulting WAIC score is on the deviance scale - lower values indicate better predictive models.** 
-For example, if Model A has a WAIC of 500 and Model B has a WAIC of 600, Model A is predicted to do better at generalizing to new data. When comparing models however, we typically look at WAIC differences. 
-
-:::{.callout-note title="Bayesian Information Criterion"}
-Note that while another type, Bayesian Information Criterion (BIC) is also commonly used, it has a different goal: finding the "true" model under specific assumptions about the data-generating process. Since in cognitive modeling we typically assume all models are approximations, WAIC's focus on predictive accuracy is more appropriate for our purpose.
-:::
-
-## Model comparison using WAIC
-
-Let's now apply the WAIC practically in Stan to compare model performance across multiple reinforcement learning models. 
+Let's now apply PSIS-LOO-CV practically in Stan to compare model performance across multiple reinforcement learning models.
 
 We have already utilized several blocks beyond the basic `data`, `parameters`, and `model` blocks in Stan:
 
-- `transformed data` for pre-processing data before sampling begins. 
+- `transformed data` for pre-processing data before sampling begins.
 
-- `transformed parameters` for implementing parameter transformations, including reparameterization. 
+- `transformed parameters` for implementing parameter transformations, including reparameterization.
 
 **When calculating the log-likelihood, we use another optional block - `generated quantities` for post-processing our posterior samples after the main sampling is complete.**
 It's ideal for computing quantities we need for model comparison (like log-likelihoods) or predictions.
@@ -205,29 +136,29 @@ So, building from our existing reparameterized hierarchical RL model from the la
 
 ```stan
 generated quantities {
-  real<lower=0,upper=1> lr_mu; 
+  real<lower=0,upper=1> lr_mu;
   real<lower=0,upper=3> tau_mu;
-  
+
   real log_lik[nSubjects];
-  
+
   lr_mu  = Phi_approx(lr_mu_raw);
   tau_mu = Phi_approx(tau_mu_raw) * 3;
 
   { // local section, this saves time and space
     for (s in 1:nSubjects) {
-      vector[2] v; 
-      real pe;    
+      vector[2] v;
+      real pe;
 
       log_lik[s] = 0;
       v = initV;
 
-      for (t in 1:nTrials) {    
-        log_lik[s] = log_lik[s] + categorical_logit_lpmf(choice[s,t] | tau[s] * v);    
-              
-        pe = reward[s,t] - v[choice[s,t]];      
-        v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe; 
+      for (t in 1:nTrials) {
+        log_lik[s] = log_lik[s] + categorical_logit_lpmf(choice[s,t] | tau[s] * v);
+
+        pe = reward[s,t] - v[choice[s,t]];
+        v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;
       }
-    }    
+    }
   }
 }
 ```
@@ -238,7 +169,7 @@ In this block, we declare log-likelihoods for each subject:
 real log_lik[nSubjects];  // Declare log-likelihood array
 ```
 
-initialize their log-likelihood to zero: 
+initialize their log-likelihood to zero:
 
 ```stan
 log_lik[s] = 0;
@@ -254,7 +185,7 @@ log_lik[s] = log_lik[s] + categorical_logit_lpmf(choice[s,t] | tau[s] * v);
 
 Let's break this line down further:
 
-Recall that our data (`choice[s,t]`) is discrete - participants choose either option 1 or 2. We therefore can't use continuous distributions like normal for discrete data. Instead, we use the categorical distribution, which gives probabilities for discrete outcomes. 
+Recall that our data (`choice[s,t]`) is discrete - participants choose either option 1 or 2. We therefore can't use continuous distributions like normal for discrete data. Instead, we use the categorical distribution, which gives probabilities for discrete outcomes.
 
 - Specifically we use the `categorical_logit_lpmf` (categorical log probability mass function) because we're working with discrete data and log-odds.
 
@@ -282,14 +213,13 @@ This is rather simple and firstly involves extracting the log-likelihood matrix 
 LL1 <- extract_log_lik(stanfit)
 ```
 
-Then we can simple compute either the WAIC or LOO-CV (Leave-One-Out Cross-Validation) by Pareto Smoothed Importance Sampling (PSIS):
+Then we can compute PSIS-LOO-CV (leave-one-out cross-validation by Pareto-smoothed importance sampling) directly:
 ```r
-waic1 <- waic(LL1)  # WAIC calculation
-loo1 <- loo(LL1)    # PSIS-LOO calculation
+loo1 <- loo(LL1)    # PSIS-LOO-CV
 ```
 
-:::{.callout-tip title="WAIC or PSIS-LOO?"}
-WAIC and PSIS-LOO are both methods for estimating out-of-sample prediction accuracy, but they approach it differently. WAIC approximates leave-one-out cross-validation using the entire dataset, while PSIS-LOO uses importance sampling to approximate true leave-one-out cross-validation. In practice, they often give very similar results, and both are valid choices for model comparison.
+:::{.callout-tip title="The Pareto-$k$ diagnostic"}
+Alongside the estimates, `loo()` prints a diagnostic table summarising the Pareto-$\hat{k}$ value for every observation. When all observations are flagged as "good" ($\hat{k} < 0.7$), the PSIS-LOO-CV estimate is reliable. If some observations have a high $\hat{k}$, the approximation may be inaccurate for those points - you can then improve it with moment matching (`loo_moment_match()`) or compute exact leave-one-out for the flagged points by refitting.
 :::
 
 The (hypothetical) output below shows us several key metrics computed from the `loo` package, in the case below as a 4000 x 20 log-likelihood matrix (representing 4000 posterior samples for 20 subjects):
@@ -298,16 +228,16 @@ The (hypothetical) output below shows us several key metrics computed from the `
 Computed from 4000 by 20 log-likelihood matrix
 
          Estimate  SE
-elpd_loo    -29.5 3.3 
+elpd_loo    -29.5 3.3
 p_loo         2.7 1.0
 looic        58.9 6.7
 ```
 
-Where: 
+Where:
 
-- `elpd`: expected log predictive density (how well a model is expected to predict new, unseen data)
-- `p_loo/p_waic`: effective number of parameters
-- `looic/waic`: information criterion value
+- `elpd_loo`: expected log pointwise predictive density (how well a model is expected to predict new, unseen data)
+- `p_loo`: effective number of parameters
+- `looic`: the LOO information criterion ($-2 \times$ `elpd_loo`), on the deviance scale
 
 What we are most interested in is the `looic` estimate, which in this case is 58.9. Remember that lower values mean a better model!
 
@@ -339,13 +269,13 @@ with the prediction error $PE$ defined as:
 
 $$PE = R_t - V_t^c$$
 
-where: 
+where:
 
 - $V_t^c$ is the value of the chosen option,
 
 - $\alpha$ is the learning rate.
 
-**The Fictitious RL model extends the basic Rescorla-Wagner by also updating the value of the unchosen option.** The key insight is that in binary choice tasks with complementary rewards (like our reversal learning task), not receiving a reward on one option provides information about what might have happened had we chosen the other option. 
+**The Fictitious RL model extends the basic Rescorla-Wagner by also updating the value of the unchosen option.** The key insight is that in binary choice tasks with complementary rewards (like our reversal learning task), not receiving a reward on one option provides information about what might have happened had we chosen the other option.
 
 The model captures this through these equations:
 
@@ -361,7 +291,7 @@ and:
 
 $$PE_{nc} = -R_t - V_t^{nc}$$
 
-The crucial difference are in the second and fourth equations: the model updates the value of the non-chosen option ($V_t^{nc}$) using a counterfactual prediction error ($PE_{nc}$). 
+The crucial difference are in the second and fourth equations: the model updates the value of the non-chosen option ($V_t^{nc}$) using a counterfactual prediction error ($PE_{nc}$).
 
 The negative sign before $R_t$ in $PE_{nc}$ in the last equation reflects the complementary nature of the rewards - if one option gives a reward, the other option would have given no reward, and vice versa.
 **This counterfactual learning might be particularly useful in reversal learning tasks, as it allows participants to learn about both options on every trial, potentially enabling faster adaptation to reversals.**
@@ -380,14 +310,14 @@ The crucial difference between the models is visible in how the unchosen option'
 
 **Conversely, for the Fictitious RL model, where both options' values are updated on every trial, no flat plateaus are visible.** Subsequently, the value difference between the options for both models, highlights how this is - on average, across all trials - larger for the Fictitious RL model compared to the Simple RL model. As a result, because larger value differences could translate into an easier choice between the two options, the Fictitious RL represents a potential cognitive process that people use.
 
-Now that we have two models, we can compare them directly using the WAIC, and test whether participants actually use this additional information when making decisions in the reversal learning task.
+Now that we have two models, we can compare them directly using PSIS-LOO-CV, and test whether participants actually use this additional information when making decisions in the reversal learning task.
 
 The Stan implementation of the Fictitious RL can be found in `_scripts/comparing_models_model2.stan`. Comparing this to the Simple RL `comparing_models_model1.stan`, we can't see much of a difference. In fact, the only major difference is in the `model` block.
 
 In the Simple RL, we have a simple update rule that only modifies the value of the chosen option:
 
 ```stan
-pe = reward[s,t] - v[choice[s,t]];      
+pe = reward[s,t] - v[choice[s,t]];
 v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;
 ```
 
@@ -400,10 +330,10 @@ This shows that on each trial, the model:
 The second model extends this by also updating the unchosen option's value:
 
 ```stan
-pe = reward[s,t] - v[choice[s,t]];   
+pe = reward[s,t] - v[choice[s,t]];
 penc = -reward[s,t] - v[3 - choice[s,t]];
-      
-v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe; 
+
+v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;
 v[3 - choice[s,t]] = v[3 - choice[s,t]] + lr[s] * penc;
 ```
 
@@ -448,7 +378,7 @@ The lower LOOIC value for the second model (Fictitious RL) (~563 vs ~779) sugges
 
 ## Posterior predictive checks
 
-We have just compared our two RL models objectively using information criteria, suggesting that the Fictitious RL model will better predict new, unseen data from our reversal learning task and more accurately captures the underlying latent cognitive processes that generated the observed data. But while measurements like WAIC and LOO help us compare models quantitatively, posterior predictive checks allow us to visually assess how well our models actually capture patterns in the observed data.
+We have just compared our two RL models objectively using PSIS-LOO-CV, suggesting that the Fictitious RL model will better predict new, unseen data from our reversal learning task and more accurately captures the underlying latent cognitive processes that generated the observed data. But while quantitative measures like PSIS-LOO-CV help us compare models numerically, posterior predictive checks allow us to visually assess how well our models actually capture patterns in the observed data.
 
 **The basic idea of posterior predictive checks is simple: we ask our model to generate simulated data. If our model is good, data simulated from it should look similar to our actual data.** Not only does running posterior predictive checks allow us to validate good fitting models, it also can be used to falsify bad fitting ones.
 
@@ -463,20 +393,20 @@ For each of these 4000 parameter sets, we then simulate an entire experiment wor
 ```stan
 generated quantities {
   // ... existing code for log likelihood ...
-  
+
   // Generate predicted choices
   array[nSubjects, nTrials] int y_pred;
-  
+
   { // local section
     for (s in 1:nSubjects) {
       vector[2] v;
       real pe;
       v = initV;
-      
+
       for (t in 1:nTrials) {
         // Generate predicted choice from current values
         y_pred[s,t] = categorical_logit_rng(tau[s] * v);
-        
+
         // Update values using actual reward
         pe = reward[s,t] - v[choice[s,t]];
         v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;
@@ -486,7 +416,7 @@ generated quantities {
 }
 ```
 
-This generates 4000 different simulated datasets. Subsequently, we need to then compare the accuracy of these datasets using `R`. 
+This generates 4000 different simulated datasets. Subsequently, we need to then compare the accuracy of these datasets using `R`.
 
 :::{.callout-note title="Exercise 14"}
 **1. Plot the posterior predictive checks for both models (Simple and Fictitious RL) using the `R` script `comparing_models_ppc.R` and examine the output.**
@@ -507,4 +437,4 @@ For the time course plot on the left, for each trial, we take all 4000 simulated
 For the distribution plot on the right, for each of the 4000 simulated experiments, we **calculate the overall proportion of correct choices across all trials and subjects.**
 The histograms show the distribution of these 4000 overall proportions, whilst the vertical line shows the actual overall proportion from the real data.
 
-Again, you can see that the straight blue line is closer to the peak for the Fictitious RL compared to the simple RL, demonstrating that this model better captures the true choice behaviour patterns in the data. 
+Again, you can see that the straight blue line is closer to the peak for the Fictitious RL compared to the simple RL, demonstrating that this model better captures the true choice behaviour patterns in the data.

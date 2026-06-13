@@ -176,9 +176,9 @@ You can see the importance of the prior through three distinct scenarios, all sh
 
 The first row demonstrates what happens when we use a **flat or uniform prior** distribution. In this case, the posterior distribution closely mirrors the likelihood function, as we're letting the data speak for itself with minimal prior influence.
 
-The middle row introduces a prior in the form of a **step function**, which effectively rules out any possibility of $θ$ being less than 0.5. This represents a strong prior belief that fundamentally constrains our posterior distribution, forcing it to be zero for values less than 0.5 regardless of what the data suggests.
+The middle row introduces a prior in the form of a **step function**, which effectively rules out any possibility of $θ$ being less than 0.5. This represents a strong prior assumption that fundamentally constrains our posterior distribution, forcing it to be zero for values less than 0.5 regardless of what the data suggests.
 
-The final row shows what happens with an **informative prior** centered at 0.5, taking the form of a bell-shaped curve. In this prior, we believe values around 0.5 are more likely, but we're not completely ruling out other possibilities. The resulting posterior distribution represents a compromise between this prior belief and the observed data, with its peak shifted slightly compared to the likelihood function. 
+The final row shows what happens with an **informative prior** centered at 0.5, taking the form of a bell-shaped curve. In this prior, we believe values around 0.5 are more likely, but we're not completely ruling out other possibilities. The resulting posterior distribution represents a compromise between this prior assumption and the observed data, with its peak shifted slightly compared to the likelihood function.
 
 ## Solving the posterior using grid approximation
 

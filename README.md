@@ -1,7 +1,7 @@
 # BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science
 
 ![Visitors](https://hitscounter.dev/api/hit?url=https%3A%2F%2Falpn-lab.github.io%2FBayesCog%2F&label=Visitors&icon=github&color=%23e35d6a&message=&style=flat&tz=Europe%2FLondon)
-[![GitHub contributors](https://img.shields.io/github/contributors/alpn-lab/BayesCog.svg)](https://github.com/alpn-lab/BayesCog/graphs/contributors) 
+[![GitHub contributors](https://img.shields.io/github/contributors/alpn-lab/BayesCog.svg)](https://github.com/alpn-lab/BayesCog/graphs/contributors)
 [![GitHub last commit](https://img.shields.io/github/last-commit/alpn-lab/BayesCog?color=orange&logo=github)](https://github.com/alpn-lab/BayesCog)
 [![GitHub repo size](https://img.shields.io/github/repo-size/alpn-lab/BayesCog?color=brightgreen&logo=github)](https://github.com/alpn-lab/BayesCog)
 <br/>
@@ -11,12 +11,12 @@
 </p>
 
 This website[^1] is an adapted version of teaching materials originally made for the <ins>award winning</ins>\* **BayesCog** seminar at the [Faculty of Psychology](https://psychologie.univie.ac.at/), [University of Vienna](https://www.univie.ac.at/en/), as part of the Advanced Seminar for master's students (Mind and Brain track; recorded during Summer Term 2020/2021).
-Further content from the [BayesCog workshop at UKE Hamburg](https://github.com/lei-zhang/BayesCog_Part1) (2023) have also been added. 
+Further content from the [BayesCog workshop at UKE Hamburg](https://github.com/lei-zhang/BayesCog_Part1) (2023) have also been added.
 
 **Recording**: Recordings from the original version of the course are available on [YouTube](https://www.youtube.com/watch?v=8RpLF7ufZs4&list=PLfRTb2z8k2x9gNBypgMIj3oNLF8lqM44-).
 The most recent recording from the 2021 summer semester is also available on [YouTube](https://youtube.com/playlist?list=PLfRTb2z8k2x8ZCqDJ0WEFNs2ymXQCliLa).
 
-**Outreach**: [**Twitter thread**](https://twitter.com/lei_zhang_lz/status/1276506555660275714?s=20) (being **liked 700+ times** on Twitter) summarizing the contents of the course. 
+**Outreach**: [**Twitter thread**](https://twitter.com/lei_zhang_lz/status/1276506555660275714?s=20) (being **liked 700+ times** on Twitter) summarizing the contents of the course.
 
 **Award/Recognition**: The original course received a commendation award from the [Society for the Improvement of Psychological Science (SIPS)](https://improvingpsych.org/mission/awards/) (also see a [tweet](https://twitter.com/improvingpsych/status/1323269273033281538?s=20)), as well as an ECR Teaching Award from the [Faculty of Psychology, University of Vienna](https://ecr-psychology.univie.ac.at/news/).
 
@@ -33,9 +33,9 @@ The most recent recording from the 2021 summer semester is also available on [Yo
 
 ## Course summary
 
-Computational modeling and mathematical modeling provide an insightful quantitative framework that allows researchers to inspect latent processes and to understand hidden mechanisms. Hence, computational modeling has gained increasing attention in many areas of cognitive science through **cognitive modeling**. One illustration of this trend is the growing popularity of Bayesian approaches to cognitive modeling. To this end, this course teaches the theoretical and practical knowledge necessary to perform, evaluate and interpret Bayesian modeling analyses, with a specific emphasis towards modeling latent cognitive processes. 
+Computational modeling and mathematical modeling provide an insightful quantitative framework that allows researchers to inspect latent processes and to understand hidden mechanisms. Hence, computational modeling has gained increasing attention in many areas of cognitive science through **cognitive modeling**. One illustration of this trend is the growing popularity of Bayesian approaches to cognitive modeling. To this end, this course teaches the theoretical and practical knowledge necessary to perform, evaluate and interpret Bayesian modeling analyses, with a specific emphasis towards modeling latent cognitive processes.
 
-In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics, statistical distibrutions and reinforcement learning. 
+In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics, statistical distibrutions and reinforcement learning.
 We will use [R/RStudio](https://posit.co/download/rstudio-desktop/) and a newly developed statistical computing language - [Stan](https://mc-stan.org) - to perform Bayesian analyses, ranging from simple binomial models and linear regression models to more complex hierarchical reinforcement learning (RL) models.
 
 ## List of folders and contents
@@ -56,7 +56,7 @@ Folder | Task | Model
 
 ## Set-up
 
-There is no additional set-up needed if you aim to work solely from the website. However, to work on the exercises yourself, several software and packages are required. 
+There is no additional set-up needed if you aim to work solely from the website. However, to work on the exercises yourself, several software and packages are required.
 
 ### Locally using RStudio and `renv`
 
@@ -73,7 +73,7 @@ git clone https://github.com/alpn-lab/BayesCog.git
 cd BayesCog
 ```
 
-The various analyses across the workshops require specific packages to be installed. This project uses `renv` to manage package dependencies. 
+The various analyses across the workshops require specific packages to be installed. This project uses `renv` to manage package dependencies.
 
 To set up the environment, firstly open `RStudio` in the project root and run in the console:
 
@@ -81,7 +81,7 @@ To set up the environment, firstly open `RStudio` in the project root and run in
 source("setup.R")
 ```
 
-After executing this command once, the project environment will **load automatically whenever you open the project,** for both project root and individual workshops. 
+After executing this command once, the project environment will **load automatically whenever you open the project,** for both project root and individual workshops.
 All you need to do is to load the packages required for the relevant scripts when necessary e.g., `library(rstan)`.
 
 > You can always check if you are missing a certain package by clicking on the 'Packages' tab (next to 'Files/Plots' tab) or by running `library()`.
@@ -104,7 +104,7 @@ docker run -d -p 8787:8787 \
 
 > Make sure to replace the PASSWORD argument with your own password!
 
-This will mount the Docker image onto the BayesCog repository. 
+This will mount the Docker image onto the BayesCog repository.
 
 Then, navigate to [http://localhost:8787](http://localhost:8787/) in a browser, and type your username (which is always 'rstudio') and the password chosen in the command prior.
 
@@ -131,47 +131,15 @@ docker images
 docker rmi your_docker_image # e.g. docker rmi sohamir/bayescog
 ```
 
-## Contributing 
+## Getting help
 
-We welcome contributions regarding content or with fixing errors on the current website. Making and committing these changes is simple.
+If you run into problems while working through the course, there are a few places to look:
 
-Assuming you have cloned the repository and have [Quarto](https://quarto.org/) installed, you can preview any changes that you have in the browser by running:
+- **Setup and installation issues** (e.g. installing RStan, restoring the `renv` environment, or building the Docker image): re-check the [Set-up](#set-up) instructions above. If a local installation proves difficult, the [Docker image](#building-the-docker-image) provides a pre-configured RStudio environment with all required packages and is the most reliable fallback.
+- **Questions about the course content or models:** each workshop page on the [website](https://alpn-lab.github.io/BayesCog) is self-contained and includes worked examples and solutions.
+- **Bugs, errors, or suggestions:** please [open an issue](https://github.com/Alpn-Lab/BayesCog/issues) on the GitHub repository, or get in touch using the [Contact](#contact) details below.
 
-`quarto preview`
-
-If you are fortunate enough to have admin access (i.e., are a member of the ALPN Lab), you can just commit the changes:
-
-```bash
-git add .
-git commit -m "your commit message"
-git push origin main
-```
-
-And once the changes have been pushed, re-build the website by running:
-
-`quarto publish gh-pages`
-
-If you do not have admin privileges, you can commit the changes to the `main` branch by following the steps below:
-
-```bash
-# First, make sure you fork https://github.com/Alpn-Lab/BayesCog to your GitHub account
-
-# Add the original as upstream
-git remote add upstream https://github.com/Alpn-Lab/BayesCog.git
-
-# Create and switch to a new branch for your changes
-git checkout -b your-feature-name
-
-# Add and commit your changes
-git add .
-git commit -m "Describe your changes here"
-
-# Push to your fork
-git push origin your-feature-name
-```
-You will then need to go to your fork on GitHub, where you'll see a prompt to "Compare & pull request" for your new branch. Click that to create a pull request to suggest your changes to the `main` repository.
-
-If approved, we will both add the changes and you to the 'Contributors' list below!
+If you would like to contribute a fix or improvement yourself, see the [`CONTRIBUTING`](CONTRIBUTING.md) guidelines.
 
 ## Contributors
 
@@ -196,9 +164,12 @@ This project follows the [all-contributors](https://allcontributors.org) specifi
 
 ## License
 
-This course is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+This project is released under two licenses:
 
-You are free to share, copy, and redistribute the material in any medium or format. Additionally, you can adapt, remix, transform, and build upon the material for any purpose, including commercial use.
+- **Course content** (the website text, figures, slides, and teaching materials) is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/deed.en) (see [`LICENSE`](LICENSE)).
+- **Code** (the R scripts, Stan models, and other software in this repository) is licensed under the [MIT License](https://opensource.org/licenses/MIT) (see [`LICENSE-MIT`](LICENSE-MIT)).
+
+For the course content, you are free to share, copy, and redistribute the material in any medium or format. Additionally, you can adapt, remix, transform, and build upon the material for any purpose, including commercial use.
 However, you must provide appropriate attribution, including credit to the original source, a link to the license, and an indication if changes were made. Furthermore, if you remix, transform, or build upon the material, you are required to distribute your contributions under the same license as the original.
 
 <img src="images/introduction/cc_by_sa.png" width="13%">

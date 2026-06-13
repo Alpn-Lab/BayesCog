@@ -286,7 +286,7 @@ Rethinking the linear regression model in a Bayesian context
 Conventionally, our regression model generates a prediction for any given value of $x$: the value of $y$. This prediction is the red line.
 However, we can also see that for any given value, there is always some error term. Looking at $x_0$, the predicted value of $y(x_0)$ - indicated by the green dashed line - is actually slightly below the observed value (blue dot). This is the case for all values of $x$, which can be modeled as being normally distirbuted around the true value (this is depicted for $x_0$).
 
-This formulation is more natural in a Bayesian context as it directly specifies our likelihood function. **It captures our belief that observations should be symmetrically distributed around our expected value $(\mu_i)$, with smaller deviations being more likely than larger ones.** The parameter $\sigma$ then represents our uncertainty about how far observations typically deviate from this expected value.
+This formulation is more natural in a Bayesian context as it directly specifies our likelihood function. **It captures our assumption that observations should be symmetrically distributed around our expected value $(\mu_i)$, with smaller deviations being more likely than larger ones.** The parameter $\sigma$ then represents our uncertainty about how far observations typically deviate from this expected value.
 
 This is mathematically equivalent to the traditional approach, but aligns with Bayesian inference.
 
