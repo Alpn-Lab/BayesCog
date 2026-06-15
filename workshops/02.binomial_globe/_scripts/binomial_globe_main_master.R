@@ -63,4 +63,12 @@ plot_dens_sep <- stan_dens(fit_globe, separate_chains = T)
 ggsave(plot = plot_dens_cmb, "_plots/dens_cmb.png", width = 6, height = 4, type = "cairo-png", units = "in")
 ggsave(plot = plot_dens_sep, "_plots/dens_sep.png", width = 6, height = 4, type = "cairo-png", units = "in")
 
+# rank plots: a more sensitive alternative to trace plots
+# (matching stan_trace()'s chain colours so the two plots pair up)
+library(bayesplot)
+chain_cols <- c("#FDB4B0", "#B5D087", "#63D8DB", "#DABAFB")
+plot_rank <- mcmc_rank_ecdf(fit_globe, pars = 'theta', prob = 0.99, plot_diff = TRUE) +
+  scale_colour_manual(values = chain_cols)
+ggsave(plot = plot_rank, "_plots/mcmc_rank_ecdf.png", width = 7, height = 4, type = "cairo-png", units = "in")
+
 ## stan_plot(fit_globe, pars = 'p', show_density = T)

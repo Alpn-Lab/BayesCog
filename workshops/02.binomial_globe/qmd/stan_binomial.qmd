@@ -510,17 +510,21 @@ stan_trace(fit_globe, pars = 'theta', inc_warmup = TRUE)
 After the warmup period, you can see that the chains are sampling consistently around the posterior mean of 0.64.
 
 :::{.callout-tip title="Rank plots: a more sensitive alternative to trace plots"}
-While trace plots remain a common and intuitive diagnostic, they can hide subtle differences between chains. *Rank plots* are often more informative: they pool all draws across chains, rank them, and then show the distribution of ranks within each chain. If the chains are sampling from the same distribution, these should look approximately uniform. The `bayesplot` package provides these, for example:
+While trace plots remain a common and intuitive diagnostic, they can hide subtle differences between chains. *Rank plots* are often more informative: they pool all draws across chains, rank them, and then show the distribution of ranks within each chain. If the chains are sampling from the same distribution, they should look approximately uniform. The `bayesplot` package provides these, for example:
 
 ```r
 library(bayesplot)
-mcmc_rank_ecdf(fit_globe, pars = "theta", prob = 0.99, plot_diff = TRUE)
+
+# use the same chain colours as stan_trace() so the two plots match
+chain_cols <- c("#FDB4B0", "#B5D087", "#63D8DB", "#DABAFB")
+mcmc_rank_ecdf(fit_globe, pars = "theta", prob = 0.99, plot_diff = TRUE) +
+  scale_colour_manual(values = chain_cols)
 ```
 
-<!-- TODO (reviewer R2.7): add actual rank plots generated from our globe-tossing model parameters (run the code above, save the figure to images/, and embed it here). -->
-:::
+![](/images/02.binomial_globe/stan/mcmc_rank_ecdf.png){fig-align="center" width="85%"}
 
-(TO DO: add actual rank plots from our parameters)
+The plot above shows the result for our globe-tossing model. The idea behind it is simple: if all four chains are exploring the posterior in the same way, then no chain should consistently produce higher or lower values than the others. Here, all four lines wobble around zero and stay inside the envelope, so no chain stands out as behaving differently. This confirms what the trace plots already suggested: the chains have converged and are sampling from the same distribution.
+:::
 
 To more clearly see our samples, we can instead plot them as a histogram, showing the posterior density distribution for our parameter $\theta$ estimated from our MCMC sampling:
 

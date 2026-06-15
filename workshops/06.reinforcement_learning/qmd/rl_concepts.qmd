@@ -211,7 +211,7 @@ Recall that in this task:
 
 2. They select one which they think will reward them (action selection)
 
-3. They recieve a outcome (either a reward or a loss) (outcome)
+3. They receive an outcome (either a reward or a loss) (outcome)
 
 In this task the choice and outcome are our data. From this data, we can subsequently measure basic summary statistics such as choice accuracy, which will provide us with a basic measure of subject performance. We can also compare classify performance within the group by a median split, and correlate it with other recorded variables (e.g., age, IQ).
 

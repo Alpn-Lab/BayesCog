@@ -14,6 +14,18 @@ We will also cover tips and tricks with working in `R`, so it may also be useful
 
 This workshop assumes **no prior programming experience**.
 
+:::{.callout-tip title="Keep learning R beyond this workshop"}
+Learning to program in `R` cannot be covered in a single session — this workshop serves only as a basic
+introduction to the key concepts you will need for the rest of the course. We therefore strongly encourage
+you to complement it with additional resources as you continue to develop your skills. A few excellent,
+freely available starting points are:
+
+- [*R for Data Science* (2nd ed.)](https://r4ds.hadley.nz/) — Wickham, Çetinkaya-Rundel & Grolemund
+- [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/) — Grolemund
+- [swirl: Learn R, in R](https://swirlstats.com/) — interactive, in-console lessons
+- [*An Introduction to R*](https://cran.r-project.org/doc/manuals/r-release/R-intro.html) — the official CRAN manual
+:::
+
 By the end of this workshop, you will be able to:
 
 - Navigate the RStudio interface

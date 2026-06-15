@@ -35,7 +35,7 @@ The most recent recording from the 2021 summer semester is also available on [Yo
 
 Computational modeling and mathematical modeling provide an insightful quantitative framework that allows researchers to inspect latent processes and to understand hidden mechanisms. Hence, computational modeling has gained increasing attention in many areas of cognitive science through **cognitive modeling**. One illustration of this trend is the growing popularity of Bayesian approaches to cognitive modeling. To this end, this course teaches the theoretical and practical knowledge necessary to perform, evaluate and interpret Bayesian modeling analyses, with a specific emphasis towards modeling latent cognitive processes.
 
-In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics, statistical distibrutions and reinforcement learning.
+In the course, students will be formally grounded in key principles of cognitive modeling including Bayesian statistics, statistical distributions and reinforcement learning.
 We will use [R/RStudio](https://posit.co/download/rstudio-desktop/) and a newly developed statistical computing language - [Stan](https://mc-stan.org) - to perform Bayesian analyses, ranging from simple binomial models and linear regression models to more complex hierarchical reinforcement learning (RL) models.
 
 ## List of folders and contents
@@ -51,8 +51,6 @@ Folder | Task | Model
 07.optm_rl   | 2-armed bandit task |   Simple reinforcement learning (RL)
 08.compare_models | Probabilistic reversal learning task |  Simple and Fictitious RL models
 09.debugging |  Memory Retention | Exponential decay model
-10.model_based |  WIP | WIP
-11.delay_discounting |  WIP | WIP
 
 ## Set-up
 
