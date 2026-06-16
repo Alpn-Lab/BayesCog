@@ -11,13 +11,13 @@ The course is not inherently divided into two sections, but it it were, what we 
 
 This workshop will firstly provide a conceptual overview of cognitive modeling and reinforcement learning (RL) as mathematical frameworks for understanding human behaviour. We'll then implement this practically by programming a simple RL model: the Rescorla-Wagner model and apply it to behavioural choice data.
 
-The goals of this workshop are to:
+By the end of this workshop, you will be able to:
 
-- Understand the fundamental principles of cognitive modeling and its applications
-- Learn the basics of reinforcement learning theory and the Rescorla-Wagner model
-- Implement a basic Rescorla-Wagner model in Stan for analyzing choice behaviour
+- Explain the principles of cognitive modeling and what parameters represent
+- Describe the Rescorla-Wagner learning rule and its parameters
+- Build and fit a simple Rescorla-Wagner model in Stan
+- Interpret estimated parameters for the Rescorla-Wagner model
 
 :::{.callout-note title="Working directory for this workshop"}
 Model code and `R` scripts for this workshop are located in the (`/workshops/06.reinforcement_learning`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
 :::
-

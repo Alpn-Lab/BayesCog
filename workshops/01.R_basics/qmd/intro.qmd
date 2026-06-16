@@ -12,15 +12,26 @@ execute:
 The first workshop is designed to primarily introduce those without any previous experience to `R` and RStudio so that everyone is on the same page for the subsequent workshops.
 We will also cover tips and tricks with working in `R`, so it may also be useful for those already familiar!
 
-Topics for this workshop include:
+This workshop assumes **no prior programming experience**.
 
-- Understanding `R` and RStudio's interface and functionality
-- Basic R operations and data types
-- Working with variables and functions
-- Data structures and manipulation
-- Control flow and logical operators
-- Using `R` packages
-- Data visualization with `ggplot2`
+:::{.callout-tip title="Keep learning R beyond this workshop"}
+Learning to program in `R` cannot be covered in a single session — this workshop serves only as a basic
+introduction to the key concepts you will need for the rest of the course. We therefore strongly encourage
+you to complement it with additional resources as you continue to develop your skills. A few excellent,
+freely available starting points are:
+
+- [*R for Data Science* (2nd ed.)](https://r4ds.hadley.nz/) — Wickham, Çetinkaya-Rundel & Grolemund
+- [*Hands-On Programming with R*](https://rstudio-education.github.io/hopr/) — Grolemund
+- [swirl: Learn R, in R](https://swirlstats.com/) — interactive, in-console lessons
+- [*An Introduction to R*](https://cran.r-project.org/doc/manuals/r-release/R-intro.html) — the official CRAN manual
+:::
+
+By the end of this workshop, you will be able to:
+
+- Navigate the RStudio interface
+- Create and manipulate R's core data types and structures (vectors, data frames, lists)
+- Write functions and use basic control flow (`if`/`else`, loops)
+- Install and load `R` packages and produce plots with `ggplot2`
 
 :::{.callout-note title="Working directory for this workshop"}
 Model code and `R` scripts for this workshop are located in the (`/workshops/01.R_basics`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!

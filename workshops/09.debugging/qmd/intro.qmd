@@ -9,14 +9,13 @@ Collectively, over this course we have built up our knowledge and ability to for
 
 All the while, things have gone relatively smoothly; we have not encountered major problems when writing or running our Stan models. However, it is worth to bear in mind that the materials (including the Stan models) for this course were carefully constructed and checked to work correctly without issue. In this final workshop, we'll focus on debugging and fixing common errors in Stan code, and discuss best coding practices.
 
-The goals of this workshop are to:
+By the end of this workshop, you will be able to:
 
-- Understand common errors and warnings in Stan and how to resolve them
-- Learn best practices for writing and debugging Stan code
-- Gain practical experience debugging a memory retention model
-- Understand the cognitive modeling framework through an example study
+- Recognise common Stan errors and warnings and explain their causes
+- Apply best practices for writing readable, debuggable Stan code
+- Debug and fix a faulty memory-retention model
+- Build a principled workflow for cognitive modeling
 
 :::{.callout-note title="Working directory for this workshop"}
 Model code and `R` scripts for this workshop are located in the (`/workshops/09.debugging`) directory. Remember to use the `R.proj` file within each folder to avoid manually setting directories!
 :::
-

@@ -62,3 +62,10 @@ plot_dens_sep <- stan_dens(fit_globe, separate_chains = T)
 
 plot_dens <- stan_plot(fit_globe, pars = 'theta', show_density = T , fill_color="skyblue")
 print(plot_dens)
+
+# rank plots: a more sensitive alternative to trace plots
+# (matching stan_trace()'s chain colours so the two plots pair up)
+library(bayesplot)
+chain_cols <- c("#FDB4B0", "#B5D087", "#63D8DB", "#DABAFB")
+mcmc_rank_ecdf(fit_globe, pars = 'theta', prob = 0.99, plot_diff = TRUE) +
+  scale_colour_manual(values = chain_cols)

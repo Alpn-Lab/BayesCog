@@ -75,12 +75,9 @@ Both L.Z. and A.S. further revised and edited the website.
 
 ## License
 
-This course is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/deed.en).
+This course — including both the teaching content and the accompanying code (the R scripts and Stan models) — is licensed under the [MIT License](https://opensource.org/licenses/MIT).
 
-You are free to share, copy, and redistribute the material in any medium or format. Additionally, you can adapt, remix, transform, and build upon the material for any purpose, including commercial use.
-However, you must provide appropriate attribution, including credit to the original source, a link to the license, and an indication if changes were made. Furthermore, if you remix, transform, or build upon the material, you are required to distribute your contributions under the same license as the original.
-
-![](images/introduction/cc_by_sa.png){width="13%"}
+You are free to use, copy, modify, and redistribute the material for any purpose, including commercial use, provided that the copyright notice and permission notice are retained.
 
 
 ## Citing

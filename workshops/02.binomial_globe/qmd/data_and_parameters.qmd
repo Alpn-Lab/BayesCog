@@ -1,6 +1,6 @@
 ---
 title: "Linking data to parameters"
-subtitle: "Understanding how Bayesian inference allows us to update our beliefs with data"
+subtitle: "Understanding how Bayesian inference allows us to update our knowledge with data"
 execute:
   echo: true
   warning: false
@@ -29,15 +29,15 @@ As well as three important probability concepts:
 - **Marginal probability:** likelihood of one event regardless of others - $P(A)$
 - **Conditional probability:** likelihood of one event given another has occurred - $P(A|B)$
 
-And finally, we learned about Bayes' theorem, a formula which allows us to update our beliefs based on new evidence in a probabilistic manner:
+And finally, we learned about Bayes' theorem, a formula which allows us to update our knowledge based on new evidence in a probabilistic manner:
 
 $$p(A|B) = \frac{p(B|A)p(A)}{p(B)}$$
 
 Where:
 
-- $p(A|B)$ is the **posterior probability** - our updated belief about $A$ after observing evidence $B$
+- $p(A|B)$ is the **posterior probability** - our updated knowledge about $A$ after observing evidence $B$
 - $p(B|A)$ is the **likelihood** - probability of observing evidence $B$ if hypothesis $A$ is true
-- $p(A)$ is the **prior probability** - our initial belief about $A$ before seeing any evidence
+- $p(A)$ is the **prior probability** - our initial knowledge about $A$ before seeing any evidence
 - $p(B)$ is the **marginal likelihood** - total probability of observing evidence $B$
 
 Or, more intuitively:
@@ -142,17 +142,17 @@ Understanding the difference between the likelihood and probability can be diffi
 
 ## Priors
 
-Remember the purpose of Bayesian analysis concerns updating our initial beliefs in light of data.
+Remember the purpose of Bayesian analysis concerns updating our initial knowledge in light of data.
 
 <center>
-$\Large\text{initial belief}$ $\Large\xrightarrow{\text{Bayes' rule + data}}$ $\Large\text{new beliefs}$
+$\Large\text{initial knowledge}$ $\Large\xrightarrow{\text{Bayes' rule + data}}$ $\Large\text{updated knowledge}$
 </center>
 
 <div style="height: 20px;"></div>
 
-Therefore, we need an initial belief to begin with!
+Therefore, we need some initial knowledge to begin with!
 
-A 'prior' - $p(\theta)$ - represents our beliefs about parameters before seeing any data. **These beliefs can come from previous research, expert knowledge, or logical constraints about what values are possible.**
+A 'prior' - $p(\theta)$ - represents our assumptions about parameters before seeing any data. **These assumptions can come from previous research, expert knowledge, or logical constraints about what values are possible.**
 
 There are two different interpretations of parameter probability distributions when considering a prior[^2]: 
 
@@ -163,7 +163,7 @@ There are two different interpretations of parameter probability distributions w
 
 In the state of knowledge viewpoint, the prior probability distribution represents our pre-data uncertainty for a parameter’s true value. For example, imagine that a doctor gives their probability that an individual has a particular disease before the results of a blood test become available. Using their knowledge of the patient’s history, and their expertise on the particular condition, they could assign a prior disease probability of 75%. 
 
-Alternatively, we could use the proportion of the UK population that has this disease as a prior. In this case, the prior is continuous and represents our beliefs for the prevalence.
+Alternatively, we could use the proportion of the UK population that has this disease as a prior. In this case, the prior is continuous and represents our prior knowledge of the prevalence.
 
 The choice of prior should be ultimately guided by several factors including:
 
