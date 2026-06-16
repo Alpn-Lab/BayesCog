@@ -162,15 +162,9 @@ This project follows the [all-contributors](https://allcontributors.org) specifi
 
 ## License
 
-This project is released under two licenses:
+This project — including both the course content (the website text, figures, slides, and teaching materials) and the code (the R scripts, Stan models, and other software in this repository) — is released under the [MIT License](https://opensource.org/licenses/MIT) (see [`LICENSE`](LICENSE)).
 
-- **Course content** (the website text, figures, slides, and teaching materials) is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/deed.en) (see [`LICENSE`](LICENSE)).
-- **Code** (the R scripts, Stan models, and other software in this repository) is licensed under the [MIT License](https://opensource.org/licenses/MIT) (see [`LICENSE-MIT`](LICENSE-MIT)).
-
-For the course content, you are free to share, copy, and redistribute the material in any medium or format. Additionally, you can adapt, remix, transform, and build upon the material for any purpose, including commercial use.
-However, you must provide appropriate attribution, including credit to the original source, a link to the license, and an indication if changes were made. Furthermore, if you remix, transform, or build upon the material, you are required to distribute your contributions under the same license as the original.
-
-<img src="images/introduction/cc_by_sa.png" width="13%">
+You are free to use, copy, modify, and redistribute the material for any purpose, including commercial use, provided that the copyright notice and permission notice are retained.
 
 ## Citing
 
