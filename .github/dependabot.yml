@@ -1,0 +1,15 @@
+# Dependabot configuration
+# Docs: https://docs.github.com/code-security/dependabot/dependabot-version-updates
+# Tracks the action versions used in .github/workflows/ only. The R (renv.lock),
+# Docker, and Python (requirements.txt) environments are intentionally left
+# untracked to preserve the reproducible teaching environment.
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    assignees:
+      - "sohaamir"
+    commit-message:
+      prefix: "ci"
