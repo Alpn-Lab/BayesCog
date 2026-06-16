@@ -674,11 +674,6 @@ P(X = 1|Y = 1) = \frac{P(X = 1, Y = 1)}{P(Y = 1)} = \frac{0.5}{0.6} = 0.833
 <h3 class="anchored" data-anchor-id="understanding-continuous-probability-distributions">Understanding continuous probability distributions</h3>
 <p>Unlike discrete probabilities where we can create a simple table of all possible outcomes, continuous events deal with variables that can take on any value within a range.</p>
 <p><strong>For these events we instead calculate the same three probabilities that we used for discrete events, but as distributions</strong><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../../images/01.R_basics/joint_distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
-</figure>
-</div>
 <div style="font-size: 22px;">
 <strong>Joint distribution</strong>
 </div>
@@ -686,13 +681,13 @@ P(X = 1|Y = 1) = \frac{P(X = 1, Y = 1)}{P(Y = 1)} = \frac{0.5}{0.6} = 0.833
 
 </div>
 <p>When we have two continuous variables (x and y), their joint distribution shows how they vary together. The brighter/more intense regions show where combinations of x and y values are more likely to occur.</p>
-<div style="height: 20px;">
-
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../../images/01.R_basics/conditional_distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+<p><img src="../../../images/01.R_basics/joint_distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
+</div>
+<div style="height: 20px;">
+
 </div>
 <div style="font-size: 22px;">
 <strong>Conditional distribution</strong>
@@ -701,13 +696,13 @@ P(X = 1|Y = 1) = \frac{P(X = 1, Y = 1)}{P(Y = 1)} = \frac{0.5}{0.6} = 0.833
 
 </div>
 <p>The conditional distribution shows how one variable is distributed when we fix the other variable at specific values. The shape of these distributions can change depending on which y-value we’re looking at, showing how the two variables are related.</p>
-<div style="height: 20px;">
-
-</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../../images/01.R_basics/conditional_distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
 </figure>
+</div>
+<div style="height: 20px;">
+
 </div>
 <div style="font-size: 22px;">
 <strong>Marginal distribution</strong>
@@ -716,12 +711,17 @@ P(X = 1|Y = 1) = \frac{P(X = 1, Y = 1)}{P(Y = 1)} = \frac{0.5}{0.6} = 0.833
 
 </div>
 <p>The marginal distributions (shown on the sides of the joint distribution) represent the overall distribution of each variable independently, regardless of the other variable’s value. Mathematically, these are obtained by integrating the joint distribution over all values of the other variable.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/01.R_basics/marginal_distribution.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="bayes-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="bayes-theorem">Bayes’ theorem</h2>
 <p>So, now that we know how we calculate the probabilities of continuous events, we can move on to describe Bayes’ theorem.</p>
-<p><strong>Bayes’ theorem is a fundamental concept in probability theory that helps us update our beliefs about events based on new evidence.</strong> It builds directly on the concepts of conditional, joint, and marginal probability that we discussed earlier.</p>
+<p><strong>Bayes’ theorem is a fundamental concept in probability theory that helps us update our knowledge about events based on new evidence.</strong> It builds directly on the concepts of conditional, joint, and marginal probability that we discussed earlier.</p>
 <p>To get a better understanding of what Bayes’ theorem tell us, let’s derive it step by step using what we know about probability:</p>
 <p>We start with the equation for joint probability that we saw earlier:</p>
 <p><span class="math display">\[
@@ -745,12 +745,12 @@ p(A|B) = \frac{p(B|A)p(A)}{p(B)}
 \]</span></p>
 <p>Each term in Bayes’ theorem has a specific interpretation:</p>
 <ul>
-<li><span class="math inline">\(p(A)\)</span> is the prior probability - our initial belief about event A</li>
+<li><span class="math inline">\(p(A)\)</span> is the prior probability - our prior knowledge about event A</li>
 <li><span class="math inline">\(p(B|A)\)</span> is the likelihood - probability of observing the evidence if A is true</li>
 <li><span class="math inline">\(p(B)\)</span> is the marginal likelihood - total probability of observing the evidence</li>
 <li><span class="math inline">\(p(A|B)\)</span> is the posterior probability - what we want to know after observing evidence</li>
 </ul>
-<p><strong>So what Bayes’ theorem tells us is that we can find the probability of an event A happening, given that we observed event B, by using our prior knowledge about both events. It’s equivalent to updating what we believe based on new information.</strong></p>
+<p><strong>So what Bayes’ theorem tells us is that we can find the probability of an event A happening, given that we observed event B, by using our prior knowledge about both events. It’s equivalent to updating what we know based on new information.</strong></p>
 <div class="callout callout-style-default callout-tip callout-titled" title="Bayes' in a nutshell">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -768,7 +768,7 @@ Bayes’ in a nutshell
 <p><span class="math display">\[
 p(\text{cold}|\text{rain}) = \frac{p(\text{rain}|\text{cold})p(\text{cold})}{p(\text{rain})}
 \]</span></p>
-<p>This allows us to update our belief about the temperature based each new observation of rain.</p>
+<p>This allows us to update our knowledge about the temperature with each new observation of rain.</p>
 <p>Let’s explore how Bayes’ theorem works in practice using a real-world example of the relationship between eye and hair colour in a population<a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a>.</p>
 <div style="height: 10px;">
 
@@ -811,7 +811,7 @@ What did we just do?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>To summarise, we have gone from the “prior” (marginal) beliefs about hair colour before knowing eye colour, to the “posterior” (conditional) beliefs about hair color given the observed eye colour. Without knowing the eye colour, the probability of blonde hair in the population is 0.21. But knowing that the eyes are blue, the probability of blonde hair is 0.45.</p>
+<p>To summarise, we have gone from the “prior” (marginal) knowledge about hair colour before knowing eye colour, to the “posterior” (conditional) knowledge about hair colour given the observed eye colour. Without knowing the eye colour, the probability of blonde hair in the population is 0.21. But knowing that the eyes are blue, the probability of blonde hair is 0.45.</p>
 </div>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset" title="Exercise 4">
@@ -1277,7 +1277,7 @@ p(T=+) = p(T=+|\theta = ☹)p(\theta = ☹) + p(T=+|\theta = ☺)p(\theta = ☺)
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Zhang &amp; Sohail, 2025</p>
+<p>© Zhang &amp; Sohail, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

@@ -437,13 +437,12 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Welcome to the seventh workshop of the BayesCog course!</strong></p>
 <p>In our last workshop, we explored how to implement the Rescorla-Wagner model in Stan; estimating learning rates and inverse temperatures for both individual subjects and groups. When modeling a population of participants, our ultimate goal is to accurately estimate each individual’s true learning parameters while accounting for uncertainty and noise in our measurements. Currently, we either pool all participants together (assuming everyone is identical) or fit each person independently (ignoring information from the group that could help constrain our estimates). <strong>Hierarchical Bayesian modeling provides a solution by using group-level information to improve individual parameter estimates,</strong> particularly when data is limited or noisy for some participants.</p>
 <p>In this workshop, we’ll firstly explore how hierarchical models work and implement them in our reinforcement learning model. We will then learn how to optimize Stan code through reparameterization and by changing Stan’s sampling parameters.</p>
-<p>The goals of this workshop are to:</p>
+<p>By the end of this workshop, you will be able to:</p>
 <ul>
-<li>Understand the limitations of both fixed effects and independent parameter estimation approaches</li>
-<li>Learn how hierarchical Bayesian modeling provides a principled approach for analyzing group-level data</li>
-<li>Implement a hierarchical version of the Rescorla-Wagner model in Stan</li>
-<li>Understand and implement reparameterization to optimize Stan code</li>
-<li>Know how and when to change Stan’s sampling parameters where necessary</li>
+<li>Explain the benefits of hierarchical models for modeling populations</li>
+<li>Specify a hierarchical Rescorla-Wagner model with group and individual-level parameters in Stan</li>
+<li>Apply non-centered reparameterization to improve sampling</li>
+<li>Adjust Stan’s sampling parameters to aid fitting</li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled" title="Working directory for this workshop">
 <div class="callout-header d-flex align-content-center">
@@ -877,7 +876,7 @@ Working directory for this workshop
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Zhang &amp; Sohail, 2025</p>
+<p>© Zhang &amp; Sohail, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

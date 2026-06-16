@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.29">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>reviewer_responses – BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-0224bdd51591b0a31db3e9ad7e31eb12.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main tools-wide">
+    <a href="https://alpn-lab.github.io" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
+    <a href="https://github.com/alpn-lab" title="ALPN Lab GitHub" class="quarto-navigation-tool px-1" aria-label="ALPN Lab GitHub"><i class="bi bi-github"></i></a>
+    <a href="https://twitter.com/ALPN_Lab" title="ALPN Lab Twitter" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Twitter"><i class="bi bi-twitter"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to BayesCog!</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../course_overview.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Course overview</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 1: R Basics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 1: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to R/RStudio</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with data in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 2: Probability and an introduction to Bayes’ theorem</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 2: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Probability and Bayes’ theorem</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 3: Building simple models conceptually</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 3: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Linking data to parameters</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The globe-tossing experiment</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Markov chain Monte Carlo</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 4: Introduction to building models in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 4: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Building models in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 5: Bernoulli and linear regression models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 5: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Technical notes on Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Bernoulli and linear regression models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 6: Reinforcement learning models</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 6: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Fundamentals of cognitive modeling and reinforcement learning</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Implementing the Rescorla-Wagner model in Stan</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 7: Hierachical Bayesian modeling</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 7: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hierarchical Bayesian models</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reparameterization and optimizing Stan code</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 8: Model comparison</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 8: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Model comparison</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">Workshop 9: Debugging in Stan</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Workshop 9: Overview</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Debugging in Stan</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">A principled modeling workflow</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">Bonus workshop: Introduction to model-based fMRI</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to model-based fMRI</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../resources.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Resources</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#reviewer-responses-bayescog-jose" id="toc-reviewer-responses-bayescog-jose" class="nav-link active" data-scroll-target="#reviewer-responses-bayescog-jose">Reviewer Responses — BayesCog (JOSE)</a>
+  <ul class="collapse">
+  <li><a href="#reviewer-1-overall-minor-revisions" id="toc-reviewer-1-overall-minor-revisions" class="nav-link" data-scroll-target="#reviewer-1-overall-minor-revisions">Reviewer 1 (overall: minor revisions)</a>
+  <ul class="collapse">
+  <li><a href="#r1.1-add-a-getting-help-troubleshooting-section-split-contributing-into-its-own-file" id="toc-r1.1-add-a-getting-help-troubleshooting-section-split-contributing-into-its-own-file" class="nav-link" data-scroll-target="#r1.1-add-a-getting-help-troubleshooting-section-split-contributing-into-its-own-file">R1.1 — Add a “Getting Help” / troubleshooting section; split contributing into its own file</a></li>
+  <li><a href="#r1.2-add-an-osi-approved-license-for-the-code-components" id="toc-r1.2-add-an-osi-approved-license-for-the-code-components" class="nav-link" data-scroll-target="#r1.2-add-an-osi-approved-license-for-the-code-components">R1.2 — Add an OSI-approved license for the code components</a></li>
+  <li><a href="#r1.3-how-to-treat-wip-workshops-10-11-consistency-with-listed-workshops" id="toc-r1.3-how-to-treat-wip-workshops-10-11-consistency-with-listed-workshops" class="nav-link" data-scroll-target="#r1.3-how-to-treat-wip-workshops-10-11-consistency-with-listed-workshops">R1.3 — How to treat WIP Workshops 10 &amp; 11 (consistency with listed workshops)</a></li>
+  <li><a href="#r1.4-add-usage-guidance-course-length-class-size-instructor-expertise-prerequisites-outcomes" id="toc-r1.4-add-usage-guidance-course-length-class-size-instructor-expertise-prerequisites-outcomes" class="nav-link" data-scroll-target="#r1.4-add-usage-guidance-course-length-class-size-instructor-expertise-prerequisites-outcomes">R1.4 — Add usage guidance: course length, class size, instructor expertise, prerequisites, outcomes</a></li>
+  <li><a href="#r1.5-r-basics-moves-fast-add-adaptation-notes-for-programming-naive-learners-prerequisite-framing" id="toc-r1.5-r-basics-moves-fast-add-adaptation-notes-for-programming-naive-learners-prerequisite-framing" class="nav-link" data-scroll-target="#r1.5-r-basics-moves-fast-add-adaptation-notes-for-programming-naive-learners-prerequisite-framing">R1.5 — R Basics moves fast; add adaptation notes for programming-naive learners + prerequisite framing</a></li>
+  <li><a href="#r1.6-add-a-short-paragraph-on-the-story-of-development-and-author-expertise" id="toc-r1.6-add-a-short-paragraph-on-the-story-of-development-and-author-expertise" class="nav-link" data-scroll-target="#r1.6-add-a-short-paragraph-on-the-story-of-development-and-author-expertise">R1.6 — Add a short paragraph on the “story” of development and author expertise</a></li>
+  <li><a href="#r1.7-missing-dois-in-references" id="toc-r1.7-missing-dois-in-references" class="nav-link" data-scroll-target="#r1.7-missing-dois-in-references">R1.7 — Missing DOIs in references</a></li>
+  <li><a href="#r1.8-make-per-workshop-learning-objectives-more-functionalassessable" id="toc-r1.8-make-per-workshop-learning-objectives-more-functionalassessable" class="nav-link" data-scroll-target="#r1.8-make-per-workshop-learning-objectives-more-functionalassessable">R1.8 — Make per-workshop learning objectives more functional/assessable</a></li>
+  <li><a href="#r1.9-typo-contibutors-contributors" id="toc-r1.9-typo-contibutors-contributors" class="nav-link" data-scroll-target="#r1.9-typo-contibutors-contributors">R1.9 — Typo: “CONTIBUTORS” → “CONTRIBUTORS”</a></li>
+  </ul></li>
+  <li><a href="#reviewer-2-technicalcontent-accuracy" id="toc-reviewer-2-technicalcontent-accuracy" class="nav-link" data-scroll-target="#reviewer-2-technicalcontent-accuracy">Reviewer 2 (technical/content accuracy)</a>
+  <ul class="collapse">
+  <li><a href="#r2.1-probability.html-figure-ordering-wrong-marginal-probability-figure-missingduplicated" id="toc-r2.1-probability.html-figure-ordering-wrong-marginal-probability-figure-missingduplicated" class="nav-link" data-scroll-target="#r2.1-probability.html-figure-ordering-wrong-marginal-probability-figure-missingduplicated">R2.1 — probability.html: figure ordering wrong + marginal-probability figure missing/duplicated</a></li>
+  <li><a href="#r2.2-clarify-the-bounding-parameters-wall-box-re-modern-samplers" id="toc-r2.2-clarify-the-bounding-parameters-wall-box-re-modern-samplers" class="nav-link" data-scroll-target="#r2.2-clarify-the-bounding-parameters-wall-box-re-modern-samplers">R2.2 — Clarify the “bounding parameters / wall” box re: modern samplers</a></li>
+  <li><a href="#r2.3-truncated-normal-priors-are-bounds-real-vs-practical-why-not-beta-scaled-beta" id="toc-r2.3-truncated-normal-priors-are-bounds-real-vs-practical-why-not-beta-scaled-beta" class="nav-link" data-scroll-target="#r2.3-truncated-normal-priors-are-bounds-real-vs-practical-why-not-beta-scaled-beta">R2.3 — Truncated-normal priors: are bounds “real” vs “practical”? Why not Beta / scaled Beta?</a></li>
+  <li><a href="#r2.4-mcmc.html-highest-mountain-analogy-implies-optimization-not-sampling" id="toc-r2.4-mcmc.html-highest-mountain-analogy-implies-optimization-not-sampling" class="nav-link" data-scroll-target="#r2.4-mcmc.html-highest-mountain-analogy-implies-optimization-not-sampling">R2.4 — mcmc.html: “highest mountain” analogy implies optimization, not sampling</a></li>
+  <li><a href="#r2.5-stan_binomial.html-reword-effective-sample-size-definition" id="toc-r2.5-stan_binomial.html-reword-effective-sample-size-definition" class="nav-link" data-scroll-target="#r2.5-stan_binomial.html-reword-effective-sample-size-definition">R2.5 — stan_binomial.html: reword Effective Sample Size definition</a></li>
+  <li><a href="#r2.6-use-r-hat-terminology-and-cite-the-modern-r-hat-reference" id="toc-r2.6-use-r-hat-terminology-and-cite-the-modern-r-hat-reference" class="nav-link" data-scroll-target="#r2.6-use-r-hat-terminology-and-cite-the-modern-r-hat-reference">R2.6 — Use “R-hat” terminology and cite the modern R-hat reference</a></li>
+  <li><a href="#r2.7-mention-rank-plots-as-a-more-informative-diagnostic-than-trace-plots" id="toc-r2.7-mention-rank-plots-as-a-more-informative-diagnostic-than-trace-plots" class="nav-link" data-scroll-target="#r2.7-mention-rank-plots-as-a-more-informative-diagnostic-than-trace-plots">R2.7 — Mention rank plots as a more informative diagnostic than trace plots</a></li>
+  <li><a href="#r2.8-recommend-psis-loo-cv-over-waic" id="toc-r2.8-recommend-psis-loo-cv-over-waic" class="nav-link" data-scroll-target="#r2.8-recommend-psis-loo-cv-over-waic">R2.8 — Recommend PSIS-LOO-CV over WAIC</a></li>
+  <li><a href="#r2.9-avoid-the-term-belief-nitpick" id="toc-r2.9-avoid-the-term-belief-nitpick" class="nav-link" data-scroll-target="#r2.9-avoid-the-term-belief-nitpick">R2.9 — Avoid the term “belief” (nitpick)</a></li>
+  </ul></li>
+  <li><a href="#summary-counts" id="toc-summary-counts" class="nav-link" data-scroll-target="#summary-counts">Summary counts</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="reviewer-responses-bayescog-jose" class="level1">
+<h1>Reviewer Responses — BayesCog (JOSE)</h1>
+<p>Tracker for the peer-review comments. We address these <strong>one by one</strong>; update <code>Status</code> and fill <code>Response / action</code> as we go. Then this feeds the formal response-to-reviewers letter.</p>
+<p><strong>Status legend:</strong> ⬜ not started · 🔄 in progress · ✅ done · 💬 needs author decision · ❓ query to editor</p>
+<p><strong>Item types:</strong> <code>paper</code> (paper.md + paper_psyarxiv.md) · <code>website</code> (.qmd) · <code>repo</code> (README/LICENSE/etc) · <code>refs</code> (paper.bib)</p>
+<blockquote class="blockquote">
+<p>Reminder: most “paper” fixes must be mirrored across <strong><code>paper.md</code></strong> and <strong><code>paper_psyarxiv.md</code></strong> (and <code>paper.bib</code> / <code>paper_psyarxiv.bib</code>). Most “website” fixes are also outward-facing (require <code>quarto publish gh-pages</code>).</p>
+</blockquote>
+<hr>
+<section id="reviewer-1-overall-minor-revisions" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-1-overall-minor-revisions">Reviewer 1 (overall: minor revisions)</h2>
+<section id="r1.1-add-a-getting-help-troubleshooting-section-split-contributing-into-its-own-file" class="level3">
+<h3 class="anchored" data-anchor-id="r1.1-add-a-getting-help-troubleshooting-section-split-contributing-into-its-own-file">R1.1 — Add a “Getting Help” / troubleshooting section; split contributing into its own file</h3>
+<ul>
+<li><strong>Type:</strong> repo</li>
+<li><strong>Location:</strong> <code>README.md</code>, <code>CONTRIBUTING.md</code> (already exists, untracked), <code>CONTRIBUTORS</code></li>
+<li><strong>Status:</strong> 🔄 (README done; <code>CONTRIBUTING.md</code> commit pending)</li>
+<li><strong>Comment:</strong> “Support guidelines are a bit thin if someone runs into trouble installing… quickly adding a <em>Getting Help</em> or further troubleshooting section to README could help a reader onboard. It may be nice to consider a separate contributors.md file so that contribution guidelines do not only live in the README (this is also slightly confusing when paper states to ‘look for contributors page’).”</li>
+<li><strong>Response / action:</strong> <strong>Mostly done.</strong> Added a <strong>“Getting help”</strong> section to <code>README.md</code> (setup/installation pointers incl.&nbsp;Docker fallback, content questions, GitHub issues, contact) that links to the existing <code>CONTRIBUTING.md</code> for contribution guidelines. Reconciled the paper’s reference via R1.9 (now “CONTRIBUTING page”). <strong>Remaining:</strong> commit the untracked <code>CONTRIBUTING.md</code> (a git action, left for user go-ahead).</li>
+</ul>
+</section>
+<section id="r1.2-add-an-osi-approved-license-for-the-code-components" class="level3">
+<h3 class="anchored" data-anchor-id="r1.2-add-an-osi-approved-license-for-the-code-components">R1.2 — Add an OSI-approved license for the code components</h3>
+<ul>
+<li><strong>Type:</strong> repo</li>
+<li><strong>Location:</strong> <code>LICENSE</code> (currently CC-BY-SA-4.0)</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “License should be updated to OSI approved. Creative Commons License only, but OSI license is required for code components. Suggested minor revision to add OSI approved license. License is otherwise clear and correctly in a LICENSE file.”</li>
+<li><strong>Response / action:</strong> <strong>Done (single OSI license; author chose MIT, 2026-06-16).</strong> Relicensed the <strong>whole repository</strong> under the OSI-approved <strong>MIT</strong> license: replaced <code>LICENSE</code> (was CC-BY-SA-4.0) with the MIT text and deleted the now-redundant <code>LICENSE-MIT</code>. Updated the README <strong>License</strong> section (dropped the dual-license split + CC badge image). Also updated the Future Directions license sentence in both papers (<code>paper.md</code>, <code>paper_psyarxiv.md</code>) from “CC BY-SA … while code under MIT” → single MIT for the entire repository. Superseded the earlier dual-license approach (author decided a single OSI license is cleaner; copyleft/ShareAlike intentionally dropped). Copyright line: “2020-2026 Lei Zhang and Aamir Sohail”.</li>
+</ul>
+</section>
+<section id="r1.3-how-to-treat-wip-workshops-10-11-consistency-with-listed-workshops" class="level3">
+<h3 class="anchored" data-anchor-id="r1.3-how-to-treat-wip-workshops-10-11-consistency-with-listed-workshops">R1.3 — How to treat WIP Workshops 10 &amp; 11 (consistency with listed workshops)</h3>
+<ul>
+<li><strong>Type:</strong> paper / website</li>
+<li><strong>Location:</strong> <code>paper.md</code>, <code>_quarto.yml</code>, <code>workshops/10.model_based</code>, <code>workshops/11.delay_discounting</code></li>
+<li><strong>Status:</strong> ❓ (reviewer queried the editor <code>@magsol</code>)</li>
+<li><strong>Comment:</strong> “Workshops 10 and 11 are marked ‘WIP’ and noted as ‘yet to be added.’ I am curious to know JOSE stance on this… if these are living breathing course materials, does JOSE want the paper to remain consistent with the listed workshops?”</li>
+<li><strong>Response / action:</strong> <em>(Await editor guidance. Options: (a) finish WS10/11 before acceptance; (b) remove WIP mentions from the paper and present them as planned/future; (c) clearly label as bonus/forthcoming. Note WS11 currently has code/data/Stan but no <code>.qmd</code> page.)</em></li>
+</ul>
+</section>
+<section id="r1.4-add-usage-guidance-course-length-class-size-instructor-expertise-prerequisites-outcomes" class="level3">
+<h3 class="anchored" data-anchor-id="r1.4-add-usage-guidance-course-length-class-size-instructor-expertise-prerequisites-outcomes">R1.4 — Add usage guidance: course length, class size, instructor expertise, prerequisites, outcomes</h3>
+<ul>
+<li><strong>Type:</strong> paper</li>
+<li><strong>Location:</strong> <code>paper.md</code> (new/expanded “Usage” or instructor-guidance content)</li>
+<li><strong>Status:</strong> ⬜</li>
+<li><strong>Comment:</strong> “The paper has a Future Directions section but no statement about how long the course takes, what size of class it works for, or what level of instructor expertise is needed… no particular guidance for instructors on how to adopt the materials (e.g., what a semester looks like, what prerequisites to set), and no discussion of student numbers or outcomes, although the README hints at impact.”</li>
+<li><strong>Response / action:</strong> <em>(Add instructor-facing usage info: typical duration/semester structure, suitable class size, assumed prerequisites, and any known delivery history / student numbers.)</em></li>
+</ul>
+</section>
+<section id="r1.5-r-basics-moves-fast-add-adaptation-notes-for-programming-naive-learners-prerequisite-framing" class="level3">
+<h3 class="anchored" data-anchor-id="r1.5-r-basics-moves-fast-add-adaptation-notes-for-programming-naive-learners-prerequisite-framing">R1.5 — R Basics moves fast; add adaptation notes for programming-naive learners + prerequisite framing</h3>
+<ul>
+<li><strong>Type:</strong> paper / website</li>
+<li><strong>Location:</strong> <code>paper.md</code>; <code>workshops/01.R_basics/qmd/*</code></li>
+<li><strong>Status:</strong> 🔄 (started)</li>
+<li><strong>Comment:</strong> “R Basics workshop goes through quite a few core programming concepts quickly, and I can imagine many learners struggling here… a possible place to expand to the adaptation of this workshop to a programming-naive audience or signal to teachers that they may need to adapt this portion… Refinement to the learning objectives might also help, e.g., ‘this assumes prior x knowledge’ about statistics or programming.”</li>
+<li><strong>Response / action:</strong> <strong>Partly done.</strong> Added a “This workshop assumes no prior programming experience” line to the WS1 intro (R1.5/R1.8 overlap). Still to do: a note signalling teachers to allow more time / adapt WS1 for novices, and the paper-side instructor-adaptation guidance (ties to R1.4, handled in Batch D).</li>
+</ul>
+</section>
+<section id="r1.6-add-a-short-paragraph-on-the-story-of-development-and-author-expertise" class="level3">
+<h3 class="anchored" data-anchor-id="r1.6-add-a-short-paragraph-on-the-story-of-development-and-author-expertise">R1.6 — Add a short paragraph on the “story” of development and author expertise</h3>
+<ul>
+<li><strong>Type:</strong> paper</li>
+<li><strong>Location:</strong> <code>paper.md</code></li>
+<li><strong>Status:</strong> ⬜</li>
+<li><strong>Comment:</strong> “The paper does not really tell the ‘story’ of workshop development or author expertise; a short paragraph on this could be added… functional/methodological expertise might be useful in keeping with JOSE checklist.”</li>
+<li><strong>Response / action:</strong> <em>(Add a brief paragraph: origin at U. Vienna / UKE Hamburg, how it evolved, authors’ methodological expertise in computational modeling.)</em></li>
+</ul>
+</section>
+<section id="r1.7-missing-dois-in-references" class="level3">
+<h3 class="anchored" data-anchor-id="r1.7-missing-dois-in-references">R1.7 — Missing DOIs in references</h3>
+<ul>
+<li><strong>Type:</strong> refs</li>
+<li><strong>Location:</strong> <code>paper.bib</code>, <code>paper_psyarxiv.bib</code></li>
+<li><strong>Status:</strong> ⬜ (scoped — not yet done)</li>
+<li><strong>Comment:</strong> “DOIs appear missing in references.”</li>
+<li><strong>Response / action:</strong> <em>Audited: <strong>~45 of 49</strong> entries in each <code>.bib</code> currently have no <code>doi</code> field. Adding them requires a per-reference lookup + verification (DOIs must not be fabricated), so this is a dedicated pass rather than a quick fix. Pending.</em></li>
+</ul>
+</section>
+<section id="r1.8-make-per-workshop-learning-objectives-more-functionalassessable" class="level3">
+<h3 class="anchored" data-anchor-id="r1.8-make-per-workshop-learning-objectives-more-functionalassessable">R1.8 — Make per-workshop learning objectives more functional/assessable</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> workshop <code>qmd/intro.qmd</code> pages (example flagged: Workshop 4)</li>
+<li><strong>Status:</strong> ✅ (all 9 done; WS8 completed alongside the R2.8 PSIS-LOO-CV switch)</li>
+<li><strong>Comment:</strong> “Learning objectives… could be elaborated a little bit on each workshop page (e.g., workshop 4 says ‘By the end of this tutorial, you’ll have the foundational skills needed to implement more complex Bayesian models…’ which is not super specific). I would encourage less high level descriptive and more functional learning objectives, e.g., ‘by the end of this workshop you will be able to perform x task in y context’ to make objectives more assessable and grounded for learners.”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> Replaced the vague “Topics/goals” lists at the top of each workshop intro with a standardized “By the end of this workshop, you will be able to:” block of <strong>max 4 concrete, assessable objectives</strong> (action verbs + context). Done for all nine: WS1, WS2, WS3, WS4 (the cited example), WS5, WS6, WS7, WS8 (objectives rewritten around PSIS-LOO-CV as part of R2.8), WS9.</li>
+</ul>
+</section>
+<section id="r1.9-typo-contibutors-contributors" class="level3">
+<h3 class="anchored" data-anchor-id="r1.9-typo-contibutors-contributors">R1.9 — Typo: “CONTIBUTORS” → “CONTRIBUTORS”</h3>
+<ul>
+<li><strong>Type:</strong> paper</li>
+<li><strong>Location:</strong> <code>paper.md</code> (paragraph directly before Acknowledgments; “…following the community guidelines outlined on the CONTIBUTORS page”); check <code>paper_psyarxiv.md</code> too</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “Paper has a minor typo… ‘following the community guidelines outlined on the CONTIBUTORS page’.”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> Fixed in both <code>paper.md</code> and <code>paper_psyarxiv.md</code>. Resolved the CONTRIBUTORS-vs-CONTRIBUTING ambiguity in favour of <strong>CONTRIBUTING</strong> (the sentence is about <em>contribution guidelines</em>, which live in <code>CONTRIBUTING.md</code>), aligning with the R1.1 README link.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="reviewer-2-technicalcontent-accuracy" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-2-technicalcontent-accuracy">Reviewer 2 (technical/content accuracy)</h2>
+<section id="r2.1-probability.html-figure-ordering-wrong-marginal-probability-figure-missingduplicated" class="level3">
+<h3 class="anchored" data-anchor-id="r2.1-probability.html-figure-ordering-wrong-marginal-probability-figure-missingduplicated">R2.1 — probability.html: figure ordering wrong + marginal-probability figure missing/duplicated</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> <code>workshops/01.R_basics/qmd/probability.qmd</code> (+ <code>images/01.R_basics/*_distribution.png</code>)</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “The figure for joint probability is before the section on joint probability, and the figure for conditional probability is before the section on conditional probability. The same for marginal probability. Additionally, the figure for marginal probability is missing, and instead, the figure for conditional probability is repeated.”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> Moved each figure to follow its section label + description (figures no longer precede their sections). The correct <code>marginal_distribution.png</code> (which already existed in the repo) now replaces the duplicated <code>conditional_distribution.png</code> under the Marginal distribution heading.</li>
+</ul>
+</section>
+<section id="r2.2-clarify-the-bounding-parameters-wall-box-re-modern-samplers" class="level3">
+<h3 class="anchored" data-anchor-id="r2.2-clarify-the-bounding-parameters-wall-box-re-modern-samplers">R2.2 — Clarify the “bounding parameters / wall” box re: modern samplers</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> <code>workshops/06.reinforcement_learning/qmd/hierarchical_modeling.qmd</code> (callout box, ~L195)</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “While this is true for direct implementation of MCMC, modern MCMC samplers actually sample in the unconstrained space… they transform bounded parameters to unbounded space and sample there. Usually, the main issues with NUTS are related to the geometry or curvature of the sampling space, like funnels or sharp ridges.”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> Kept the “wall” picture but flagged it as describing <em>direct</em> MCMC, and added that Stan’s NUTS transforms bounded params to unconstrained space, samples there, and transforms back — so practical issues stem from posterior <em>geometry</em> (funnels/ridges), with a pointer to the WS7 reparameterization content.</li>
+</ul>
+</section>
+<section id="r2.3-truncated-normal-priors-are-bounds-real-vs-practical-why-not-beta-scaled-beta" class="level3">
+<h3 class="anchored" data-anchor-id="r2.3-truncated-normal-priors-are-bounds-real-vs-practical-why-not-beta-scaled-beta">R2.3 — Truncated-normal priors: are bounds “real” vs “practical”? Why not Beta / scaled Beta?</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> <code>workshops/06.reinforcement_learning/qmd/hierarchical_modeling.qmd</code> (Individual-level parameters)</li>
+<li><strong>Status:</strong> ⬜ / 💬 (inline marker added at the truncated-normal passage)</li>
+<li><strong>Comment:</strong> “…it is not clear to me if the boundaries are ‘real’… or just ‘practical’ boundaries. Also, why use a Normal truncated to [0, 1] instead of a Beta distribution? For the other parameter, a scaled Beta may be used.”</li>
+<li><strong>Response / action:</strong> <em>(Clarify learning-rate ∈ [0,1] is a real constraint vs softmax τ being a practical bound; explain the modelling choice of truncated normal vs Beta/scaled-Beta.)</em> <strong>Author TODO (raised this session):</strong> add prior-distribution images for Normal(0,1) and a Beta distribution and note the difference. Inline <code>&lt;!-- TODO --&gt;</code> marker added at the truncated-normal passage; tracked in TASK.md. 💬 still needs the substantive Normal-vs-Beta decision.</li>
+</ul>
+</section>
+<section id="r2.4-mcmc.html-highest-mountain-analogy-implies-optimization-not-sampling" class="level3">
+<h3 class="anchored" data-anchor-id="r2.4-mcmc.html-highest-mountain-analogy-implies-optimization-not-sampling">R2.4 — mcmc.html: “highest mountain” analogy implies optimization, not sampling</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> <code>workshops/02.binomial_globe/qmd/mcmc.qmd</code> (Multiple chains / HMC section, ~L175)</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “The ‘highest mountain’ analogy could be confusing because with MCMC we are not trying to find the peak of the posterior distribution, we are trying to sample from the entire posterior… This could be changed to something like ‘explore the landscape’, ‘map the valleys and peaks of the mountain range’.”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> Reworded to “map out an entire mountain range — its valleys, ridges and peaks”, explicitly noting the goal is <em>not</em> to find the highest peak (that’s optimization) but to chart the whole landscape, spending more time in higher/more-probable regions. Also fixed the stray “However.” typo.</li>
+</ul>
+</section>
+<section id="r2.5-stan_binomial.html-reword-effective-sample-size-definition" class="level3">
+<h3 class="anchored" data-anchor-id="r2.5-stan_binomial.html-reword-effective-sample-size-definition">R2.5 — stan_binomial.html: reword Effective Sample Size definition</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> <code>workshops/02.binomial_globe/qmd/stan_binomial.qmd</code> (~L487)</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “‘Effective Sample Size (n_eff): This tells us how many truly independent samples we got…’ This can be confusing because we never get any truly independent samples… better to say: The effective sample size is an estimate of the number of independent samples with the same amount of information as the correlated samples we got from our model.”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> Reworded ESS to “an estimate of the number of <em>independent</em> samples that would carry the same amount of information as the (autocorrelated) samples we actually got”, matching the reviewer’s suggested framing.</li>
+</ul>
+</section>
+<section id="r2.6-use-r-hat-terminology-and-cite-the-modern-r-hat-reference" class="level3">
+<h3 class="anchored" data-anchor-id="r2.6-use-r-hat-terminology-and-cite-the-modern-r-hat-reference">R2.6 — Use “R-hat” terminology and cite the modern R-hat reference</h3>
+<ul>
+<li><strong>Type:</strong> website / refs</li>
+<li><strong>Location:</strong> <code>workshops/02.binomial_globe/qmd/stan_binomial.qmd</code> (~L489). Checked <code>03.bernoulli_coin/bernoulli_and_regression.qmd</code> &amp; <code>07.optm_rl/optim.qmd</code> — they only show <code>Rhat</code> in output tables/prose, no “Gelman-Rubin” naming or outdated citation, so no change needed there.</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “Gelman and collaborators recommend using ‘R-hat’ instead of ‘Gelman-Rubin statistic’. Also, the (Gelman &amp; Rubin, 1992) citation is outdated… the current reference for ‘modern’ R-hat is Vehtari et al.&nbsp;(2021), ‘Rank-Normalization, Folding, and Localization: An Improved R̂…’, Bayesian Analysis 16(2).”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> In stan_binomial.qmd: renamed to “R-hat (<span class="math inline">\(\hat{R}\)</span>)”, kept Gelman &amp; Rubin 1992 as the historical origin, and added the modern Vehtari et al.&nbsp;(2021) reference as footnote <code>[^4b]</code>. The naming/citation issue was unique to this page.</li>
+</ul>
+</section>
+<section id="r2.7-mention-rank-plots-as-a-more-informative-diagnostic-than-trace-plots" class="level3">
+<h3 class="anchored" data-anchor-id="r2.7-mention-rank-plots-as-a-more-informative-diagnostic-than-trace-plots">R2.7 — Mention rank plots as a more informative diagnostic than trace plots</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> <code>workshops/02.binomial_globe/qmd/stan_binomial.qmd</code> (~L510, after the traceplot discussion)</li>
+<li><strong>Status:</strong> ✅ text done · ⬜ figure TODO</li>
+<li><strong>Comment:</strong> “While trace plots are still commonly used, rank plots can be more informative. For instance <code>mcmc_rank_ecdf(x, prob = 0.99, plot_diff = TRUE)</code> from the bayesplot package.”</li>
+<li><strong>Response / action:</strong> <strong>Text done.</strong> Added a callout-tip introducing rank plots with the <code>bayesplot::mcmc_rank_ecdf(fit_globe, pars = "theta", prob = 0.99, plot_diff = TRUE)</code> example. <strong>Follow-up TODO (author request):</strong> generate <em>actual</em> rank plots from our globe-tossing model parameters, save to <code>images/</code>, and embed them. Inline <code>&lt;!-- TODO --&gt;</code> marker added at the callout; tracked in TASK.md.</li>
+</ul>
+</section>
+<section id="r2.8-recommend-psis-loo-cv-over-waic" class="level3">
+<h3 class="anchored" data-anchor-id="r2.8-recommend-psis-loo-cv-over-waic">R2.8 — Recommend PSIS-LOO-CV over WAIC</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> <code>workshops/08.compare_models/qmd/intro.qmd</code> (and <code>model_comparison.qmd</code>)</li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “I recommend that you switch from WAIC to PSIS-LOO-CV… provides a more robust estimate in practice, includes a diagnostic for when the approximation is failing, and packages like loo allow improving the approximation using moment matching… in ArviZ 1.0 we removed WAIC and only report PSIS-LOO-CV.”</li>
+<li><strong>Response / action:</strong> <strong>Done (full switch — author chose to remove WAIC entirely).</strong> Reworked WS8 to present <strong>only PSIS-LOO-CV</strong>: (1) <code>intro.qmd</code> reframed around PSIS-LOO-CV and given functional R1.8 objectives; (2) <code>model_comparison.qmd</code> — removed the AIC/DIC/WAIC information-criteria section, the WAIC maths, and the now-orphaned <code>ic_comparison.png</code> figure; added a “How PSIS-LOO-CV works” + “Pareto-<span class="math inline">\(\hat{k}\)</span> diagnostic” treatment (importance-sampling reweighting, generalized-Pareto tail smoothing, elpd, <span class="math inline">\(\hat{k}&lt;0.7\)</span> rule, moment matching via <code>loo_moment_match()</code>, exact-LOO refit fallback); renamed the section heading to “Model comparison using PSIS-LOO-CV”; reworded the interchangeability callout into a Pareto-<span class="math inline">\(k\)</span> diagnostic tip; updated the output-metrics list and the PPC lead-in. The only surviving “WAIC” strings are inside citation titles (Vehtari 2017; <code>loo</code> package). (3) Master R script: replaced deprecated <code>compare()</code> with <code>loo_compare()</code> and now prints the <code>loo</code> objects so the Pareto-k diagnostic is visible (now consistent with the student script). Manuscripts checked — neither mentions WAIC, so no mirroring needed. The now-unreferenced <code>images/08.compare_models/ic_comparison.png</code> (933 KB) was deleted (<code>git rm</code>, staged).</li>
+</ul>
+</section>
+<section id="r2.9-avoid-the-term-belief-nitpick" class="level3">
+<h3 class="anchored" data-anchor-id="r2.9-avoid-the-term-belief-nitpick">R2.9 — Avoid the term “belief” (nitpick)</h3>
+<ul>
+<li><strong>Type:</strong> website</li>
+<li><strong>Location:</strong> “belief” appears in 8 qmd files: <code>01.R_basics/{probability,intro_probability}</code>, <code>02.binomial_globe/{binomial_model,stan_binomial,data_and_parameters}</code>, <code>03.bernoulli_coin/bernoulli_and_regression</code>, <code>06.reinforcement_learning/{hierarchical_modeling,rl_concepts}</code></li>
+<li><strong>Status:</strong> ✅</li>
+<li><strong>Comment:</strong> “I try to avoid that term and instead use ‘guess’/‘informed guess’, ‘information’, ‘domain knowledge’, ‘prior knowledge’, ‘background knowledge’, ‘assumptions’, etc. … potentially less confusing for people new to the field, and avoids the philosophical baggage.”</li>
+<li><strong>Response / action:</strong> <strong>Done.</strong> Reworded the analyst-epistemic uses of “belief(s)”: prior/posterior definition glosses and “updating our beliefs” phrasing → “knowledge”; prior-specific uses (“prior belief”, “represents our beliefs about parameters”, “captures our belief that…”) → “assumption(s)”. Kept the <em>participant’s</em> beliefs in <code>rl_concepts.qmd</code> (L81, L161 — the agent’s estimate of reward probabilities, a distinct and standard RL meaning), and natural verb uses (“we believe”, “astronomers believed”). Touched: <code>intro_probability.qmd</code>, <code>probability.qmd</code> (×5 incl.&nbsp;“what we believe”), <code>binomial_model.qmd</code> (×2), <code>data_and_parameters.qmd</code> (×9 incl.&nbsp;the subtitle + display equation), <code>stan_binomial.qmd</code>, <code>bernoulli_and_regression.qmd</code>, <code>hierarchical_modeling.qmd</code> (×2).</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="summary-counts" class="level2">
+<h2 class="anchored" data-anchor-id="summary-counts">Summary counts</h2>
+<ul>
+<li>Reviewer 1: 9 items (R1.1–R1.9)</li>
+<li>Reviewer 2: 9 items (R2.1–R2.9)</li>
+<li>Author decisions needed (💬): R2.3 · Editor query (❓): R1.3</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/alpn-lab\.github\.io\/BayesCog");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© Zhang &amp; Sohail, 2026</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="nav-footer-right">
+<p>This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

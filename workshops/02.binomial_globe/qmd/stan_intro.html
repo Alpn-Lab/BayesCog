@@ -444,8 +444,14 @@ ul.task-list li input[type="checkbox"] {
 <section id="purpose-of-this-workshop" class="level2">
 <h2 class="anchored" data-anchor-id="purpose-of-this-workshop">Purpose of this workshop</h2>
 <p>In this tutorial, we’ll take the next step in our Bayesian journey by implementing our globe-tossing model using <a href="https://mc-stan.org/users/interfaces/rstan">Stan</a>, a powerful probabilistic programming language. We’ll revisit the same binomial problem, but instead of using grid approximation, we’ll program our model in Stan to sample from the posterior more efficiently.</p>
-<p>The goals of this workshop are to: - Understand how to translate our mathematical model into Stan code - Learn the basic syntax and structure of Stan programs - Compare the efficiency of Stan’s HMC implementation with our previous approaches - Gain practical experience in fitting and diagnosing Bayesian models using modern computational tools</p>
-<p>By the end of this tutorial, you’ll have the foundational skills needed to implement more complex Bayesian models using Stan’s probabilistic programming framework in future workshops.</p>
+<p>By the end of this workshop, you will be able to:</p>
+<ul>
+<li>Write a Stan program with <code>data</code>, <code>parameters</code> and <code>model</code> blocks for a binomial model</li>
+<li>Translate a mathematical model (likelihood + prior) into Stan syntax and fit it from <code>R</code> using RStan</li>
+<li>Diagnose convergence using R-hat, effective sample size and trace/rank plots</li>
+<li>Explain why HMC/NUTS sampling scales to multi-parameter models where grid approximation does not</li>
+</ul>
+<p>These are the foundational skills you’ll reuse to implement more complex Bayesian models in the workshops that follow.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Working directory for this workshop">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -879,7 +885,7 @@ Working directory for this workshop
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Zhang &amp; Sohail, 2025</p>
+<p>© Zhang &amp; Sohail, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

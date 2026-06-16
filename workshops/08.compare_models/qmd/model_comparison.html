@@ -478,8 +478,11 @@ window.Quarto = {
    
   <ul>
   <li><a href="#model-fitting-and-the-goldilocks-principle" id="toc-model-fitting-and-the-goldilocks-principle" class="nav-link active" data-scroll-target="#model-fitting-and-the-goldilocks-principle">Model fitting and the Goldilocks principle</a></li>
-  <li><a href="#information-criteria" id="toc-information-criteria" class="nav-link" data-scroll-target="#information-criteria">Information criteria</a></li>
-  <li><a href="#model-comparison-using-waic" id="toc-model-comparison-using-waic" class="nav-link" data-scroll-target="#model-comparison-using-waic">Model comparison using WAIC</a>
+  <li><a href="#cross-validation" id="toc-cross-validation" class="nav-link" data-scroll-target="#cross-validation">Cross-validation</a>
+  <ul class="collapse">
+  <li><a href="#psis-loo-cv" id="toc-psis-loo-cv" class="nav-link" data-scroll-target="#psis-loo-cv">PSIS-LOO-CV</a></li>
+  </ul></li>
+  <li><a href="#model-comparison-using-psis-loo-cv" id="toc-model-comparison-using-psis-loo-cv" class="nav-link" data-scroll-target="#model-comparison-using-psis-loo-cv">Model comparison using PSIS-LOO-CV</a>
   <ul class="collapse">
   <li><a href="#introducing-the-fictitious-rl-model" id="toc-introducing-the-fictitious-rl-model" class="nav-link" data-scroll-target="#introducing-the-fictitious-rl-model">Introducing the Fictitious RL model</a></li>
   </ul></li>
@@ -493,7 +496,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/08.compare_models/qmd/intro.html">Workshop 8: Model comparison</a></li><li class="breadcrumb-item"><a href="../../../workshops/08.compare_models/qmd/model_comparison.html">Model comparison</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Model comparison</h1>
-<p class="subtitle lead">Model fitting, information criteria and posterior predictive checks</p>
+<p class="subtitle lead">Model fitting, cross-validation and posterior predictive checks</p>
 </div>
 
 
@@ -567,8 +570,8 @@ window.Quarto = {
 </div>
 <p>Specifically concerning model selection, we should therefore prefer simpler models when they provide similar explanatory power or make fewer assumptions; <span class="math inline">\(M = 2\)</span> or <span class="math inline">\(M = 4\)</span> might provide the best balance - capturing the main trend in the data without overfitting.</p>
 </section>
-<section id="information-criteria" class="level2">
-<h2 class="anchored" data-anchor-id="information-criteria">Information criteria</h2>
+<section id="cross-validation" class="level2">
+<h2 class="anchored" data-anchor-id="cross-validation">Cross-validation</h2>
 <p>As a result, we would like to know which model best fits the data but also generalizes to new unobserved data.</p>
 <p>But how do we define and implement this objectively? One way is through cross-validation.</p>
 <div style="height: 20px;">
@@ -601,89 +604,32 @@ Leave-One-Out Cross Validation (LOOCV)
 </div>
 <p>Cross-validation is particularly useful when we have a fixed amount of data and won’t be collecting more. Rather than using all our data to fit the model, we deliberately hold some back to simulate how well our model might perform on future observations. <strong>This helps us detect overfitting - if a model performs much better on the training data than the validation data, it’s likely overfitting.</strong></p>
 <p>However, cross-validation comes with some practical limitations. We need to perform this process for each model we want to compare, which can be computationally intensive. For complex models or large datasets, this can make cross-validation quite time-consuming.</p>
-<p>In the Bayesian context, there’s an interesting alternative approach. While nothing prevents us from using cross-validation with Bayesian models, holding out data makes our posterior distributions more diffuse, since we’re using less information to estimate our parameters. Instead, Bayesians typically condition on all available data and use “information criteria” to evaluate how well a model is expected to predict out of sample. <strong>While cross-validation directly tests this by holding out data, information criteria provide mathematical approximations to cross-validation that are computationally more efficient.</strong></p>
-<p>Information criteria are mathematical formulas that balance two components:</p>
-<ol type="1">
-<li><p>How well the model fits the observed data (goodness of fit)</p></li>
-<li><p>A penalty term for model complexity (to prevent overfitting)</p></li>
-</ol>
-<p>Commonly used information criteria are:</p>
-<div style="font-size: 22px;">
-<strong>Akaike Information Criterion (AIC)</strong>
-</div>
-<div style="height: 16px;">
-
-</div>
-<p>The original information criterion, introduced by Hirotugu Akaike, is calculated as:</p>
-<p><span class="math display">\[AIC = -2(\log\mathcal{L}) + 2k\]</span></p>
-<p>where:</p>
-<p><span class="math inline">\(\mathcal{L}\)</span> is the maximum likelihood , and <span class="math inline">\(k\)</span> is the number of parameters in the model.</p>
-<div style="font-size: 22px;">
-<strong>Deviance Information Criterion (DIC)</strong>
-</div>
-<div style="height: 16px;">
-
-</div>
-<p>DIC was developed specifically for Bayesian models, extending AIC to handle hierarchical models:</p>
-<p><span class="math display">\[DIC = -2(\log\mathcal{L}) + 2p_D\]</span></p>
-<p>where:</p>
-<p><span class="math inline">\(p_D\)</span> is the effective number of parameters, accounting for how parameters might be constrained by the hierarchical structure.</p>
-<div style="font-size: 22px;">
-<strong>Widely Applicable Information Criterion (WAIC)</strong>
-</div>
-<div style="height: 16px;">
-
-</div>
-<p><strong>WAIC is currently considered the most accurate approximation to leave-one-out (LOO) cross-validation.</strong> It computes the predictive accuracy for each data point and includes a correction for effective number of parameters:</p>
-<p><span class="math display">\[WAIC = -2(lpd - p_{WAIC})\]</span></p>
-<p>where:</p>
-<p><span class="math inline">\(lpd\)</span> is the log pointwise predictive density, and <span class="math inline">\(p_{WAIC}\)</span> accounts for model complexity, determined by:</p>
-<p><span class="math display">\[lpd = \sum_{i=1}^n \log \left(\frac{1}{S}\sum_{s=1}^S p(y_i|\theta^s)\right)\]</span></p>
-<p><span class="math display">\[p_{WAIC} = \sum_{i=1}^n V_{s=1}^S(\log p(y_i|\theta^s))\]</span></p>
-<p>where:</p>
-<ul>
-<li><p><span class="math inline">\(S\)</span> is the number of posterior samples,</p></li>
-<li><p><span class="math inline">\(\theta^s\)</span> are the parameter values in sample <span class="math inline">\(s\)</span>,</p></li>
-<li><p>and <span class="math inline">\(V\)</span> represents the sample variance over the <span class="math inline">\(S\)</span> samples.</p></li>
-</ul>
-<p><strong>We will be using the WAIC for model comparison in this course, as it provides the best approximation to leave-one-out cross-validation.</strong> Unlike AIC and DIC, WAIC uses the full posterior distribution rather than just point estimates, making it more appropriate for Bayesian models.</p>
-<p>We can see this in the table below, which compares the accuracy of different information criteria to the leave-one-out cross-validation (LOO-CV) ground truth<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. As highlighted, the WAIC performs best relative to the AIC and DIC.</p>
-<div style="height: 20px;">
-
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../../../images/08.compare_models/ic_comparison.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
-</figure>
-</div>
-<div class="image-caption" style="font-size: 1.5em;">
-<p>WAIC outperforms AIC and DIC when approximating LOOCV</p>
-</div>
-<p>How is the WAIC calculated? Remember that the likelihood tells us how probable our observed data is under a particular model, with higher likelihood values suggesting the model does a better job of explaining the observed data. <strong>However, simply choosing the model with the highest likelihood can be misleading as this would always favour more complex models.</strong></p>
-<p>WAIC estimates how well our model would predict new data (out-of-sample prediction) by:</p>
-<ul>
-<li><p>Using the likelihood to measure how well the model fits each individual data point</p></li>
-<li><p>Accounting for uncertainty in our parameter estimates by averaging across many possible parameter values (our posterior samples)</p></li>
-<li><p>Penalizing models that make very different predictions when parameters change slightly (a sign of overfitting)</p></li>
-</ul>
-<p><strong>The resulting WAIC score is on the deviance scale - lower values indicate better predictive models.</strong> For example, if Model A has a WAIC of 500 and Model B has a WAIC of 600, Model A is predicted to do better at generalizing to new data. When comparing models however, we typically look at WAIC differences.</p>
-<div class="callout callout-style-default callout-note callout-titled" title="Bayesian Information Criterion">
+<p>In the Bayesian context, there’s an elegant alternative. While nothing prevents us from using cross-validation with Bayesian models, holding out data makes our posterior distributions more diffuse, since we’re using less information to estimate our parameters. Refitting the model many times - once per fold, or <span class="math inline">\(n\)</span> times for full LOOCV - is also computationally expensive.</p>
+<p>Instead, we would like to fit the model <strong>once</strong>, conditioning on all the available data, and still estimate how well it is expected to predict a held-out observation. This is what <strong>Pareto-smoothed importance sampling leave-one-out cross-validation (PSIS-LOO-CV)</strong> lets us do.</p>
+<section id="psis-loo-cv" class="level3">
+<h3 class="anchored" data-anchor-id="psis-loo-cv">PSIS-LOO-CV</h3>
+<p>The idea behind PSIS-LOO-CV<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> is to reuse the posterior samples we already have from fitting the full dataset. For each observation <span class="math inline">\(i\)</span>, we want to know what the model would have predicted for <span class="math inline">\(y_i\)</span> had we <em>not</em> used <span class="math inline">\(y_i\)</span> to fit it. We can approximate that leave-one-out posterior by <strong>reweighting</strong> our existing posterior samples - giving less weight to the samples that were most influenced by <span class="math inline">\(y_i\)</span>.</p>
+<p>The key quantity PSIS-LOO-CV estimates is the <strong>expected log pointwise predictive density (elpd)</strong> - a measure of how well the model is expected to predict new, unseen data - computed from a single model fit:</p>
+<p><span class="math display">\[\text{elpd}_\text{loo} = \sum_{i=1}^n \log p(y_i \mid y_{-i})\]</span></p>
+<p>where <span class="math inline">\(p(y_i \mid y_{-i})\)</span> is the predictive density for observation <span class="math inline">\(i\)</span> given all the <em>other</em> observations. Higher elpd means a better expected out-of-sample prediction.</p>
+<div class="callout callout-style-default callout-note callout-titled" title="What about AIC, DIC and BIC?">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Bayesian Information Criterion
+What about AIC, DIC and BIC?
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that while another type, Bayesian Information Criterion (BIC) is also commonly used, it has a different goal: finding the “true” model under specific assumptions about the data-generating process. Since in cognitive modeling we typically assume all models are approximations, WAIC’s focus on predictive accuracy is more appropriate for our purpose.</p>
+<p>Alternative model-selection criteria include the Akaike (AIC), Deviance (DIC) and Bayesian (BIC) information criteria. AIC and DIC estimate predictive accuracy from point estimates rather than the full posterior, while BIC aims to identify the “true” model under specific assumptions about the data-generating process. PSIS-LOO-CV - with its focus on predictive accuracy using the full posterior, and a diagnostic for its own reliability (Pareto-<span class="math inline">\(\hat{k}\)</span>) - is widely recommended for Bayesian model comparison and is the appropriate choice for our purpose.</p>
 </div>
 </div>
 </section>
-<section id="model-comparison-using-waic" class="level2">
-<h2 class="anchored" data-anchor-id="model-comparison-using-waic">Model comparison using WAIC</h2>
-<p>Let’s now apply the WAIC practically in Stan to compare model performance across multiple reinforcement learning models.</p>
+</section>
+<section id="model-comparison-using-psis-loo-cv" class="level2">
+<h2 class="anchored" data-anchor-id="model-comparison-using-psis-loo-cv">Model comparison using PSIS-LOO-CV</h2>
+<p>Let’s now apply PSIS-LOO-CV practically in Stan to compare model performance across multiple reinforcement learning models.</p>
 <p>We have already utilized several blocks beyond the basic <code>data</code>, <code>parameters</code>, and <code>model</code> blocks in Stan:</p>
 <ul>
 <li><p><code>transformed data</code> for pre-processing data before sampling begins.</p></li>
@@ -692,29 +638,29 @@ Bayesian Information Criterion
 <p><strong>When calculating the log-likelihood, we use another optional block - <code>generated quantities</code> for post-processing our posterior samples after the main sampling is complete.</strong> It’s ideal for computing quantities we need for model comparison (like log-likelihoods) or predictions.</p>
 <p>So, building from our existing reparameterized hierarchical RL model from the last workshop, we simply add a <code>generated quantities</code> block, where we calculate log-likelihoods for each subject:</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; lr_mu; </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">1</span>&gt; lr_mu;</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span>&lt;<span class="kw">lower</span>=<span class="dv">0</span>,<span class="kw">upper</span>=<span class="dv">3</span>&gt; tau_mu;</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">real</span> log_lik[nSubjects];</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  lr_mu  = Phi_approx(lr_mu_raw);</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  tau_mu = Phi_approx(tau_mu_raw) * <span class="dv">3</span>;</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  { <span class="co">// local section, this saves time and space</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (s <span class="cf">in</span> <span class="dv">1</span>:nSubjects) {</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">vector</span>[<span class="dv">2</span>] v; </span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">real</span> pe;    </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>      <span class="dt">vector</span>[<span class="dv">2</span>] v;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>      <span class="dt">real</span> pe;</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>      log_lik[s] = <span class="dv">0</span>;</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>      v = initV;</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span>:nTrials) {    </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        log_lik[s] = log_lik[s] + categorical_logit_lpmf(choice[s,t] | tau[s] * v);    </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>              </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        pe = reward[s,t] - v[choice[s,t]];      </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe; </span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span>:nTrials) {</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        log_lik[s] = log_lik[s] + categorical_logit_lpmf(choice[s,t] | tau[s] * v);</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>        pe = reward[s,t] - v[choice[s,t]];</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>      }</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    }    </span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>  }</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In this block, we declare log-likelihoods for each subject:</p>
@@ -741,34 +687,33 @@ Bayesian Information Criterion
 <p>Once we have the log likelihoods, we can then calculate model comparison metrics using the <code>loo</code> package in <code>R</code><a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>:</p>
 <p>This is rather simple and firstly involves extracting the log-likelihood matrix from our Stan fit object:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>LL1 <span class="ot">&lt;-</span> <span class="fu">extract_log_lik</span>(stanfit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Then we can simple compute either the WAIC or LOO-CV (Leave-One-Out Cross-Validation) by Pareto Smoothed Importance Sampling (PSIS):</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>waic1 <span class="ot">&lt;-</span> <span class="fu">waic</span>(LL1)  <span class="co"># WAIC calculation</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>loo1 <span class="ot">&lt;-</span> <span class="fu">loo</span>(LL1)    <span class="co"># PSIS-LOO calculation</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="callout callout-style-default callout-tip callout-titled" title="WAIC or PSIS-LOO?">
+<p>Then we can compute PSIS-LOO-CV (leave-one-out cross-validation by Pareto-smoothed importance sampling) directly:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>loo1 <span class="ot">&lt;-</span> <span class="fu">loo</span>(LL1)    <span class="co"># PSIS-LOO-CV</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="callout callout-style-default callout-tip callout-titled" title="The Pareto-$k$ diagnostic">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-WAIC or PSIS-LOO?
+The Pareto-<span class="math inline">\(k\)</span> diagnostic
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>WAIC and PSIS-LOO are both methods for estimating out-of-sample prediction accuracy, but they approach it differently. WAIC approximates leave-one-out cross-validation using the entire dataset, while PSIS-LOO uses importance sampling to approximate true leave-one-out cross-validation. In practice, they often give very similar results, and both are valid choices for model comparison.</p>
+<p>Alongside the estimates, <code>loo()</code> prints a diagnostic table summarising the Pareto-<span class="math inline">\(\hat{k}\)</span> value for every observation. When all observations are flagged as “good” (<span class="math inline">\(\hat{k} &lt; 0.7\)</span>), the PSIS-LOO-CV estimate is reliable. If some observations have a high <span class="math inline">\(\hat{k}\)</span>, the approximation may be inaccurate for those points - you can then improve it with moment matching (<code>loo_moment_match()</code>) or compute exact leave-one-out for the flagged points by refitting.</p>
 </div>
 </div>
 <p>The (hypothetical) output below shows us several key metrics computed from the <code>loo</code> package, in the case below as a 4000 x 20 log-likelihood matrix (representing 4000 posterior samples for 20 subjects):</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Computed from <span class="dv">4000</span> by <span class="dv">20</span> log<span class="sc">-</span>likelihood matrix</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>         Estimate  SE</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>elpd_loo    <span class="sc">-</span><span class="fl">29.5</span> <span class="fl">3.3</span> </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>elpd_loo    <span class="sc">-</span><span class="fl">29.5</span> <span class="fl">3.3</span></span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>p_loo         <span class="fl">2.7</span> <span class="fl">1.0</span></span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>looic        <span class="fl">58.9</span> <span class="fl">6.7</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Where:</p>
 <ul>
-<li><code>elpd</code>: expected log predictive density (how well a model is expected to predict new, unseen data)</li>
-<li><code>p_loo/p_waic</code>: effective number of parameters</li>
-<li><code>looic/waic</code>: information criterion value</li>
+<li><code>elpd_loo</code>: expected log pointwise predictive density (how well a model is expected to predict new, unseen data)</li>
+<li><code>p_loo</code>: effective number of parameters</li>
+<li><code>looic</code>: the LOO information criterion (<span class="math inline">\(-2 \times\)</span> <code>elpd_loo</code>), on the deviance scale</li>
 </ul>
 <p>What we are most interested in is the <code>looic</code> estimate, which in this case is 58.9. Remember that lower values mean a better model!</p>
 <section id="introducing-the-fictitious-rl-model" class="level3">
@@ -820,10 +765,10 @@ WAIC or PSIS-LOO?
 </div>
 <p>The crucial difference between the models is visible in how the unchosen option’s value changes. <strong>In the Simple RL model, the unchosen option’s value remains flat/unchanged until it is chosen again.</strong> This creates “plateaus” in the value lines when an option isn’t chosen, for example in the orange line around trials 20-30, where it remains completely flat while option A is being chosen.</p>
 <p><strong>Conversely, for the Fictitious RL model, where both options’ values are updated on every trial, no flat plateaus are visible.</strong> Subsequently, the value difference between the options for both models, highlights how this is - on average, across all trials - larger for the Fictitious RL model compared to the Simple RL model. As a result, because larger value differences could translate into an easier choice between the two options, the Fictitious RL represents a potential cognitive process that people use.</p>
-<p>Now that we have two models, we can compare them directly using the WAIC, and test whether participants actually use this additional information when making decisions in the reversal learning task.</p>
+<p>Now that we have two models, we can compare them directly using PSIS-LOO-CV, and test whether participants actually use this additional information when making decisions in the reversal learning task.</p>
 <p>The Stan implementation of the Fictitious RL can be found in <code>_scripts/comparing_models_model2.stan</code>. Comparing this to the Simple RL <code>comparing_models_model1.stan</code>, we can’t see much of a difference. In fact, the only major difference is in the <code>model</code> block.</p>
 <p>In the Simple RL, we have a simple update rule that only modifies the value of the chosen option:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pe = reward[s,t] - v[choice[s,t]];      </span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>pe = reward[s,t] - v[choice[s,t]];</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This shows that on each trial, the model:</p>
 <ul>
@@ -831,10 +776,10 @@ WAIC or PSIS-LOO?
 <li><p>Updates only the value of the chosen option using this prediction error</p></li>
 </ul>
 <p>The second model extends this by also updating the unchosen option’s value:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pe = reward[s,t] - v[choice[s,t]];   </span>
+<div class="sourceCode" id="cb9"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>pe = reward[s,t] - v[choice[s,t]];</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>penc = -reward[s,t] - v[<span class="dv">3</span> - choice[s,t]];</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>      </span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe; </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>v[<span class="dv">3</span> - choice[s,t]] = v[<span class="dv">3</span> - choice[s,t]] + lr[s] * penc;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>After declaring a new variable <code>penc</code> for the counterfactual prediction error <code>real penc;</code>:</p>
 <ul>
@@ -892,27 +837,27 @@ Click to reveal the solution
 </section>
 <section id="posterior-predictive-checks" class="level2">
 <h2 class="anchored" data-anchor-id="posterior-predictive-checks">Posterior predictive checks</h2>
-<p>We have just compared our two RL models objectively using information criteria, suggesting that the Fictitious RL model will better predict new, unseen data from our reversal learning task and more accurately captures the underlying latent cognitive processes that generated the observed data. But while measurements like WAIC and LOO help us compare models quantitatively, posterior predictive checks allow us to visually assess how well our models actually capture patterns in the observed data.</p>
+<p>We have just compared our two RL models objectively using PSIS-LOO-CV, suggesting that the Fictitious RL model will better predict new, unseen data from our reversal learning task and more accurately captures the underlying latent cognitive processes that generated the observed data. But while quantitative measures like PSIS-LOO-CV help us compare models numerically, posterior predictive checks allow us to visually assess how well our models actually capture patterns in the observed data.</p>
 <p><strong>The basic idea of posterior predictive checks is simple: we ask our model to generate simulated data. If our model is good, data simulated from it should look similar to our actual data.</strong> Not only does running posterior predictive checks allow us to validate good fitting models, it also can be used to falsify bad fitting ones.</p>
 <p>To perform posterior predictive checks, we need to add a section to our Stan models that generates simulated data. We do this in the <code>generated quantities</code> block.</p>
 <p><strong>Importantly, because we are using a Bayesian approach, we don’t just simulate from the mean parameter estimates - instead, we simulate new data using every posterior sample of our parameters.</strong> This is crucial because it allows us to incorporate our uncertainty about the parameters into our predictions.</p>
 <p>From our Stan model, we get posterior samples for all parameters - in our case, 4000 draws from the posterior distribution of each parameter (learning rates, inverse temperatures, etc.). For each of these 4000 parameter sets, we then simulate an entire experiment worth of data using those specific parameters. This is what’s happening in the corresponding <code>generated quantities</code> block:</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">generated quantities</span> {</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="co">// ... existing code for log likelihood ...</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Generate predicted choices</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">array</span>[nSubjects, nTrials] <span class="dt">int</span> y_pred;</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  { <span class="co">// local section</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> (s <span class="cf">in</span> <span class="dv">1</span>:nSubjects) {</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>      <span class="dt">vector</span>[<span class="dv">2</span>] v;</span>
 <span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>      <span class="dt">real</span> pe;</span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>      v = initV;</span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> (t <span class="cf">in</span> <span class="dv">1</span>:nTrials) {</span>
 <span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Generate predicted choice from current values</span></span>
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>        y_pred[s,t] = categorical_logit_rng(tau[s] * v);</span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Update values using actual reward</span></span>
 <span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        pe = reward[s,t] - v[choice[s,t]];</span>
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        v[choice[s,t]] = v[choice[s,t]] + lr[s] * pe;</span>
@@ -958,7 +903,7 @@ Exercise 14
 
 <ol>
 <li id="fn1"><p>Pitt, M. A., &amp; Myung, I. J. (2002). When a good fit can be bad. Trends in cognitive sciences, 6(10), 421-425.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Gelman, A., Hwang, J., &amp; Vehtari, A. (2014). Understanding predictive information criteria for Bayesian models. Statistics and computing, 24, 997-1016.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Vehtari, A., Gelman, A., &amp; Gabry, J. (2017). Practical Bayesian model evaluation using leave-one-out cross-validation and WAIC. Statistics and Computing, 27, 1413-1432.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Vehtari, A., Gabry, J., Magnusson, M., Yao, Y., Bürkner, P., Paananen, T., &amp; Gelman, A. (2024). loo: Efficient leave-one-out cross-validation and WAIC for Bayesian models (Version 2.8.0) [R package]. Retrieved from https://mc-stan.org/loo/<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p>Zhang, L., &amp; Gläscher, J. (2020). A brain network supporting social influences in human decision-making. Science advances, 6(34), eabb4159.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Even though the Stan model code in <code>R</code> uses the same seed, differences in hardware across computers will produce slightly different end results.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1379,7 +1324,7 @@ Exercise 14
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Zhang &amp; Sohail, 2025</p>
+<p>© Zhang &amp; Sohail, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

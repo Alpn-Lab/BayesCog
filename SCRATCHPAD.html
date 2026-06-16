@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Course overview – BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science</title>
+<title>scratchpad – BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -64,8 +29,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./workshops/01.R_basics/qmd/intro.html" rel="next">
-<link href="./index.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -105,6 +68,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -118,7 +110,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./course_overview.html">Course overview</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -156,7 +148,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./course_overview.html" class="sidebar-item-text sidebar-link active">
+  <a href="./course_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course overview</span></a>
   </div>
 </li>
@@ -448,284 +440,97 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#aims-and-philosophy" id="toc-aims-and-philosophy" class="nav-link active" data-scroll-target="#aims-and-philosophy">Aims and philosophy</a></li>
-  <li><a href="#pre-requisites" id="toc-pre-requisites" class="nav-link" data-scroll-target="#pre-requisites">Pre-requisites</a></li>
-  <li><a href="#list-of-folders-and-contents" id="toc-list-of-folders-and-contents" class="nav-link" data-scroll-target="#list-of-folders-and-contents">List of folders and contents</a></li>
-  <li><a href="#set-up" id="toc-set-up" class="nav-link" data-scroll-target="#set-up">Set-up</a>
+  <li><a href="#scratchpad.md-bayescog" id="toc-scratchpad.md-bayescog" class="nav-link active" data-scroll-target="#scratchpad.md-bayescog">SCRATCHPAD.md — BayesCog</a>
   <ul class="collapse">
-  <li><a href="#locally-using-rstudio-and-renv" id="toc-locally-using-rstudio-and-renv" class="nav-link" data-scroll-target="#locally-using-rstudio-and-renv">Locally using RStudio and <code>renv</code></a></li>
-  <li><a href="#building-the-docker-image" id="toc-building-the-docker-image" class="nav-link" data-scroll-target="#building-the-docker-image">Building the Docker image</a></li>
+  <li><a href="#reviewer-response-session-2" id="toc-reviewer-response-session-2" class="nav-link" data-scroll-target="#reviewer-response-session-2">2026-06-13 — Reviewer-response session 2</a></li>
+  <li><a href="#reviewer-response-session-1" id="toc-reviewer-response-session-1" class="nav-link" data-scroll-target="#reviewer-response-session-1">2026-06-13 — Reviewer-response session 1</a></li>
+  <li><a href="#initial-claude-setup" id="toc-initial-claude-setup" class="nav-link" data-scroll-target="#initial-claude-setup">2026-06-13 — Initial Claude setup</a></li>
+  <li><a href="#reviewer-response-session-3-r1.4r1.6-r1.7" id="toc-reviewer-response-session-3-r1.4r1.6-r1.7" class="nav-link" data-scroll-target="#reviewer-response-session-3-r1.4r1.6-r1.7">2026-06-14 — Reviewer-response session 3 (R1.4/R1.6 + R1.7)</a></li>
+  <li><a href="#reviewer-response-session-4-reference-cleanup-r1.5-ws11-typos" id="toc-reviewer-response-session-4-reference-cleanup-r1.5-ws11-typos" class="nav-link" data-scroll-target="#reviewer-response-session-4-reference-cleanup-r1.5-ws11-typos">2026-06-14 — Reviewer-response session 4 (reference cleanup, R1.5, WS11, typos)</a></li>
+  <li><a href="#reviewer-response-session-5-r2.3-r2.7-r1.3-renv-response.md" id="toc-reviewer-response-session-5-r2.3-r2.7-r1.3-renv-response.md" class="nav-link" data-scroll-target="#reviewer-response-session-5-r2.3-r2.7-r1.3-renv-response.md">2026-06-14 — Reviewer-response session 5 (R2.3, R2.7, R1.3, renv, RESPONSE.md)</a></li>
+  <li><a href="#reviewer-response-session-6-commit-mit-note-response.md-verify-finalise" id="toc-reviewer-response-session-6-commit-mit-note-response.md-verify-finalise" class="nav-link" data-scroll-target="#reviewer-response-session-6-commit-mit-note-response.md-verify-finalise">2026-06-15 — Reviewer-response session 6 (commit, MIT note, RESPONSE.md verify + finalise)</a></li>
+  <li><a href="#reviewer-response-session-7-single-mit-relicense-affiliationsprose-2-commits" id="toc-reviewer-response-session-7-single-mit-relicense-affiliationsprose-2-commits" class="nav-link" data-scroll-target="#reviewer-response-session-7-single-mit-relicense-affiliationsprose-2-commits">2026-06-16 — Reviewer-response session 7 (single-MIT relicense, affiliations/prose, 2 commits)</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Course overview</h1>
-<p class="subtitle lead">Who this course is for and how to get the most out of it</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="aims-and-philosophy" class="level3">
-<h3 class="anchored" data-anchor-id="aims-and-philosophy">Aims and philosophy</h3>
-<p>This course was initially developed for master’s students at the University of Vienna, but is intended for anyone interested in learning about Bayesian statistics, and using Bayesian methods to both build and apply cognitive models. As a result, students at all levels, postdocs, as well as senior faculty have completed this course!</p>
-<p>The term ‘Bayesian’ is not limited to modeling, and reflects a more general approach to probability observed in many research areas. Therefore, to avoid confusion beforehand, this course is <strong>not</strong> about ‘Bayes in the brain’ (Bayesian brain hypothesis), or why Bayesian statistics is a better alternative to frequentist statistics (even though it is).</p>
-<p><strong>Instead, this course aims to develop understanding and experience in using Bayesian statistics to analyse cognitive processes by constructing models.</strong></p>
-<p>The course’s approach to understanding cognition through modeling is guided by David Marr’s influential framework of three levels of analysis<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>:</p>
-<ol type="1">
-<li><p><strong>The Computational Level (Why):</strong> This addresses what problem the cognitive system is trying to solve and why. It focuses on the goals and logic of the computation.</p></li>
-<li><p><strong>The Algorithmic Level (What):</strong> This specifies the representation and algorithm used to solve the computational problem. It describes the rules and strategies that implement the solution.</p></li>
-<li><p><strong>The Implementation Level (How):</strong> This details how the algorithm is physically realized in neural circuits and brain structures.</p></li>
-</ol>
-<p>Throughout this course, we’ll use cognitive modeling as a bridge between these levels, particularly focusing on how algorithmic-level models can help us understand behaviour:</p>
-<div style="height: 10px;">
-
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/introduction/marr_framework.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%"></p>
-</figure>
-</div>
-<div class="image-caption">
-<p>Marr’s framework as applied to cognitive modeling</p>
-</div>
-<p>The goals of this course are to:</p>
-<ul>
-<li>Build a foundational knowledge in cognitive behaviour and model-building</li>
-<li>Learn practical <code>R</code> programming</li>
-<li>Build cognitive models using <a href="https://mc-stan.org/users/interfaces/rstan">RStan</a></li>
-<li>Engage in open-source methods using <code>git</code> and <a href="https://github.com/">GitHub</a> (optional)</li>
-</ul>
-<p>Subsequently, after completing the course, you …</p>
-<ul>
-<li>feel comfortable with reading mathematical equations</li>
-<li>consider the implementation of the “computational modeling” section when reading scientific articles</li>
-<li>gain insightful understanding of Bayesian statistics and modeling</li>
-<li>can apply computational modeling in your own experiments</li>
-</ul>
-<p>This course particularly places a strong emphasis on <strong>hands-on experience modeling in Stan</strong>, gaining experience with the modeling workflow depicted below<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./images/introduction/modeling_workflow.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
-</figure>
-</div>
-<p>You will learn to implement parameter and model recovery, perform posterior predictive checks, and assess competing models using model selection. Don’t worry if none of this is currently familiar; hopefully it will be after completing this course!</p>
+<section id="scratchpad.md-bayescog" class="level1">
+<h1>SCRATCHPAD.md — BayesCog</h1>
+<p>Append-only working notes. Newest section on top. One dated section per session.</p>
+<hr>
+<section id="reviewer-response-session-2" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-response-session-2">2026-06-13 — Reviewer-response session 2</h2>
+<p><strong>Done</strong> - <strong>Fixed <code>/doctor</code> errors:</strong> the 6 invalid <code>Bash(rm:*.ext)</code> deny rules in <code>.claude/settings.json</code> → valid wildcard form <code>Bash(rm *.ext)</code> (e.g.&nbsp;<code>rm *.rds</code>, <code>rm *_outputs/*</code>). The <code>:*</code> must be at the end (prefix match); mid-pattern needs plain <code>*</code>. - <strong>R2.8 — full WAIC→PSIS-LOO-CV switch in WS8.</strong> Author chose the most aggressive option: <strong>remove WAIC entirely</strong>. <code>08.compare_models/qmd/intro.qmd</code> reframed around PSIS-LOO-CV + R1.8 objectives; <code>model_comparison.qmd</code> — deleted the AIC/DIC/WAIC information-criteria section + WAIC maths + the <code>ic_comparison.png</code> figure; added a <code>### PSIS-LOO-CV</code> subsection (reweighting, elpd) and a Pareto-<span class="math inline">\(k\)</span> diagnostic callout (<code>k&lt;0.7</code>, <code>loo_moment_match()</code>, exact-LOO refit); renamed heading “Model comparison using PSIS-LOO-CV”; updated metrics list + PPC lead-in. Master R script: deprecated <code>compare()</code> → <code>loo_compare()</code> + prints <code>loo</code> objects (now consistent with student script). <strong>No results regenerated</strong> — the displayed numbers were already <code>loo()</code> output, not <code>waic()</code>; this was prose, not computation. Only surviving “WAIC” strings are in citation titles (Vehtari 2017, <code>loo</code> pkg). User then simplified my prose; I fixed two grammar slips in the edited callout (“it’s”→“its”; subject-verb agreement). - <strong>R1.8 complete</strong> — WS8 objectives done, so all 9 workshop intros now have functional “By the end…” blocks. - <strong>Quick wins:</strong> R1.9 (CONTIBUTORS→<strong>CONTRIBUTING</strong> typo, both papers); R1.2 (added <code>LICENSE-MIT</code>, MIT, copyright <strong>2020-2026 Lei Zhang and Aamir Sohail</strong>, + README dual-license section: MIT=code, CC-BY-SA-4.0=content); R1.1 (README <strong>“Getting help”</strong> section; <code>CONTRIBUTING.md</code> now tracked). - <strong>Website footer</strong> copyright bumped 2025→<strong>2026</strong> in <code>_quarto.yml</code>. - <strong>Committed</strong> all reviewer-response work (this + prior sessions) to branch <strong><code>reviewer-responses</code></strong> (commit <code>ddb4931</code>), <strong>NOT pushed, NOT merged to <code>main</code></strong>. Excluded <code>compare_models.Rproj</code> (line-ending noise) + <code>binomial_model_files/</code> (render artifact). Local-only files (TASK/SCRATCHPAD/docs/) excluded via <code>.git/info/exclude</code> as designed. Merge later: <code>git checkout main &amp;&amp; git merge reviewer-responses</code>.</p>
+<p><strong>Decisions</strong> - R2.8 = remove WAIC entirely (not “keep as background”). - MIT copyright span = 2020-2026 (original RL materials ~2020 → website 2026). - PsyArXiv <strong>citation</strong> dates (2025, in <code>index.qmd</code> + <code>README.md</code>) left unchanged — factual publication date, not a copyright year. Only the website footer copyright was bumped. - Commit on a branch (we were on <code>main</code>); do not push.</p>
+<p><strong>Open / next up</strong> - <strong>R1.7 (bib DOIs)</strong> — flagged NOT a quick win: ~45 of 49 entries in each <code>.bib</code> lack a DOI; needs a dedicated per-reference web-lookup pass (no fabrication). Pending user go-ahead. - <strong>R1.4 / R1.6</strong> (paper usage/instructor guidance + dev story) — need author input. - <strong>R2.3</strong> (truncated Normal vs Beta) parked; content TODO: Normal(0,1)-vs-Beta prior images (<code>hierarchical_modeling.qmd</code>). <strong>R2.7</strong> content TODO: real rank plots (<code>stan_binomial.qmd</code>). - <strong>R1.5</strong> partial (teacher-pacing note + paper-side guidance still to do). <strong>R1.3</strong> = editor query. - <strong>Author review TODO</strong> (in TASK.md): manually check the learning objectives across WS1–WS9. - Merge <code>reviewer-responses</code> → <code>main</code> and <code>quarto publish gh-pages</code> when ready (both pending user).</p>
+<hr>
 </section>
-<section id="pre-requisites" class="level2">
-<h2 class="anchored" data-anchor-id="pre-requisites">Pre-requisites</h2>
-<p>To fully benefit from the materials, you are expected to have:</p>
-<ul>
-<li>Some basic understanding of frequentist statistics</li>
-<li>Some basic knowledge of programming</li>
-</ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Pre-requisites">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Pre-requisites
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Any advanced knowledge of programming or statistics, whilst useful, is not required!</p>
-</div>
-</div>
-<p>The course develops in complexity across the workshops, with the later material on hierarchical models and model optimization being more challenging. However, do not feel as if you need to complete all workshops within a specific time-frame! These materials should consist <strong>part</strong> of your education in cognitive modeling.</p>
-<p>As a course in statistics and mathematical modeling, math equations feature throughout, albeit sparingly. Understanding the mathematical equations underlying computational models is necessary for understanding the relationship between data and parameters. However, some sections of the course feature additional math (e.g., derivations, statistical distributions) which are not strictly necessary to understand. <strong>As a general rule of thumb, most important is that you try to understand the equations describing your data and parameters, and how they are represented mathematically!</strong></p>
-<p>In any case, do not worry if you struggle during the course!</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/introduction/mcelreath_tweet.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%"></p>
-</figure>
-</div>
+<section id="reviewer-response-session-1" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-response-session-1">2026-06-13 — Reviewer-response session 1</h2>
+<p><strong>Done (all local; nothing published)</strong> - Created <code>docs/reviewer_responses.md</code> (local-only tracker): 18 comments split into R1.1–R1.9 / R2.1–R2.9. - <strong>Batch A — R2 website technical rewords (all ✅):</strong> - R2.1 <code>probability.qmd</code>: figures moved to follow their section labels; fixed duplicated conditional figure → correct <code>marginal_distribution.png</code> (already existed in repo). - R2.2 <code>hierarchical_modeling.qmd</code>: noted NUTS samples in unconstrained space; issues are geometry. - R2.4 <code>mcmc.qmd</code>: mountain analogy → “map the whole range”, not peak-finding. - R2.5 <code>stan_binomial.qmd</code>: ESS reworded; R2.6 “Gelman-Rubin”→“R-hat” + Vehtari 2021 footnote <code>[^4b]</code>; R2.7 added rank-plot callout (<code>mcmc_rank_ecdf</code>). - <strong>R2.9 “belief”:</strong> reworded analyst-epistemic uses → “knowledge”/“assumption” across 8 files; kept the RL participant’s beliefs (<code>rl_concepts.qmd</code>) and natural verbs. - <strong>Batch B — R1.8 learning objectives:</strong> converted 8/9 workshop intros to “By the end… you will be able to:” with <strong>max 4</strong> concrete bullets. WS8 held to bundle with the R2.8 WAIC→LOO switch. Added “no prior programming experience” note to WS1 (partial R1.5). - Added two inline <code>&lt;!-- TODO (reviewer Rx) --&gt;</code> markers + TASK.md entries: real rank plots (<code>stan_binomial.qmd</code>, R2.7) and Normal-vs-Beta prior images (<code>hierarchical_modeling.qmd</code>, R2.3).</p>
+<p><strong>Decisions made</strong> - Tracker stays private (local-only) for now; response letter assembled later. - R1.2 license = <strong>MIT</strong> (for code; CC-BY-SA-4.0 stays for content). - R2.8 = <strong>full switch</strong> to PSIS-LOO-CV (not just alongside WAIC). - R2.9 approach: reword Groups 1–2, keep Group 3 (RL participant).</p>
+<p><strong>Convention introduced:</strong> inline <code>&lt;!-- TODO (reviewer Rx.x): … --&gt;</code> HTML comments mark spots in <code>.qmd</code> needing future content; mirrored in TASK.md.</p>
+<p><strong>Next up / open</strong> - R2.8 (biggest remaining; review <code>model_comparison.qmd</code> + <code>compare_models</code> scripts/figures first). - Quick wins: R1.9 typo, Batch E (README + MIT license + commit CONTRIBUTING.md), R1.7 bib DOIs. - Needs author input: R1.4/R1.6 (course logistics, dev story). Parked: R2.3 substance, R1.3 (editor).</p>
+<hr>
 </section>
-<section id="list-of-folders-and-contents" class="level2">
-<h2 class="anchored" data-anchor-id="list-of-folders-and-contents">List of folders and contents</h2>
-<p>The materials for the workshops are split across sub-folders within <code>/workshops</code>:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 38%">
-<col style="width: 30%">
-<col style="width: 30%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Folder</th>
-<th>Task</th>
-<th>Model</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><code>01.R_basics</code></td>
-<td>NA</td>
-<td>NA</td>
-</tr>
-<tr class="even">
-<td><code>02.binomial_globe</code></td>
-<td>Globe toss</td>
-<td>Binomial model</td>
-</tr>
-<tr class="odd">
-<td><code>03.bernoulli_coin</code></td>
-<td>Coin flip</td>
-<td>Bernoulli model</td>
-</tr>
-<tr class="even">
-<td><code>04.regression_height</code></td>
-<td>Observed weight and height</td>
-<td>Linear regression model</td>
-</tr>
-<tr class="odd">
-<td><code>05.regression_height_poly</code></td>
-<td>Observed weight and height</td>
-<td>Polynomial regression model</td>
-</tr>
-<tr class="even">
-<td><code>06.reinforcement_learning</code></td>
-<td>2-armed bandit task</td>
-<td>Simple reinforcement learning (RL)</td>
-</tr>
-<tr class="odd">
-<td><code>07.optm_rl</code></td>
-<td>2-armed bandit task</td>
-<td>Simple reinforcement learning (RL)</td>
-</tr>
-<tr class="even">
-<td><code>08.compare_models</code></td>
-<td>Probabilistic reversal learning task</td>
-<td>Simple and Fictitious RL models</td>
-</tr>
-<tr class="odd">
-<td><code>09.debugging</code></td>
-<td>Memory Retention</td>
-<td>Exponential decay model</td>
-</tr>
-</tbody>
-</table>
-<p>In addition to following along with the taught material, <strong>there are a number of exercises that you can work through.</strong> The code and solutions to the exercises will be worked through on the website in some cases, but not in others. In all cases however, the materials to work through the exercises yourself are provided.</p>
-<p>Specifically, each workshop folder above will typically have two sub-folders: <code>_data</code> and <code>_scripts</code>. Each <code>_scripts</code> folder will also contain separate files with and without the <code>master</code> suffix.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> R_basics.Rproj</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _data</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">├──</span> _scripts</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> ├── R_basics.R</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">│&nbsp;&nbsp;</span> └── R_basics_master.R</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The base scripts will often contain the necessary code; details on which scripts and data to use during the workshops is always given.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Exercise is optional">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Exercise is optional
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You do not have to work through the exercises to benefit from and complete this course, but is recommended if you are wanting to gain practical experience with programming in Stan!</p>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled" title="A note on programming syntax">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-A note on programming syntax
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The course materials and Stan models were primarily written in 2020-21. Both Stan and <code>R</code> are ever-evolving programming languages where certain features and practices are likely to change over time. Therefore whilst the Stan models and <code>R</code> scripts in the course materials will run correctly without issue, proper syntax may not always be followed.</p>
-<p><strong>You should always consult the most recent documentation for best practices when programming!</strong></p>
-</div>
-</div>
+<section id="initial-claude-setup" class="level2">
+<h2 class="anchored" data-anchor-id="initial-claude-setup">2026-06-13 — Initial Claude setup</h2>
+<p><strong>Done</strong> - First Claude session on this repo. Explored the whole tree and set up tracking/memory infrastructure (CLAUDE.md, TASK.md, SCRATCHPAD.md, CHEATSHEET.md, <code>.claude/commands/</code>, <code>.claude/settings.json</code>, memory files, <code>docs/course_roadmap.md</code>).</p>
+<p><strong>Findings about the project</strong> - This is a <strong>Quarto teaching website</strong> + an <strong>educational software paper</strong>, <em>not</em> a data-analysis research repo. The <code>newuser</code> template assumed the latter; infrastructure was adapted accordingly. - Workshop website numbering ≠ folder numbering. <code>_quarto.yml</code> is the source of truth: e.g.&nbsp;website WS6+WS7 both come from folders <code>06.reinforcement_learning</code> + <code>07.optm_rl</code>; WS3+WS4 from <code>02</code>. - Workshops 01–09 are complete and live. <code>10.model_based</code> (bonus) and <code>11.delay_discounting</code> are WIP. Notably <code>11.delay_discounting</code> has scripts/data/Stan but <strong>no <code>qmd/</code> page</strong> and isn’t in the sidebar. - R scripts ship in pairs: <code>*_main.R</code> (student, with gaps) and <code>*_master.R</code> (completed reference). - <code>09.debugging</code> contains <em>deliberately buggy</em> Stan code — do not “fix” it. - Large binaries are committed on purpose: compiled <code>.rds</code> models, <code>_outputs/*.RData</code> fits (up to ~21 MB), slide PDFs, <code>paper.pdf</code>. <code>.claude/settings.json</code> denies deleting these. - Two manuscript variants exist and are near-duplicates: <code>paper.md</code> (JOSE) and <code>paper_psyarxiv.md</code> (preprint). Edits likely need mirroring; keep the <code>.bib</code> files in sync too. - <code>.tokensave/</code> is present and git-ignored. tokensave indexes this repo (mostly prose/R/Stan, not a big code graph — code-graph tools are of limited use here).</p>
+<p><strong>Uncommitted at setup</strong> (pre-existing, not from me): <code>README.md</code> (M), <code>.gitignore</code> (M), <code>CONTRIBUTING.md</code> (untracked). Left for the user to decide on committing.</p>
+<p><strong>Decisions</strong> - Did <strong>not</strong> create <code>renv_setup.R</code> — <code>setup.R</code> (<code>renv::restore()</code>) + <code>.Rprofile</code> already do this. - Did <strong>not</strong> scaffold fake “future analysis” stub dirs — workshops 10 &amp; 11 already exist; tracked their real WIP state in TASK.md / roadmap instead of fabricating structure.</p>
+<p><strong>Open questions for the user</strong> - Is the paper currently under review anywhere (so I should expect reviewer-response work)? - Priority for next work: finish WS11 (delay discounting) page? complete WS10? or manuscript polish? - Should the uncommitted README/.gitignore/CONTRIBUTING changes be committed now?</p>
+<hr>
 </section>
-<section id="set-up" class="level2">
-<h2 class="anchored" data-anchor-id="set-up">Set-up</h2>
-<p>There is no additional set-up needed if you aim to work solely from the website. However, to work on the exercises yourself, several software and packages are required.</p>
-<section id="locally-using-rstudio-and-renv" class="level3">
-<h3 class="anchored" data-anchor-id="locally-using-rstudio-and-renv">Locally using RStudio and <code>renv</code></h3>
-<p>You can work with the course material by <strong>installing the software and packages locally.</strong> To do this:</p>
-<ul>
-<li><p>Install the latest version of <code>R</code> <a href="https://cloud.r-project.org/bin/macosx/">here</a> and RStudio <a href="https://posit.co/download/rstudio-desktop/">here</a></p></li>
-<li><p>Install and set-up the latest version of RStan <a href="https://github.com/stan-dev/rstan/wiki/RStan-Getting-Started">here</a></p></li>
-</ul>
-<p>To create the environment, first clone the repository and change to the project directory:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/alpn-lab/BayesCog.git</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> BayesCog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>The various analyses across the workshops require specific packages to be installed. This project uses <code>renv</code> to manage package dependencies.</p>
-<p>To set up the environment, firstly open <code>RStudio</code> in the project root and run in the console:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"setup.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>After executing this command once, the project environment will <strong>load automatically whenever you open the project,</strong> for both project root and individual workshops. All you need to do is to load the packages required for the relevant scripts when necessary e.g., <code>library(rstan)</code>.</p>
-<div class="callout callout-style-default callout-tip callout-titled" title="Querying packages">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Querying packages
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>You can always check if you are missing a certain package by clicking on the ‘Packages’ tab (next to ‘Files/Plots’ tab) or by running <code>library()</code>.</p>
-</div>
-</div>
+<section id="reviewer-response-session-3-r1.4r1.6-r1.7" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-response-session-3-r1.4r1.6-r1.7">2026-06-14 — Reviewer-response session 3 (R1.4/R1.6 + R1.7)</h2>
+<p><strong>Done</strong> - <strong>R1.4/R1.6</strong> (paper usage/adoption + development story), both <code>paper.md</code> &amp; <code>paper_psyarxiv.md</code>: - Added a usage paragraph after the “All course workshops” paragraph: semester delivery, ~2–3 h per workshop, class size (any size, but 10–20 best for hands-on debugging), instructor expertise (R/Stan + Bayesian stats, ideally psych/neuro familiarity), + self-study/adoption note. - Added a week-by-week course overview table, later <strong>split per author request into two tables</strong>: <strong>Table 1</strong> “Conceptual foundations (Weeks 1–3)” with a <em>Focus</em> column (no task/model — wks 1–3 are conceptual); <strong>Table 2</strong> “Practical modeling workshops (Weeks 4–9)” with <em>Example task and model</em>. - Added a development “story” paragraph at the end of Statement of Need (author then reworded it: UKE Hamburg short course → Vienna expansion w/ SIPS Commendation + Early-Career Teaching awards → Aamir Sohail’s website at Birmingham). Placeholder citations resolved (see below). - <strong>R1.7</strong> — full DOI pass: <strong>44 CrossRef-verified DOIs in BOTH bibs</strong> (was 1). Looked up every entry via the CrossRef REST API; cross-checked title+author+year; <strong>preferred published journal DOIs over preprints</strong> (Baribault, Eckstein, Guest, Lockwood, Rocca, Wilson, Zhang2020). Books → monograph DOIs (Wickham=2016 <em>2nd</em> ed; McElreath=2018 <em>1st</em> ed); <code>loo</code>/<code>renv</code> → CRAN package DOIs. - New refs added: <code>ZhangGlascher2020</code> (Science Advances, 10.1126/sciadv.abb4159), <code>Sohail2026</code> (transdiagnostic; PsyArXiv <code>10.31234/osf.io/svbfw_v1</code>), <code>Lin2026</code> (Recalibrating GenAI, published <em>Patterns</em> <code>10.1016/j.patter.2025.101473</code>). Removed old SSRN/PsyArXiv preprint of the latter (<code>Sohail2025b</code> in paper.bib, <code>Lin2025</code> in psyarxiv.bib). Dev-story citation = <code>[@Zhang2020; @Crawley2020;   @ZhangGlascher2020; @Sohail2026]</code>; ChatGPT sentence → <code>[@Sohail2025a; @Lin2026]</code>. - <code>Chang2020</code> → DartBrains Zenodo <strong>concept</strong> DOI <code>10.5281/zenodo.3909717</code> (+ fixed author list, “Brietzke, Sasha” per Zenodo). <code>Pan2022</code> → replaced with published <strong>dockerHDDM</strong> (Pan et al.&nbsp;2025, <em>AMPPS</em> 8(1), <code>10.1177/25152459241298700</code>; key kept <code>Pan2022</code>). - <strong>Bib formatting synced + keys harmonized:</strong> propagated psyarxiv.bib cleanups (author initials, journal title-casing, Gläscher umlaut, publisher fixes) into paper.bib; renamed paper.bib’s MRI-on-BEAR <code>Sohail2025c</code>→<code>Sohail2025b</code> (+ acknowledgments citation). <strong>Both bibs now identical on all 51 shared keys.</strong></p>
+<p><strong>Findings / how-to (build + inspect PDFs)</strong> - Build psyarxiv PDF: <code>quarto pandoc paper_psyarxiv.md --citeproc -o paper_psyarxiv.pdf</code>. MUST use quarto’s bundled pandoc (3.6.3) — the Anaconda <code>pandoc</code> 2.12 fails on <code>\csllabelwidth</code>. Needs internet (remote nature.csl). JOSE PDF: <code>docker run --rm -v $PWD:/data --user $(id -u):$(id -g) --env JOURNAL=jose   openjournals/inara -o pdf paper.md</code> (large image pull; CI does this on push). - psyarxiv is <code>twocolumn</code>: markdown pipe tables → <code>longtable</code> → <strong>fails</strong> (“longtable not in 1-column mode”). Use full-width <code>\begin{table*}</code> floats instead. Floats drift to the references unless defined earlier — placed the two tables in the Learning Objectives section so they render mid-body (verified p.3). - No poppler locally (<code>pdftotext</code>/<code>pdftoppm</code> absent) → inspect PDFs by rendering with ghostscript: <code>gs -dNOPAUSE -dBATCH -sDEVICE=pngalpha -r120 -dFirstPage=N -dLastPage=N -sOutputFile=/tmp/p%d.png file.pdf</code>, then Read the PNG. - nature.csl (psyarxiv) suppresses DOI display for journal articles with full page info; JOSE/inara shows them. DOIs are stored regardless of style.</p>
+<p><strong>Decisions</strong> - Kept <code>Pan2022</code> BibTeX key despite the 2025 publication (avoids editing in-text <code>@Pan2022</code> in both papers). - Did NOT fabricate any DOIs; left without DOIs (none reliably exist): Plummer2003 (DSC proceedings), Rescorla1972 (book chapter), NivLab2021/OReilly2015 (web), RStudio2020/StanTeam2024 (software). - <code>paper_psyarxiv.md</code> uses British “behaviour” in the synced usage paragraph (matches that file’s convention); <code>paper.md</code> keeps American “behavior” — intentional per-file consistency.</p>
+<p><strong>Unresolved / author TODOs</strong> - Swap <code>Sohail2026</code> preprint DOI for the journal DOI once published. - Author to review Table 1/Table 2 framing and the WS1–WS9 learning objectives. - This session’s work is <strong>uncommitted</strong> on the working tree of branch <code>reviewer-responses</code>. - Not yet rebuilt <code>paper.pdf</code> (JOSE) — left to user/CI.</p>
+<hr>
 </section>
-<section id="building-the-docker-image" class="level3">
-<h3 class="anchored" data-anchor-id="building-the-docker-image">Building the Docker image</h3>
-<p>We also provide a Docker image which can be used to create an R/RStudio container with the required packages. This assumes you have <a href="https://www.docker.com/products/docker-desktop/">Docker Desktop</a> installed.</p>
-<p>To do so, after cloning the <code>git</code> repository as above, open Docker Desktop and then from the project root run:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> pull sohamir/bayescog:latest</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> run <span class="at">-d</span> <span class="at">-p</span> 8787:8787 <span class="dt">\</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">--mount</span> type=bind,source=<span class="va">$(</span><span class="bu">pwd</span><span class="va">)</span>,target=/home/rstudio/project <span class="dt">\</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">-e</span> PASSWORD=your_chosen_password <span class="dt">\</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">--name</span> bayescog <span class="dt">\</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  sohamir/bayescog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<blockquote class="blockquote">
-<p>Make sure to replace the PASSWORD argument with your own password!</p>
-</blockquote>
-<p>This will mount the Docker image onto the BayesCog repository.</p>
-<p>Then, navigate to <a href="http://localhost:8787/">http://localhost:8787</a> in a browser, and type your username (which is always ‘rstudio’) and the password chosen in the command prior.</p>
-<p>Then once RStudio has loaded, click on the <code>project</code> folder and the BayesCog material will appear. You will not need to install any packages, only to load them when running various operations.</p>
-<p>Subsequently, to start/stop the container, type (from the command line):</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> start bayescog</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> stop bayescog</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>To see/remove the container type:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> ps <span class="at">-a</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rm your_docker_container <span class="co"># e.g. docker rm bayescog</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>And to see/remove the image, type:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> images</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> rmi your_docker_image <span class="co"># e.g. docker rmi sohamir/bayescog</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="reviewer-response-session-4-reference-cleanup-r1.5-ws11-typos" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-response-session-4-reference-cleanup-r1.5-ws11-typos">2026-06-14 — Reviewer-response session 4 (reference cleanup, R1.5, WS11, typos)</h2>
+<p><strong>Done</strong> - <strong>R1.7 follow-up — reference-formatting cleanup</strong> (both bibs, kept identical, parity-verified): - <strong>Plummer2003</strong> — removed bogus <code>and others</code> (JAGS 2003 is single-author Martyn Plummer); added booktitle (<em>Proc. 3rd Intl. Workshop on Distributed Statistical Computing</em>), editors (Hornik, Leisch, Zeileis), Vienna. - <strong>Added DOIs that exist:</strong> Marr1982 → MIT Press 2010 reissue <code>10.7551/mitpress/9780262514620.001.0001</code> (1982 Freeman original has none — flagged to author as a judgment call); StanTeam2024/RStan → CRAN <code>10.32614/cran.package.rstan</code>. Verified via CrossRef that <strong>no DOI exists</strong> for OReilly2015 (web), Plummer2003 (proceedings), Rescorla1972 (1972 chapter), RStudio2020 (IDE, not a CRAN pkg). - <strong>Fixed the nature.csl double-DOI</strong> (page-less <code>@article</code> → DOI printed as URL <em>and</em> <code>doi:</code>): Baribault2023 now <strong>published</strong> (Psych Methods 30(1):128–154, <strong>2025</strong>) w/ vol+pages; Lin2026 → added article-number <code>pages={101473}</code>; loo (Vehtari2015) &amp; renv (Ushey2023) → retyped <code>@article</code>→<code>@Manual</code> (dropped junk <code>journal={(No Title)}</code> / <code>{R package version}</code>); Sohail2026 → <code>@article</code>→<code>@misc</code> (+ <code>publisher={PsyArXiv}</code>). - Both PDFs rebuilt (psyarxiv via <code>quarto pandoc</code>, JOSE via Docker inara — had to <code>open -a Docker</code> first, daemon was down) and <strong>visually verified</strong> clean in both styles. - <strong>R1.5 — done.</strong> WS1 intro (<code>01.R_basics/qmd/intro.qmd</code>) gained a <code>.callout-tip</code> (“Keep learning R beyond this workshop”) stating R can’t be covered in one session + 4 free links (R4DS, HOPR, swirl, CRAN <em>Intro to R</em>). Both papers gained an instructor-adaptation sentence in the delivery paragraph (verified rendered, JOSE p.5). - <strong>WS11 removed from git tracking</strong> — <code>git rm -r --cached workshops/11.delay_discounting</code> (8 files); working copies kept on disk, excluded via <code>.git/info/exclude</code>. Not used by any rendered workshop. - <strong>Prose typos fixed:</strong> README “distibrutions”→“distributions”; <code>rl_concepts.qmd</code> “recieve a outcome”→ “receive an outcome”; both papers “Subseuqently”→“Subsequently”, “practially”→“practically” (+ dropped a redundant “practically”). - Author <strong>approved</strong> WS1–WS9 learning objectives and Table 1/2 framing; <code>Sohail2026</code> preprint DOI accepted as-is. TASK.md updated throughout.</p>
+<p><strong>Findings</strong> - nature.csl (psyarxiv) <strong>doubles the DOI</strong> only for journal <code>@article</code>s lacking <em>both</em> volume and pages (it puts the DOI-as-URL in the empty locator slot AND appends <code>doi:</code>). Articles with full vol/pages get their DOI <em>hidden</em>; <code>@misc</code>/<code>@Manual</code> with a DOI render a single clean <code>doi:</code>. So the fix is to give page-less entries proper data or a non-article type — not to remove DOIs. - CRAN packages get DOIs of the form <code>10.32614/cran.package.&lt;pkg&gt;</code> (confirmed for rstan; RStudio IDE 404s — it’s not a CRAN package). - CONTRIBUTING.md is already committed/tracked (commit <code>ddb4931</code>), so R1.1 was already complete.</p>
+<p><strong>Decisions</strong> - Kept BibTeX <strong>keys stable</strong> on retypes/year-changes (Baribault2023 key retained despite 2025 pub; loo/renv/Sohail2026 keys unchanged) so in-text <code>@key</code> citations don’t break — same convention as Pan2022. - WS11 untracked <strong>non-destructively</strong> (<code>--cached</code>, kept on disk) rather than deleted — it’s the draft seed for a future WS11. - Added Marr’s MIT Press reissue DOI to the 1982-dated entry (common practice; flagged for author veto).</p>
+<p><strong>Open / next</strong> - Only remaining <em>content</em> reviewer tasks: <strong>R2.3</strong> (Normal-vs-Beta prior images + decision) and <strong>R2.7</strong> (real rank plots) — both have inline <code>&lt;!-- TODO --&gt;</code> markers. <strong>R1.3</strong> blocked (editor query). - Everything this session (sessions 3–4) is <strong>uncommitted</strong> on <code>reviewer-responses</code>, incl.&nbsp;the staged WS11 deletion. Not merged to <code>main</code>, not pushed, site not re-rendered/published.</p>
+<hr>
+</section>
+<section id="reviewer-response-session-5-r2.3-r2.7-r1.3-renv-response.md" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-response-session-5-r2.3-r2.7-r1.3-renv-response.md">2026-06-14 — Reviewer-response session 5 (R2.3, R2.7, R1.3, renv, RESPONSE.md)</h2>
+<p><strong>Done — ALL content reviewer tasks now closed.</strong> - <strong>R2.3 — truncated Normal vs Beta prior</strong> added to <code>06.reinforcement_learning/qmd/hierarchical_modeling.qmd</code>. Rewrote the “Setting priors” callout (fixed leftover <code>X parameter</code>/<code>Normal(0,1)</code> placeholders → learning rate α + truncated-Normal/Beta framing). Embedded two-panel figure <code>images/06.reinforcement_learning/hrch/prior_normal_vs_beta.png</code> (truncated Normal(0.5,0.5) renormalized vs <strong>Beta(2,5)</strong>, both on [0,1], x-axis “Learning rate (α)” with α as symbol, skyblue fill, bayesplot::theme_default, patchwork) + “could have used Beta if…” paragraph. Author-approved: Beta(2,5) (mean≈0.29, mode 0.20, skewed-low), evidence-informed framing. Caught + fixed a self-inflicted R2.9 slip (my draft said “encoding a belief” → changed to “encoding <strong>an assumption</strong>”, ~line 209). - <strong>R2.7 — real rank plot</strong> in <code>02.binomial_globe/qmd/stan_binomial.qmd</code>. Refit globe model, ran <code>mcmc_rank_ecdf(fit_globe, pars="theta", prob=0.99, plot_diff=TRUE)</code>, <strong>recoloured to stan_trace’s pastel palette</strong> <code>c("#FDB4B0","#B5D087","#63D8DB","#DABAFB")</code> via <code>scale_colour_manual</code> so trace+rank plots pair visually (author choice). Saved <code>images/02.binomial_globe/stan/mcmc_rank_ecdf.png</code>, embedded in the rank callout + plain-English interpretation (de-jargoned at user request). Wired generation into BOTH scripts: <code>binomial_globe_main_master.R</code> (saves to <code>_plots/</code>) and <code>binomial_globe_main.R</code> (display) — with the recolour in the displayed code block too, so shown code reproduces the figure exactly. - <strong>renv gap</strong> — <code>bayesplot</code> was missing from <code>renv.lock</code>. Root cause: <code>.qmd</code> plain <code>```r</code> fences aren’t scanned by renv. Recorded <code>bayesplot 1.15.0</code> + deps <code>ggridges 0.5.7</code>, <code>tidyr 1.3.1</code>, <code>cpp11 0.5.1</code> pinned to <strong>project-library</strong> versions (renv::record grabs CRAN-latest by default — read DESCRIPTION from lib + recorded exact). Added <code>library(bayesplot)</code> to scanned <code>_scripts/*.R</code> for durable detection. <code>renv::status()</code> → “No issues found.” S7 flagged-missing = false positive (locked ggplot2 3.5.1 predates it). - <strong>R1.3</strong> — editor responded (incomplete items must be completed OR removed). Removed WIP <em>listings</em>: <code>10.model_based</code>/<code>11.delay_discounting</code> “WIP|WIP” rows + stale footnote + orphaned <code>05</code> asterisk from <code>course_overview.qmd</code>; same two rows from <code>README.md</code>. WS10 model-based fMRI kept as live bonus workshop. Papers untouched (cover only WS1–9). Confirmed WS5 IS live in the sidebar. - <strong><code>RESPONSE.md</code> drafted</strong> (untracked, repo root) — GitHub-ready reviewer response. Intro thanks both reviewers; grouped by reviewer, each comment quoted verbatim + <code>&gt;</code> response. Final cross-check verified: both papers say “Contributors section of the repository README” (no “CONTRIBUTING page”/“contributors page” residue); R2.9 “assumption” landed; WS1 callout has 4 links. - <strong>JOSE DOI reference-check</strong> — verified all 25 flagged DOI issues resolved (19 added + 6 superseded by published DOIs) against the session-3/4 DOI pass.</p>
+<p><strong>Findings</strong> - renv only scans <code>```{r}</code> knitr chunks and <code>.R</code> files — NOT plain <code>```r</code> display fences. Put a <code>library(pkg)</code> in a tracked <code>.R</code> script to make a package durably detectable. - rstan attaches ggplot2, so <code>mcmc_rank_ecdf(...) + scale_colour_manual(...)</code> resolves in the displayed code without an explicit <code>library(ggplot2)</code>.</p>
+<p><strong>Decisions</strong> - Beta(2,5) chosen as the alt prior (author-approved): bounded [0,1], right-skewed toward low learning rates. - Rank plot recoloured to match trace palette rather than bayesplot default blue (visual pairing). - WIP rows removed (not workshops) — WS10 stays live as a finished bonus.</p>
+<p><strong>Open / next</strong> - <strong>No content tasks remain.</strong> Pending: (1) fill reviewer handles in <code>RESPONSE.md</code> — confirm <code>@DrCatHicks</code> vs <code>@CatHicks</code> for R1, get R2’s handle (placeholder line ~144); (2) commit → merge <code>reviewer-responses</code> → <code>main</code> → push → <code>quarto publish gh-pages</code> (outward-facing, confirm) — do this BEFORE posting the letter; (3) R1.3 fully closed but the editor thread may want a reply.</p>
+<hr>
+</section>
+<section id="reviewer-response-session-6-commit-mit-note-response.md-verify-finalise" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-response-session-6-commit-mit-note-response.md-verify-finalise">2026-06-15 — Reviewer-response session 6 (commit, MIT note, RESPONSE.md verify + finalise)</h2>
+<p><strong>Done</strong> - <strong>Committed</strong> all sessions 3–5 reviewer-response work → <code>9373a5d</code> on <code>reviewer-responses</code>. Staged real changes with <code>git add -A</code>, then <code>git restore --staged</code> on <code>compare_models.Rproj</code> (line-ending noise) and later <code>git restore</code> to discard it entirely. <code>RESPONSE.md</code> + <code>binomial_model_files/</code> (render artifact) added to <code>.git/info/exclude</code> so <code>git add -A</code> doesn’t grab them. Working tree clean post-commit. - <strong>MIT note added to BOTH papers</strong> (<code>paper.md:104</code>, <code>paper_psyarxiv.md:148</code>) — appended “…while the accompanying code (the R scripts and Stan models) is released under the MIT License.” to the CC BY-SA sentence in Future Directions. R1.2 paper-side follow-up (README already had the dual-license note; the papers only mentioned CC). <strong>PDFs NOT rebuilt → stale.</strong> - <strong>Verified RESPONSE.md</strong> against the actual repo — all 19 claims (10 <span class="citation" data-cites="DrCatHicks">@DrCatHicks</span> + 9 <span class="citation" data-cites="aloctavodia">@aloctavodia</span>) accurate. Located R2.2’s edit in <code>hierarchical_modeling.qmd:196</code> (not mcmc.qmd). Confirmed R2.1 figure reorder + <code>marginal_distribution.png</code>; R2.5/R2.6/R2.7 in stan_binomial.qmd; R2.8 in model_comparison.qmd; R2.9 remaining “belief” uses are RL-agent (out of scope). DOI count = 49 lines each bib, identical. - <strong>RESPONSE.md reorganised</strong> (formatting only, words verbatim): one clean paragraph/blockquote per item, reviewer grouping + numbering preserved, trailing whitespace stripped. - <strong>R2.8 response reworded</strong> (it overstated): now “removed WAIC as the criterion taught… retaining only a brief callout that contrasts the AIC, DIC and BIC information criteria for context” — matches the page. - User then made their own RESPONSE.md edits and confirmed happy. Handles now <code>@DrCatHicks</code> / <code>@aloctavodia</code>.</p>
+<p><strong>Findings</strong> - <code>git add -A</code> honours <code>.git/info/exclude</code> for untracked files, so excluding <code>RESPONSE.md</code> there keeps it out of staging without a <code>.gitignore</code> entry (the rule itself also stays local — better than <code>.gitignore</code>). - Dual-license rationale (recorded): MIT-only loses ShareAlike (which the author wants for content); CC-only is discouraged by Creative Commons for code. So keep CC BY-SA (content) + MIT (code).</p>
+<p><strong>Decisions</strong> - <code>RESPONSE.md</code> lives in <code>.git/info/exclude</code>, NOT <code>.gitignore</code> (consistent with other working files; never pushed). - Kept RESPONSE.md wording verbatim (incl.&nbsp;user-known typos) per “don’t change the text”; only reorganised structure + reworded R2.8 on request.</p>
+<p><strong>Open / next</strong> - Rebuild both PDFs (MIT note) + commit. Then merge <code>reviewer-responses</code> → <code>main</code> → push → publish — <strong>user does NOT want to push yet</strong>, do only on request. Post <code>RESPONSE.md</code> AFTER publish.</p>
+</section>
+<section id="reviewer-response-session-7-single-mit-relicense-affiliationsprose-2-commits" class="level2">
+<h2 class="anchored" data-anchor-id="reviewer-response-session-7-single-mit-relicense-affiliationsprose-2-commits">2026-06-16 — Reviewer-response session 7 (single-MIT relicense, affiliations/prose, 2 commits)</h2>
+<p><strong>Done</strong> - <strong>Mirrored 6 prose edits paper.md → paper_psyarxiv.md</strong> (user had made them in paper.md only): Summary “audience”→“users” + “hierarchical modeling”→“hierarchical structures”; SoN “exponentially increasing”→“increasing”; dev-story “Lei”→“(L.Z.)” ×3 + “To this end,”; delivery paragraph (dropped “(Tables 1 and 2)” + conceptual/practical sentences, “preferred”→“advantageous… but not necessary” + “may be instructed by those experienced…”); Table 1/2 captions shortened. Preserved psyarxiv British spelling (“behaviour”). - <strong>Affiliations:</strong> user overhauled in paper.md (L.Z. 1–6 incl.&nbsp;Vienna + UKE Hamburg; A.S. 1–3 incl.&nbsp;Centre for Developmental Science; B15 2TT). Already mirrored to psyarxiv header-includes. - <strong>Rebuilt both PDFs + verified:</strong> <code>paper.pdf</code> via inara Docker (daemon was off → <code>open -a Docker</code>, waited ~5s), <code>paper_psyarxiv.pdf</code> via <code>quarto pandoc … --citeproc</code>. Verified visually with gs <code>png16m</code> (white bg). - <strong>License DUAL → single MIT</strong> (user decision): <code>LICENSE</code> CC BY-SA→MIT; deleted <code>LICENSE-MIT</code>; rewrote README + <code>index.qmd</code> License sections (dropped cc_by_sa.png badge); both papers’ Future Directions sentence → single MIT. Updated RESPONSE.md R1.2 + docs/reviewer_responses.md R1.2. - <strong>RESPONSE.md:</strong> added <code>*Files changed:*</code> line to all 19 responses (paths verified). User then live-edited it. - <strong>Two commits</strong> on <code>reviewer-responses</code>: <code>ead8e36</code> (relicense, 4 files — amended once after a <code>git add</code> pathspec abort) + <code>d1bdcb5</code> (affiliations/prose/PDFs, 4 files). Working tree clean.</p>
+<p><strong>Findings</strong> - In-text <code>(Y. Pan / M. D. Lee)</code> initials = standard APA given-name disambiguation (Pan &amp; Lee surname collisions), ONLY in JOSE apa <code>paper.pdf</code>; psyarxiv <code>nature.csl</code> is numeric so unaffected. Removal needs a custom apa.csl, but JOSE CI (<code>draft-pdf.yml</code>) rebuilds with stock apa.csl on push → would re-add. <strong>User chose to KEEP them.</strong> - <code>git add &lt;path&gt;</code> aborts the whole command (stages nothing) if ANY pathspec doesn’t match — caused commit <code>ead8e36</code> to first capture only the pre-staged <code>LICENSE-MIT</code> deletion; fixed by re-adding + <code>--amend</code>. - Workshop folders: 11 on disk ≠ 9 workshops. 04/05 = regression SUPPORT folders (no qmd pages; WS5 <code>cd</code>s into 04 + pulls <code>images/04.*</code>); 10 = live sidebar BONUS; 11 = untracked draft (0 tracked files). Committed = 10 folders (01–10). - gs <code>pngalpha</code> renders this PDF with a near-black background; use <code>-sDEVICE=png16m</code> for a white bg.</p>
+<p><strong>Decisions</strong> - Single <strong>MIT</strong> for the whole repo (OSI approves only software licenses → CC BY-SA can’t be the single license; MIT over Apache-2.0/GPL-3.0 for simplicity + adoption). ShareAlike/copyleft intentionally dropped. - Keep APA initials (no CSL change). Leave workshop numbering as-is (renumbering breaks hard-wired <code>/04.*</code> + image paths). - cc_by_sa.png left on disk (orphaned) rather than deleting a committed binary without explicit ask.</p>
+<p><strong>Open / next</strong> - Housekeeping only (all outward-facing, user say-so): merge <code>reviewer-responses</code> → <code>main</code>; push + <code>quarto publish   gh-pages</code> (needed for <code>index.qmd</code> to show live); post <code>RESPONSE.md</code> AFTER publish. Branch not pushed/merged yet.</p>
 
 
 </section>
 </section>
 
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>Marr, D. (1982). Vision: A computational investigation into the human representation and processing of visual information. San Francisco: W. H. Freeman.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Adapted from Jan Gläscher’s workshop on cognitive modeling.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section></div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -1125,18 +930,6 @@ Querying packages
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Welcome to BayesCog!">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Welcome to BayesCog!</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./workshops/01.R_basics/qmd/intro.html" class="pagination-link" aria-label="Workshop 1: Overview">
-        <span class="nav-page-text">Workshop 1: Overview</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">

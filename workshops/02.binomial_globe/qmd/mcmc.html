@@ -680,8 +680,8 @@ The Metropolis algorithm
 </section>
 <section id="multiple-chains-convergence-and-hamiltonian-monte-carlo" class="level2">
 <h2 class="anchored" data-anchor-id="multiple-chains-convergence-and-hamiltonian-monte-carlo">Multiple chains, convergence and Hamiltonian Monte Carlo</h2>
-<p>An analogy of MCMC would be trying to find the highest mountain in a huge mountain range in complete darkness. However. instead of sending just one explorer who might get stuck in the wrong place or miss the highest peak entirely, we send multiple explorers starting from different random locations. <strong>Each explorer’s path is what we call a “chain” in MCMC.</strong></p>
-<p>If all our explorers eventually find their way to the same region and report similar findings about the landscape, we can be more confident they’ve found what we’re looking for. This is why we run multiple MCMC chains - if they all converge to sampling from the same distribution, it suggests we’re getting reliable results.</p>
+<p>An analogy for MCMC would be trying to map out an entire mountain range - its valleys, ridges and peaks - in complete darkness. Importantly, our goal here is to chart the whole landscape, spending more time in the regions that are higher (i.e., more probable). Instead of sending just one explorer who might get stuck in one area or miss whole parts of the range, we send multiple explorers starting from different random locations. <strong>Each explorer’s path is what we call a “chain” in MCMC.</strong></p>
+<p>If all our explorers eventually wander across the same regions and report similar findings about the landscape, we can be more confident they’ve explored it reliably. This is why we run multiple MCMC chains - if they all converge to sampling from the same distribution, it suggests we’re getting reliable results.</p>
 <p>However, traditional MCMC methods like Metropolis, Metropolis-Hastings and Gibb’s sampling aren’t very efficient in this manner. This is where a more sophisticated method called Hamiltonian Monte Carlo (HMC) comes in. Instead of random wandering, HMC’s exploration is guided by the properties of the terrain. By using information - specifically about the gradient (the slope) of our probability distribution - <strong>HMC can make much more efficient proposals about where to move next.</strong></p>
 <p>This is the MCMC method used by the Stan programming language, one of the most popular modern approaches for statistical modeling. Stan actually uses an even more advanced version called the No-U-Turn Sampler (NUTS).</p>
 
@@ -1116,7 +1116,7 @@ The Metropolis algorithm
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Zhang &amp; Sohail, 2025</p>
+<p>© Zhang &amp; Sohail, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

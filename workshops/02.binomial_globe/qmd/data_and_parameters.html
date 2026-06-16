@@ -455,7 +455,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/02.binomial_globe/qmd/intro.html">Workshop 3: Building simple models conceptually</a></li><li class="breadcrumb-item"><a href="../../../workshops/02.binomial_globe/qmd/data_and_parameters.html">Linking data to parameters</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">Linking data to parameters</h1>
-<p class="subtitle lead">Understanding how Bayesian inference allows us to update our beliefs with data</p>
+<p class="subtitle lead">Understanding how Bayesian inference allows us to update our knowledge with data</p>
 </div>
 
 
@@ -494,13 +494,13 @@ window.Quarto = {
 <li><strong>Marginal probability:</strong> likelihood of one event regardless of others - <span class="math inline">\(P(A)\)</span></li>
 <li><strong>Conditional probability:</strong> likelihood of one event given another has occurred - <span class="math inline">\(P(A|B)\)</span></li>
 </ul>
-<p>And finally, we learned about Bayes’ theorem, a formula which allows us to update our beliefs based on new evidence in a probabilistic manner:</p>
+<p>And finally, we learned about Bayes’ theorem, a formula which allows us to update our knowledge based on new evidence in a probabilistic manner:</p>
 <p><span class="math display">\[p(A|B) = \frac{p(B|A)p(A)}{p(B)}\]</span></p>
 <p>Where:</p>
 <ul>
-<li><span class="math inline">\(p(A|B)\)</span> is the <strong>posterior probability</strong> - our updated belief about <span class="math inline">\(A\)</span> after observing evidence <span class="math inline">\(B\)</span></li>
+<li><span class="math inline">\(p(A|B)\)</span> is the <strong>posterior probability</strong> - our updated knowledge about <span class="math inline">\(A\)</span> after observing evidence <span class="math inline">\(B\)</span></li>
 <li><span class="math inline">\(p(B|A)\)</span> is the <strong>likelihood</strong> - probability of observing evidence <span class="math inline">\(B\)</span> if hypothesis <span class="math inline">\(A\)</span> is true</li>
-<li><span class="math inline">\(p(A)\)</span> is the <strong>prior probability</strong> - our initial belief about <span class="math inline">\(A\)</span> before seeing any evidence</li>
+<li><span class="math inline">\(p(A)\)</span> is the <strong>prior probability</strong> - our initial knowledge about <span class="math inline">\(A\)</span> before seeing any evidence</li>
 <li><span class="math inline">\(p(B)\)</span> is the <strong>marginal likelihood</strong> - total probability of observing evidence <span class="math inline">\(B\)</span></li>
 </ul>
 <p>Or, more intuitively:</p>
@@ -617,22 +617,22 @@ Still confused?
 </section>
 <section id="priors" class="level2">
 <h2 class="anchored" data-anchor-id="priors">Priors</h2>
-<p>Remember the purpose of Bayesian analysis concerns updating our initial beliefs in light of data.</p>
+<p>Remember the purpose of Bayesian analysis concerns updating our initial knowledge in light of data.</p>
 <center>
-<span class="math inline">\(\Large\text{initial belief}\)</span> <span class="math inline">\(\Large\xrightarrow{\text{Bayes' rule + data}}\)</span> <span class="math inline">\(\Large\text{new beliefs}\)</span>
+<span class="math inline">\(\Large\text{initial knowledge}\)</span> <span class="math inline">\(\Large\xrightarrow{\text{Bayes' rule + data}}\)</span> <span class="math inline">\(\Large\text{updated knowledge}\)</span>
 </center>
 <div style="height: 20px;">
 
 </div>
-<p>Therefore, we need an initial belief to begin with!</p>
-<p>A ‘prior’ - <span class="math inline">\(p(\theta)\)</span> - represents our beliefs about parameters before seeing any data. <strong>These beliefs can come from previous research, expert knowledge, or logical constraints about what values are possible.</strong></p>
+<p>Therefore, we need some initial knowledge to begin with!</p>
+<p>A ‘prior’ - <span class="math inline">\(p(\theta)\)</span> - represents our assumptions about parameters before seeing any data. <strong>These assumptions can come from previous research, expert knowledge, or logical constraints about what values are possible.</strong></p>
 <p>There are two different interpretations of parameter probability distributions when considering a prior<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>:</p>
 <ol type="1">
 <li>The subjective <strong>state of knowledge interpretation,</strong> where we use a probability distribution to represent our uncertainty over a parameter’s true value.</li>
 <li>The more objective <strong>population interpretation,</strong> where the parameter’s value varies between different samples we take from a population distribution.</li>
 </ol>
 <p>In the state of knowledge viewpoint, the prior probability distribution represents our pre-data uncertainty for a parameter’s true value. For example, imagine that a doctor gives their probability that an individual has a particular disease before the results of a blood test become available. Using their knowledge of the patient’s history, and their expertise on the particular condition, they could assign a prior disease probability of 75%.</p>
-<p>Alternatively, we could use the proportion of the UK population that has this disease as a prior. In this case, the prior is continuous and represents our beliefs for the prevalence.</p>
+<p>Alternatively, we could use the proportion of the UK population that has this disease as a prior. In this case, the prior is continuous and represents our prior knowledge of the prevalence.</p>
 <p>The choice of prior should be ultimately guided by several factors including:</p>
 <ul>
 <li>Available previous knowledge (e.g., from previous studies)</li>
@@ -1168,7 +1168,7 @@ Sampling and proportionality
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Zhang &amp; Sohail, 2025</p>
+<p>© Zhang &amp; Sohail, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;

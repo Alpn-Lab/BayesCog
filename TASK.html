@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Model comparison – BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science</title>
+<title>task – BayesCog - Bayesian statistics and hierarchical Bayesian modeling for psychological science</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,24 +23,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../../">
-<link href="../../../workshops/08.compare_models/qmd/model_comparison.html" rel="next">
-<link href="../../../workshops/07.optm_rl/qmd/optim.html" rel="prev">
-<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../../site_libs/bootstrap/bootstrap-0224bdd51591b0a31db3e9ad7e31eb12.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-0224bdd51591b0a31db3e9ad7e31eb12.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,8 +68,37 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="../../../styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-sidebar docked quarto-light">
@@ -83,7 +110,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/08.compare_models/qmd/intro.html">Workshop 8: Model comparison</a></li><li class="breadcrumb-item"><a href="../../../workshops/08.compare_models/qmd/intro.html">Workshop 8: Overview</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -97,8 +124,8 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-center sidebar-header">
-      <a href="../../../index.html" class="sidebar-logo-link">
-      <img src="../../../images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <a href="./index.html" class="sidebar-logo-link">
+      <img src="./images/alpn_logo_with_text.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
       </a>
       <div class="sidebar-tools-main tools-wide">
     <a href="https://alpn-lab.github.io" title="ALPN Lab Website" class="quarto-navigation-tool px-1" aria-label="ALPN Lab Website"><i class="bi bi-globe"></i></a>
@@ -115,13 +142,13 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../index.html" class="sidebar-item-text sidebar-link">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome to BayesCog!</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../course_overview.html" class="sidebar-item-text sidebar-link">
+  <a href="./course_overview.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Course overview</span></a>
   </div>
 </li>
@@ -136,19 +163,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/01.R_basics/qmd/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 1: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/01.R_basics/qmd/introduction_to_r.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to R/RStudio</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/01.R_basics/qmd/working_with_data.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Working with data in R</span></a>
   </div>
 </li>
@@ -165,13 +192,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/01.R_basics/qmd/intro_probability.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 2: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/01.R_basics/qmd/probability.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Probability and Bayes’ theorem</span></a>
   </div>
 </li>
@@ -188,25 +215,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/02.binomial_globe/qmd/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 3: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/02.binomial_globe/qmd/data_and_parameters.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Linking data to parameters</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/02.binomial_globe/qmd/binomial_model.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">The globe-tossing experiment</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/02.binomial_globe/qmd/mcmc.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Markov chain Monte Carlo</span></a>
   </div>
 </li>
@@ -223,13 +250,13 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/02.binomial_globe/qmd/stan_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 4: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/02.binomial_globe/qmd/stan_binomial.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Building models in Stan</span></a>
   </div>
 </li>
@@ -246,19 +273,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/03.bernoulli_coin/qmd/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 5: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/03.bernoulli_coin/qmd/stan_notes.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Technical notes on Stan</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/03.bernoulli_coin/qmd/bernoulli_and_regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Bernoulli and linear regression models</span></a>
   </div>
 </li>
@@ -275,19 +302,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/06.reinforcement_learning/qmd/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 6: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/06.reinforcement_learning/qmd/rl_concepts.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Fundamentals of cognitive modeling and reinforcement learning</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/06.reinforcement_learning/qmd/rl_stan.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Implementing the Rescorla-Wagner model in Stan</span></a>
   </div>
 </li>
@@ -304,19 +331,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/06.reinforcement_learning/qmd/hrch_rl_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 7: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/06.reinforcement_learning/qmd/hierarchical_modeling.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Hierarchical Bayesian models</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/07.optm_rl/qmd/optim.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reparameterization and optimizing Stan code</span></a>
   </div>
 </li>
@@ -324,22 +351,22 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
  <span class="menu-text">Workshop 8: Model comparison</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./workshops/08.compare_models/qmd/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 8: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/08.compare_models/qmd/model_comparison.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Model comparison</span></a>
   </div>
 </li>
@@ -356,19 +383,19 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/09.debugging/qmd/intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Workshop 9: Overview</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/09.debugging/qmd/debugging.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Debugging in Stan</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/09.debugging/qmd/workflow.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">A principled modeling workflow</span></a>
   </div>
 </li>
@@ -385,7 +412,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
+  <a href="./workshops/10.model_based/qmd/model_fmri.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to model-based fMRI</span></a>
   </div>
 </li>
@@ -393,13 +420,13 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../conclusion.html" class="sidebar-item-text sidebar-link">
+  <a href="./conclusion.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Acknowledgements</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../../resources.html" class="sidebar-item-text sidebar-link">
+  <a href="./resources.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Resources</span></a>
   </div>
 </li>
@@ -408,57 +435,129 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#task.md-bayescog" id="toc-task.md-bayescog" class="nav-link active" data-scroll-target="#task.md-bayescog">TASK.md — BayesCog</a>
+  <ul class="collapse">
+  <li><a href="#phase-a-core-course-content-workshops-19" id="toc-phase-a-core-course-content-workshops-19" class="nav-link" data-scroll-target="#phase-a-core-course-content-workshops-19">Phase A — Core course content (Workshops 1–9)</a></li>
+  <li><a href="#phase-b-manuscript-publication" id="toc-phase-b-manuscript-publication" class="nav-link" data-scroll-target="#phase-b-manuscript-publication">Phase B — Manuscript / publication</a>
+  <ul class="collapse">
+  <li><a href="#reviewer-response-progress" id="toc-reviewer-response-progress" class="nav-link" data-scroll-target="#reviewer-response-progress">Reviewer response progress</a></li>
+  <li><a href="#author-review-needed" id="toc-author-review-needed" class="nav-link" data-scroll-target="#author-review-needed">Author review needed</a></li>
+  <li><a href="#new-content-todos-raised-this-session-tie-into-reviewer-items" id="toc-new-content-todos-raised-this-session-tie-into-reviewer-items" class="nav-link" data-scroll-target="#new-content-todos-raised-this-session-tie-into-reviewer-items">New content TODOs (raised this session, tie into reviewer items)</a></li>
+  </ul></li>
+  <li><a href="#phase-c-work-in-progress-workshops" id="toc-phase-c-work-in-progress-workshops" class="nav-link" data-scroll-target="#phase-c-work-in-progress-workshops">Phase C — Work-in-progress workshops</a></li>
+  <li><a href="#phase-d-repository-housekeeping" id="toc-phase-d-repository-housekeeping" class="nav-link" data-scroll-target="#phase-d-repository-housekeeping">Phase D — Repository housekeeping</a></li>
+  <li><a href="#phase-e-claude-infrastructure-this-setup-session" id="toc-phase-e-claude-infrastructure-this-setup-session" class="nav-link" data-scroll-target="#phase-e-claude-infrastructure-this-setup-session">Phase E — Claude infrastructure (this setup session)</a></li>
+  <li><a href="#backlog-future-enhancements-from-paper-future-directions" id="toc-backlog-future-enhancements-from-paper-future-directions" class="nav-link" data-scroll-target="#backlog-future-enhancements-from-paper-future-directions">Backlog / future enhancements (from paper “Future Directions”)</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../../workshops/08.compare_models/qmd/intro.html">Workshop 8: Model comparison</a></li><li class="breadcrumb-item"><a href="../../../workshops/08.compare_models/qmd/intro.html">Workshop 8: Overview</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Model comparison</h1>
-<p class="subtitle lead">Objectively assessing and comparing cognitive models</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p><strong>Welcome to the eighth workshop of the BayesCog course!</strong></p>
-<p>In our previous workshop, we explored how to optimize Stan models through reparameterization and by changing the values of Stan’s sampling parameters. We learned that while all models are approximations, we can make them more efficient and reliable through proper optimization techniques. We then ran different variants of the hierarchical RL model, and could observe that - in terms of sampling - the optimized version performed better than the un-optimized version.</p>
-<p>Indeed, when developing cognitive models more generally, we will need to objectively compare them to see which is a more suitable candidate. <strong>But how do we choose between different candidate models?</strong></p>
-<p>In this workshop, we’ll explore various approaches to model comparison, with a particular focus on Pareto-smoothed importance sampling leave-one-out cross-validation (PSIS-LOO-CV). We will also examine our models by performing posterior predictive checks, an important tool for model validation. We’ll see how these tools can help us make more informed decisions about selecting which models best describe the latent cognitive processes we are ultimately interested in.</p>
-<p>By the end of this workshop, you will be able to:</p>
+<section id="task.md-bayescog" class="level1">
+<h1>TASK.md — BayesCog</h1>
+<p>Task tracker. Status: ✅ done · 🔄 in progress · ⬜ planned · ❌ blocked. Last reviewed: 2026-06-16 (reviewer-response session 7).</p>
+<blockquote class="blockquote">
+<p><strong>Session 7 status:</strong> ALL content reviewer tasks done; everything COMMITTED, working tree clean. New commits <code>ead8e36</code> (single-MIT relicense) + <code>d1bdcb5</code> (affiliations + paper prose + rebuilt PDFs) on <code>reviewer-responses</code> (after <code>7d73cc7</code> MIT note). License is now <strong>single MIT</strong> (dropped dual CC BY-SA + MIT). Both PDFs rebuilt + verified. RESPONSE.md gained a <code>*Files changed:*</code> line per response (user then live-edited it). APA initials KEPT (user choice). Workshop folders left as-is (10 tracked, 01–10; 11 untracked draft). <strong>Remaining work (housekeeping, all outward-facing, on user request):</strong> (a) merge <code>reviewer-responses</code> → <code>main</code>; (b) push → <code>quarto publish gh-pages</code>; (c) post <code>RESPONSE.md</code>, AFTER publish.</p>
+</blockquote>
+<hr>
+<section id="phase-a-core-course-content-workshops-19" class="level2">
+<h2 class="anchored" data-anchor-id="phase-a-core-course-content-workshops-19">Phase A — Core course content (Workshops 1–9)</h2>
 <ul>
-<li>Explain the trade-off between goodness of fit and generalizability</li>
-<li>Compare competing reinforcement learning models using PSIS-LOO-CV with the <code>loo</code> package</li>
-<li>Validate and falsify models using posterior predictive checks</li>
+<li>✅ Workshops 01–09 authored, rendered, and live on the website</li>
+<li>✅ Stan models + R driver scripts (student + master versions) for WS 1–9</li>
+<li>✅ Pre-rendered figures in <code>_plots/</code> and <code>images/</code></li>
+<li>✅ <code>renv</code> environment + Docker image (<code>sohamir/bayescog</code>) for reproducible setup</li>
 </ul>
-<div class="callout callout-style-default callout-note callout-titled" title="Working directory for this workshop">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Working directory for this workshop
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Model code and <code>R</code> scripts for this workshop are located in the (<code>/workshops/08.compare_models</code>) directory. Remember to use the <code>R.proj</code> file within each folder to avoid manually setting directories!</p>
-</div>
-</div>
+</section>
+<section id="phase-b-manuscript-publication" class="level2">
+<h2 class="anchored" data-anchor-id="phase-b-manuscript-publication">Phase B — Manuscript / publication</h2>
+<ul>
+<li>✅ <code>paper.md</code> drafted (JOSE-style educational software paper)</li>
+<li>✅ <code>paper_psyarxiv.md</code> preprint variant + PsyArXiv DOI (10.31234/osf.io/ua5ng_v1)</li>
+<li>✅ Zenodo DOI for v1.1; citation updated in README</li>
+<li>✅ Draft-PDF GitHub Action building <code>paper.pdf</code> on changes</li>
+<li>🔄 Keep <code>paper.md</code> and <code>paper_psyarxiv.md</code> (+ their <code>.bib</code>) in sync on any manuscript edit</li>
+<li>🔄 <strong>Paper is currently under peer review</strong> — expect reviewer-response work; mirror any revisions across both manuscript variants</li>
+<li>🔄 <strong>Reviewer comments received (2 reviewers, 18 items)</strong> — tracked in <code>docs/reviewer_responses.md</code>.</li>
+</ul>
+<section id="reviewer-response-progress" class="level3">
+<h3 class="anchored" data-anchor-id="reviewer-response-progress">Reviewer response progress</h3>
+<ul>
+<li>✅ Done: R2.1 (prob figures), R2.2 (unconstrained sampling note), R2.4 (mountain analogy), R2.5 (ESS wording), R2.6 (R-hat naming + Vehtari 2021), R2.7 (rank-plot note), R2.9 (“belief” reword), R2.8 (full WAIC→PSIS-LOO-CV switch in WS8), R1.8 (functional learning objectives, all 9 intros), R1.9 (CONTIBUTORS→CONTRIBUTING typo, both papers), R1.2 (<strong>single MIT</strong> relicense — session 7, see Phase D; was dual CC BY-SA + MIT), R1.4/R1.6 (usage paragraph + Table 1 conceptual / Table 2 practical + author development story, both papers), R1.7 (DOI pass — 44 CrossRef-verified DOIs in both bibs; bibs synced + keys harmonized) — see detail below</li>
+<li>✅ R1.5 (R-Basics pacing/prereqs) — <strong>Done (2026-06-14).</strong> WS1 intro now has a callout (“Keep learning R beyond this workshop”) noting R can’t be covered in one session + 4 free resource links (R4DS, HOPR, swirl, CRAN <em>Intro to R</em>). Both papers gained a sentence in the delivery paragraph telling instructors they may adapt/expand the R-basics portion for programming-naive audiences. “No prior programming experience” line already present.</li>
+<li>✅ R1.1 — README <strong>Getting help</strong> section added; <code>CONTRIBUTING.md</code> committed &amp; git-tracked (verified 2026-06-14). Complete.</li>
+<li>✅ R1.7 — DOI pass done (2026-06-14): <strong>added 41 CrossRef-verified DOIs to both bibs</strong> (each now has 42 doi lines incl.&nbsp;the pre-existing Zenodo entry). Every DOI cross-checked via the CrossRef API by title+author+year; <strong>published journal DOIs preferred over preprints</strong> (Baribault, Eckstein, Guest, Lockwood, Rocca, Wilson, Zhang2020). Books → monograph DOIs (Wickham = 2016 <em>2nd</em> ed, McElreath = 2018 <em>1st</em> ed); <code>loo</code>/<code>renv</code> → CRAN package DOIs; Lin2026 → published <em>Patterns</em> DOI; Sohail2026 → PsyArXiv preprint DOI (versioned <code>_v1</code> — swap for journal DOI once published). <strong>Left without a DOI (none reliably exists):</strong> Plummer2003 (DSC 2003 proceedings), Rescorla1972 (1972 book chapter), NivLab2021/OReilly2015 (web), RStudio2020/StanTeam2024 (software). <strong>Follow-ups resolved (2026-06-14):</strong> Chang2020 → DartBrains Zenodo concept DOI <code>10.5281/zenodo.3909717</code> (+ clean author list, “Brietzke, Sasha” per Zenodo); Pan2022 → replaced with the published version (Pan et al.&nbsp;2025, <em>AMPPS</em> 8(1), <code>10.1177/25152459241298700</code>; key kept as <code>Pan2022</code> so in-text refs still resolve). Both bibs now carry <strong>44 DOIs each</strong>. <strong>Formatting sync done:</strong> propagated psyarxiv.bib’s author/journal cleanups (initials, Gläscher umlaut, journal title-casing, publisher fixes) into <code>paper.bib</code> — the two bibs are now formatting-identical on all shared keys. <strong>Key harmonization done (2026-06-14):</strong> renamed paper.bib’s MRI-on-BEAR <code>Sohail2025c</code> → <code>Sohail2025b</code> (+ updated the acknowledgments citation in paper.md) and matched its formatting — the two bibs are now <strong>fully identical on every shared key</strong> (51 entries each). <strong>Render note:</strong> nature.csl (psyarxiv) hides DOIs for journal articles with full page info; JOSE/inara style displays them. DOIs are stored regardless of style.</li>
+<li>✅ <strong>R1.7 follow-up — reference-formatting cleanup (2026-06-14, session 4):</strong> fixed reviewer-flagged reference issues in BOTH bibs (kept identical). (1) <strong>Plummer2003</strong> — removed bogus “and others” (JAGS 2003 is single-author Martyn Plummer); added booktitle (DSC-2003 proceedings), editors (Hornik, Leisch, Zeileis), Vienna. (2) <strong>Added DOIs that exist:</strong> Marr1982 (MIT Press 2010 reissue, <code>10.7551/mitpress/9780262514620.001.0001</code>) and StanTeam2024/RStan (CRAN <code>10.32614/cran.package.rstan</code>). Verified <strong>no DOI exists</strong> for OReilly2015 (web), Plummer2003 (proceedings), Rescorla1972 (1972 chapter), RStudio2020 (IDE not a CRAN pkg). (3) <strong>Fixed nature.csl double-DOI</strong> (page-less <code>@article</code> renders DOI as URL <em>and</em> <code>doi:</code>): Baribault2023 → now <strong>published</strong> (Psych Methods 30(1):128–154, <strong>2025</strong>) w/ vol+pages; Lin2026 → added article-number <code>pages={101473}</code>; loo (Vehtari2015) &amp; renv (Ushey2023) → retyped <code>@article</code>→<code>@Manual</code> (dropped <code>journal={(No Title)}</code>/<code>{R package version}</code>); Sohail2026 → <code>@article</code>→<code>@misc</code> (+ <code>publisher={PsyArXiv}</code>). Both PDFs rebuilt + visually verified clean. <strong>Uncommitted.</strong></li>
+<li>✅ R1.4 / R1.6 — added two paragraphs to both papers: (a) usage/adoption (semester length, 2–3 h per workshop, class size, instructor expertise) + a week-by-week <strong>Table 1</strong> semester overview, after the “All course workshops” paragraph; (b) development “story” (UKE Hamburg short course → Vienna expansion w/ SIPS Commendation + Early Career Teaching awards → Aamir Sohail’s website at Birmingham), after the “Using Bayesian models of cognition” paragraph. Story paragraph reworded by author 2026-06-13. Follow-ups below.</li>
+<li>✅ <strong>R1.4/R1.6 follow-up — add citations</strong> (2026-06-14): replaced <code>&lt;ADD CITATIONS!!!&gt;</code> in the dev-story paragraph with <code>[@Zhang2020; @Crawley2020; @ZhangGlascher2020; @Sohail2026]</code> (both papers). Added new bib entries <code>ZhangGlascher2020</code> (Zhang &amp; Gläscher 2020, <em>Science Advances</em>, used in WS8/9/10), <code>Sohail2026</code> (transdiagnostic social evaluative learning), <code>Lin2026</code> (Lin &amp; Sohail 2026, <em>Patterns</em> — published version). Removed the SSRN/PsyArXiv preprint of the latter (<code>Sohail2025b</code> in <code>paper.bib</code>; <code>Lin2025</code> in <code>paper_psyarxiv.bib</code>) and updated the ChatGPT sentence → <code>[@Sohail2025a; @Lin2026]</code>. NB the two bibs use <strong>divergent keys</strong> for the same refs (MRI on BEAR = <code>Sohail2025c</code> in paper.bib but <code>Sohail2025b</code> in psyarxiv.bib) — kept each file internally correct. <code>Sohail2026</code> has no DOI/journal yet (in prep); add once published. New <code>ZhangGlascher2020</code> uses <code>Gl{\"a}scher</code>, unlike existing plain “Glascher” entries — minor rendering inconsistency, optional cleanup.</li>
+<li>✅ <strong>R1.4/R1.6 follow-up — restructured the overview into TWO tables</strong> (2026-06-14): <strong>Table 1</strong> “Conceptual foundations (Weeks 1–3)” with a <em>Focus</em> column (no task/model, since wks 1–3 are conceptual); <strong>Table 2</strong> “Practical modeling workshops (Weeks 4–9)” with the <em>Example task and model</em> column. Usage paragraph now frames the conceptual-vs-practical split and refers to “Tables 1 and 2”. In <code>paper_psyarxiv.md</code> the tables are full-width <code>\begin{table*}</code> floats moved up into the Learning Objectives section so they render mid-body (verified: top of p.3) instead of drifting to the references. <code>paper.md</code> (JOSE, non-floating markdown tables) renders them inline. Content still uses the paper’s narrative numbering (WS4 = binomial coin-flip) — author to confirm the framing if desired.</li>
+<li>✅ <strong>R2.3 — truncated Normal vs Beta (Done 2026-06-14).</strong> <code>hierarchical_modeling.qmd</code>: removed the TODO marker; rewrote the “Setting priors” callout (fixed <code>X parameter</code>/<code>Normal(0,1)</code> placeholders → learning rate <span class="math inline">\(\alpha\)</span> + truncated-Normal/Beta framing); embedded a two-panel figure <code>images/06.reinforcement_learning/hrch/prior_normal_vs_beta.png</code> (truncated Normal(0.5,0.5) vs <strong>Beta(2,5)</strong>, both on [0,1], skyblue/black to match site) + caption + “we could have used the Beta if…” paragraph. Author-approved choices: Beta(2,5) (skewed-low, mean ≈0.29), evidence-informed framing. Page re-renders clean.</li>
+<li>✅ <strong>R1.3 — WIP workshops (editor responded; Done 2026-06-14).</strong> Editor ruling: incomplete/missing items must be <strong>completed or removed from consideration</strong>. Took the <strong>remove</strong> path for the WIP <em>listings</em>: deleted the <code>10.model_based</code>/<code>11.delay_discounting</code> “WIP | WIP” rows + the stale “<em>Workshops 5, 10 and 11 have yet to be added</em>” footnote (and its orphaned <code>05</code> asterisk) from <code>course_overview.qmd</code>, and the same two rows from <code>README.md</code>. <strong>WS11</strong> already de-listed (no qmd page, removed from tracking). <strong>Model-based fMRI (WS10) kept as-is</strong> (author choice) — it’s a finished <em>bonus</em> workshop (live sidebar entry + <code>model_fmri.qmd</code> page, no WIP label anywhere), so it reads as complete, not “yet to be added”. Papers needed <strong>no change</strong> (they describe only WS1–9). <code>conclusion.qmd</code> “Future content” left as-is (frames topics as future ideas). <strong>NB consequence:</strong> folder <code>10.model_based</code> no longer appears in the overview/README folder tables, but remains a live bonus workshop in the sidebar.</li>
+</ul>
+</section>
+<section id="author-review-needed" class="level3">
+<h3 class="anchored" data-anchor-id="author-review-needed">Author review needed</h3>
+<ul>
+<li>✅ <strong>Per-workshop learning objectives (WS1–WS9)</strong> — author reviewed and approved the “By the end of this workshop…” blocks (R1.8). Confirmed 2026-06-14.</li>
+<li>✅ <strong>Table 1 / Table 2 framing</strong> — author reviewed and approved the conceptual-vs-practical split (R1.4/R1.6). Confirmed 2026-06-14.</li>
+<li>✅ <strong>Sohail2026 preprint DOI</strong> — accepted as-is for now (cites PsyArXiv <code>_v1</code>); optionally swap for the journal DOI if/when that paper is published. Closed 2026-06-14.</li>
+</ul>
+</section>
+<section id="new-content-todos-raised-this-session-tie-into-reviewer-items" class="level3">
+<h3 class="anchored" data-anchor-id="new-content-todos-raised-this-session-tie-into-reviewer-items">New content TODOs (raised this session, tie into reviewer items)</h3>
+<ul>
+<li>✅ <strong><code>workshops/06.reinforcement_learning/qmd/hierarchical_modeling.qmd</code></strong> — prior-distribution figure (truncated Normal vs Beta(2,5)) added; see R2.3 above. <strong>Done 2026-06-14.</strong></li>
+<li>✅ <strong><code>workshops/02.binomial_globe/qmd/stan_binomial.qmd</code></strong> — <strong>rank plots added (R2.7, Done 2026-06-14).</strong> Refit the globe model (seed 1450154626 → reproduced θ mean 0.64, n_eff 1483, R̂ 1), ran <code>mcmc_rank_ecdf(fit_globe, pars="theta", prob=0.99, plot_diff=TRUE) + scale_colour_manual(chain_cols)</code> → <strong>recoloured to stan_trace()’s pastel palette</strong> (<code>#FDB4B0 #B5D087 #63D8DB #DABAFB</code>) so the trace + rank plots pair up visually (author choice 2026-06-14). The recolour is shown in the displayed code block <strong>and</strong> both scripts, so the displayed code reproduces the figure exactly (rstan attaches ggplot2 → <code>scale_colour_manual</code> resolves). Saved <code>images/02.binomial_globe/stan/mcmc_rank_ecdf.png</code>, embedded inside the rank-plot callout + a <strong>plain-English</strong> interpretation paragraph (all chains inside the band; reworded from jargon at user request). Also <strong>wired generation into the R scripts</strong> (master saves to <code>_plots/</code>, student displays) so the figure is reproducible and renv detects <code>bayesplot</code>. Page re-renders clean.</li>
+<li>✅ <strong>renv gap resolved (2026-06-14):</strong> <code>bayesplot</code> (used by the rank-plot code) was missing from <code>renv.lock</code>. Recorded <code>bayesplot 1.15.0</code> + missing deps <code>ggridges 0.5.7</code>, <code>tidyr 1.3.1</code>, <code>cpp11 0.5.1</code> (pinned to the <strong>project-library</strong> versions, not CRAN-latest). Root cause of non-detection: the <code>.qmd</code> uses plain <code>```r</code> fences (not <code>```{r}</code>), which renv doesn’t scan — fixed durably by adding <code>library(bayesplot)</code> to the binomial <code>_scripts/*.R</code> (which renv <em>does</em> scan). <code>renv::status()</code> now: <strong>“No issues found.”</strong></li>
+</ul>
+</section>
+</section>
+<section id="phase-c-work-in-progress-workshops" class="level2">
+<h2 class="anchored" data-anchor-id="phase-c-work-in-progress-workshops">Phase C — Work-in-progress workshops</h2>
+<ul>
+<li>🔄 <code>10.model_based</code> — bonus “Introduction to model-based fMRI”. <strong>Author decision (2026-06-14): leave as-is</strong> — stays a bonus WIP; no further work planned for now.</li>
+<li>✅ <code>11.delay_discounting</code> — hyperbolic discounting material. <strong>Not used by any rendered workshop</strong> (no <code>qmd/</code> page, absent from <code>_quarto.yml</code>; only a <em>future-directions</em> mention in <code>conclusion.qmd</code>). <strong>Removed from git tracking (2026-06-14)</strong> via <code>git rm -r --cached</code> (8 files) — working copies kept on disk as a draft seed for a future WS11 and excluded locally via <code>.git/info/exclude</code>. Staged deletion is uncommitted; nothing in the site breaks.</li>
+</ul>
+</section>
+<section id="phase-d-repository-housekeeping" class="level2">
+<h2 class="anchored" data-anchor-id="phase-d-repository-housekeeping">Phase D — Repository housekeeping</h2>
+<ul>
+<li>✅ <code>README.md</code>, <code>.gitignore</code>, <code>CONTRIBUTING.md</code>, <code>LICENSE-MIT</code> committed to <code>reviewer-responses</code> (<code>ddb4931</code>)</li>
+<li>✅ <strong>Sessions 3–5 reviewer-response work committed</strong> (<code>9373a5d</code>, session 6) — bibs/papers/PDFs, renv, README, course_overview, WS1/WS2/WS6 qmd, WS2 scripts, 2 new images, WS11 deletion. <code>compare_models.Rproj</code> line-ending noise <strong>discarded</strong> (<code>git restore</code>); <code>RESPONSE.md</code> + <code>binomial_model_files/</code> excluded locally.</li>
+<li>✅ Commit the MIT-note edit (<code>paper.md</code>+<code>paper_psyarxiv.md</code>) — committed <code>7d73cc7</code></li>
+<li>✅ <strong>Single-MIT relicense committed</strong> (<code>ead8e36</code>, session 7) — <code>LICENSE</code>→MIT, <code>LICENSE-MIT</code> deleted, README + <code>index.qmd</code> License sections rewritten; both papers’ Future Directions sentence → single MIT. Dual CC BY-SA + MIT dropped (user decision). <code>images/introduction/cc_by_sa.png</code> now orphaned (left on disk).</li>
+<li>✅ <strong>Affiliations + paper prose + rebuilt PDFs committed</strong> (<code>d1bdcb5</code>, session 7) — L.Z. affils 1–6, A.S. 1–3; 6 prose edits mirrored into psyarxiv; both PDFs rebuilt (inara + quarto pandoc) &amp; verified. APA initials KEPT.</li>
+<li>⬜ Merge <code>reviewer-responses</code> → <code>main</code> (<code>git checkout main &amp;&amp; git merge reviewer-responses</code>) when ready</li>
+<li>⬜ Push <code>main</code> + <code>quarto publish gh-pages</code> (outward-facing — user does NOT want to push yet; do on request)</li>
+<li>⬜ Post <code>RESPONSE.md</code> to reviewers — AFTER merge/publish so live site/paper reflect the responses</li>
+</ul>
+</section>
+<section id="phase-e-claude-infrastructure-this-setup-session" class="level2">
+<h2 class="anchored" data-anchor-id="phase-e-claude-infrastructure-this-setup-session">Phase E — Claude infrastructure (this setup session)</h2>
+<ul>
+<li>✅ <code>CLAUDE.md</code>, <code>TASK.md</code>, <code>SCRATCHPAD.md</code>, <code>CHEATSHEET.md</code></li>
+<li>✅ <code>.claude/commands/</code> (<code>resume</code>, <code>update-memory</code>, <code>status</code>) + <code>.claude/settings.json</code></li>
+<li>✅ Memory files (<code>MEMORY.md</code>, <code>project_design.md</code>, <code>codebase_notes.md</code>)</li>
+<li>✅ <code>docs/course_roadmap.md</code></li>
+</ul>
+</section>
+<section id="backlog-future-enhancements-from-paper-future-directions" class="level2">
+<h2 class="anchored" data-anchor-id="backlog-future-enhancements-from-paper-future-directions">Backlog / future enhancements (from paper “Future Directions”)</h2>
+<p>Accepted as legitimate <em>future</em> additions, not active tasks (closed out 2026-06-14): - ✅ Tutorial on user-friendly modeling packages (e.g.&nbsp;<code>hBayesDM</code>) — parked as a future idea - ✅ Extensions: model-based fMRI, social learning, computational psychiatry — parked as future ideas - ✅ Fix scattered prose typos — <strong>done 2026-06-14</strong>: README “distibrutions”→“distributions”; <code>rl_concepts.qmd</code> “recieve a outcome”→“receive an outcome”; paper(s) “Subseuqently”→“Subsequently”, “practially”→“practically”. (Citation-title British spellings left as-is; no “hierachical” in <code>_quarto.yml</code> — already clean.)</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -860,18 +959,6 @@ Working directory for this workshop
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="../../../workshops/07.optm_rl/qmd/optim.html" class="pagination-link" aria-label="Reparameterization and optimizing Stan code">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Reparameterization and optimizing Stan code</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="../../../workshops/08.compare_models/qmd/model_comparison.html" class="pagination-link" aria-label="Model comparison">
-        <span class="nav-page-text">Model comparison</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
@@ -880,7 +967,7 @@ Working directory for this workshop
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/alpn-lab/BayesCog/issues/new" class="toc-action"><i class="bi bi-github"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with 🧠, ☕ and <a href="https://quarto.org/">Quarto</a>.</p>
 </div>

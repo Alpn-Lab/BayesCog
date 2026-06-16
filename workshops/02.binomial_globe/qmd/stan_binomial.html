@@ -780,7 +780,7 @@ Stan files and the empty line
 <li>The <span class="math inline">\(\sim\)</span> operator means “is distributed as”</li>
 </ul>
 <p>So, this block simply translates to: “The number of water observations follows a binomial distribution according to the number of trials and the proportion of water on the globe”.</p>
-<p>However, there is an additional line, which is optional in this specific case. Recall that in Bayesian inference, we need a prior (initial belief) for our parameters. In this case, we could (but don’t have to), set a uniform prior between 0 and 1. This reflects an implicit uniform prior which is uninformed. In other words, we have no prior evidence to suggest that the values of <span class="math inline">\(θ\)</span> should be a certain value.</p>
+<p>However, there is an additional line, which is optional in this specific case. Recall that in Bayesian inference, we need a prior (initial assumption) for our parameters. In this case, we could (but don’t have to), set a uniform prior between 0 and 1. This reflects an implicit uniform prior which is uninformed. In other words, we have no prior evidence to suggest that the values of <span class="math inline">\(θ\)</span> should be a certain value.</p>
 <div class="callout callout-style-default callout-important callout-titled" title="Not specifying a prior">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -828,7 +828,7 @@ Checking your Stan model
 <h3 class="anchored" data-anchor-id="running-the-stan-model-in-r">Running the Stan model in R</h3>
 <p>So now we have both defined our data and created the Stan model, we can now run the model through our <code>R</code> script. But, this is not as straight-forward as simply pressing ‘Run’. We need to set-up our <code>R</code> script to run the model according to our specifications.</p>
 <p>Here is the relevant section of the <code>binomial_globe_main.R</code> script:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Running Stan #### </span></span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">#### Running Stan ####</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rstan)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="fu">rstan_options</span>(<span class="at">auto_write =</span> <span class="cn">TRUE</span>)</span>
@@ -836,7 +836,7 @@ Checking your Stan model
 <span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>modelFile <span class="ot">&lt;-</span> <span class="st">'_scripts/binomial_globe_model.stan'</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>nIter     <span class="ot">&lt;-</span> <span class="dv">2000</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>nChains   <span class="ot">&lt;-</span> <span class="dv">4</span> </span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>nChains   <span class="ot">&lt;-</span> <span class="dv">4</span></span>
 <span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>nWarmup   <span class="ot">&lt;-</span> <span class="fu">floor</span>(nIter<span class="sc">/</span><span class="dv">2</span>)</span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>nThin     <span class="ot">&lt;-</span> <span class="dv">1</span></span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
@@ -854,7 +854,7 @@ Checking your Stan model
 <span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>                  <span class="at">seed    =</span> <span class="dv">1450154626</span>)</span>
 <span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Finishing"</span>, modelFile, <span class="st">"model simulation ... </span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>endTime <span class="ot">=</span> <span class="fu">Sys.time</span>(); <span class="fu">print</span>(endTime)  </span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>endTime <span class="ot">=</span> <span class="fu">Sys.time</span>(); <span class="fu">print</span>(endTime)</span>
 <span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"It took"</span>,<span class="fu">as.character.Date</span>(endTime <span class="sc">-</span> startTime), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-important callout-titled" title="Installing Rstan">
 <div class="callout-header d-flex align-content-center">
@@ -940,12 +940,12 @@ Determining how many cores to use
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>starting worker pid<span class="ot">=</span><span class="dv">56973</span> on localhost<span class="sc">:</span><span class="dv">11017</span> at <span class="dv">12</span><span class="sc">:</span><span class="dv">53</span><span class="sc">:</span><span class="fl">02.058</span></span>
 <span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>SAMPLING FOR MODEL <span class="st">'anon_model'</span> <span class="fu">NOW</span> (CHAIN <span class="dv">1</span>).</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Gradient evaluation took <span class="fl">8e-06</span> seconds</span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> <span class="dv">1000</span> transitions using <span class="dv">10</span> leapfrog steps per transition would take <span class="fl">0.08</span> seconds.</span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Adjust your expectations accordingly<span class="sc">!</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>    <span class="dv">1</span> <span class="sc">/</span> <span class="dv">2000</span> [  <span class="dv">0</span>%]  (Warmup)</span>
 <span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>  <span class="dv">200</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">10</span>%]  (Warmup)</span>
 <span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span>  <span class="dv">400</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">20</span>%]  (Warmup)</span>
@@ -958,11 +958,11 @@ Determining how many cores to use
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1600</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">80</span>%]  (Sampling)</span>
 <span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">1800</span> <span class="sc">/</span> <span class="dv">2000</span> [ <span class="dv">90</span>%]  (Sampling)</span>
 <span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> Iteration<span class="sc">:</span> <span class="dv">2000</span> <span class="sc">/</span> <span class="dv">2000</span> [<span class="dv">100</span>%]  (Sampling)</span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span>
+<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span>  Elapsed Time<span class="sc">:</span> <span class="fl">0.007</span> <span class="fu">seconds</span> (Warm<span class="sc">-</span>up)</span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span>                <span class="fl">0.007</span> <span class="fu">seconds</span> (Sampling)</span>
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span>                <span class="fl">0.014</span> <span class="fu">seconds</span> (Total)</span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span> </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>Chain <span class="dv">1</span><span class="sc">:</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This visually shows the MCMC chains at work. We can see that the first 1000 samples are labelled as ‘Warmup’ and also how long the process takes.</p>
 <div class="callout callout-style-default callout-note callout-titled" title="Model running times">
 <div class="callout-header d-flex align-content-center">
@@ -988,7 +988,7 @@ Model running times
 <p>If we print <code>fit_globe</code> we get the following:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">print</span>(fit_globe)</span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>Inference <span class="cf">for</span> Stan model<span class="sc">:</span> anon_model.</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> chains, each with iter<span class="ot">=</span><span class="dv">2000</span>; warmup<span class="ot">=</span><span class="dv">1000</span>; thin<span class="ot">=</span><span class="dv">1</span>; </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span> chains, each with iter<span class="ot">=</span><span class="dv">2000</span>; warmup<span class="ot">=</span><span class="dv">1000</span>; thin<span class="ot">=</span><span class="dv">1</span>;</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>post<span class="sc">-</span>warmup draws per chain<span class="ot">=</span><span class="dv">1000</span>, total post<span class="sc">-</span>warmup draws<span class="ot">=</span><span class="fl">4000.</span></span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>       mean se_mean   sd  <span class="fl">2.5</span><span class="sc">%   25%</span>   <span class="dv">50</span><span class="sc">%   75%</span> <span class="fl">97.5</span>% n_eff Rhat</span>
@@ -997,7 +997,7 @@ Model running times
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>Samples were drawn using <span class="fu">NUTS</span>(diag_e) at Tue Dec <span class="dv">24</span> <span class="dv">13</span><span class="sc">:</span><span class="dv">18</span><span class="sc">:</span><span class="dv">04</span> <span class="fl">2024.</span></span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>For each parameter, n_eff is a crude measure of effective sample size,</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>and Rhat is the potential scale reduction factor on split <span class="fu">chains</span> (at </span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>and Rhat is the potential scale reduction factor on split <span class="fu">chains</span> (at</span>
 <span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>convergence, <span class="at">Rhat=</span><span class="dv">1</span>).</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This output gives us key information about our binomial model’s parameter estimation. Let’s break down what these numbers mean:</p>
 <p>For our parameter of interest, <span class="math inline">\(θ\)</span>, which represents the proportion of water in our globe-tossing example:</p>
@@ -1008,8 +1008,8 @@ Model running times
 </ul>
 <p>We can also see some results for the model diagnostics:</p>
 <ul>
-<li><p><strong>Effective Sample Size (n_eff):</strong> This tells us how many truly independent samples we got from our model. Even though we have 4000 total samples, they aren’t all completely independent from each other. The <code>n_eff</code> of 1483 means we effectively have about 1,483 independent samples, which is a good value; a general rule of thumb is that we want this to be above 1000.</p></li>
-<li><p><strong>Rhat:</strong> Rhat (the Gelman-Rubin statistic<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>) helps us check if our chains are converging to the same distribution. 1 is the ideal value, values above 1.1 are problematic.</p></li>
+<li><p><strong>Effective Sample Size (n_eff):</strong> This is an estimate of the number of <em>independent</em> samples that would carry the same amount of information as the (autocorrelated) samples we actually got from our model. Because successive MCMC draws are correlated, our 4000 total samples are not all independent of one another. The <code>n_eff</code> of 1483 means our chains carry roughly as much information as 1,483 independent draws, which is a good value; a general rule of thumb is that we want this to be above 1000.</p></li>
+<li><p><strong>R-hat (Rhat, <span class="math inline">\(\hat{R}\)</span>):</strong> <span class="math inline">\(\hat{R}\)</span> helps us check whether our chains are converging to the same distribution. 1 is the ideal value, and values above 1.1 are problematic <a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>.</p></li>
 </ul>
 <p>These results tell us we have a well-behaved model that’s giving us reliable estimates of <span class="math inline">\(θ\)</span>. The relatively tight credible interval also gives us a good sense of the uncertainty in our estimate.</p>
 <p>We can also visually examine the samples by plotting them. Checking the MCMC traces is important for determining whether the traces are mixing well and have converged. A good trace plot should look like a “fuzzy caterpillar” - showing random fluctuations around a stable mean value.</p>
@@ -1027,10 +1027,35 @@ Model running times
 </figure>
 </div>
 <p><strong>Our traceplots suggest that the chains have performed well.</strong> The four chains show good mixing and overlap, indicating they’re exploring the same regions of the parameter space independently. After the warmup period, you can see that the chains are sampling consistently around the posterior mean of 0.64.</p>
+<div class="callout callout-style-default callout-tip callout-titled" title="Rank plots: a more sensitive alternative to trace plots">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Rank plots: a more sensitive alternative to trace plots
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>While trace plots remain a common and intuitive diagnostic, they can hide subtle differences between chains. <em>Rank plots</em> are often more informative: they pool all draws across chains, rank them, and then show the distribution of ranks within each chain. If the chains are sampling from the same distribution, they should look approximately uniform. The <code>bayesplot</code> package provides these, for example:</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(bayesplot)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># use the same chain colours as stan_trace() so the two plots match</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>chain_cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#FDB4B0"</span>, <span class="st">"#B5D087"</span>, <span class="st">"#63D8DB"</span>, <span class="st">"#DABAFB"</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">mcmc_rank_ecdf</span>(fit_globe, <span class="at">pars =</span> <span class="st">"theta"</span>, <span class="at">prob =</span> <span class="fl">0.99</span>, <span class="at">plot_diff =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> chain_cols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../../images/02.binomial_globe/stan/mcmc_rank_ecdf.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:85.0%"></p>
+</figure>
+</div>
+<p>The plot above shows the result for our globe-tossing model. The idea behind it is simple: if all four chains are exploring the posterior in the same way, then no chain should consistently produce higher or lower values than the others. Here, all four lines wobble around zero and stay inside the envelope, so no chain stands out as behaving differently. This confirms what the trace plots already suggested: the chains have converged and are sampling from the same distribution.</p>
+</div>
+</div>
 <p>To more clearly see our samples, we can instead plot them as a histogram, showing the posterior density distribution for our parameter <span class="math inline">\(\theta\)</span> estimated from our MCMC sampling:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># highlight and run the following code in the script</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>stan_dens(fit_globe, separate_chains = FALSE, fill = 'skyblue')</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>stan_dens(fit_globe, separate_chains = TRUE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode stan code-with-copy"><code class="sourceCode stan"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># highlight and run the following code in the script</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>stan_dens(fit_globe, separate_chains = FALSE, fill = 'skyblue')</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>stan_dens(fit_globe, separate_chains = TRUE)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../../images/02.binomial_globe/stan/theta_posterior.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:70.0%"></p>
@@ -1040,8 +1065,8 @@ Model running times
 <p>The posterior mean is highlighted with a black bar.</p>
 </div>
 <p>In this case, the confidence (blue shaded region) and outer levels (black lines) are set at the default values of 80% and 95% respectively:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>ci_level<span class="sc">:</span> <span class="fl">0.8</span> (<span class="dv">80</span>% intervals)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>outer_level<span class="sc">:</span> <span class="fl">0.95</span> (<span class="dv">95</span>% intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ci_level<span class="sc">:</span> <span class="fl">0.8</span> (<span class="dv">80</span>% intervals)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>outer_level<span class="sc">:</span> <span class="fl">0.95</span> (<span class="dv">95</span>% intervals)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 </section>
 <section id="what-is-a-bayesian-model" class="level2">
@@ -1082,7 +1107,7 @@ Model running times
 <li id="fn1"><p>McElreath, R. (2020). Statistical Rethinking: A Bayesian Course with Examples in R and Stan, 2nd Ed. CRC Press.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn2"><p>Carpenter, B., Gelman, A., Hoffman, M. D., Lee, D., Goodrich, B., Betancourt, M., … &amp; Riddell, A. (2017). Stan: A probabilistic programming language. Journal of statistical software, 76.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Lee, M. D., &amp; Wagenmakers, E. J. (2014). Bayesian cognitive modeling: A practical course. Cambridge university press.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn4"><p>Gelman, A., &amp; Rubin, D. B. (1992). Inference from iterative simulation using multiple sequences. Statistical science, 7(4), 457-472.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Vehtari, A., Gelman, A., Simpson, D., Carpenter, B., &amp; Bürkner, P.-C. (2021). Rank-normalization, folding, and localization: An improved <span class="math inline">\(\hat{R}\)</span> for assessing convergence of MCMC. Bayesian Analysis, 16(2), 667-718.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p>Colombo, M., &amp; Seriès, P. (2012). Bayes in the brain—on Bayesian modelling in neuroscience. The British journal for the philosophy of science.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
@@ -1501,7 +1526,7 @@ Model running times
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© Zhang &amp; Sohail, 2025</p>
+<p>© Zhang &amp; Sohail, 2026</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
