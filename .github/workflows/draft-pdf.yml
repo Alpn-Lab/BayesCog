@@ -32,7 +32,7 @@ jobs:
         # Dependabot PRs run with a read-only token and cannot push, so skip the
         # commit-back step for them (the PDF still builds, keeping that signal).
         if: ${{ github.actor != 'dependabot[bot]' }}
-        uses: EndBug/add-and-commit@v10
+        uses: EndBug/add-and-commit@v11
         with:
             message: '(auto) Paper PDF Draft'
             # This should be the path to the paper within your repo.
